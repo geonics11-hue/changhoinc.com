@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="창호종합기계 - 거품은 빼고 신뢰는 더합니다. 글로벌 산업장비 수입대행 및 WTM 브랜드 기계">
+    <meta property="og:title" content="창호종합기계 - 투명한 글로벌 기계 수입대행">
+    <meta property="og:description" content="20년 글로벌 소싱 노하우, WTM 품질 보증, 1년 무상 A/S">
+    <title>창호종합기계 - 글로벌 기계 수입대행 전문</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== CSS VARIABLES (Sellick-inspired) ===== */
+        :root {
+            --dark-charcoal: #2a2a2a;
+            --dark-section: #1a1a1a;
+            --primary-blue: #298CD3;
+            --accent-orange: #F38A3F;
+            --text-white: #ffffff;
+            --text-light: #cccccc;
+            --text-primary: #222222;
+            --text-secondary: #666666;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-light: #e0e0e0;
+            --transition: all 0.3s ease;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-white);
+        }
+
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ===== CONTAINERS & LAYOUTS ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .grid-5 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 50px 0;
+            }
+
+            .grid-2, .grid-3, .grid-4, .grid-5 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 16px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #d97727;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--dark-charcoal);
+        }
+
+        .btn-tertiary {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-tertiary:hover {
+            background-color: #1f6ba3;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        /* ===== HEADER (Dark Charcoal) ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--dark-charcoal);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background-color: rgba(42, 42, 42, 0.95);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-white);
+            transition: var(--transition);
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo:hover {
+            color: var(--accent-orange);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 600;
+            color: var(--text-light);
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent-orange);
+            border-bottom-color: var(--accent-orange);
+        }
+
+        nav a.highlight {
+            color: var(--accent-orange);
+            font-weight: 700;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-white);
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background-color: var(--dark-charcoal);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                z-index: 999;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav a {
+                padding: 10px 0;
+            }
+        }
+
+        /* ===== HERO SECTION (50/50 Split - Sellick Style) ===== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: stretch;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        /* Left panel - Dark with chevron pattern */
+        .hero-left {
+            flex: 0 0 55%;
+            background: var(--dark-charcoal);
+            background-image: repeating-linear-gradient(
+                120deg,
+                transparent,
+                transparent 30px,
+                rgba(255, 255, 255, 0.03) 30px,
+                rgba(255, 255, 255, 0.03) 31px
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 40px;
+            color: white;
+            z-index: 10;
+        }
+
+        .hero-content {
+            max-width: 500px;
+        }
+
+        .hero h1 {
+            color: var(--text-white);
+            margin-bottom: 20px;
+            font-size: 2.8rem;
+            line-height: 1.3;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-badge {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-badge strong {
+            color: var(--accent-orange);
+        }
+
+        /* Right panel - Full image */
+        .hero-right {
+            flex: 0 0 45%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                height: auto;
+                min-height: 600px;
+            }
+
+            .hero-left {
+                flex: 0 0 auto;
+                padding: 40px 20px;
+                justify-content: flex-start;
+                padding-top: 60px;
+            }
+
+            .hero-right {
+                flex: 0 0 300px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* ===== IMPORT SERVICE SECTION ===== */
+        #import-service {
+            background-color: var(--dark-charcoal);
+            color: white;
+        }
+
+        #import-service h2 {
+            color: white;
+            text-align: center;
+        }
+
+        .transparency-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .transparency-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-orange);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .transparency-card:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .transparency-card .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .transparency-card h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .process-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+            align-items: start;
+        }
+
+        .process-step {
+            background-color: rgba(41, 140, 211, 0.1);
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid var(--primary-blue);
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step h4 {
+            color: var(--accent-orange);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .process-step p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        .process-arrow {
+            display: none;
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+        }
+
+        @media (min-width: 769px) {
+            .process-flow {
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            .process-step:not(:last-child) .process-arrow {
+                display: block;
+            }
+        }
+
+        /* ===== USP SECTION ===== */
+        #usp {
+            background-color: var(--bg-light);
+        }
+
+        #usp h2 {
+            text-align: center;
+        }
+
+        .usp-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .usp-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .usp-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .usp-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .usp-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        /* ===== FEATURE SPOTLIGHT SECTION (NEW - Sellick Style) ===== */
+        #feature-spotlight {
+            background-color: white;
+            padding: 0;
+            height: auto;
+        }
+
+        .spotlight-content {
+            display: flex;
+            align-items: stretch;
+            min-height: 500px;
+        }
+
+        .spotlight-image {
+            flex: 0 0 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spotlight-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .spotlight-text {
+            flex: 0 0 50%;
+            background-color: var(--dark-section);
+            color: white;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .spotlight-badge {
+            display: inline-block;
+            background-color: var(--accent-orange);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        .spotlight-text h2 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+
+        .spotlight-text p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .spotlight-text .btn {
+            align-self: flex-start;
+        }
+
+        @media (max-width: 768px) {
+            .spotlight-content {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .spotlight-image {
+                flex: 0 0 300px;
+            }
+
+            .spotlight-text {
+                flex: 0 0 auto;
+                padding: 40px 20px;
+            }
+
+            .spotlight-text h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* ===== PRODUCTS SECTION ===== */
+        #products {
+            background-color: white;
+        }
+
+        #products h2 {
+            text-align: center;
+        }
+
+        .product-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-image:hover {
+            background: linear-gradient(135deg, rgba(41, 140, 211, 0.9), rgba(243, 138, 63, 0.9)), url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80');
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent-orange);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-content h3 {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .product-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .accordion-toggle {
+            background: none;
+            border: none;
+            color: var(--primary-blue);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .accordion-toggle:hover {
+            color: var(--accent-orange);
+        }
+
+        .accordion-toggle::after {
+            content: '▼';
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 0.75rem;
+        }
+
+        .accordion-toggle.active::after {
+            transform: rotate(-180deg);
+        }
+
+        .accordion-content {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        .accordion-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .accordion-content li {
+            padding: 6px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .accordion-content li::before {
+            content: '▸ ';
+            color: var(--accent-orange);
+            font-weight: 700;
+            margin-right: 6px;
+        }
+
+        /* ===== WTM SECTION ===== */
+        #wtm {
+            background-color: var(--bg-light);
+        }
+
+        #wtm h2 {
+            text-align: center;
+        }
+
+        .wtm-content {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .wtm-tagline {
+            font-size: 1.3rem;
+            color: var(--accent-orange);
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .wtm-badge {
+            width: 120px;
+            height: 120px;
+            margin: 2rem auto;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--primary-blue);
+        }
+
+        .wtm-badge svg {
+            width: 80%;
+            height: 80%;
+        }
+
+        .wtm-models {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .wtm-model {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .wtm-model h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        /* ===== RESOURCES SECTION ===== */
+        #resources {
+            background-color: white;
+        }
+
+        #resources h2 {
+            text-align: center;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .resource-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: var(--bg-light);
+            transition: var(--transition);
+        }
+
+        .resource-item:hover {
+            background-color: #eff3f7;
+        }
+
+        .resource-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .resource-item h3 {
+            margin-bottom: 15px;
+        }
+
+        .resource-item p {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            padding-top: 56.25%;
+            position: relative;
+            background-color: var(--dark-charcoal);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .video-placeholder::after {
+            content: '▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 3rem;
+        }
+
+        .pdf-downloads {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .pdf-btn {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .pdf-btn:hover {
+            background-color: #1f6ba3;
+        }
+
+        /* ===== CASES SECTION ===== */
+        #cases {
+            background-color: var(--bg-light);
+        }
+
+        #cases h2 {
+            text-align: center;
+        }
+
+        .case-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .case-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            border-left: 4px solid var(--accent-orange);
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .case-badge {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .case-card h3 {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .case-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        #about {
+            background-color: white;
+        }
+
+        #about h2 {
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .ceo-message {
+            background-color: var(--bg-light);
+            padding: 40px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-orange);
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .ceo-credit {
+            text-align: right;
+            margin-top: 10px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            margin: 1.5rem 0;
+            line-height: 1.9;
+        }
+
+        .company-info {
+            background-color: var(--bg-light);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .company-info p {
+            margin: 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .map-button {
+            margin-top: 2rem;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        #contact {
+            background-color: var(--bg-light);
+        }
+
+        #contact h2 {
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 2rem auto;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border-light);
+            overflow-x: auto;
+        }
+
+        .tab-button {
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+        }
+
+        .tab-button.active {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+        }
+
+        .tab-button:hover {
+            color: var(--primary-blue);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(41, 140, 211, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .form-submit:hover {
+            background-color: #1f6ba3;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-light);
+        }
+
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            background-color: white;
+            border-radius: 4px;
+            text-align: center;
+            justify-content: center;
+            transition: var(--transition);
+            border: 1px solid var(--border-light);
+        }
+
+        .quick-link:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .quick-link a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark-charcoal);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .footer-socials a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(41, 140, 211, 0.2);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .footer-socials a:hover {
+            background-color: var(--accent-orange);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== UTILITY ===== */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            color: var(--accent-orange);
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="./images/CH_Logo_MD_700700_배경검은색.png" alt="창호종합기계 로고">
+                    창호종합기계
+                </a>
+                <nav id="nav-menu">
+                    <ul>
+                        <li><a href="#about">회사소개</a></li>
+                        <li><a href="#import-service" class="highlight">수입대행 서비스</a></li>
+                        <li><a href="#products">제품소개</a></li>
+                        <li><a href="#resources">기술자료</a></li>
+                        <li><a href="#contact">문의하기</a></li>
+                    </ul>
+                </nav>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION (50/50 Split - Sellick Style) ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-left">
+            <div class="hero-content">
+                <h1>거품은 빼고<br>신뢰는 더합니다.</h1>
+                <p class="subtitle">
+                    전 세계 검증된 장비, 가장 투명한 경로로 연결합니다.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">무료 수입 상담하기</a>
+                    <a href="#products" class="btn btn-secondary">제품 카탈로그 보기</a>
+                </div>
+                <div class="hero-badge">
+                    <strong>카카오 채널 상담</strong> — 실시간 기술 지원
+                </div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <img src="./images/hero-1.jpg" alt="창호종합기계 현장사진" onerror="this.style.display='none'">
+        </div>
+    </section>
+
+    <!-- ===== IMPORT SERVICE SECTION ===== -->
+    <section id="import-service">
+        <div class="container">
+            <h2>수입대행, 투명함이 경쟁력입니다</h2>
+
+            <h3 style="text-align: center; margin-top: 3rem; color: white;">핵심 투명성 약속</h3>
+            <div class="transparency-cards">
+                <div class="transparency-card">
+                    <div class="icon">📋</div>
+                    <h3>원가 & 수수료 공개</h3>
+                    <p>해외 직거래 가격 및 대행 수수료 투명 공개</p>
+                </div>
+                <div class="transparency-card">
+                    <div class="icon">🎥</div>
+                    <h3>실시간 현장 공유</h3>
+                    <p>현지 공장 검수 영상 및 선적 과정 실시간 보고</p>
+                </div>
+                <div class="transparency-card">
+                    <div class="icon">📊</div>
+                    <h3>성능 데이터 오픈</h3>
+                    <p>기계 제원 및 테스트 결과 가감 없이 공유</p>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; margin-top: 3rem; color: white;">5단계 수입 프로세스</h3>
+            <div class="process-flow">
+                <div class="process-step">
+                    <h4>1단계</h4>
+                    <h3 style="font-size: 1.2rem; color: white; margin-top: 8px;">상담·매칭</h3>
+                    <p>고객 요구 사양 분석 및 최적 기계 추천</p>
+                    <div class="process-arrow">→</div>
+                </div>
+                <div class="process-step">
+                    <h4>2단계</h4>
+                    <h3 style="font-size: 1.2rem; color: white; margin-top: 8px;">제조사 검증</h3>
+                    <p>터키·중국 글로벌 파트너사 성능 점검</p>
+                    <div class="process-arrow">→</div>
+                </div>
+                <div class="process-step">
+                    <h4>3단계</h4>
+                    <h3 style="font-size: 1.2rem; color: white; margin-top: 8px;">계약·발주</h3>
+                    <p>투명한 계약 조건 확인 후 직발주</p>
+                    <div class="process-arrow">→</div>
+                </div>
+                <div class="process-step">
+                    <h4>4단계</h4>
+                    <h3 style="font-size: 1.2rem; color: white; margin-top: 8px;">물류·통관</h3>
+                    <p>수입 절차 전담 대행 및 진행 공유</p>
+                    <div class="process-arrow">→</div>
+                </div>
+                <div class="process-step">
+                    <h4>5단계</h4>
+                    <h3 style="font-size: 1.2rem; color: white; margin-top: 8px;">설치·교육</h3>
+                    <p>김해 거점 기술팀 직접 설치 및 교육</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== USP SECTION ===== -->
+    <section id="usp">
+        <div class="container">
+            <h2>왜 창호종합기계인가</h2>
+            <div class="usp-cards">
+                <div class="usp-card">
+                    <div class="icon">🏆</div>
+                    <h3>20년+ 글로벌 소싱 노하우</h3>
+                    <p>터키, 중국, 유럽 파트너사와 직거래 네트워크 보유</p>
+                </div>
+                <div class="usp-card">
+                    <div class="icon">✅</div>
+                    <h3>WTM 품질 보증</h3>
+                    <p>자체 기준 통과 장비만 취급하는 품질 철학</p>
+                </div>
+                <div class="usp-card">
+                    <div class="icon">🔧</div>
+                    <h3>1년 무상 A/S</h3>
+                    <p>김해 거점의 전문 기술팀 24/7 지원</p>
+                </div>
+                <div class="usp-card">
+                    <div class="icon">📱</div>
+                    <h3>실시간 영상통화 기술지원</h3>
+                    <p>복잡한 기술 문제도 빠르게 해결</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE SPOTLIGHT SECTION (NEW) ===== -->
+    <section id="feature-spotlight">
+        <div class="spotlight-content">
+            <div class="spotlight-image">
+                <img src="./images/feature-spotlight.jpg" alt="WTM 자체브랜드 제품 현장사진">
+            </div>
+            <div class="spotlight-text">
+                <div class="spotlight-badge">수입대행 서비스</div>
+                <h2>WTM 자체브랜드 제품</h2>
+                <p>
+                    글로벌 직거래 가격과 국내 기술지원을 결합한 프리미엄 기계 솔루션입니다.
+                    터키, 중국의 검증된 파트너사와 협력하여 최적의 성능과 가격을 보장합니다.
+                </p>
+                <a href="#wtm" class="btn btn-primary">지금 상담하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCTS SECTION ===== -->
+    <section id="products">
+        <div class="container">
+            <h2>취급 제품</h2>
+            <div class="product-categories">
+                <!-- A. Cutting Systems -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80" alt="절단 시스템 - 금속 절단 작업">
+                        <span style="position: absolute;">✂️</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>절단 시스템</h3>
+                        <p class="product-description">비철금속/알루미늄 절단기, 파이버 레이저 등</p>
+                        <button class="accordion-toggle" data-target="accordion-1">제품 상세 보기</button>
+                        <div class="accordion-content" id="accordion-1">
+                            <ul>
+                                <li>비철금속/알루미늄 절단기 (WTM-C-90, U-90)</li>
+                                <li>하이스 원형톱 절단기 (YT-275A, YT-315A, YT-315Y)</li>
+                                <li>파이버 레이저 절단기</li>
+                                <li>고속 자동 절단 시스템</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- B. CNC Processing -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=600&q=80" alt="CNC 정밀가공 - 공작기계">
+                        <span style="position: absolute;">⚙️</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>CNC·정밀가공</h3>
+                        <p class="product-description">밀링, 오면 가공, 서보 태핑 등</p>
+                        <button class="accordion-toggle" data-target="accordion-2">제품 상세 보기</button>
+                        <div class="accordion-content" id="accordion-2">
+                            <ul>
+                                <li>CNC 밀링 루터 (알루미늄/수지 가공용)</li>
+                                <li>오면 가공기</li>
+                                <li>서보 태핑기</li>
+                                <li>정밀 드릴링 센터</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- C. Window Fabrication -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80" alt="창호제작 전문 기계">
+                        <span style="position: absolute;">🪟</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>창호제작 전문</h3>
+                        <p class="product-description">AL·PVC 창호 생산 기계 풀라인</p>
+                        <button class="accordion-toggle" data-target="accordion-3">제품 상세 보기</button>
+                        <div class="accordion-content" id="accordion-3">
+                            <ul>
+                                <li>AL 창호기계: 양면 절단기, 코너클래핑기</li>
+                                <li>PVC 창호기계: 용접기, 사상기, 멀티락 가공기</li>
+                                <li>자동화 라인 구축</li>
+                                <li>커스텀 맞춤 설계 가능</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D. WTM Roller Die -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="WTM 롤러다이 - 알루미늄 가공">
+                        <span style="position: absolute;">⭐</span>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-badge">자체브랜드</div>
+                        <h3>WTM 롤러다이</h3>
+                        <p class="product-description">알루미늄 프로파일 가공 전문 브랜드</p>
+                        <button class="accordion-toggle" data-target="accordion-4">제품 상세 보기</button>
+                        <div class="accordion-content" id="accordion-4">
+                            <ul>
+                                <li>WTM-R-44 (표준형) - 안정적 성능</li>
+                                <li>SC-1000 (확장형) - 확장 가능 구조</li>
+                                <li>알루미늄 프로파일 볼트 체결식</li>
+                                <li>용접 불필요, 자유로운 연장 가능</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E. Used & Special -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80" alt="중고·특수기계 - 검증 완료 장비">
+                        <span style="position: absolute;">♻️</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>중고·특수기계</h3>
+                        <p class="product-description">검증 완료 중고 장비 및 맞춤형 제작</p>
+                        <button class="accordion-toggle" data-target="accordion-5">제품 상세 보기</button>
+                        <div class="accordion-content" id="accordion-5">
+                            <ul>
+                                <li>성능 검증 완료 중고 장비</li>
+                                <li>맞춤형 커스텀 제작 기계</li>
+                                <li>기술 상담 및 개조 가능</li>
+                                <li>비용 효율적 솔루션</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WTM BRAND SECTION ===== -->
+    <section id="wtm">
+        <div class="container">
+            <h2>WTM 브랜드 스토리</h2>
+            <div class="wtm-content">
+                <p style="font-size: 1.1rem; color: var(--text-secondary); margin: 1rem 0;">
+                    World Trading Machine의 약자인 WTM은 창호종합기계가 20년 글로벌 네트워크를 바탕으로<br>
+                    설계하고 검증한 프리미엄 장비 브랜드입니다.
+                </p>
+                <p class="wtm-tagline">
+                    "유통 구조의 혁신이 곧 기계의 경쟁력입니다"
+                </p>
+
+                <svg class="wtm-badge" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" fill="none" stroke="#298CD3" stroke-width="2"/>
+                    <text x="50" y="60" font-size="28" font-weight="800" text-anchor="middle" fill="#298CD3">WTM</text>
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#F38A3F" stroke-width="1.5"/>
+                </svg>
+
+                <p style="font-size: 1rem; color: var(--text-secondary); margin: 2rem 0;">
+                    글로벌 직거래 가격, 국내 기술지원으로<br>
+                    최고의 성능과 가격을 보장합니다.
+                </p>
+            </div>
+
+            <h3 style="text-align: center; margin-top: 3rem; margin-bottom: 2rem;">핵심 제품 라인업</h3>
+            <div class="wtm-models">
+                <div class="wtm-model">
+                    <h3>WTM-R-44</h3>
+                    <p style="color: var(--text-secondary); margin: 1rem 0;">
+                        알루미늄 프로파일 표준형 롤러다이
+                    </p>
+                    <ul style="list-style: none; color: var(--text-secondary); font-size: 0.9rem;">
+                        <li style="margin: 6px 0;">✓ 안정적 성능</li>
+                        <li style="margin: 6px 0;">✓ 저비용 솔루션</li>
+                        <li style="margin: 6px 0;">✓ 빠른 납기</li>
+                    </ul>
+                </div>
+                <div class="wtm-model">
+                    <h3>WTM-C-90</h3>
+                    <p style="color: var(--text-secondary); margin: 1rem 0;">
+                        고속 알루미늄 절단기 시스템
+                    </p>
+                    <ul style="list-style: none; color: var(--text-secondary); font-size: 0.9rem;">
+                        <li style="margin: 6px 0;">✓ 고속 절단</li>
+                        <li style="margin: 6px 0;">✓ 정밀도 보증</li>
+                        <li style="margin: 6px 0;">✓ 저소음</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RESOURCES SECTION ===== -->
+    <section id="resources">
+        <div class="container">
+            <h2>기술자료 & 지원</h2>
+            <div class="resources-grid">
+                <div class="resource-item">
+                    <div class="resource-icon">📺</div>
+                    <h3>유튜브 채널</h3>
+                    <p>제품 소개, 설치 사례, 기술 팁 영상</p>
+                    <div class="video-placeholder"></div>
+                    <p style="font-size: 0.85rem; color: #999;">
+                        실제 영상 ID로 교체하여 iframe 임베드하세요
+                    </p>
+                </div>
+                <div class="resource-item">
+                    <div class="resource-icon">📝</div>
+                    <h3>네이버 블로그</h3>
+                    <p>수입 팁, 유지보수, 사례 기사</p>
+                    <a href="#" class="btn btn-tertiary" style="margin-top: 1rem;">블로그 방문하기</a>
+                </div>
+                <div class="resource-item">
+                    <div class="resource-icon">📄</div>
+                    <h3>PDF 카탈로그</h3>
+                    <p>상세 제품 정보 다운로드</p>
+                    <div class="pdf-downloads">
+                        <button class="pdf-btn">절단기 카탈로그</button>
+                        <button class="pdf-btn">CNC 카탈로그</button>
+                        <button class="pdf-btn">롤러다이 카탈로그</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CASES SECTION ===== -->
+    <section id="cases">
+        <div class="container">
+            <h2>수입대행 성공 사례</h2>
+            <div class="case-cards">
+                <div class="case-card">
+                    <div class="case-badge">완료</div>
+                    <h3>터키 고속 절단기 → 경남 알루미늄 가공업체 설치</h3>
+                    <p>
+                        경남의 알루미늄 가공 기업이 터키의 고속 절단기를 도입하여 생산성 45% 증가.
+                        완전 투명한 계약과 2개월 빠른 납기로 성공적 완료했습니다.
+                    </p>
+                    <a href="#" style="color: var(--primary-blue); font-weight: 600;">자세히 보기 →</a>
+                </div>
+                <div class="case-card">
+                    <div class="case-badge">완료</div>
+                    <h3>중국 CNC 밀링 → 부산 금속 가공 공장 도입</h3>
+                    <p>
+                        부산의 금속 정밀가공 공장이 중국 CNC 밀링 머신을 도입하여 정밀도 70% 향상.
+                        현장 영상 공유와 기술 교육으로 즉시 생산 투입 가능했습니다.
+                    </p>
+                    <a href="#" style="color: var(--primary-blue); font-weight: 600;">자세히 보기 →</a>
+                </div>
+                <div class="case-card">
+                    <div class="case-badge">완료</div>
+                    <h3>WTM 롤러다이 → 국내 창호 제조업체 라인 구축</h3>
+                    <p>
+                        국내 PVC 창호 제조업체가 WTM 롤러다이 시스템으로 자동화 라인 구축.
+                        월 생산량 300% 증가와 불량률 90% 감소를 달성했습니다.
+                    </p>
+                    <a href="#" style="color: var(--primary-blue); font-weight: 600;">자세히 보기 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section id="about">
+        <div class="container">
+            <h2>회사소개</h2>
+            <div class="about-content">
+                <div class="about-image" style="text-align:center; margin-bottom:2rem;">
+                    <img src="./images/showroom.jpg" alt="창호종합기계 전시판매장" style="width:100%; max-width:700px; border-radius:8px; box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+                </div>
+                <div class="ceo-message">
+                    우리는 기계만 팔지 않습니다.<br>
+                    고객의 <span class="highlight">생산성</span>을 팔니다.
+                    <div class="ceo-credit">— 대표 이예택</div>
+                </div>
+
+                <div class="about-text">
+                    <p>
+                        창호종합기계는 20년 이상 글로벌 산업장비 수입 및 유통 사업을 해온 신뢰의 파트너입니다.
+                    </p>
+                    <p>
+                        터키, 중국, 유럽의 검증된 제조사와 직거래하며, 고객의 요구에 맞는 최적의 기계를
+                        투명하고 공정한 가격으로 제공합니다.
+                    </p>
+                    <p>
+                        WTM(World Trading Machine) 브랜드로 자체 제품을 개발·보증하며,
+                        김해 기술팀의 1년 무상 A/S와 실시간 지원으로 고객 만족을 최우선으로 합니다.
+                    </p>
+                </div>
+
+                <div class="company-info">
+                    <p><strong>상호:</strong> 창호종합기계</p>
+                    <p><strong>브랜드:</strong> WTM (World Trading Machine)</p>
+                    <p><strong>대표:</strong> 이예택</p>
+                    <p><strong>주소:</strong> 경남 김해시 상동면 상동로375번길 21</p>
+                    <p><strong>전화:</strong> 010-4465-4112 / 055-327-4112</p>
+                    <p><strong>팩스:</strong> 055-327-3112</p>
+                    <p><strong>도메인:</strong> www.changhoinc.com</p>
+                </div>
+
+                <div class="map-button">
+                    <a href="https://map.kakao.com/?q=경남+김해시+상동면+상동로375번길+21" target="_blank" class="btn btn-tertiary">
+                        🗺️ 카카오맵으로 보기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section id="contact">
+        <div class="container">
+            <h2>문의 / 견적 / A/S</h2>
+            <div class="contact-container">
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="import-request">수입 대행 의뢰</button>
+                    <button class="tab-button" data-tab="quotation">WTM 제품 견적</button>
+                    <button class="tab-button" data-tab="as-request">A/S 접수</button>
+                </div>
+
+                <!-- Tab 1: Import Request -->
+                <div class="tab-content active" id="import-request">
+                    <form method="POST" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID">
+                        <div class="form-group">
+                            <label for="import-name">이름 *</label>
+                            <input type="text" id="import-name" name="name" required placeholder="귀사명 담당자명">
+                        </div>
+                        <div class="form-group">
+                            <label for="import-phone">연락처 *</label>
+                            <input type="tel" id="import-phone" name="phone" required placeholder="010-0000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="import-machine">기계 종류 *</label>
+                            <input type="text" id="import-machine" name="machine_type" required placeholder="예: 절단기, CNC 밀링 등">
+                        </div>
+                        <div class="form-group">
+                            <label for="import-spec">요청 사양</label>
+                            <textarea id="import-spec" name="specifications" placeholder="기술 사양, 원하는 생산량, 예산 등"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="import-message">문의 내용 *</label>
+                            <textarea id="import-message" name="message" required placeholder="구체적인 요청 사항을 적어주세요"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">상담 신청하기</button>
+                    </form>
+                </div>
+
+                <!-- Tab 2: Quotation -->
+                <div class="tab-content" id="quotation">
+                    <form method="POST" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID">
+                        <div class="form-group">
+                            <label for="quote-name">이름 *</label>
+                            <input type="text" id="quote-name" name="name" required placeholder="귀사명 담당자명">
+                        </div>
+                        <div class="form-group">
+                            <label for="quote-phone">연락처 *</label>
+                            <input type="tel" id="quote-phone" name="phone" required placeholder="010-0000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="quote-product">제품 선택 *</label>
+                            <select id="quote-product" name="product" required>
+                                <option value="">-- 선택하세요 --</option>
+                                <option value="WTM-R-44">WTM-R-44 (롤러다이 표준형)</option>
+                                <option value="SC-1000">SC-1000 (롤러다이 확장형)</option>
+                                <option value="WTM-C-90">WTM-C-90 (절단기)</option>
+                                <option value="custom">맞춤형 상담</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quote-quantity">수량</label>
+                            <input type="number" id="quote-quantity" name="quantity" placeholder="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="quote-message">문의 내용</label>
+                            <textarea id="quote-message" name="message" placeholder="추가 요청사항을 적어주세요"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">견적 신청하기</button>
+                    </form>
+                </div>
+
+                <!-- Tab 3: A/S Request -->
+                <div class="tab-content" id="as-request">
+                    <form method="POST" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID">
+                        <div class="form-group">
+                            <label for="as-name">이름 *</label>
+                            <input type="text" id="as-name" name="name" required placeholder="귀사명 담당자명">
+                        </div>
+                        <div class="form-group">
+                            <label for="as-phone">연락처 *</label>
+                            <input type="tel" id="as-phone" name="phone" required placeholder="010-0000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="as-model">기계 모델명</label>
+                            <input type="text" id="as-model" name="model" placeholder="예: WTM-R-44">
+                        </div>
+                        <div class="form-group">
+                            <label for="as-purchase-date">구매일</label>
+                            <input type="date" id="as-purchase-date" name="purchase_date">
+                        </div>
+                        <div class="form-group">
+                            <label for="as-symptoms">증상 설명 *</label>
+                            <textarea id="as-symptoms" name="symptoms" required placeholder="문제 현상을 자세히 설명해주세요"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">A/S 신청하기</button>
+                    </form>
+                </div>
+
+                <div class="quick-links">
+                    <div class="quick-link">
+                        <a href="tel:01044654112">
+                            📞 <span>전화 연결</span>
+                        </a>
+                    </div>
+                    <div class="quick-link">
+                        <a href="#" target="_blank">
+                            💬 <span>카카오톡</span>
+                        </a>
+                    </div>
+                    <div class="quick-link">
+                        <a href="fax:0553273112">
+                            📠 <span>팩스 송신</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>창호종합기계</h3>
+                    <p>경남 김해시 상동면 상동로375번길 21</p>
+                    <p>📞 010-4465-4112 / 055-327-4112</p>
+                    <p>📠 055-327-3112</p>
+                    <p style="margin-top: 1rem;"><strong>웹사이트</strong><br>www.changhoinc.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>빠른 메뉴</h3>
+                    <ul class="footer-links">
+                        <li><a href="#import-service">수입대행 서비스</a></li>
+                        <li><a href="#products">제품소개</a></li>
+                        <li><a href="#wtm">WTM 브랜드</a></li>
+                        <li><a href="#resources">기술자료</a></li>
+                        <li><a href="#cases">성공 사례</a></li>
+                        <li><a href="#contact">문의하기</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>소셜 & 채널</h3>
+                    <p>저희 채널을 팔로우하세요</p>
+                    <div class="footer-socials">
+                        <a href="#" target="_blank" title="유튜브">📺</a>
+                        <a href="#" target="_blank" title="네이버 블로그">📝</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 창호종합기계. All rights reserved. | www.changhoinc.com
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ===== Header Scroll Effect =====
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // ===== Hamburger Menu =====
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close menu when link is clicked
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // ===== Product Accordion =====
+            const accordionToggles = document.querySelectorAll('.accordion-toggle');
+            accordionToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const accordionContent = document.getElementById(targetId);
+                    const isActive = accordionContent.classList.contains('active');
+
+                    // Close all other accordions
+                    document.querySelectorAll('.accordion-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.querySelectorAll('.accordion-toggle').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+
+                    // Toggle current
+                    if (!isActive) {
+                        accordionContent.classList.add('active');
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            // ===== Contact Tab Switching =====
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+
+                    // Remove active from all
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    // Add active to clicked tab
+                    this.classList.add('active');
+                    document.getElementById(tabName).classList.add('active');
+                });
+            });
+
+            // ===== Smooth Scroll =====
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && document.querySelector(href)) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        const offsetTop = target.offsetTop - 80; // Account for sticky header
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // ===== PDF Download Buttons =====
+            const pdfButtons = document.querySelectorAll('.pdf-btn');
+            pdfButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('PDF 다운로드 링크는 실제 파일 경로로 업데이트해주세요.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
