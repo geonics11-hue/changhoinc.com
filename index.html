@@ -10,7 +10,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Claude Design 동일 폰트: Gmarket Sans(제목) + Nanum Gothic(본문) -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSans.css" rel="stylesheet">
 
     <style>
         /* ============================================================
@@ -40,8 +43,8 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: "SF Pro Text", "SF Pro Display", system-ui, -apple-system,
-                         BlinkMacSystemFont, Inter, "Helvetica Neue", sans-serif;
+            font-family: "Nanum Gothic", "Noto Sans KR", "Apple SD Gothic Neo",
+                         system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 17px;
             font-weight: 400;
             line-height: 1.47;
@@ -248,16 +251,18 @@
 
         .t-hero {
             font-size: 56px;
-            font-weight: 600;
+            font-weight: 700;
             line-height: 1.07;
             letter-spacing: -0.28px;
+            font-family: "Gmarket Sans", "Noto Sans KR", system-ui, sans-serif;
         }
 
         .t-display {
             font-size: 40px;
-            font-weight: 600;
+            font-weight: 700;
             line-height: 1.10;
             letter-spacing: -0.2px;
+            font-family: "Gmarket Sans", "Noto Sans KR", system-ui, sans-serif;
         }
 
         .t-title {
@@ -300,11 +305,12 @@
 
         .hero-h1 {
             font-size: 56px;
-            font-weight: 600;
+            font-weight: 700;
             line-height: 1.07;
             letter-spacing: -0.28px;
             color: #fff;
             margin-bottom: 14px;
+            font-family: "Gmarket Sans", "Noto Sans KR", system-ui, sans-serif;
         }
 
         .hero-sub {
@@ -785,6 +791,95 @@
 
         .footer-legal { font-size: 12px; color: var(--ink-muted); }
 
+        /* ─── TIMELINE (연혁) ─────────────────────────────────────── */
+        .timeline {
+            position: relative;
+            max-width: 720px;
+            margin: 48px auto 0;
+            padding-left: 24px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 0;
+            width: 2px;
+            background: var(--hairline);
+        }
+        .tl-item {
+            position: relative;
+            padding: 0 0 36px 28px;
+        }
+        .tl-item:last-child { padding-bottom: 0; }
+        .tl-dot {
+            position: absolute;
+            left: -5px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--blue);
+            border: 2px solid var(--parchment);
+        }
+        .tl-year {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--blue);
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .tl-text {
+            font-size: 15px;
+            color: var(--ink);
+            line-height: 1.55;
+        }
+
+        /* ─── GLOBAL NETWORK ─────────────────────────────────────── */
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 48px;
+        }
+        .network-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: var(--card-r);
+            padding: 28px 20px;
+            text-align: center;
+        }
+        .network-flag { font-size: 40px; margin-bottom: 12px; display: block; }
+        .network-country {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .network-brands {
+            font-size: 12px;
+            color: var(--muted-dark);
+            line-height: 1.6;
+        }
+        .network-stat {
+            margin-top: 48px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            text-align: center;
+        }
+        .network-stat-item strong {
+            display: block;
+            font-size: 36px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+        .network-stat-item span {
+            font-size: 13px;
+            color: var(--muted-dark);
+        }
+
         /* ─── RESPONSIVE ─────────────────────────────────────────── */
         @media (max-width: 1068px) {
             .product-grid { grid-template-columns: repeat(2, 1fr); }
@@ -811,6 +906,7 @@
             .wtm-left      { order: -1; }
             .quick-contact { grid-template-columns: 1fr; }
             .footer-cols   { grid-template-columns: 1fr 1fr; }
+            .network-grid  { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 640px) {
@@ -819,6 +915,8 @@
             .process-grid  { grid-template-columns: 1fr; }
             .footer-cols   { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; align-items: flex-start; }
+            .network-grid  { grid-template-columns: 1fr 1fr; }
+            .network-stat  { grid-template-columns: 1fr; }
         }
 
         /* ─── UTILITY ────────────────────────────────────────────── */
@@ -839,6 +937,7 @@
         <nav aria-label="주 메뉴">
             <ul class="g-nav-links" id="navLinks">
                 <li><a href="#about">회사소개</a></li>
+                <li><a href="company.html">그룹 소개</a></li>
                 <li><a href="#import-service">수입대행</a></li>
                 <li><a href="#products">제품소개</a></li>
                 <li><a href="#resources">기술자료</a></li>
@@ -1190,6 +1289,53 @@
 </section>
 
 
+<!-- ===== 글로벌 파트너 네트워크 (Dark) ===== -->
+<section class="tile tile--dark tile-center" id="network">
+    <div class="tile-wrap--wide">
+        <span class="t-eyebrow t-eyebrow--dark">글로벌 소싱 네트워크</span>
+        <h2 class="t-display" style="color:#fff;margin-bottom:16px;">현지 직거래, 20년 신뢰의 파트너십</h2>
+        <p class="t-lead c-muted-dark" style="max-width:560px;margin:0 auto;">중간 유통 없이 검증된 제조사와 직접 계약합니다.<br>투명한 가격, 빠른 납기, 안정적인 A/S.</p>
+
+        <div class="network-grid">
+            <div class="network-card">
+                <span class="network-flag">🇹🇷</span>
+                <div class="network-country">터키</div>
+                <div class="network-brands">BURSA · ISTANBUL 지역<br>알루미늄 창호 전문</div>
+            </div>
+            <div class="network-card">
+                <span class="network-flag">🇨🇳</span>
+                <div class="network-country">중국</div>
+                <div class="network-brands">광저우 · 상하이 지역<br>산업용 기계 OEM</div>
+            </div>
+            <div class="network-card">
+                <span class="network-flag">🇩🇪</span>
+                <div class="network-country">독일 · 유럽</div>
+                <div class="network-brands">프리미엄 부품 조달<br>DIN 규격 인증 제품</div>
+            </div>
+            <div class="network-card">
+                <span class="network-flag">🇰🇷</span>
+                <div class="network-country">한국 (김해)</div>
+                <div class="network-brands">WTM 기술팀 상주<br>1년 무상 A/S 보증</div>
+            </div>
+        </div>
+
+        <div class="network-stat">
+            <div class="network-stat-item">
+                <strong>20+</strong>
+                <span>연 업력</span>
+            </div>
+            <div class="network-stat-item">
+                <strong>3개국</strong>
+                <span>직거래 소싱</span>
+            </div>
+            <div class="network-stat-item">
+                <strong>100+</strong>
+                <span>납품 고객사</span>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ===== 회사소개 (Parchment) ===== -->
 <section class="tile tile--parchment" id="about">
     <div class="about-inner">
@@ -1206,6 +1352,42 @@
             WTM(World Trading Machine) 브랜드로 자체 제품을 개발·보증하며,
             김해 기술팀의 1년 무상 A/S와 실시간 지원으로 고객 만족을 최우선으로 합니다.
         </p>
+
+        <div style="text-align:left;">
+            <span class="t-eyebrow" style="display:block;margin-top:48px;margin-bottom:8px;">회사 연혁</span>
+        </div>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2004</div>
+                <div class="tl-text">창호종합기계 설립 — 국내 창호·산업기계 유통 시작</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2008</div>
+                <div class="tl-text">터키 BURSA 지역 알루미늄 창호 제조사 직거래 계약 체결</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2013</div>
+                <div class="tl-text">중국 광저우 산업용 기계 OEM 공급망 구축</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2017</div>
+                <div class="tl-text">WTM(World Trading Machine) 자체 브랜드 론칭 · 김해 기술센터 개설</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2020</div>
+                <div class="tl-text">유럽 DIN 규격 부품 조달 채널 확보 · 수입 취급 품목 60종 돌파</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2024</div>
+                <div class="tl-text">누적 납품 100개사 돌파 · 1년 무상 A/S 정책 전면 시행</div>
+            </div>
+        </div>
 
         <div class="company-table">
             <table>
@@ -1389,6 +1571,7 @@
                 <h4>회사</h4>
                 <ul>
                     <li><a href="#about">회사소개</a></li>
+                    <li><a href="company.html">그룹 소개</a></li>
                     <li><a href="https://map.kakao.com/?q=경남+김해시+상동면+상동로375번길+21"
                            target="_blank" rel="noopener">오시는 길</a></li>
                 </ul>
