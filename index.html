@@ -924,7 +924,15 @@
         .mt-32 { margin-top: 32px; }
         .mt-48 { margin-top: 48px; }
         .mb-8  { margin-bottom: 8px; }
-    </style>
+    
+        /* ===== [APPEND 260823 8] 탭핑 시스템 카드 신설 — 3열 그리드에서 7번째가 혼자 남는다.
+           마지막 행에 카드 1개만 오면 가운데 칸에 놓아 좌우 균형을 맞춘다.
+           기존 .product-grid 규칙은 한 줄도 바뀌지 않는다(append 전용). ===== */
+        .product-grid > .product-card:last-child:nth-child(3n+1){ grid-column: 2 / 3; }
+        @media (max-width: 1068px){
+            .product-grid > .product-card:last-child:nth-child(3n+1){ grid-column: auto; }
+        }
+</style>
 </head>
 <body>
 
@@ -1187,6 +1195,27 @@
                             <li>실시간 영상통화 기술 지원</li>
                             <li>자가수리용 소모·교체 부품 무상 발송</li>
                             <li>정기 점검 및 오버홀 서비스</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- G. 탭핑 시스템 (2026-08-23 신설 — 104 대역 상세 페이지 진입) -->
+            <div class="product-card">
+                <img src="images/product-tapping-system.jpg"
+                     alt="탭핑 시스템 — 전동 서보 탭핑 머신 WTM 시리즈" loading="lazy" width="600" height="200">
+                <div class="product-card-body">
+                    <span class="product-badge">상세 페이지</span>
+                    <h3>탭핑 시스템</h3>
+                    <p>전동 서보 탭핑 머신 WTM 시리즈 · M3~M48 17종</p>
+                    <a class="btn btn-blue" href="products/104/">전 모델 보기</a>
+                    <div class="mt-12"><button class="acc-toggle" data-target="acc-7">구성 살펴보기</button></div>
+                    <div class="acc-body" id="acc-7">
+                        <ul>
+                            <li><a href="products/104/wtm.html">일반형 11종 · M3~M48 한눈에 비교</a></li>
+                            <li><a href="products/104/wtm-mo.html">절삭유 분사식 6종 · 오일 자동 공급</a></li>
+                            <li><a href="products/104/wtm-m3-m16-1100k-375rpm.html">표준기 WTM-M3-M16-1100K-375RPM</a></li>
+                            <li><a href="products/104/">17종 전 모델 색인</a></li>
                         </ul>
                     </div>
                 </div>
