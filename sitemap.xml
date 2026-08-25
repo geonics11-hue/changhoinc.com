@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.changhoinc.com/</loc>
+    <lastmod>2026-08-25</lastmod>
   </url>
   <url>
     <loc>https://www.changhoinc.com/products/111/</loc>
@@ -65,7 +66,7 @@
   </url>
   <url>
     <loc>https://www.changhoinc.com/products/104/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-25</lastmod>
   </url>
   <url>
     <loc>https://www.changhoinc.com/products/104/wtm.html</loc>
@@ -186,5 +187,17 @@
   <url>
     <loc>https://www.changhoinc.com/products/104/m6-m36-mo-1200k-do.html</loc>
     <lastmod>2026-08-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.changhoinc.com/products/104/wtm-wt-600x900.html</loc>
+    <lastmod>2026-08-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.changhoinc.com/products/104/wtm-mc.html</loc>
+    <lastmod>2026-08-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.changhoinc.com/products/104/wtm-dv.html</loc>
+    <lastmod>2026-08-25</lastmod>
   </url>
 </urlset>
