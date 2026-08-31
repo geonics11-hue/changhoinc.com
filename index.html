@@ -2134,5 +2134,35 @@ document.querySelectorAll('form').forEach(form => {
 })();
 </script>
 
+<script>
+/* 문의 폼 — Formspree 무료 플랜은 Redirect 가 유료라 페이지 이동을 우리가 한다.
+   성공 시 thanks.html 로, 실패하거나 스크립트가 막히면 기존 동작(Formspree 페이지)으로 폴백. */
+(function () {
+  var forms = document.querySelectorAll('form[action^="https://formspree.io/"]');
+  if (!forms.length || !window.fetch || !window.FormData) return;
+  Array.prototype.forEach.call(forms, function (f) {
+    f.addEventListener('submit', function (ev) {
+      if (typeof f.checkValidity === 'function' && !f.checkValidity()) return;
+      ev.preventDefault();
+      var btn = f.querySelector('button[type="submit"]') || f.querySelector('button');
+      var label = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = '보내는 중…'; }
+      var nx = f.querySelector('input[name="_next"]');
+      var dest = (nx && nx.value) ? nx.value : '/thanks.html';
+      fetch(f.action, {
+        method: 'POST',
+        body: new FormData(f),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (r) {
+        if (!r.ok) throw new Error('formspree ' + r.status);
+        window.location.href = dest;
+      }).catch(function () {
+        if (btn) { btn.disabled = false; btn.textContent = label; }
+        f.submit();
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>
