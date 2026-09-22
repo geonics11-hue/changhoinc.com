@@ -2,3 +2,4 @@
 # lock 을 repo 밖으로 빼내지 못한다. 추적에서만 제외한다.
 # 예방책 = 읽기용 상태 확인은 GIT_OPTIONAL_LOCKS=0 git status (원장 H R-11)
 _stale_lock/
+_to_delete_*/
