@@ -1,0 +1,9 @@
+304 eh-pr-lx55 — 실물 갤러리 교체 + 히어로 사진 반영(13곳)
+
+- eh-pr-lx55.html 실물 갤러리 3칸을 참고사진 3장(229·238·242)으로 교체, 안내문도 갱신
+- eh-pr-lx55.html 상세 히어로를 새 _hero.jpeg(KEYANG 드릴 타입)로 교체, §B-5 90% 재패딩 적용
+- 같은 계열 12곳 기종 띠 + 대문(index.html) 기종 띠·비교표 행 썸네일까지 작은 사진 전건 교체
+- ch_copy_lint.py·ch_ko_check.py 0곳, 구조 수(img) 13개 파일 전건 변동 0, 렌더 가로 넘침 0(1040·375)
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Rn7bBtzdTZ4Q8L5fkDhkPC
