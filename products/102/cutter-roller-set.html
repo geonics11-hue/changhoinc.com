@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<!--
+② 안내 페이지 · 자사몰판 — 102 절단기 · 롤러다이 세트 구성 / cutter-roller-set.html (2026-09-27 · 337)
+셸·CSS = repo products/102/wtm-pks.html 스타일 블록 무수정 재사용 · 사진 = img/ 파일(2MB 색인 한도)
+🚫 가격·단가 0 · 납기 약속 0 · 고객 실명 0 · h1/pill 원산지 0
+-->
+<html lang="ko"><head><meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>절단기 · 롤러다이 세트 구성 — 1헤드 절단기 선택 + 롤러다이 기본형 · 디지털자 부착형 · CNC형 | 창호종합기계</title>
+<meta content="1헤드 절단기와 롤러다이를 함께 구성합니다. 롤러다이는 기본형 · 디지털자 부착형 · CNC형 3가지 방식, 기본 길이 2~6m이며 이 밖의 길이는 주문 제작합니다. 롤러다이 높이를 절단기 테이블에 맞추고 연결 브래킷 · 조기대 잣대 · 눈금 부착대와 줄자를 함께 구성합니다." name="description"/>
+<style>
+/* ===== base ===== */
+:root{
+  --ac:#596fa1;            /* 계열 주색 — §B-4 v2 계열4색 SSOT(ch_palette.json)에서만 가져온다 */
+  --ink:#161a22;
+  /* 🔒 틴트 5색은 하드코드하지 않는다. 빌더가 --ac 기준으로 재산출해 주입한다.
+        세션66 정본의 #faf1f0·#f0dcda·#f5e6e5·#eccac7·#e8a0a0 은 100계열 파생이라
+        타 계열에 쓰면 §B-4 계열 불일치가 된다. (2026-08-16 치환맵 확정) */
+  --t-tech-bg:#f4f5f9;      /* tech 밴드 배경   (구 #faf1f0) */
+  --t-tech-bd:#e2e6ef;      /* tech 밴드 테두리 (구 #f0dcda) */
+  --t-cta-bg:#ebeef4;        /* foot-cta 배경   (구 #f5e6e5) */
+  --t-cta-bd:#d6dbe8;        /* foot-cta 테두리 (구 #eccac7) */
+  --t-cur-sub:#bfc7db;      /* .lu.cur 보조문자 (구 #e8a0a0) */
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(--ink);
+ background:#ffffff;line-height:1.7;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1040px;margin:0 auto;background:#fff;box-shadow:0 2px 40px rgba(0,0,0,.10);}
+.sec{padding:64px 56px;}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+ color:var(--ac);margin-bottom:14px;}
+.h2{font-size:29px;font-weight:900;color:var(--ink);letter-spacing:-.5px;margin-bottom:8px;}
+.h2 em{color:var(--ac);font-style:normal;}
+.sub{font-size:17px;color:#6b7684;margin-bottom:34px;max-width:680px;line-height:1.6;}
+
+/* ===== top bar ===== */
+/* 🔄 2026-08-16 개정 — 바(.top/.footer)는 카탈로그(①④)와 동일하게 계열 주색을 따른다.
+      세션144 「전 계열 고정 #404b63」 조항은 철회됨. [[decision_detail_page_bar_series_color_260816]] */
+.top{background:#fff;display:flex;align-items:center;gap:11px;padding:13px 56px;border-bottom:3px solid #268FCE;}
+.top .lg{width:52.5px;height:36px;background:#fff;border-radius:3px;display:flex;
+ align-items:center;justify-content:center;flex:none;border:1px solid #e2e6ef;}
+.top .lg img{max-width:100%;max-height:100%;object-fit:contain;display:block;}
+.top .co{color:#1c2733;font-size:15px;font-weight:800;letter-spacing:-.3px;}
+.top .co small{display:block;font-size:10.5px;font-weight:600;color:#dfe7f2;letter-spacing:1.2px;}
+.top .rt{margin-left:auto;color:#455166;font-size:13px;font-weight:700;text-align:right;}
+
+/* ===== hero ===== */
+.hero{background:#ffffff;
+ color:var(--ink);padding:56px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;
+ border-top:4px solid #268FCE;}
+.hero .ey{color:var(--ac);font-size:12.5px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;}
+.hero h1{font-size:40px;line-height:1.24;font-weight:900;letter-spacing:-.8px;color:var(--ink);}
+.hero h1 em{color:var(--ac);font-style:normal;}
+.hero .en{font-size:14px;color:#6b7684;margin-top:10px;font-weight:600;letter-spacing:.2px;}
+.hero .ld{font-size:17px;color:#4a5561;margin-top:18px;line-height:1.75;}
+.hero .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px;}
+.pill{font-size:12px;font-weight:700;color:#fff;padding:6px 13px;border-radius:20px;}
+.pill.pd{background:#eef2f7;color:#37414d;} .pill.pr{background:#e8f3fb;color:#0f5f8c;}
+.pill.pb{background:#eef2f7;color:#5c6673;}
+.hero .cta{display:inline-flex;align-items:center;gap:8px;margin-top:28px;background:var(--ac);
+ color:#fff;font-size:15px;font-weight:800;padding:14px 30px;border-radius:6px;text-decoration:none;
+ box-shadow:0 4px 14px rgba(0,0,0,.14);}
+.hcard{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;
+ display:flex;align-items:center;justify-content:center;min-height:300px;border-top:3px solid #EF8943;}
+.hcard img{max-width:100%;max-height:340px;object-fit:contain;display:block;}
+
+/* ===== kpis ===== */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-bottom:1px solid #e6ebf2;}
+.kpi{padding:26px 20px;text-align:center;border-right:1px solid #eef2f7;}
+.kpi:last-child{border-right:none;}
+.kv{font-size:34px;font-weight:900;color:var(--ink);letter-spacing:-1px;}
+.kv span{font-size:14px;font-weight:700;color:var(--ac);margin-left:4px;}
+.kl{font-size:12.5px;color:#7c8698;font-weight:700;margin-top:4px;letter-spacing:.2px;}
+
+/* ===== features ===== */
+.feats{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.feat{background:#f6f8fb;border:1px solid #e6ebf2;border-left:3px solid var(--ac);
+ border-radius:7px;padding:22px 24px;}
+.feat .fh{font-size:15.5px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+.feat .fd{font-size:15px;color:#5c6673;line-height:1.65;}
+
+/* ===== usp ===== */
+.usp-sec{background:#f6f8fb;}
+.usps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.usp{background:#fff;border:1px solid #e6ebf2;border-radius:9px;padding:26px 22px;}
+.usp .un{font-size:15px;font-weight:900;color:#fff;background:var(--ac);width:38px;height:38px;
+ border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:15px;}
+.usp .ut b{display:block;font-size:16px;color:var(--ink);font-weight:800;margin-bottom:7px;}
+.usp .ut span{font-size:16px;color:#5c6673;line-height:1.6;}
+
+/* ===== tech band ===== */
+.tech{background:var(--t-tech-bg);color:var(--ink);display:grid;grid-template-columns:.9fr 1.1fr;
+ gap:40px;align-items:center;border-top:1px solid var(--t-tech-bd);border-bottom:1px solid var(--t-tech-bd);}
+.tech .ey{color:var(--ac);}
+.tech .tl{font-size:26px;font-weight:900;line-height:1.3;letter-spacing:-.5px;color:var(--ink);}
+.tech .tl em{color:var(--ac);font-style:normal;}
+.tech .tb{color:#5c6673;font-size:17px;line-height:1.75;}
+
+/* ===== spec table ===== */
+.spectbl{width:100%;border-collapse:collapse;font-size:16px;border:1px solid #e2e8f0;}
+.spectbl th{background:#f0f3f8;color:var(--ink);font-weight:800;text-align:left;
+ padding:14px 20px;width:215px;border-bottom:1px solid #e2e8f0;vertical-align:top;}
+.spectbl td{padding:14px 20px;color:#37414d;border-bottom:1px solid #eef2f7;}
+.spectbl tr:last-child th,.spectbl tr:last-child td{border-bottom:none;}
+.spectbl tr:nth-child(even) th{background:#eaeef4;}
+.mats{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap;}
+.mat{background:#fff;border:1px solid #d7dfea;color:var(--ink);font-size:12.5px;font-weight:700;
+ padding:6px 14px;border-radius:20px;}
+
+/* ===== gallery (var) ===== */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.gcell{background:#fff;border:1px solid #e6ebf2;border-radius:8px;overflow:hidden;}
+.gcell img{width:100%;height:190px;object-fit:cover;display:block;}
+.gcell .gc{font-size:12.5px;color:#6b7684;padding:9px 12px;line-height:1.5;}
+
+/* ===== video (var) — facade. 클릭 전 외부 요청 0건 ===== */
+.vfacade{position:relative;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;cursor:pointer;
+ background:#0d1117;max-width:720px;}
+.vfacade img{width:100%;display:block;opacity:.86;}
+.vfacade .vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+ width:74px;height:74px;border-radius:50%;background:rgba(0,0,0,.62);display:flex;
+ align-items:center;justify-content:center;}
+.vfacade .vplay::after{content:"";border-style:solid;border-width:13px 0 13px 22px;
+ border-color:transparent transparent transparent #fff;margin-left:5px;}
+.vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
+ padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+
+/* ===== lineup (core — ②의 차별점) ===== */
+.lineup-sec{background:#f6f8fb;}
+.lineup{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.lu{background:#fff;border:1px solid #e6ebf2;border-radius:7px;padding:14px 16px;}
+.lu .lm{font-size:14px;font-weight:800;color:var(--ink);}
+.lu .ln{font-size:12px;color:#6b7684;margin-top:3px;}
+.lu.cur{background:var(--ink);border-color:var(--ink);}
+.lu.cur .lm{color:#fff;} .lu.cur .ln{color:var(--t-cur-sub);}
+
+/* ===== order (add) ===== */
+.orders{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.ord{background:#f6f8fb;border:1px solid #e6ebf2;border-radius:8px;padding:20px 22px;}
+.ord .oh{font-size:14px;font-weight:800;color:var(--ac);margin-bottom:7px;}
+.ord .od{font-size:15px;color:#5c6673;line-height:1.65;}
+
+/* ===== channel (add) — 8칸 4열×2행 ===== */
+.chs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.ch{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+ background:#fff;border:1px solid #e6ebf2;border-radius:8px;padding:18px 10px;
+ text-decoration:none;color:var(--ink);font-size:13px;font-weight:700;text-align:center;}
+.ch .cn{font-size:12.5px;color:#6b7684;font-weight:600;}
+.ch.off{opacity:.42;pointer-events:none;}
+
+/* ===== cta / footer ===== */
+.foot-cta{background:var(--t-cta-bg);color:var(--ink);text-align:center;border-top:1px solid var(--t-cta-bd);}
+.foot-cta h3{font-size:26px;font-weight:900;margin-bottom:10px;color:var(--ink);}
+.foot-cta p{font-size:17px;color:#5c6673;margin-bottom:24px;}
+.foot-cta .tels{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;font-size:17px;font-weight:800;color:var(--ac);}
+.foot-cta .tels span{opacity:.6;font-weight:400;color:#7c8698;}
+.footer{background:var(--ac);color:#e8eef7;padding:22px 56px;display:flex;align-items:center;gap:12px;font-size:12px;}
+.footer b{color:#fff;font-size:13px;}
+.footer .web{margin-left:auto;color:#fff;}
+@media print{
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+ body{background:#fff;}
+ .wrap{box-shadow:none;max-width:100%;}
+ .kpi,.feat,.usp,.lu,.spectbl tr,.hcard,.mats,.tels,.gcell,.ord,.ch{break-inside:avoid;page-break-inside:avoid;}
+ .hero,.top,.foot-cta{break-inside:avoid;page-break-inside:avoid;}
+ .h2,.eyebrow{break-after:avoid;page-break-after:avoid;}
+ .sec{padding:32px 40px;}
+ .hero{padding:36px 40px;}
+ .hero .cta{box-shadow:none;}
+ .vfacade{display:none;}
+}
+@media(max-width:760px){
+ .sec{padding:44px 24px;} .top{padding:12px 24px;} .hero{padding:40px 24px;grid-template-columns:1fr;}
+ .hero h1{font-size:29px;} .kpis{grid-template-columns:1fr 1fr;}
+ .feats,.usps,.lineup,.gallery,.orders{grid-template-columns:1fr;} .tech{grid-template-columns:1fr;}
+ .chs{grid-template-columns:repeat(2,1fr);}
+ .footer{padding:18px 24px;flex-wrap:wrap;} .footer .web{margin-left:0;width:100%;}
+}
+
+/* ===== [PATCH 260820] 인쇄 안정성 보강 — 이번 세션 신규 섹션 print break-inside 보호 (신규 블록 추가, 기존 @media print 블록 미수정) ===== */
+@media print{
+ .achcard,.step,.mtx tbody tr,.selg .g,.sizetbl tbody tr,.acgcell{break-inside:avoid;page-break-inside:avoid;}
+}
+
+/* ===== channel 8칸 — 브랜드 컬러 아이콘 + 호버 (2026-08-19 append) ===== */
+.chs .ch{transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;}
+.chs .ch:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(22,26,34,.10);
+ border-color:#d7dfea;}
+.chs .ci{display:block;margin-bottom:2px;}
+@media print{.chs .ch{transition:none;transform:none;box-shadow:none;}}
+
+/* ===== size-list table (그룹형 상세페이지 전용 · append) ===== */
+.sizetbl{width:100%;border-collapse:collapse;font-size:15px;border:1px solid #e2e8f0;}
+.sizetbl thead th{background:var(--ac);color:#fff;font-weight:800;text-align:left;padding:11px 16px;}
+.sizetbl td{padding:9px 16px;color:#37414d;border-bottom:1px solid #eef2f7;}
+.sizetbl tr:nth-child(even) td{background:#f7f8fa;}
+.sizetbl .sn{color:#9aa5b3;width:40px;}
+.sizetbl .sc{font-weight:800;color:var(--ink);font-family:'Consolas','Malgun Gothic',monospace;width:200px;}
+.sizetbl .ss{color:#37414d;}
+.sizetbl .st{color:#5a6672;}
+.sizetbl .sh{font-weight:800;color:var(--ac);}
+
+/* ===== hole-system 이미지 밴드 (원본 통합페이지 .sysrow 계승 · append) ===== */
+.sysrow{padding:0 56px 64px;display:flex;gap:32px;align-items:center;}
+.sysrow .simg{flex:0 0 42%;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.sysrow .simg img{width:100%;display:block;}
+.sysrow .sys{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.sysrow .sysbox{text-align:center;background:var(--ink);color:#fff;border-radius:10px;padding:20px 10px;}
+.sysrow .sysbox .big{font-size:32px;font-weight:900;color:#ff8a80;}
+.sysrow .sysbox .lb{font-size:12.5px;color:#c7cdd4;margin-top:6px;line-height:1.5;}
+@media(max-width:760px){.sysrow{flex-direction:column;padding:0 24px 44px;}.sysrow .simg{flex:none;width:100%;}}
+
+/* ===== 히어로 메인 사진 확대 — 좌우 컬럼비는 유지, 사진 박스 안에서 사진 자체를 70%까지 확대
+        (나나파파 지시 · append, 기존 .hero/.hcard 규칙 무변경) ===== */
+.hcard.photo-fill{padding:10px;min-height:250px;overflow:hidden;}
+.hcard.photo-fill img{max-height:520px;}
+
+/* ===== 히어로 사진 20% 추가 확대 (나나파파 지시 2026-08-20 "사각 박스는 그대로 두고 사진만 20% 크게")
+   박스 크기·테두리는 무변경, 사진만 transform:scale로 확대 후 박스 overflow:hidden으로 클리핑.
+   사진 원본 파일은 무수정(그대로 사용 원칙 유지). ===== */
+.hcard.photo-fill img{transform:translate(3.3%,-7.4%) scale(1.44);}
+
+/* ===== 히어로 스토어 버튼 신설 (나나파파 확정 2026-08-20 — 채널 8칸 고정 유지, 히어로에 별도 신설) ===== */
+/* 스마트스토어는 가격대별로 상품이 2건씩 나뉘어 있어(스토어 그율 규정), 색상 구분 없이
+   카테고리 목록 페이지 1개로 공용 링크한다. 값 출처: 나나파파 2026-08-20 확정. */
+.cta.cta-store{background:#fff;color:var(--ac);border:2px solid var(--ac);box-shadow:none;margin-left:12px;}
+@media(max-width:760px){.cta.cta-store{margin-left:0;margin-top:12px;}}
+
+/* ===== 주문 안내 4번째 카드 대응 (기존 .orders 3열 그리드 재사용 · append 없음, 콘텐츠만 추가) ===== */
+
+/* ===== 품질 검증 — 실측 인증 사진 2건 (Hebei Bocheng 제조사 실측, 나나파파 확인 2026-08-20 · append)
+   2026-08-20 후속1 — 제조사 원본 배너 그래픽(가공 없이 그대로) 사용으로 교체.
+   2026-08-20 후속2 — 나나파파 지시("사각 틀이 같아야되") 반영: 두 배너 비율이 달라(1202px vs 929px)
+   height:auto 자연비율로는 카드 높이가 달라 보였음 → 고정 높이(440px) + object-fit:contain +
+   흰 배경으로 전환. 사진은 자르지 않고(대비 object-fit:cover는 미사용) 프레임 크기만 통일. ===== */
+.qcheck{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start;}
+.qcheck .qc{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.qcheck .qc img{width:100%;height:440px;object-fit:contain;background:#fff;display:block;}
+.qcheck .qcap{padding:14px 18px;background:#fff;font-size:14px;color:#37414d;line-height:1.5;}
+.qcheck .qcap b{color:var(--ink);}
+@media(max-width:760px){.qcheck{grid-template-columns:1fr;}}
+
+/* ===== D28 홀 패턴 참고 도면 2종 (Hebei Bocheng 제조사 원본, 나나파파 지시 2026-08-20 · append)
+   그대로 사용(가공 없음). 대각(DIAGONAL) 패턴은 당사 표준 사양이 아닌 제조사 참고 도면 —
+   캡션으로 "별도 확인 필요" 명시(추측 표기 금지 원칙). ===== */
+.d28grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.d28grid .df{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.d28grid .df img{width:100%;height:320px;object-fit:contain;background:#fff;display:block;}
+.d28grid .dcap{padding:12px 16px;background:#fff;font-size:13.5px;color:#37414d;text-align:center;line-height:1.5;}
+.d28grid .dcap b{color:var(--ink);}
+@media(max-width:760px){.d28grid{grid-template-columns:1fr;}.d28grid .df img{height:260px;}}
+
+/* ===== 정밀 가공 디테일 클로즈업 3장 (Hebei Bocheng 제조사 원본, 나나파파 지시 2026-08-20 · append)
+   그대로 사용(가공 없음). R3 챔퍼는 선택 옵션 배지(.optbadge) 표기. ===== */
+.detailgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.detailgrid .dt{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.detailgrid .dt img{width:100%;height:330px;object-fit:contain;background:#fff;display:block;}
+.detailgrid .dcap2{padding:12px 16px;background:#fff;font-size:13.5px;color:#37414d;line-height:1.5;}
+.detailgrid .dcap2 b{color:var(--ink);}
+.optbadge{display:inline-block;background:var(--ac);color:#fff;font-size:10.5px;font-weight:800;
+  padding:3px 8px;border-radius:20px;margin-left:6px;vertical-align:middle;letter-spacing:.03em;}
+@media(max-width:760px){.detailgrid{grid-template-columns:1fr;}.detailgrid .dt img{height:280px;}}
+
+/* ===== 절단 공정 · 실사용 현장 4장 (CNC 워터젯 1 + Hebei Bocheng 제조사 제공 실사용 현장 3,
+   나나파파 지시 2026-08-20 · append) — 실사용 현장 사진은 제조사 자료이며 당사 개별 판매·설치
+   사례를 나타내지 않음(캡션에 출처 명시, 추측 표기 금지 원칙). ===== */
+.procgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.procgrid .pc{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.procgrid .pc img{width:100%;height:420px;object-fit:contain;background:#fff;display:block;}
+.procgrid .pcap{padding:12px 18px;background:#fff;font-size:13.5px;color:#37414d;line-height:1.5;}
+.procgrid .pcap b{color:var(--ink);}
+@media(max-width:760px){.procgrid{grid-template-columns:1fr;}.procgrid .pc img{height:320px;}}
+
+/* ===== [PATCH 260820] 악세사리 세트 SET1~5 섹션 — 구 통합페이지 이식, 클래스 3종 리네임(hcard/gcell/gc 충돌 회피) ===== */
+.lead{font-size:28px;color:#455;line-height:1.75;margin-top:16px;max-width:720px;}
+.lead b{color:#00838f;}
+.scards{margin-top:26px;}
+.achcard{display:flex;gap:20px;align-items:center;border:1px solid #e7ecef;border-radius:14px;padding:16px;margin-top:14px;background:#fff;}
+.achcard .hph{flex:0 0 236px;height:196px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.achcard .hph img{max-width:100%;max-height:196px;object-fit:contain;}
+.achcard .hnm{font-size:34px;font-weight:800;color:#00838f;}
+.achcard .hnm .hq{font-size:23px;color:#607d8b;font-weight:700;margin-left:4px;}
+.achcard .huse{font-size:27px;font-weight:700;margin-top:8px;color:#263238;}
+.achcard .hadd{font-size:24px;color:#5a6672;line-height:1.6;margin-top:7px;}
+.subhd{font-size:30px;font-weight:800;color:#263238;margin-top:40px;padding-left:12px;border-left:5px solid #00838f;line-height:1.3;}
+.mtx{width:100%;border-collapse:collapse;margin-top:16px;font-size:20px;table-layout:auto;}
+.mtx thead th{background:#37474f;color:#fff;padding:11px 7px;font-size:19px;text-align:center;white-space:nowrap;}
+.mtx thead th.h-item{text-align:left;}
+.mtx thead th.h-spec{text-align:left;}
+.mtx tbody td{padding:8px 7px;border-bottom:1px solid #eceff1;text-align:center;}
+.mtx tbody tr:nth-child(even){background:#fafbfc;}
+.mtx .m-item{text-align:left;font-weight:700;color:#263238;line-height:1.28;white-space:nowrap;}
+.mtx .m-item .en{display:block;font-size:14px;color:#98a6b0;font-weight:500;white-space:nowrap;}
+.mtx .m-spec{text-align:left;color:#5a6672;white-space:nowrap;font-size:18px;}
+.mtx .q{font-weight:800;color:#00838f;}
+.mtx .z{color:#cfd8dc;}
+.mtx tfoot td{border-top:2px solid #37474f;font-weight:800;padding:10px 7px;text-align:center;background:#eef7f8;font-size:20px;}
+.mtx tfoot td.f-lb{text-align:right;color:#37474f;}
+.mtx tfoot .ft-pt{color:#596fa1;}
+.tnote{font-size:24px;color:#8a94a0;margin-top:14px;line-height:1.6;}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px;}
+.setgal{margin-top:16px;}
+.setgal .acgc b{color:#00695c;}
+.acgcell{border:1px solid #e7ecef;border-radius:10px;overflow:hidden;background:#f7f9fa;}
+.acgcell .gph{aspect-ratio:4/3;overflow:hidden;}
+.acgcell img{width:100%;height:100%;object-fit:cover;}
+.acgcell .acgc{font-size:22px;color:#5a6672;padding:9px 11px;line-height:1.5;}
+.selg{background:#f7f9fa;border:1px solid #e7ecef;border-radius:12px;padding:14px 24px;margin-top:18px;}
+.selg .g{display:flex;justify-content:space-between;gap:16px;align-items:baseline;font-size:26px;padding:11px 0;border-bottom:1px dashed #dfe6e9;line-height:1.5;}
+.selg .g:last-child{border-bottom:none;}
+.selg .gq{color:#37474f;}
+.selg .ga{color:#00838f;font-weight:800;white-space:nowrap;}
+
+/* ===== [PATCH 260820] SUPPLY JOURNEY 섹션 — 구 통합페이지 이식, 강조색 티얼→계열색(var(--ac)) 재배색 ===== */
+.journey{background:#0f151c;border-bottom:1px solid #eceff1;}
+.journey .inr{padding:70px 46px;max-width:860px;margin:0 auto;}
+.journey .eyebrow{color:var(--ac);}
+.journey .h2{color:#fff;}
+.journey .jlead{font-size:27px;color:#aeb6bf;line-height:1.7;margin-top:14px;max-width:680px;}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px;}
+.step{background:#18212b;border:1px solid #263341;border-radius:12px;overflow:hidden;}
+.step .ph{position:relative;aspect-ratio:4/3;overflow:hidden;}
+.step .ph img{width:100%;height:100%;object-fit:cover;}
+.step .bg{position:absolute;top:8px;left:8px;background:var(--ac);color:#fff;font-size:21px;font-weight:800;padding:3px 9px;border-radius:14px;letter-spacing:.5px;}
+.step .tx{padding:14px 14px 18px;}
+.step .tt{font-size:27px;font-weight:800;color:#fff;}
+.step .dd{font-size:22px;color:#9aa6b2;line-height:1.55;margin-top:7px;}
+.jclose{margin-top:26px;font-size:28px;color:#fff;font-weight:700;text-align:center;line-height:1.6;}
+.jclose b{color:var(--ac);}
+
+/* ===== [PATCH 260820] 모바일(680px 이하) — 세트 카드/갤러리/스텝 반응형 (구 통합페이지 동일 규칙 이식) ===== */
+@media(max-width:680px){
+  .steps,.gal{grid-template-columns:1fr 1fr;}
+  .achcard{flex-direction:column;align-items:stretch;}
+  .achcard .hph{flex:none;width:100%;}
+}
+
+/* ===== §6 검사·방청 4장 — 16:9 레터박스 제거 (2026-08-21 append) ===== */
+.qcheck .qc img{height:260px;}
+
+
+/* ===== [APPEND 260823] 폰트 확대 시안 A — 나나파파 「글씨가 너무 작다」
+   🚫 기존 규칙 무수정. 이 블록만 뒤에 붙는다(§B-6.3).
+   계보 기준값(h1 40 / .h2 29 / 본문 16) 미접촉 — 111 계보 유지 ===== */
+.eyebrow{font-size:13.5px;}
+.pill{font-size:13.5px;}
+.kl{font-size:14.5px;}
+.mat{font-size:14px;}
+.gcell .gc{font-size:15px;}
+.sysrow .sysbox .lb{font-size:14.5px;}
+.lu .lm{font-size:16px;}
+.lu .ln{font-size:14px;}
+.ord .oh{font-size:16px;}
+.ord .od{font-size:17px;}
+.feat .fh{font-size:17.5px;}
+.feat .fd{font-size:17px;}
+.sizetbl{font-size:16.5px;}
+.sizetbl thead th{font-size:16.5px;}
+.chs .ch{font-size:14.5px;}
+.chs .ch .cn{font-size:14px;}
+.footer{font-size:13.5px;}
+.footer b{font-size:14.5px;}
+
+/* ===== [APPEND 260823] 갤러리 칸 — 세로 제품컷 클리핑 방지 (나나파파 사진 지정 반영)
+   🚫 기존 .gcell 규칙 무수정. 높이·맞춤만 뒤에서 덮는다. ===== */
+.gallery-sec .gcell img{height:250px;object-fit:contain;background:#fff;}
+
+/* [2026-08-30 나나파파 승격 · 2026-09-05 소급] 비교표 행 썸네일 — 104/index.html 정본 이식 */
+.sizetbl td.tc,.sizetbl th.tc{width:56px;padding:4px 6px 4px 10px;}
+.rowthumb{width:44px;height:33px;object-fit:cover;border-radius:4px;display:block;background:#eef0f5;}
+</style>
+
+<link href="https://www.changhoinc.com/products/102/cutter-roller-set.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="창호종합기계" property="og:site_name"/>
+<meta content="절단기 · 롤러다이 세트 구성 — 1헤드 절단기 선택 + 롤러다이 기본형 · 디지털자 부착형 · CNC형 | 창호종합기계" property="og:title"/>
+<meta content="1헤드 절단기와 롤러다이를 함께 구성합니다. 롤러다이는 기본형 · 디지털자 부착형 · CNC형 3가지 방식, 기본 길이 2~6m이며 이 밖의 길이는 주문 제작합니다. 롤러다이 높이를 절단기 테이블에 맞추고 연결 브래킷 · 조기대 잣대 · 눈금 부착대와 줄자를 함께 구성합니다." property="og:description"/>
+<meta content="https://www.changhoinc.com/products/102/cutter-roller-set.html" property="og:url"/>
+<meta content="https://www.changhoinc.com/images/og-default.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4SVNEP6MSK"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4SVNEP6MSK');</script>
+<style>
+/* 2026-09-09 낱개 도입부 기종 띠 — 정본 규칙 무수정, 뒤에서 덮는다 (§B-3-e) */
+.lineband{background:#fff;border-bottom:1px solid #e6ebf2;padding:18px 22px 20px;}
+.lineband .lb-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;}
+.lineband .lb-strip img{width:72px;height:44px;object-fit:contain;background:#fff;border:1px solid #eef1f5;border-radius:4px;padding:3px;display:block;}
+.lineband .lb-strip img.cur{border:2px solid var(--ac);padding:2px;}
+.lineband .lb-cap{font-size:11.5px;color:#6b7684;text-align:center;margin-top:11px;}
+@media(min-width:761px) and (max-width:960px){.lineband .lb-strip img{width:60px;}}
+@media(max-width:760px){.lineband{padding:14px 14px 16px;}}
+</style>
+<script type="application/ld+json" data-ch="ai-card-v1">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.changhoinc.com/products/102/cutter-roller-set.html","url":"https://www.changhoinc.com/products/102/cutter-roller-set.html","name":"절단기 · 롤러다이 세트 구성 — 1헤드 절단기 선택 + 롤러다이 기본형 · 디지털자 부착형 · CNC형 | 창호종합기계","inLanguage":"ko-KR","isPartOf":{"@id":"https://www.changhoinc.com/#website"},"publisher":{"@id":"https://www.changhoinc.com/#organization"},"description":"1헤드 절단기와 롤러다이를 함께 구성합니다. 롤러다이는 기본형 · 디지털자 부착형 · CNC형 3가지 방식, 기본 길이 2~6m이며 이 밖의 길이는 주문 제작합니다. 롤러다이 높이를 절단기 테이블에 맞추고 연결 브래킷 · 조기대 잣대 · 눈금 부착대와 줄자를 함께 구성합니다."},{"@type":"Organization","@id":"https://www.changhoinc.com/#organization","name":"창호종합기계","url":"https://www.changhoinc.com/"}]}</script>
+</head>
+<body>
+<div class="wrap">
+<!-- ══ 01 core ｜ top ══ -->
+<div class="top">
+<div class="lg"><img alt="창호종합기계" src="img/e3b0b7c00681.png"/></div>
+<div class="co">창호종합기계<small>CHANGHO INC</small></div>
+<div class="rt">102. 롤러다이 · 디지털 디스플레이 · 작업다이<br/>055-327-4112</div>
+</div>
+<!-- ══ 02 core ｜ hero ══  🚫 h1·.pill.pd 원산지 금지 -->
+<div class="hero">
+<div>
+<div class="ey">Cutting Machine · Roller Die Set</div>
+<h1 style="word-break:keep-all;">고르신 절단기에 맞춰 <em>롤러다이</em>를 세팅해 보내 드립니다</h1>
+<div class="en">1-HEAD CUTTING MACHINE + ROLLER DIE · BASIC / DIGITAL SCALE / CNC · 2–6 m · CUSTOM LENGTH</div>
+<div class="ld">절단기와 롤러다이는 따로 고르실 수 있습니다. 절단기는 원반·90도·45도·각도 절단기 등 1헤드 절단기 가운데 작업에 맞는 기종을 고르시고, 롤러다이는 기본형·디지털자 부착형·CNC형 가운데 방식을 고르신 뒤 길이를 정하시면 됩니다. 저희가 롤러다이 높이를 절단기 테이블에 맞추고, 연결 브래킷과 조기대 잣대 같은 부속도 함께 구성해 보내 드립니다.</div>
+<div class="pills"><span class="pill pr">1헤드 절단기와 구성</span><span class="pill pb">롤러다이 3가지 방식</span><span class="pill pb">기본 2~6m · 주문 제작</span></div>
+<a class="cta" href="#contact">구성 · 견적 문의</a><a class="cta cta-store" href="https://smartstore.naver.com/changho" rel="noopener" target="_blank">스마트스토어 바로가기</a>
+</div>
+<div class="hcard"><img alt="원반절단기 일반형 + 기본형 롤러다이 3m 양쪽 구성" src="img/9f3686de57f7.jpg"/></div>
+</div>
+<!-- ══ 03 core ｜ kpis ×4 ══ -->
+<div class="kpis"><div class="kpi"><div class="kv">3<span>가지</span></div><div class="kl">롤러다이 방식</div></div><div class="kpi"><div class="kv">2~6<span>m</span></div><div class="kl">기본 길이</div></div><div class="kpi"><div class="kv">6,000<span>mm</span></div><div class="kl">CNC형 최대 이송</div></div><div class="kpi"><div class="kv">3<span>종</span></div><div class="kl">함께 구성하는 부속</div></div></div>
+<!-- ══ 04 ｜ 구성 예 ══ -->
+<div class="sec gallery-sec">
+<div class="eyebrow">Set Examples</div>
+<div class="h2"><em>구성 예 두 가지</em>를 먼저 보여 드립니다</div>
+<div class="sub">원반절단기 일반형에 기본형 롤러다이 3m를 붙인 구성과, 1헤드 90도 절단기 455M 양쪽에 기본형 롤러다이를 붙인 구성입니다.</div>
+<div class="gallery"><div class="gcell"><img alt="원반절단기 일반형 + 기본형 롤러다이 3m 양쪽 — 출고 전 한 줄로 세운 모습" loading="lazy" src="img/9f3686de57f7.jpg"/><div class="gc">원반절단기 일반형 + 기본형 롤러다이 3m 양쪽 — 출고 전 한 줄로 세운 모습</div></div><div class="gcell"><img alt="절단기와 롤러다이를 잇는 연결 브래킷" loading="lazy" src="img/fca947b3fb7b.jpg"/><div class="gc">절단기와 롤러다이를 잇는 연결 브래킷</div></div><div class="gcell"><img alt="기본형 롤러다이의 조기대 잣대" loading="lazy" src="img/b3fbf1b5f568.jpg"/><div class="gc">기본형 롤러다이의 조기대 잣대</div></div><div class="gcell"><img alt="1헤드 90도 절단기 455M + 양쪽 기본형 롤러다이 — 한 제조 공장 설치" loading="lazy" src="img/d31171362c94.jpg"/><div class="gc">1헤드 90도 절단기 455M + 양쪽 기본형 롤러다이 — 한 제조 공장 설치</div></div><div class="gcell"><img alt="455M 테이블 높이에 맞춘 롤러다이 연결부" loading="lazy" src="img/210ef4b7192a.jpg"/><div class="gc">455M 테이블 높이에 맞춘 롤러다이 연결부</div></div><div class="gcell"><img alt="455M과 롤러다이 · 조기대" loading="lazy" src="img/c2baa09c2b1e.jpg"/><div class="gc">455M과 롤러다이 · 조기대</div></div></div>
+</div>
+<!-- ══ 05 ｜ 절단기 선택 ══ -->
+<div class="sec usp-sec">
+<div class="eyebrow">Cutting Machine</div>
+<div class="h2">절단기는 원하시는 <em>1헤드 기종</em>으로 고르실 수 있습니다</div>
+<div class="sub">위 두 기종이 아니어도 됩니다. 45도·각도 절단기, 18인치 원반절단기, 자동연속 절단기처럼 작업에 맞는 1헤드 기종을 고르시면 그 기종 높이에 맞춰 롤러다이를 구성합니다. 좌우 롤러다이는 1헤드 절단기에 붙이는 구성입니다. 2헤드 양면 절단기는 따로 문의해 주십시오.</div>
+<div class="sub" style="margin:0;">절단기는 <a href="../101/">알루미늄 절단기</a>에서 기종별로 보실 수 있습니다.</div>
+</div>
+<!-- ══ 06 ｜ 롤러다이 방식 3가지 ══ -->
+<div class="sec">
+<div class="eyebrow">Roller Die Types</div>
+<div class="h2">롤러다이는 길이를 맞추는 방식에 따라 <em>세 가지</em> 중에 고르실 수 있습니다</div>
+<div class="sub">기본형은 전원 없이 자재를 받치고, 눈금 줄자와 조기대 잣대로 길이를 맞춥니다. 디지털자 부착형은 조기대 위치를 디스플레이 숫자로 읽습니다. CNC형은 치수를 입력하면 조기대가 스스로 움직입니다.</div>
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><table class="sizetbl" style="word-break:keep-all;"><thead><tr><th>방식</th><th>길이 맞추는 법</th><th>전원</th></tr></thead><tbody><tr><td><span class="sh"><a class="mlink" href="wtm-rd.html" style="color:#596fa1;font-weight:800;text-decoration:none;border-bottom:1px solid #c8d0e4;">기본형</a></span></td><td class="ss">눈금 줄자 · 조기대 잣대</td><td class="st">불필요</td></tr><tr><td><span class="sh"><a class="mlink" href="mg20e.html" style="color:#596fa1;font-weight:800;text-decoration:none;border-bottom:1px solid #c8d0e4;">디지털자 부착형</a></span></td><td class="ss">디스플레이 숫자로 읽기</td><td class="st">220V 또는 건전지</td></tr><tr><td><span class="sh"><a class="mlink" href="wtm-ar.html" style="color:#596fa1;font-weight:800;text-decoration:none;border-bottom:1px solid #c8d0e4;">CNC형</a></span></td><td class="ss">치수 입력 → 조기대 자동 이동</td><td class="st">220V 단상</td></tr></tbody></table></div><div class="sub" style="margin-top:14px;">· 방식 이름을 누르시면 그 롤러다이 페이지가 열립니다. · 디지털자는 <a href="mg20e.html">디지털 디스플레이</a> 외에 <a href="wtm-ar.html">디지털 롤러다이 표시형</a>도 있습니다.</div>
+</div>
+<!-- ══ 07 ｜ 길이 · 부속 ══ -->
+<div class="sec usp-sec">
+<div class="eyebrow">Length &amp; Parts</div>
+<div class="h2">롤러다이 길이는 <em>자르시는 자재 길이</em>에 맞춥니다</div>
+<div class="sub">기본 길이는 2m부터 6m까지이고, 이 밖의 길이도 고객께서 정하신 기준에 맞춰 주문 제작합니다. 한쪽에만 둘 수도, 양쪽에 길이를 달리해 둘 수도 있습니다. 부속으로 좌우 연결 브래킷, 조기대 잣대, 눈금 부착대와 줄자가 있습니다.</div>
+<div class="sub" style="margin-top:0;">부속은 <a href="wtm-1x.html">조기대 잣대 · 부속</a> 페이지에서 따로 보실 수 있습니다.</div>
+</div>
+<!-- ══ 08 ｜ 설치 현장 ══ -->
+<div class="sec gallery-sec">
+<div class="eyebrow">Installed</div>
+<div class="h2">설치한 현장 사진으로 <em>확인하실 수 있습니다</em></div>
+<div class="gallery"><div class="gcell"><img alt="금속절단기 + 기본형 롤러다이 좌 6m · 우 4m — 출고 전 모습" loading="lazy" src="img/5ca1fa74c9c9.jpg"/><div class="gc">금속절단기 + 기본형 롤러다이 좌 6m · 우 4m — 출고 전 모습</div></div><div class="gcell"><img alt="조기대 잣대와 눈금 줄자" loading="lazy" src="img/620b47767880.jpg"/><div class="gc">조기대 잣대와 눈금 줄자</div></div><div class="gcell"><img alt="롤러다이 끝단 — 알루미늄 프로파일 볼트 조립" loading="lazy" src="img/b80e8a7adf8c.jpg"/><div class="gc">롤러다이 끝단 — 알루미늄 프로파일 볼트 조립</div></div><div class="gcell"><img alt="절단기 + CNC형 롤러다이 — 전북의 한 알루미늄 업체" loading="lazy" src="img/c2084f12a52c.jpg"/><div class="gc">절단기 + CNC형 롤러다이 — 전북의 한 알루미늄 업체</div></div><div class="gcell"><img alt="CNC형 조작반 — 치수를 입력하면 조기대가 움직입니다" loading="lazy" src="img/65c7515465e2.jpg"/><div class="gc">CNC형 조작반 — 치수를 입력하면 조기대가 움직입니다</div></div><div class="gcell"><img alt="CNC형 이송부와 조작 화면" loading="lazy" src="img/f733207b9dca.jpg"/><div class="gc">CNC형 이송부와 조작 화면</div></div></div>
+</div>
+<!-- ══ 14 add ｜ 채널 8칸 (셸 무수정) ══ -->
+<div class="sec">
+<div class="eyebrow">Channels</div>
+<div class="h2">채널 안내</div>
+<div class="chs">
+<a class="ch" href="tel:055-327-4112" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#1E3A8A" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="M15.6 21A16.6 16.6 0 0 1 3 8.4 3 3 0 0 1 6 5.4h2.1a1 1 0 0 1 1 .86c.1.9.3 1.77.6 2.6a1 1 0 0 1-.24 1.05L8.2 11.2a14 14 0 0 0 4.6 4.6l1.3-1.3a1 1 0 0 1 1.05-.23c.83.3 1.7.5 2.6.6a1 1 0 0 1 .86 1V18a3 3 0 0 1-2.9 3Z"></path></g></svg>전화<span class="cn">055-327-4112</span></a>
+<a class="ch" href="tel:010-4465-4112" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#334155" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><rect height="19" rx="2.4" width="11" x="6.5" y="2.5"></rect><path d="M11 18.6h2"></path></g></svg>휴대전화<span class="cn">010-4465-4112</span></a>
+<a class="ch" href="http://pf.kakao.com/_xojdTX" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#FEE500" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M12 6.2c-3.2 0-5.8 2-5.8 4.5 0 1.6 1.1 3 2.7 3.8l-.6 2.1c-.08.3.24.53.5.36l2.5-1.6c.23.02.46.03.7.03 3.2 0 5.8-2 5.8-4.7S15.2 6.2 12 6.2Z" fill="#3C1E1E"></path></svg>카카오 채널<span class="cn">상담 연결</span></a>
+<a class="ch" href="https://talk.naver.com/W4UBZ1" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#03C75A" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M12 6.5c-3.15 0-5.7 1.95-5.7 4.45 0 1.55.98 2.92 2.47 3.73l-.52 2.06c-.07.29.24.52.49.36l2.72-1.72c.17.01.35.02.54.02 3.15 0 5.7-1.95 5.7-4.45S15.15 6.5 12 6.5Z" fill="#fff"></path></svg>네이버 톡톡<span class="cn">상담 연결</span></a>
+<a class="ch" href="mailto:geonics@hanmail.net" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#475569" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><rect height="14.4" rx="2.2" width="18.8" x="2.6" y="4.8"></rect><path d="m3.4 6.6 8.6 5.9 8.6-5.9"></path></g></svg>이메일<span class="cn">geonics@hanmail.net</span></a>
+<a class="ch" href="https://www.youtube.com/@machinelab/videos" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>유튜브<span class="cn">가공 영상</span></a>
+<a class="ch" href="https://blog.naver.com/geonics" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#03C75A" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M8.5 7.6h2.6l2.2 3.4V7.6h2.4v8.8h-2.6l-2.2-3.4v3.4H8.5V7.6Z" fill="#fff"></path></svg>블로그<span class="cn">네이버 블로그</span></a>
+<a class="ch" href="https://www.changhoinc.com/#about" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#0284C7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"><path d="M3.6 21h16.8"></path><path d="M5.4 21V4.4a1 1 0 0 1 1-1h6.2a1 1 0 0 1 1 1V21"></path><path d="M13.6 10.2h4.4a1 1 0 0 1 1 1V21"></path><path d="M8.2 7.4h2.6M8.2 11h2.6M8.2 14.6h2.6M15.6 14h1.2M15.6 17.4h1.2"></path></g></svg>회사 소개<span class="cn">changhoinc.com</span></a>
+</div>
+</div>
+<!-- ══ 15 core ｜ foot-cta ══ -->
+<div class="sec foot-cta" id="contact">
+<h3>절단기 · 롤러다이 구성 문의</h3>
+<p>사용하시는 절단기나 고르실 기종, 롤러다이 방식, 좌우에 둘 길이를 알려 주시면 구성을 정리해 드립니다.</p>
+<div class="tels">
+<div>055-327-4112 <span>대표</span></div>
+<div>010-4465-4112 <span>휴대전화</span></div>
+<div>geonics@hanmail.net <span>이메일</span></div>
+</div>
+</div>
+<!-- ══ 16 core ｜ footer ══ -->
+<div class="footer">
+<b>창호종합기계</b>
+<span>경남 김해시 상동면 상동로375번길 21</span>
+<span class="web">www.changhoinc.com</span>
+</div>
+</div>
+</body></html>
