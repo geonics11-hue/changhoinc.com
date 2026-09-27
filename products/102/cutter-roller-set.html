@@ -431,6 +431,16 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 </div>
 <!-- ══ 03 core ｜ kpis ×4 ══ -->
 <div class="kpis"><div class="kpi"><div class="kv">3<span>가지</span></div><div class="kl">롤러다이 방식</div></div><div class="kpi"><div class="kv">2~6<span>m</span></div><div class="kl">기본 길이</div></div><div class="kpi"><div class="kv">6,000<span>mm</span></div><div class="kl">CNC형 최대 이송</div></div><div class="kpi"><div class="kv">3<span>종</span></div><div class="kl">함께 구성하는 부속</div></div></div>
+<!-- ══ 04 var ｜ video ══ -->
+<div class="sec video-sec" data-var="video">
+<div class="eyebrow">Video</div>
+<div class="h2" style="display:flex;align-items:center;gap:9px;color:var(--ac);"><svg aria-hidden="true" focusable="false" height="26" style="flex:none;" viewbox="0 0 24 24" width="26"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>제품 소개 영상</div>
+<div class="vfacade" data-yt="B0_feKeWzKg">
+<img alt="알루미늄 절단기 + 롤러다이 세트 조합 가이드 (기본형 · 디지털자 · CNC형) — 창호종합기계 유튜브" src="img/9f3686de57f7.jpg"/>
+<div class="vplay"></div>
+<div class="vt">알루미늄 절단기 + 롤러다이 세트 조합 가이드 (기본형 · 디지털자 · CNC형) — 창호종합기계 유튜브</div>
+</div>
+</div>
 <!-- ══ 04 ｜ 구성 예 ══ -->
 <div class="sec gallery-sec">
 <div class="eyebrow">Set Examples</div>
@@ -497,4 +507,20 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 <span class="web">www.changhoinc.com</span>
 </div>
 </div>
+<script>
+document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
+el.addEventListener('click', function(){
+var id = el.getAttribute('data-yt');
+el.innerHTML = '';
+el.style.height = '0';
+el.style.paddingTop = '56.25%';
+var f = document.createElement('iframe');
+f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
+f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+f.setAttribute('allowfullscreen','');
+el.appendChild(f);
+}, {once:true});
+});
+</script>
 </body></html>
