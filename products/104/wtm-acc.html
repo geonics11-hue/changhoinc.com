@@ -416,6 +416,15 @@ a.lnk:hover .lu{box-shadow:0 3px 14px rgba(0,0,0,.13);}
 <div class="kpi"><div class="kv">M2<span>~</span>M42</div><div class="kl">대응 탭 범위</div></div>
 <div class="kpi"><div class="kv">3<span>대 표준</span></div><div class="kl">JIS · ISO · DIN</div></div>
 </div>
+<div class="sec video-sec" data-var="video">
+<div class="eyebrow">Video</div>
+<div class="h2" style="display:flex;align-items:center;gap:9px;color:var(--ac);"><svg aria-hidden="true" focusable="false" height="26" style="flex:none;" viewbox="0 0 24 24" width="26"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>제품 소개 영상</div>
+<div class="vfacade" data-yt="a4nxPe6iTZ8">
+<img alt="콜렛척 홀더 JT2-GT12 안내 — 탭 콜렛척 세트 · 창호종합기계 유튜브" src="img/a1c365d0d148.jpg"/>
+<div class="vplay"></div>
+<div class="vt">콜렛척 홀더 JT2-GT12 안내 — 탭 콜렛척 세트 · 창호종합기계 유튜브</div>
+</div>
+</div>
 <div class="sec">
 <div class="eyebrow">Before You Choose</div>
 <div class="h2">탭 콜렛척은 <em>기계와 탭 사이</em>에 들어갑니다</div>
@@ -634,5 +643,21 @@ a.lnk:hover .lu{box-shadow:0 3px 14px rgba(0,0,0,.13);}
 <span class="web">www.changhoinc.com</span>
 </div>
 </div>
+<script>
+document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
+el.addEventListener('click', function(){
+var id = el.getAttribute('data-yt');
+el.innerHTML = '';
+el.style.height = '0';
+el.style.paddingTop = '56.25%';
+var f = document.createElement('iframe');
+f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
+f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+f.setAttribute('allowfullscreen','');
+el.appendChild(f);
+}, {once:true});
+});
+</script>
 </body>
 </html>
