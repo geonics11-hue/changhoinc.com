@@ -1564,6 +1564,39 @@ mark{background:#fff2a8;color:inherit;border-radius:2px}
 </div>
 </div>
 </section>
+<!-- ===== 최근 고객지원 사례 (Light) · 2026-10-03 추가 ===== -->
+<section class="tile tile--light tile-center" id="recent-cases">
+<style>
+#recent-cases .rc-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:40px;text-align:left;}
+#recent-cases .rc-card{display:flex;flex-direction:column;background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--card-r);overflow:hidden;color:var(--ink);text-decoration:none;transition:border-color .15s,box-shadow .15s;}
+#recent-cases .rc-card:hover{border-color:var(--blue);box-shadow:0 6px 18px rgba(0,0,0,.07);}
+#recent-cases .rc-card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:var(--parchment);}
+#recent-cases .rc-body{padding:14px 16px 18px;}
+#recent-cases .rc-meta{font-size:12px;color:var(--blue);font-weight:600;margin-bottom:6px;word-break:keep-all;}
+#recent-cases .rc-tt{font-size:15px;font-weight:600;line-height:1.45;word-break:keep-all;}
+#recent-cases .rc-more{margin-top:32px;}
+@media (max-width:1024px){
+#recent-cases .rc-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:8px;-webkit-overflow-scrolling:touch;}
+#recent-cases .rc-card{flex:0 0 240px;scroll-snap-align:start;}
+}
+@media (max-width:480px){
+#recent-cases .rc-card{flex-basis:72%;}
+}
+</style>
+<div class="tile-wrap--wide">
+<span class="t-eyebrow">고객지원 사례</span>
+<h2 class="t-display mb-8">최근 사례</h2>
+<p class="t-lead c-muted" style="max-width:600px;margin:0 auto;word-break:keep-all;">고객 현장에 맞춰 만들고, 설치하고, 시운전한 작업을 사례별로 정리했습니다.</p>
+<div class="rc-row">
+<a class="rc-card" href="cases/cutter-die-rollerdie-260930.html"><img alt="사용 중인 각도절단기에 맞춰 절단기 다이와 롤러다이를 만들 수 있나요?" height="360" loading="lazy" src="cases/img/260930-cutter-die-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2026.09 · 롤러다이 · 작업대 · 목재</div><div class="rc-tt">사용 중인 각도절단기에 맞춰 절단기 다이와 롤러다이를 만들 수 있나요?</div></div></a>
+<a class="rc-card" href="cases/cnc-router-aluminum-groove-260227.html"><img alt="알루미늄 프로파일 가운데의 긴 홈, CNC 루터기로 가공할 수 있나요?" height="360" loading="lazy" src="cases/img/260227-cnc-groove-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2026.02 · CNC 루터기 · 알루미늄</div><div class="rc-tt">알루미늄 프로파일 가운데의 긴 홈, CNC 루터기로 가공할 수 있나요?</div></div></a>
+<a class="rc-card" href="cases/cutter-wtmc455m-install-251020.html"><img alt="폭 넓은 알루미늄 프로파일도 한 번에 자르는 절단기가 있나요?" height="360" loading="lazy" src="cases/img/251020-cutter-455m-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2025.10 · 절단기 · 알루미늄</div><div class="rc-tt">폭 넓은 알루미늄 프로파일도 한 번에 자르는 절단기가 있나요?</div></div></a>
+<a class="rc-card" href="cases/cornerclamp-pin-2step-250909.html"><img alt="단면이 꺾인 알루미늄 자재도 코너클램프기로 모서리를 맞출 수 있나요?" height="360" loading="lazy" src="cases/img/250909-corner-pin-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2025.09 · 코너클램프기 · 알루미늄</div><div class="rc-tt">단면이 꺾인 알루미늄 자재도 코너클램프기로 모서리를 맞출 수 있나요?</div></div></a>
+<a class="rc-card" href="cases/notcher-nr2-aluminum-pipe-250724.html"><img alt="알루미늄 파이프 끝도 수동 R 노칭기로 가공할 수 있나요?" height="360" loading="lazy" src="cases/img/250724-notcher-nr2-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2025.07 · 노칭기 · 알루미늄</div><div class="rc-tt">알루미늄 파이프 끝도 수동 R 노칭기로 가공할 수 있나요?</div></div></a>
+</div>
+<p class="rc-more"><a class="btn btn-ghost-blue" href="cases/">사례 모두 보기 →</a></p>
+</div>
+</section>
 <!-- ===== 성공 사례 (Parchment) ===== -->
 <section class="tile tile--parchment tile-center" id="cases">
 <div class="tile-wrap--wide">
