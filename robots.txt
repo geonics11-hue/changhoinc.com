@@ -1,4 +1,26 @@
 User-agent: *
 Allow: /
 
+# 주요 AI 검색엔진 수집 허용
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://www.changhoinc.com/sitemap.xml
