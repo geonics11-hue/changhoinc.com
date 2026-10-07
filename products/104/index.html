@@ -427,6 +427,15 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 <!-- ══ 03 core ｜ kpis ×4 ══ -->
 <div class="kpis"><div class="kpi"><div class="kv">17<span>종</span></div><div class="kl">본체 전 기종</div></div><div class="kpi"><div class="kv">M3–M48<span></span></div><div class="kl">탭 가공 범위</div></div><div class="kpi"><div class="kv">1,500<span>mm</span></div><div class="kl">최대 작업 반경</div></div><div class="kpi"><div class="kv">3<span>모드</span></div><div class="kl">수동·자동·연동</div></div></div>
 <!-- ══ 04 var ｜ video ══ -->
+<div class="sec video-sec" data-var="video">
+<div class="eyebrow">Video</div>
+<div class="h2" style="display:flex;align-items:center;gap:9px;color:var(--ac);"><svg aria-hidden="true" focusable="false" height="26" style="flex:none;" viewBox="0 0 24 24" width="26"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>제품 소개 영상</div>
+<div class="vfacade" data-yt="spEVJ-x-g_Q">
+<img alt="탭 구멍이 많을수록 서보 탭핑기를 쓰는 이유 — 서보 탭핑기 17종 · 창호종합기계 유튜브" src="img/b57154002400.jpg"/>
+<div class="vplay"></div>
+<div class="vt">탭 구멍이 많을수록 서보 탭핑기를 쓰는 이유 — 서보 탭핑기 17종 · 창호종합기계 유튜브</div>
+</div>
+</div>
 
 <!-- ══ 05 core ｜ 셀링포인트 ×3 ══ -->
 
@@ -532,6 +541,22 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 <span class="web">www.changhoinc.com</span>
 </div>
 </div>
+<script>
+document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
+el.addEventListener('click', function(){
+var id = el.getAttribute('data-yt');
+el.innerHTML = '';
+el.style.height = '0';
+el.style.paddingTop = '56.25%';
+var f = document.createElement('iframe');
+f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
+f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+f.setAttribute('allowfullscreen','');
+el.appendChild(f);
+}, {once:true});
+});
+</script>
 <script>
 document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
 el.addEventListener('click', function(){
