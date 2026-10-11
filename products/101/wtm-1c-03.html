@@ -507,8 +507,7 @@ el.addEventListener('click', function(){
 var id = el.getAttribute('data-yt');
 el.innerHTML = '';
 if (el.classList.contains('vshort')) { el.style.aspectRatio = '9 / 16'; } else {
-el.style.height = '0';
-el.style.paddingTop = '56.25%';
+el.style.aspectRatio = '16 / 9';
 }
 var f = document.createElement('iframe');
 f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
