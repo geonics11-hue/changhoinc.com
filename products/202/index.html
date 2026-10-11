@@ -126,6 +126,15 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
  border-color:transparent transparent transparent #fff;margin-left:5px;}
 .vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
  padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+.vfacade.vwhite{background:#fff;}
+.video-sec .vfacade+.vfacade{margin:16px 0 0;}
+.vmore{max-width:720px;margin:18px 0 0;border-top:1px solid #e6ebf2;}
+.video-sec > .vshort:nth-child(3) + .vmore{margin:18px auto 0;}
+.vmore .vm-h{font-size:14px;font-weight:700;color:#4a5568;margin:14px 0 4px;}
+.vmore a{display:flex;gap:10px;align-items:baseline;padding:10px 2px;border-bottom:1px solid #f0f2f6;color:#1f2a37;text-decoration:none;font-size:14.5px;line-height:1.45;}
+.vmore a::before{content:"\25B6";flex:none;color:#FF0000;font-size:11px;}
+.vmore a .vm-t{margin-left:auto;flex:none;font-size:12.5px;color:#7a8594;}
+.vmore a.vm-all{color:var(--ac);font-weight:700;border-bottom:0;}
 
 /* ===== lineup (core — ②의 차별점) ===== */
 .lineup-sec{background:#f6f8fb;}
@@ -427,6 +436,25 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 </div>
 <!-- ══ 03 core ｜ kpis ×4 ══ -->
 <div class="kpis"><div class="kpi"><div class="kv">18<span>종</span></div><div class="kl">전 라인업</div></div><div class="kpi"><div class="kv">5<span>기종군</span></div><div class="kl">4헤드 · 2헤드 · 1헤드 · 핀</div></div><div class="kpi"><div class="kv">180<span>mm</span></div><div class="kl">1헤드 최대 가공높이</div></div><div class="kpi"><div class="kv">3,425<span>mm</span></div><div class="kl">최대 펀칭거리</div></div></div>
+<!-- ══ 04 var ｜ video ══ -->
+<div class="sec video-sec" data-var="video">
+<div class="eyebrow">Video</div>
+<div class="h2" style="display:flex;align-items:center;gap:9px;color:var(--ac);"><svg aria-hidden="true" focusable="false" height="26" style="flex:none;" viewBox="0 0 24 24" width="26"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>제품 소개 영상</div>
+<div class="vfacade vwhite" data-yt="KUqf5ZyuZOA">
+<img alt="1헤드 코너 클램프기 펀칭 세팅 전 과정 — 코너 클램프기 18종 · 창호종합기계 유튜브" src="img/eed023fdd216.jpg"/>
+<div class="vplay"></div>
+<div class="vt">1헤드 코너 클램프기 펀칭 세팅 전 과정 — 코너 클램프기 18종 · 창호종합기계 유튜브</div>
+</div>
+<div class="vmore">
+<div class="vm-h">현장 영상 더 보기</div>
+<a href="https://www.youtube.com/watch?v=Rlp3TSpYWi4" target="_blank" rel="noopener">프로젝트 창호 창틀 코너 압착 작업과 세팅 시운전<span class="vm-t">10:57</span></a>
+<a href="https://www.youtube.com/watch?v=MjAVTkediX0" target="_blank" rel="noopener">폴리아미드 복합 단열 창호 — 이중 코너 연결재 압착 시운전<span class="vm-t">3:02</span></a>
+<a href="https://www.youtube.com/watch?v=KAj6Dh_L2H4" target="_blank" rel="noopener">고성능 1헤드 WTMJ-150 기능 자세히 보기<span class="vm-t">12:24</span></a>
+<a href="https://www.youtube.com/watch?v=i_HzwiJfTrc" target="_blank" rel="noopener">보급형 1헤드 — 자재 11종 펀칭 시운전<span class="vm-t">24:55</span></a>
+<a href="https://www.youtube.com/watch?v=E66ZEptNKq8" target="_blank" rel="noopener">4헤드 코너 클램프기 코너 펀칭 — 위에서 본 장면<span class="vm-t">0:31</span></a>
+<a class="vm-all" href="https://www.youtube.com/playlist?list=PLddK8s1qmx00" target="_blank" rel="noopener">1헤드 코너 클램프기 현장 영상 전체 84편 보기 →</a>
+</div>
+</div>
 <!-- ══ 06 core ｜ tech 밴드 ══ -->
 <div class="sec tech">
 <div>
@@ -511,8 +539,9 @@ document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
 el.addEventListener('click', function(){
 var id = el.getAttribute('data-yt');
 el.innerHTML = '';
-el.style.height = '0';
-el.style.paddingTop = '56.25%';
+if (el.classList.contains('vshort')) { el.style.aspectRatio = '9 / 16'; } else {
+el.style.aspectRatio = '16 / 9';
+}
 var f = document.createElement('iframe');
 f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
 f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
