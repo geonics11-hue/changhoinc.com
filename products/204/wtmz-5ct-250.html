@@ -127,6 +127,17 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
  border-color:transparent transparent transparent #fff;margin-left:5px;}
 .vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
  padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+.vfacade.vshort{max-width:360px;margin:0 auto;background:#fff;}
+.vfacade.vshort .vt{font-size:13px;padding:40px 14px 14px;}
+.vfacade.vwhite{background:#fff;}
+.video-sec .vfacade+.vfacade{margin:16px 0 0;}
+.vmore{max-width:720px;margin:18px 0 0;border-top:1px solid #e6ebf2;}
+.video-sec > .vshort:nth-child(3) + .vmore{margin:18px auto 0;}
+.vmore .vm-h{font-size:14px;font-weight:700;color:#4a5568;margin:14px 0 4px;}
+.vmore a{display:flex;gap:10px;align-items:baseline;padding:10px 2px;border-bottom:1px solid #f0f2f6;color:#1f2a37;text-decoration:none;font-size:14.5px;line-height:1.45;}
+.vmore a::before{content:"\25B6";flex:none;color:#FF0000;font-size:11px;}
+.vmore a .vm-t{margin-left:auto;flex:none;font-size:12.5px;color:#7a8594;}
+.vmore a.vm-all{color:var(--ac);font-weight:700;border-bottom:0;}
 
 /* ===== lineup (core — ②의 차별점) ===== */
 .lineup-sec{background:#f6f8fb;}
@@ -421,6 +432,16 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 </div>
 <!-- ══ 03 core ｜ kpis ×4 ══ -->
 <div class="kpis"><div class="kpi"><div class="kv">5<span>개</span></div><div class="kl">독립 주축 수</div></div><div class="kpi"><div class="kv">85<span>mm</span></div><div class="kl">최대 밀링 깊이</div></div><div class="kpi"><div class="kv">2,800<span>rpm</span></div><div class="kl">주축 회전 속도</div></div><div class="kpi"><div class="kv">500<span>kg</span></div><div class="kl">기계 중량</div></div></div><div class="lineband"><div class="lb-strip"><img alt="WTMZ-5CT-250" class="cur" src="data:image/jpeg;base64,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"/></div><div class="lb-cap">이 계열은 이 기종 하나입니다</div></div>
+<!-- ══ video ══ -->
+<div class="sec video-sec" data-var="video">
+<div class="eyebrow">Video</div>
+<div class="h2" style="display:flex;align-items:center;gap:9px;color:var(--ac);"><svg aria-hidden="true" focusable="false" height="26" style="flex:none;" viewBox="0 0 24 24" width="26"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>제품 소개 영상</div>
+<div class="vfacade vwhite" data-yt="5TGKBqCEbhU">
+<img alt="톱날 5장 24T 알루미늄 끝단 엔드 밀링 시운전 — WTMZ-5CT-250 · 창호종합기계 유튜브" src="img/bd686b9b99d5.jpg"/>
+<div class="vplay"></div>
+<div class="vt">톱날 5장 24T 알루미늄 끝단 엔드 밀링 시운전 — WTMZ-5CT-250 · 창호종합기계 유튜브</div>
+</div>
+</div>
 <!-- ══ 05 core ｜ 문의가 많은 세 가지 ══ -->
 <div class="sec usp-sec">
 <div class="eyebrow">Selling Points</div>
@@ -527,8 +548,9 @@ document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
 el.addEventListener('click', function(){
 var id = el.getAttribute('data-yt');
 el.innerHTML = '';
-el.style.height = '0';
-el.style.paddingTop = '56.25%';
+if (el.classList.contains('vshort')) { el.style.aspectRatio = '9 / 16'; } else {
+el.style.aspectRatio = '16 / 9';
+}
 var f = document.createElement('iframe');
 f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
 f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
