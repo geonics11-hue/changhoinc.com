@@ -127,6 +127,17 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
  border-color:transparent transparent transparent #fff;margin-left:5px;}
 .vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
  padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+.vfacade.vshort{max-width:360px;margin:0 auto;background:#fff;}
+.vfacade.vshort .vt{font-size:13px;padding:40px 14px 14px;}
+.vfacade.vwhite{background:#fff;}
+.video-sec .vfacade+.vfacade{margin:16px 0 0;}
+.vmore{max-width:720px;margin:18px 0 0;border-top:1px solid #e6ebf2;}
+.video-sec > .vshort:nth-child(3) + .vmore{margin:18px auto 0;}
+.vmore .vm-h{font-size:14px;font-weight:700;color:#4a5568;margin:14px 0 4px;}
+.vmore a{display:flex;gap:10px;align-items:baseline;padding:10px 2px;border-bottom:1px solid #f0f2f6;color:#1f2a37;text-decoration:none;font-size:14.5px;line-height:1.45;}
+.vmore a::before{content:"\25B6";flex:none;color:#FF0000;font-size:11px;}
+.vmore a .vm-t{margin-left:auto;flex:none;font-size:12.5px;color:#7a8594;}
+.vmore a.vm-all{color:var(--ac);font-weight:700;border-bottom:0;}
 
 /* ===== lineup (core — ②의 차별점) ===== */
 .lineup-sec{background:#f6f8fb;}
@@ -421,6 +432,16 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 </div>
 <!-- ══ 03 core ｜ kpis ×4 ══ -->
 <div class="kpis"><div class="kpi"><div class="kv">1.1<span>kW</span></div><div class="kl">소비전력</div></div><div class="kpi"><div class="kv">1,200<span>rpm</span></div><div class="kl">주축 최대 회전수</div></div><div class="kpi"><div class="kv">1,200<span>mm</span></div><div class="kl">기계 폭</div></div><div class="kpi"><div class="kv">40<span>kg</span></div><div class="kl">기계 중량(약)</div></div></div><div class="lineband"><div class="lb-strip"><img alt="오사이 · MC판 고정 드릴 가공기" class="cur" src="data:image/jpeg;base64,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"/></div><div class="lb-cap">이 기종군은 오사이 · MC판 고정 드릴 가공기 한 기종입니다</div></div>
+<!-- ══ video ══ -->
+<div class="sec video-sec" data-var="video">
+<div class="eyebrow">Video</div>
+<div class="h2" style="display:flex;align-items:center;gap:9px;color:var(--ac);"><svg aria-hidden="true" focusable="false" height="26" style="flex:none;" viewBox="0 0 24 24" width="26"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>제품 소개 영상</div>
+<div class="vfacade vwhite" data-yt="6e5vJxNzH3I">
+<img alt="심플도어 마감재 홀 가공 지그 제작 — 오사이 · MC판 고정 드릴 가공기 · 창호종합기계 유튜브" src="img/ad62f50d8a04.jpg"/>
+<div class="vplay"></div>
+<div class="vt">심플도어 마감재 홀 가공 지그 제작 — 오사이 · MC판 고정 드릴 가공기 · 창호종합기계 유튜브</div>
+</div>
+</div>
 <!-- ══ 05 core ｜ 문의가 많은 세 가지 ══ -->
 <div class="sec usp-sec">
 <div class="eyebrow">Selling Points</div>
@@ -527,8 +548,9 @@ document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
 el.addEventListener('click', function(){
 var id = el.getAttribute('data-yt');
 el.innerHTML = '';
-el.style.height = '0';
-el.style.paddingTop = '56.25%';
+if (el.classList.contains('vshort')) { el.style.aspectRatio = '9 / 16'; } else {
+el.style.aspectRatio = '16 / 9';
+}
 var f = document.createElement('iframe');
 f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
 f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';

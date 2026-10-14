@@ -127,6 +127,17 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
  border-color:transparent transparent transparent #fff;margin-left:5px;}
 .vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
  padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+.vfacade.vshort{max-width:360px;margin:0 auto;background:#fff;}
+.vfacade.vshort .vt{font-size:13px;padding:40px 14px 14px;}
+.vfacade.vwhite{background:#fff;}
+.video-sec .vfacade+.vfacade{margin:16px 0 0;}
+.vmore{max-width:720px;margin:18px 0 0;border-top:1px solid #e6ebf2;}
+.video-sec > .vshort:nth-child(3) + .vmore{margin:18px auto 0;}
+.vmore .vm-h{font-size:14px;font-weight:700;color:#4a5568;margin:14px 0 4px;}
+.vmore a{display:flex;gap:10px;align-items:baseline;padding:10px 2px;border-bottom:1px solid #f0f2f6;color:#1f2a37;text-decoration:none;font-size:14.5px;line-height:1.45;}
+.vmore a::before{content:"\25B6";flex:none;color:#FF0000;font-size:11px;}
+.vmore a .vm-t{margin-left:auto;flex:none;font-size:12.5px;color:#7a8594;}
+.vmore a.vm-all{color:var(--ac);font-weight:700;border-bottom:0;}
 
 /* ===== lineup (core — ②의 차별점) ===== */
 .lineup-sec{background:#f6f8fb;}
@@ -421,6 +432,16 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 </div>
 <!-- ══ 03 core ｜ kpis ×4 ══ -->
 <div class="kpis"><div class="kpi"><div class="kv">2,500<span>mm</span></div><div class="kl">X축 이송</div></div><div class="kpi"><div class="kv">150<span>mm</span></div><div class="kl">Y축 이송</div></div><div class="kpi"><div class="kv">250<span>mm</span></div><div class="kl">Z축 이송</div></div><div class="kpi"><div class="kv">1,000<span>kg</span></div><div class="kl">기계 중량</div></div></div><div class="lineband"><div class="lb-strip"><img alt="WTM-CNC-TDM" class="cur" src="data:image/jpeg;base64,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"/></div><div class="lb-cap">이 기종군은 WTM-CNC-TDM 한 기종입니다</div></div>
+<!-- ══ video ══ -->
+<div class="sec video-sec" data-var="video">
+<div class="eyebrow">Video</div>
+<div class="h2" style="display:flex;align-items:center;gap:9px;color:var(--ac);"><svg aria-hidden="true" focusable="false" height="26" style="flex:none;" viewBox="0 0 24 24" width="26"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>제품 소개 영상</div>
+<div class="vfacade vwhite" data-yt="1qYQLrE01EY">
+<img alt="터닝도어 경첩 홀 가공 드릴머신 소개 — WTM-CNC-TDM · 창호종합기계 유튜브" src="img/cb4a9bad6119.jpg"/>
+<div class="vplay"></div>
+<div class="vt">터닝도어 경첩 홀 가공 드릴머신 소개 — WTM-CNC-TDM · 창호종합기계 유튜브</div>
+</div>
+</div>
 <!-- ══ 05 core ｜ 문의가 많은 세 가지 ══ -->
 <div class="sec usp-sec">
 <div class="eyebrow">Selling Points</div>
@@ -527,8 +548,9 @@ document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
 el.addEventListener('click', function(){
 var id = el.getAttribute('data-yt');
 el.innerHTML = '';
-el.style.height = '0';
-el.style.paddingTop = '56.25%';
+if (el.classList.contains('vshort')) { el.style.aspectRatio = '9 / 16'; } else {
+el.style.aspectRatio = '16 / 9';
+}
 var f = document.createElement('iframe');
 f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
 f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
