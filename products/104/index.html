@@ -67,7 +67,7 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 .hcard img{max-width:100%;max-height:340px;object-fit:contain;display:block;}
 
 /* ===== kpis ===== */
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-bottom:1px solid #e6ebf2;}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border-bottom:1px solid #e6ebf2;}
 .kpi{padding:26px 20px;text-align:center;border-right:1px solid #eef2f7;}
 .kpi:last-child{border-right:none;}
 .kv{font-size:34px;font-weight:900;color:var(--ink);letter-spacing:-1px;}
@@ -181,7 +181,7 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 }
 @media(max-width:760px){
  .sec{padding:44px 24px;} .top{padding:12px 24px;} .hero{padding:40px 24px;grid-template-columns:1fr;}
- .hero h1{font-size:29px;} .kpis{grid-template-columns:1fr 1fr;}
+ .hero h1{font-size:29px;} .kpis{grid-template-columns:1fr 1fr;}.kpis .kpi:last-child:nth-child(odd){grid-column:1/-1;}
  .feats,.usps,.lineup,.gallery,.orders{grid-template-columns:1fr;} .tech{grid-template-columns:1fr;}
  .chs{grid-template-columns:repeat(2,1fr);}
  .footer{padding:18px 24px;flex-wrap:wrap;} .footer .web{margin-left:0;width:100%;}
@@ -522,7 +522,7 @@ html{scroll-padding-top:112px}
 <div class="hcard mix"><img class="lead" alt="전동 서보 탭핑 머신 일반형 대표 모델 WTM-M3-M16-1100K-375RPM" src="img/a4e8f8ce762c.jpg"/><div class="strip"><img alt="서보 탭핑기 일반형 11종 (M3~M48)" src="img/5d5b61104858.jpg"/><img alt="WTM-M3-M10-1100K-800RPM" src="img/77d169e774d0.jpg"/><img alt="WTM-M3-M12-1100K-1200RPM" src="img/1132645d5f3b.jpg"/><img alt="WTM-M3-M16-1100K-375RPM" src="img/1132645d5f3b.jpg"/><img alt="WTM-M3-M16-1500K-375RPM" src="img/153b2530a0fd.jpg"/><img alt="WTM-M6-M24-1200K-200RPM" src="img/21bcbc9e5ada.jpg"/><img alt="WTM-M6-M24-1500K-200RPM" src="img/79232b4120ef.jpg"/><img alt="WTM-M6-M36-1200K-150RPM" src="img/21bcbc9e5ada.jpg"/><img alt="WTM-M6-M36-1500K-150RPM" src="img/79232b4120ef.jpg"/><img alt="WTM-M12-M42-1200-50RPM" src="img/d2b20a6e59b0.jpg"/><img alt="WTM-M12-M48-1200-50RPM" src="img/c1edda98fd49.jpg"/><img alt="WTM-M3-M24TD" src="img/5a94fdf462e7.jpg"/><img alt="절삭유 분사식(MO) 서보 탭핑기 6종 (M3~M36)" src="img/968984385bbe.jpg"/><img alt="WTM-M3-M10-MO-1100K-800RPM" src="img/1710033dfaf9.jpg"/><img alt="WTM-M3-M12-MO-1100K-1200RPM" src="img/1710033dfaf9.jpg"/><img alt="WTM-M3-M16-MO-1100K" src="img/1710033dfaf9.jpg"/><img alt="WTM-M6-M24-MO-1200K-200RPM" src="img/1710033dfaf9.jpg"/><img alt="WTM-M6-M36-MO-1200K-150RPM" src="img/1710033dfaf9.jpg"/><img alt="WTM-M3-M20-MO-1200K" src="img/1710033dfaf9.jpg"/><img alt="서보 탭핑기 + 주철다이 세트 10종 (M3~M36)" src="img/e62c545c8067.jpg"/><img alt="M3-M12-1100K+DO" src="img/e62c545c8067.jpg"/><img alt="M3-M16-1100K+DO" src="img/e62c545c8067.jpg"/><img alt="M3-M16-1500K+DO" src="img/5f0b60c1e024.jpg"/><img alt="M6-M24-1200K+DO" src="img/bc9a5811e4ca.jpg"/><img alt="M6-M36-1200K+DO" src="img/bc9a5811e4ca.jpg"/><img alt="M3-M12-MO-1100K+DO" src="img/dec933bc59f8.jpg"/><img alt="M3-M16-MO-1100K+DO" src="img/0ab70c6f130c.jpg"/><img alt="M3-M16-MO-1500K+DO" src="img/a0c131d23908.jpg"/><img alt="M6-M24-MO-1200K+DO" src="img/786fb3d03141.jpg"/><img alt="M6-M36-MO-1200K+DO" src="img/786fb3d03141.jpg"/><img alt="주철 T 슬롯 작업대 WTM-WT-600X900" src="img/573afa01698b.jpg"/><img alt="마그네틱 척 WTM-MC-300KG · 600KG" src="img/6a9f783d7939.jpg"/><img alt="정밀 바이스 WTM-DV-125 · DV-150" src="img/3bcfab0e57cc.jpg"/></div><div class="cap">이 계열 33기종 — 아래 표에서 기종별 제원으로 이어집니다</div></div>
 </div>
 <!-- ══ 03 core ｜ kpis ×4 ══ -->
-<div class="kpis"><div class="kpi"><div class="kv">17<span>종</span></div><div class="kl">본체 전 기종</div></div><div class="kpi"><div class="kv">M3–M48<span></span></div><div class="kl">탭 가공 범위</div></div><div class="kpi"><div class="kv">1,500<span>mm</span></div><div class="kl">최대 작업 반경</div></div><div class="kpi"><div class="kv">3<span>모드</span></div><div class="kl">수동·자동·연동</div></div></div>
+<div class="kpis"><div class="kpi"><div class="kv">17<span>종</span></div><div class="kl">본체 전 기종</div></div><div class="kpi"><div class="kv">M3–M48<span></span></div><div class="kl">탭 가공 범위</div></div><div class="kpi"><div class="kv">1,500<span>mm</span></div><div class="kl">최대 작업 반경</div></div><div class="kpi"><div class="kv">3<span>모드</span></div><div class="kl">수동·자동·연동</div></div><div class="kpi"><div class="kv">2019<span>년</span></div><div class="kl">직수입 시작</div></div></div>
 <!-- ══ 04 var ｜ video ══ -->
 <div class="sec video-sec" data-var="video">
 <div class="eyebrow">Video</div>
