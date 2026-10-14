@@ -127,6 +127,17 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
  border-color:transparent transparent transparent #fff;margin-left:5px;}
 .vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
  padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+.vfacade.vshort{max-width:360px;margin:0 auto;background:#fff;}
+.vfacade.vshort .vt{font-size:13px;padding:40px 14px 14px;}
+.vfacade.vwhite{background:#fff;}
+.video-sec .vfacade+.vfacade{margin:16px 0 0;}
+.vmore{max-width:720px;margin:18px 0 0;border-top:1px solid #e6ebf2;}
+.video-sec > .vshort:nth-child(3) + .vmore{margin:18px auto 0;}
+.vmore .vm-h{font-size:14px;font-weight:700;color:#4a5568;margin:14px 0 4px;}
+.vmore a{display:flex;gap:10px;align-items:baseline;padding:10px 2px;border-bottom:1px solid #f0f2f6;color:#1f2a37;text-decoration:none;font-size:14.5px;line-height:1.45;}
+.vmore a::before{content:"\25B6";flex:none;color:#FF0000;font-size:11px;}
+.vmore a .vm-t{margin-left:auto;flex:none;font-size:12.5px;color:#7a8594;}
+.vmore a.vm-all{color:var(--ac);font-weight:700;border-bottom:0;}
 
 /* ===== lineup (core — ②의 차별점) ===== */
 .lineup-sec{background:#f6f8fb;}
@@ -428,6 +439,16 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 <div class="sub">WTM-4D-01 실물을 가까이에서 찍은 사진입니다(2017년 12월).</div>
 <div class="gallery"><div class="gcell"><img alt="WTM-4D-01 전체 모습" src="img/51265b4264e6.jpg"/><div class="gc">WTM-4D-01 전체 모습</div></div><div class="gcell"><img alt="드릴 헤드와 프로파일 받침" src="img/be7dbfc5ab7b.jpg"/><div class="gc">드릴 헤드와 프로파일 받침</div></div><div class="gcell"><img alt="드릴 네 개" src="img/d33a9e6bd8c0.jpg"/><div class="gc">드릴 네 개</div></div><div class="gcell"><img alt="프로파일 고정 장치와 눈금" src="img/cc791a1dc1cd.jpg"/><div class="gc">프로파일 고정 장치와 눈금</div></div><div class="gcell"><img alt="드릴과 냉각 노즐" src="img/e1b11e1a1d31.jpg"/><div class="gc">드릴과 냉각 노즐</div></div><div class="gcell"><img alt="길이 스토퍼와 줄자 눈금" src="img/cdf77368a56b.jpg"/><div class="gc">길이 스토퍼와 줄자 눈금</div></div></div>
 </div>
+<!-- ══ video ══ -->
+<div class="sec video-sec" data-var="video">
+<div class="eyebrow">Video</div>
+<div class="h2" style="display:flex;align-items:center;gap:9px;color:var(--ac);"><svg aria-hidden="true" focusable="false" height="26" style="flex:none;" viewBox="0 0 24 24" width="26"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>제품 소개 영상</div>
+<div class="vfacade vwhite" data-yt="IiajKhJhBz0">
+<img alt="SF 자동손잡이 4축 홀 가공 — 축 간격 조절형 드릴 — WTM-4D-01 · 창호종합기계 유튜브" src="img/6a0bc406b070.jpg"/>
+<div class="vplay"></div>
+<div class="vt">SF 자동손잡이 4축 홀 가공 — 축 간격 조절형 드릴 — WTM-4D-01 · 창호종합기계 유튜브</div>
+</div>
+</div>
 <!-- ══ 05 core ｜ 문의가 많은 세 가지 ══ -->
 <div class="sec usp-sec">
 <div class="eyebrow">Selling Points</div>
@@ -520,8 +541,9 @@ document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
 el.addEventListener('click', function(){
 var id = el.getAttribute('data-yt');
 el.innerHTML = '';
-el.style.height = '0';
-el.style.paddingTop = '56.25%';
+if (el.classList.contains('vshort')) { el.style.aspectRatio = '9 / 16'; } else {
+el.style.aspectRatio = '16 / 9';
+}
 var f = document.createElement('iframe');
 f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
 f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
