@@ -127,6 +127,17 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
  border-color:transparent transparent transparent #fff;margin-left:5px;}
 .vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
  padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+.vfacade.vshort{max-width:360px;margin:0 auto;background:#fff;}
+.vfacade.vshort .vt{font-size:13px;padding:40px 14px 14px;}
+.vfacade.vwhite{background:#fff;}
+.video-sec .vfacade+.vfacade{margin:16px 0 0;}
+.vmore{max-width:720px;margin:18px 0 0;border-top:1px solid #e6ebf2;}
+.video-sec > .vshort:nth-child(3) + .vmore{margin:18px auto 0;}
+.vmore .vm-h{font-size:14px;font-weight:700;color:#4a5568;margin:14px 0 4px;}
+.vmore a{display:flex;gap:10px;align-items:baseline;padding:10px 2px;border-bottom:1px solid #f0f2f6;color:#1f2a37;text-decoration:none;font-size:14.5px;line-height:1.45;}
+.vmore a::before{content:"\25B6";flex:none;color:#FF0000;font-size:11px;}
+.vmore a .vm-t{margin-left:auto;flex:none;font-size:12.5px;color:#7a8594;}
+.vmore a.vm-all{color:var(--ac);font-weight:700;border-bottom:0;}
 
 /* ===== lineup (core — ②의 차별점) ===== */
 .lineup-sec{background:#f6f8fb;}
@@ -509,6 +520,16 @@ html{scroll-padding-top:112px}
 </div>
 <!-- ══ 03 core ｜ kpis ×4 ══ -->
 <div class="kpis"><div class="kpi"><div class="kv">20<span>kg</span></div><div class="kl">기계 중량</div></div><div class="kpi"><div class="kv">0~300<span>°C</span></div><div class="kl">용접 온도</div></div><div class="kpi"><div class="kv">20~120<span>mm</span></div><div class="kl">가공 높이</div></div><div class="kpi"><div class="kv">750<span>W × 3</span></div><div class="kl">소비전력</div></div></div><div class="lineband"><div class="lb-strip"><img alt="PSW-01" class="cur" src="data:image/jpeg;base64,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"/></div><div class="lb-cap">이 계열은 이 기종 하나입니다</div></div>
+<!-- ══ 04 var ｜ video ══ -->
+<div class="sec video-sec" data-var="video">
+<div class="eyebrow">Video</div>
+<div class="h2" style="display:flex;align-items:center;gap:9px;color:var(--ac);"><svg aria-hidden="true" focusable="false" height="26" style="flex:none;" viewBox="0 0 24 24" width="26"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>제품 소개 영상</div>
+<div class="vfacade vwhite" data-yt="uELsy0WxULE">
+<img alt="수동 PVC 용접기 시운전 — PSW-01 · 창호종합기계 유튜브" src="img/df9991e2b32a.jpg"/>
+<div class="vplay"></div>
+<div class="vt">수동 PVC 용접기 시운전 — PSW-01 · 창호종합기계 유튜브</div>
+</div>
+</div>
 <!-- ══ 05 core ｜ 문의가 많은 세 가지 ══ -->
 <div class="sec usp-sec">
 <div class="eyebrow">Selling Points</div>
@@ -615,8 +636,9 @@ document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
 el.addEventListener('click', function(){
 var id = el.getAttribute('data-yt');
 el.innerHTML = '';
-el.style.height = '0';
-el.style.paddingTop = '56.25%';
+if (el.classList.contains('vshort')) { el.style.aspectRatio = '9 / 16'; } else {
+el.style.aspectRatio = '16 / 9';
+}
 var f = document.createElement('iframe');
 f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
 f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';

@@ -126,6 +126,17 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
  border-color:transparent transparent transparent #fff;margin-left:5px;}
 .vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
  padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+.vfacade.vshort{max-width:360px;margin:0 auto;background:#fff;}
+.vfacade.vshort .vt{font-size:13px;padding:40px 14px 14px;}
+.vfacade.vwhite{background:#fff;}
+.video-sec .vfacade+.vfacade{margin:16px 0 0;}
+.vmore{max-width:720px;margin:18px 0 0;border-top:1px solid #e6ebf2;}
+.video-sec > .vshort:nth-child(3) + .vmore{margin:18px auto 0;}
+.vmore .vm-h{font-size:14px;font-weight:700;color:#4a5568;margin:14px 0 4px;}
+.vmore a{display:flex;gap:10px;align-items:baseline;padding:10px 2px;border-bottom:1px solid #f0f2f6;color:#1f2a37;text-decoration:none;font-size:14.5px;line-height:1.45;}
+.vmore a::before{content:"\25B6";flex:none;color:#FF0000;font-size:11px;}
+.vmore a .vm-t{margin-left:auto;flex:none;font-size:12.5px;color:#7a8594;}
+.vmore a.vm-all{color:var(--ac);font-weight:700;border-bottom:0;}
 
 /* ===== lineup (core — ②의 차별점) ===== */
 .lineup-sec{background:#f6f8fb;}
@@ -514,6 +525,22 @@ html{scroll-padding-top:112px}
 </div>
 <!-- ══ 03 core ｜ kpis ×4 ══ -->
 <div class="kpis"><div class="kpi"><div class="kv">8<span>종</span></div><div class="kl">전 라인업</div></div><div class="kpi"><div class="kv">5<span>헤드</span></div><div class="kl">최대 헤드 수</div></div><div class="kpi"><div class="kv">85<span>mm</span></div><div class="kl">최대 밀링 깊이</div></div><div class="kpi"><div class="kv">380<span>V</span></div><div class="kl">전 기종 전원</div></div></div>
+<!-- ══ 04 var ｜ video ══ -->
+<div class="sec video-sec" data-var="video">
+<div class="eyebrow">Video</div>
+<div class="h2" style="display:flex;align-items:center;gap:9px;color:var(--ac);"><svg aria-hidden="true" focusable="false" height="26" style="flex:none;" viewBox="0 0 24 24" width="26"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>제품 소개 영상</div>
+<div class="vfacade vwhite" data-yt="y-A3yYi6a7o">
+<img alt="입면분할창 제작용 엔드밀링기 컷팅 — PVC 엔드밀링기 8종 · 창호종합기계 유튜브" src="img/6813469f7e11.jpg"/>
+<div class="vplay"></div>
+<div class="vt">입면분할창 제작용 엔드밀링기 컷팅 — PVC 엔드밀링기 8종 · 창호종합기계 유튜브</div>
+</div>
+<div class="vmore">
+<div class="vm-h">현장 영상 더 보기</div>
+<a href="https://www.youtube.com/watch?v=l-sONXWplNM" target="_blank" rel="noopener">엔드밀링기 MC 밀링 가공<span class="vm-t">1:37</span></a>
+<a href="https://www.youtube.com/watch?v=R-TNg9c9ilk" target="_blank" rel="noopener">PVC 판재 끝단 R 형상 가공 시운전<span class="vm-t">2:43</span></a>
+<a href="https://www.youtube.com/watch?v=hji58sW2Jgo" target="_blank" rel="noopener">PVC 창호 엔드밀링 작업 시운전<span class="vm-t">1:13</span></a>
+</div>
+</div>
 <!-- ══ 06 core ｜ tech 밴드 ══ -->
 <div class="sec tech">
 <div>
@@ -596,8 +623,9 @@ document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
 el.addEventListener('click', function(){
 var id = el.getAttribute('data-yt');
 el.innerHTML = '';
-el.style.height = '0';
-el.style.paddingTop = '56.25%';
+if (el.classList.contains('vshort')) { el.style.aspectRatio = '9 / 16'; } else {
+el.style.aspectRatio = '16 / 9';
+}
 var f = document.createElement('iframe');
 f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
 f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
