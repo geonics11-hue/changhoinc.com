@@ -127,6 +127,17 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
  border-color:transparent transparent transparent #fff;margin-left:5px;}
 .vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
  padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+.vfacade.vshort{max-width:360px;margin:0 auto;background:#fff;}
+.vfacade.vshort .vt{font-size:13px;padding:40px 14px 14px;}
+.vfacade.vwhite{background:#fff;}
+.video-sec .vfacade+.vfacade{margin:16px 0 0;}
+.vmore{max-width:720px;margin:18px 0 0;border-top:1px solid #e6ebf2;}
+.video-sec > .vshort:nth-child(3) + .vmore{margin:18px auto 0;}
+.vmore .vm-h{font-size:14px;font-weight:700;color:#4a5568;margin:14px 0 4px;}
+.vmore a{display:flex;gap:10px;align-items:baseline;padding:10px 2px;border-bottom:1px solid #f0f2f6;color:#1f2a37;text-decoration:none;font-size:14.5px;line-height:1.45;}
+.vmore a::before{content:"\25B6";flex:none;color:#FF0000;font-size:11px;}
+.vmore a .vm-t{margin-left:auto;flex:none;font-size:12.5px;color:#7a8594;}
+.vmore a.vm-all{color:var(--ac);font-weight:700;border-bottom:0;}
 
 /* ===== lineup (core — ②의 차별점) ===== */
 .lineup-sec{background:#f6f8fb;}
@@ -428,6 +439,21 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 <div class="sub">공틀 안쪽을 비드 없이 3차 사상하는 2포인트 용접기로 누적 26,028회 작업한 뒤, 용접 헤드와 사상한 모서리 상태를 저희가 직접 확인한 사진입니다.</div>
 <div class="gallery"><div class="gcell"><img alt="2포인트 용접기 전체 모습" src="img/65b010d33f06.jpg"/><div class="gc">2포인트 용접기 전체 모습</div></div><div class="gcell"><img alt="모서리를 고정하는 용접 헤드" src="img/bf1b16f224d1.jpg"/><div class="gc">모서리를 고정하는 용접 헤드</div></div><div class="gcell"><img alt="용접 헤드 받침판" src="img/8078b8a5c8f6.jpg"/><div class="gc">용접 헤드 받침판</div></div><div class="gcell"><img alt="비드 없이 사상한 공틀 안쪽 모서리" src="img/ec81e3a14cc8.jpg"/><div class="gc">비드 없이 사상한 공틀 안쪽 모서리</div></div><div class="gcell"><img alt="사상한 모서리 — 위에서 본 모습" src="img/d9f7c9916a4e.jpg"/><div class="gc">사상한 모서리 — 위에서 본 모습</div></div><div class="gcell"><img alt="사상한 모서리 이음부" src="img/6a3ebfacb4f9.jpg"/><div class="gc">사상한 모서리 이음부</div></div><div class="gcell"><img alt="모서리 안쪽 마감 상태" src="img/dca1482f2a11.jpg"/><div class="gc">모서리 안쪽 마감 상태</div></div><div class="gcell"><img alt="누적 작업 수량 26,028회 표시" src="img/108c664f99f8.jpg"/><div class="gc">누적 작업 수량 26,028회 표시</div></div><div class="gcell"><img alt="좌우 용접 헤드와 베드" src="img/a95373f4f010.jpg"/><div class="gc">좌우 용접 헤드와 베드</div></div><div class="gcell"><img alt="대형 창틀용 긴 베드" src="img/589a91a3121a.jpg"/><div class="gc">대형 창틀용 긴 베드</div></div><div class="gcell"><img alt="조작판과 용접 헤드" src="img/484dd81bf52d.jpg"/><div class="gc">조작판과 용접 헤드</div></div></div>
 </div>
+<!-- ══ video ══ -->
+<div class="sec video-sec" data-var="video">
+<div class="eyebrow">Video</div>
+<div class="h2" style="display:flex;align-items:center;gap:9px;color:var(--ac);"><svg aria-hidden="true" focusable="false" height="26" style="flex:none;" viewBox="0 0 24 24" width="26"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>제품 소개 영상</div>
+<div class="vfacade vwhite" data-yt="ahKnZR8edY0">
+<img alt="노비드 2포인트 3차 사상 용접 — DYT-2W-04 · 창호종합기계 유튜브" src="img/f42afe274ebb.jpg"/>
+<div class="vplay"></div>
+<div class="vt">노비드 2포인트 3차 사상 용접 — DYT-2W-04 · 창호종합기계 유튜브</div>
+</div>
+<div class="vfacade vshort" data-yt="dKHipoHlw9k">
+<img alt="공틀 내부 노비드 3차 사상 용접 — DYT-2W-04 · 창호종합기계 유튜브" src="img/9587f22551ac.jpg"/>
+<div class="vplay"></div>
+<div class="vt">공틀 내부 노비드 3차 사상 용접 — DYT-2W-04 · 창호종합기계 유튜브</div>
+</div>
+</div>
 <!-- ══ 05 core ｜ 문의가 많은 세 가지 ══ -->
 <div class="sec usp-sec">
 <div class="eyebrow">Selling Points</div>
@@ -520,8 +546,9 @@ document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
 el.addEventListener('click', function(){
 var id = el.getAttribute('data-yt');
 el.innerHTML = '';
-el.style.height = '0';
-el.style.paddingTop = '56.25%';
+if (el.classList.contains('vshort')) { el.style.aspectRatio = '9 / 16'; } else {
+el.style.aspectRatio = '16 / 9';
+}
 var f = document.createElement('iframe');
 f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
 f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
