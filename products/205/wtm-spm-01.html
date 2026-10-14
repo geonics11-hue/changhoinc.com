@@ -127,6 +127,17 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
  border-color:transparent transparent transparent #fff;margin-left:5px;}
 .vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
  padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+.vfacade.vshort{max-width:360px;margin:0 auto;background:#fff;}
+.vfacade.vshort .vt{font-size:13px;padding:40px 14px 14px;}
+.vfacade.vwhite{background:#fff;}
+.video-sec .vfacade+.vfacade{margin:16px 0 0;}
+.vmore{max-width:720px;margin:18px 0 0;border-top:1px solid #e6ebf2;}
+.video-sec > .vshort:nth-child(3) + .vmore{margin:18px auto 0;}
+.vmore .vm-h{font-size:14px;font-weight:700;color:#4a5568;margin:14px 0 4px;}
+.vmore a{display:flex;gap:10px;align-items:baseline;padding:10px 2px;border-bottom:1px solid #f0f2f6;color:#1f2a37;text-decoration:none;font-size:14.5px;line-height:1.45;}
+.vmore a::before{content:"\25B6";flex:none;color:#FF0000;font-size:11px;}
+.vmore a .vm-t{margin-left:auto;flex:none;font-size:12.5px;color:#7a8594;}
+.vmore a.vm-all{color:var(--ac);font-weight:700;border-bottom:0;}
 
 /* ===== lineup (core — ②의 차별점) ===== */
 .lineup-sec{background:#f6f8fb;}
@@ -421,6 +432,16 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 </div>
 <!-- ══ 03 core ｜ kpis ×4 ══ -->
 <div class="kpis"><div class="kpi"><div class="kv">Φ5·Φ8<span>mm</span></div><div class="kl">펀칭 지름</div></div><div class="kpi"><div class="kv">80<span>mm</span></div><div class="kl">펀칭 행정</div></div><div class="kpi"><div class="kv">0.37<span>kW</span></div><div class="kl">모터 출력</div></div><div class="kpi"><div class="kv">200<span>kg</span></div><div class="kl">기계 중량</div></div></div><div class="lineband"><div class="lb-strip"><img alt="WTM-SPM-01" class="cur" src="data:image/jpeg;base64,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"/></div><div class="lb-cap">이 계열은 이 기종 하나입니다</div></div>
+<!-- ══ video ══ -->
+<div class="sec video-sec" data-var="video">
+<div class="eyebrow">Video</div>
+<div class="h2" style="display:flex;align-items:center;gap:9px;color:var(--ac);"><svg aria-hidden="true" focusable="false" height="26" style="flex:none;" viewBox="0 0 24 24" width="26"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>제품 소개 영상</div>
+<div class="vfacade vwhite" data-yt="J8gRCWdXZ2A">
+<img alt="CNC 자동 연속 펀칭 작업 — WTM-SPM-01 · 창호종합기계 유튜브" src="img/314bde8beb2b.jpg"/>
+<div class="vplay"></div>
+<div class="vt">CNC 자동 연속 펀칭 작업 — WTM-SPM-01 · 창호종합기계 유튜브</div>
+</div>
+</div>
 <!-- ══ 05 core ｜ 문의가 많은 세 가지 ══ -->
 <div class="sec usp-sec">
 <div class="eyebrow">Selling Points</div>
@@ -527,8 +548,9 @@ document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
 el.addEventListener('click', function(){
 var id = el.getAttribute('data-yt');
 el.innerHTML = '';
-el.style.height = '0';
-el.style.paddingTop = '56.25%';
+if (el.classList.contains('vshort')) { el.style.aspectRatio = '9 / 16'; } else {
+el.style.aspectRatio = '16 / 9';
+}
 var f = document.createElement('iframe');
 f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
 f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
