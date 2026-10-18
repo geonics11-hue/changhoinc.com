@@ -413,6 +413,8 @@ a.card:hover{border-color:var(--ac);box-shadow:0 8px 20px rgba(22,26,34,.08);}
 .card .sm{font-size:14.5px;color:#5c6673;line-height:1.55;margin-top:6px;word-break:keep-all;}
 .card.soon{opacity:.55;}
 .card .soonb{display:inline-block;font-size:11.5px;font-weight:800;color:#fff;background:#7c8698;border-radius:4px;padding:2px 7px;margin-left:6px;}
+.frow input.rq{flex:1;min-width:200px;max-width:420px;font:inherit;font-size:15px;padding:8px 14px;border:1px solid #d7dfea;border-radius:20px;color:var(--ink);}
+.frow input.rq:focus{outline:none;border-color:var(--ac);}
 .empty{display:none;font-size:15px;color:#6b7684;padding:20px 0;}
 @media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:760px){.crumb{padding:10px 24px;} .hero.case h1{font-size:27px;} .cphotos{grid-template-columns:1fr;} .cards{grid-template-columns:1fr;} .frow b{width:100%;} .hero .cta.cta-sub{margin-left:0;margin-top:10px;} .hero.case .hcard{min-height:0;padding:12px;}}
@@ -471,7 +473,7 @@ a.card:hover{border-color:var(--ac);box-shadow:0 8px 20px rgba(22,26,34,.08);}
 <div class="ey">Self-Repair Guide</div><h1>자가수리 <em>안내</em></h1>
 <div class="ld">쓰시다가 생기는 소모품 교체와 간단한 정비를 사진과 순서로 정리했습니다. 안전 수칙을 먼저 확인하시고, 직접 하기 어려우시면 언제든 문의해 주세요.</div>
 </div></div>
-<div class="sec"><div class="filters"><div class="frow"><b>기계 종류</b><button class="fbtn on" data-k="m" data-v="">전체</button><button class="fbtn" data-k="m" data-v="원반절단기">원반절단기</button><button class="fbtn" data-k="m" data-v="PVC 용접기">PVC 용접기</button><button class="fbtn" data-k="m" data-v="서보 탭핑기">서보 탭핑기</button></div><div class="frow"><b>작업 종류</b><button class="fbtn on" data-k="t" data-v="">전체</button><button class="fbtn" data-k="t" data-v="톱날 교체">톱날 교체</button><button class="fbtn" data-k="t" data-v="열판지 교체">열판지 교체</button><button class="fbtn" data-k="t" data-v="퓨즈 교체">퓨즈 교체</button>
+<div class="sec"><div class="filters"><div class="frow"><b>검색</b><input aria-label="정비 안내 검색" class="rq" id="rq" placeholder="기계 이름이나 증상 (예: 톱날, 퓨즈, 에러)" type="search"/></div><div class="frow"><b>기계 종류</b><button class="fbtn on" data-k="m" data-v="">전체</button><button class="fbtn" data-k="m" data-v="원반절단기">원반절단기</button><button class="fbtn" data-k="m" data-v="PVC 용접기">PVC 용접기</button><button class="fbtn" data-k="m" data-v="서보 탭핑기">서보 탭핑기</button></div><div class="frow"><b>작업 종류</b><button class="fbtn on" data-k="t" data-v="">전체</button><button class="fbtn" data-k="t" data-v="톱날 교체">톱날 교체</button><button class="fbtn" data-k="t" data-v="열판지 교체">열판지 교체</button><button class="fbtn" data-k="t" data-v="퓨즈 교체">퓨즈 교체</button>
 <button class="fbtn" data-k="t" data-v="에러 해결">에러 해결</button></div></div><div class="cards">
 <a class="card" data-m="원반절단기" data-t="톱날 교체" href="wtm-1c-02-blade-replace.html"><img alt="16인치 원반절단기 톱날은 어떻게 교체하나요?" loading="lazy" src="img/261009-blade-01-list.jpg"/><div class="cb"><div class="cm">2026.10 · 원반절단기 · 톱날 교체</div><div class="tt">16인치 원반절단기 톱날은 어떻게 교체하나요?</div><div class="sm">WTM-1C-02 톱날을 풀고 새로 끼우는 순서를 안전 수칙과 함께 7단계로 정리했습니다.</div></div></a>
 <a class="card" data-m="PVC 용접기" data-t="열판지 교체" href="pvc-welder-ptfe-adhesive-replace.html"><img alt="용접기 접착식 열판지는 어떻게 교체하나요?" loading="lazy" src="img/261009-ptfe-01-list.jpg"/><div class="cb"><div class="cm">2026.10 · PVC 용접기 · 열판지 교체</div><div class="tt">용접기 접착식 열판지는 어떻게 교체하나요?</div><div class="sm">PVC 용접기 열판의 접착식 열판지를 떼고 새로 붙이는 순서를 안전 수칙과 함께 4단계로 정리했습니다.</div></div></a>
@@ -507,12 +509,15 @@ a.card:hover{border-color:var(--ac);box-shadow:0 8px 20px rgba(22,26,34,.08);}
 
 </div>
 <script>
-(function(){var st={m:'',t:''};
+(function(){var st={m:'',t:''},q='';var rq=document.getElementById('rq');
 function apply(){var n=0;document.querySelectorAll('.card').forEach(function(c){
-var ok=(!st.m||(' '+c.dataset.m+' ').indexOf(' '+st.m+' ')>-1)&&(!st.t||(' '+c.dataset.t+' ').indexOf(' '+st.t+' ')>-1);
+var ok=(!q||c.textContent.replace(/\s+/g,'').toLowerCase().indexOf(q)>-1||(c.dataset.m+c.dataset.t).replace(/\s+/g,'').indexOf(q)>-1)&&(!st.m||(' '+c.dataset.m+' ').indexOf(' '+st.m+' ')>-1)&&(!st.t||(' '+c.dataset.t+' ').indexOf(' '+st.t+' ')>-1);
 c.style.display=ok?'':'none';if(ok)n++;});document.querySelector('.empty').style.display=n?'none':'block';}
 document.querySelectorAll('.fbtn').forEach(function(b){b.addEventListener('click',function(){
 var k=b.dataset.k;st[k]=b.dataset.v;document.querySelectorAll('.fbtn[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('on',x===b);});apply();});});
+function setq(v){q=(v||'').replace(/\s+/g,'').toLowerCase();apply();}
+rq.addEventListener('input',function(){setq(rq.value);});
+try{var u=new URLSearchParams(location.search).get('q');if(u){rq.value=u;setq(u);}}catch(e){}
 })();
 </script>
 </body></html>

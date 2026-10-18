@@ -1186,6 +1186,38 @@ mark{background:#fff2a8;color:inherit;border-radius:2px}
 .pt-tile .tile-ic{object-fit:cover}
 .pt-badge{background:#fff4e0;color:#b45f06;border:1px solid #f1d3a6}
 </style>
+<style id="home-qm-repair-css">/* 2026-10-18 나나파파 「대문은 이대로 가고 차차 수정」 — 빠른 메뉴 줄 · 자가수리 카드 줄(검색칸) */
+.qm{background:#fff;border-bottom:1px solid var(--hairline)}
+.qm-in{max-width:1200px;margin:0 auto;padding:22px 16px 18px}
+.qm-head{margin:0 0 12px;font-size:14px;color:var(--ink);font-weight:700}
+.qm-row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.qm a{display:flex;flex-direction:column;gap:4px;padding:14px 14px 13px;border:1px solid var(--hairline);border-radius:10px;text-decoration:none;color:var(--ink);background:#fafbfc;transition:border-color .15s}
+.qm a:hover{border-color:var(--blue)}
+.qm .ic{font-size:22px;line-height:1}
+.qm b{font-size:15px;word-break:keep-all}
+.qm .s{font-size:12.5px;color:#6b7280;line-height:1.4;word-break:keep-all}
+.qm a.imp{border-color:#268FCE;background:#eef6fc}
+.qm a.rep{border-color:#1f8a6d;background:#edf8f4}
+@media(max-width:900px){.qm-row{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:480px){.qm-row{grid-template-columns:repeat(2,1fr)}}
+#repair-band .rp-find{max-width:620px;margin:28px auto 0;display:flex;gap:8px}
+#repair-band .rp-find input{flex:1;min-width:0;font:inherit;font-size:16px;padding:12px 16px;border:1px solid var(--hairline);border-radius:999px;background:#fff;color:var(--ink)}
+#repair-band .rp-find input:focus{outline:none;border-color:#1f8a6d}
+#repair-band .rp-find button{font:inherit;font-weight:700;font-size:15px;padding:0 22px;border:0;border-radius:999px;background:#1f8a6d;color:#fff;cursor:pointer}
+#repair-band .rp-keys{margin-top:12px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;font-size:13px;color:#6b7280}
+#repair-band .rp-keys a{color:#1f6f59;background:#edf8f4;border-radius:999px;padding:4px 11px;text-decoration:none;font-weight:600}
+#repair-band .rp-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px;text-align:left}
+#repair-band .rp-card{display:flex;flex-direction:column;background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--card-r);overflow:hidden;color:var(--ink);text-decoration:none;transition:border-color .15s,box-shadow .15s}
+#repair-band .rp-card:hover{border-color:#1f8a6d;box-shadow:0 6px 18px rgba(0,0,0,.07)}
+#repair-band .rp-card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:var(--parchment)}
+#repair-band .rp-body{padding:14px 16px 18px}
+#repair-band .rp-meta{font-size:12px;color:#1f8a6d;font-weight:700;margin-bottom:6px;word-break:keep-all}
+#repair-band .rp-tt{font-size:15px;font-weight:600;line-height:1.45;word-break:keep-all}
+#repair-band .rp-more{margin-top:30px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+#repair-band .btn-rep{display:inline-block;padding:11px 22px;border-radius:999px;background:#1f8a6d;color:#fff;text-decoration:none;font-weight:600}
+@media(max-width:1024px){#repair-band .rp-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:8px}#repair-band .rp-card{flex:0 0 240px;scroll-snap-align:start}}
+@media(max-width:480px){#repair-band .rp-card{flex-basis:72%}}
+</style>
 </head>
 <body>
 <!-- ===== GLOBAL NAV ===== -->
@@ -1224,6 +1256,17 @@ mark{background:#fff2a8;color:inherit;border-radius:2px}
 </ul>
 </div>
 </section>
+<!-- ===== 빠른 메뉴 줄 · 2026-10-18 추가 (다아라식 — 찾기·수입대행·수리를 첫 화면에서) ===== -->
+<nav aria-label="빠른 메뉴" class="qm"><div class="qm-in">
+<p class="qm-head">무엇을 찾으세요?</p>
+<div class="qm-row">
+<a href="#products"><span aria-hidden="true" class="ic">🔍</span><b>기계 찾기</b><span class="s">13개 라인 146품목</span></a>
+<a class="imp" href="#import-service"><span aria-hidden="true" class="ic">🚢</span><b>수입대행 요청</b><span class="s">원하는 기계를 찾아 들여옵니다</span></a>
+<a class="rep" href="#contact"><span aria-hidden="true" class="ic">🛠</span><b>수리 접수</b><span class="s">김해에서 직접 수리합니다</span></a>
+<a class="rep" href="repair/"><span aria-hidden="true" class="ic">📘</span><b>자가수리 안내</b><span class="s">간단한 정비는 직접 해 보세요</span></a>
+<a href="cases/"><span aria-hidden="true" class="ic">📋</span><b>고객지원 사례</b><span class="s">현장에서 해결한 일</span></a>
+<a href="https://www.youtube.com/@machinelab/videos" rel="noopener" target="_blank"><span aria-hidden="true" class="ic">▶</span><b>영상 모음</b><span class="s">작동·설치 영상</span></a>
+</div></div></nav>
 <div class="wrap" style="padding-top:28px;padding-bottom:4px">
 <!-- 2026-10-14 나나파파 「해」 — 신뢰 띠. 근거 = 수입 서류 폴더 「수입 완료」 156건(2012~2024). 건 = 수입 횟수(기계 대수 아님). 해외 제조사 이름은 쓰지 않는다 -->
 <p class="trust-band" style="margin:0;padding:12px 18px;background:#f5f7fa;border-left:3px solid #268FCE;border-radius:6px;font-size:15px;line-height:1.6;color:var(--ink);word-break:keep-all">2008년 터키 제조사와의 직거래를 시작으로 중국·터키 제조사와 직접 거래해 왔습니다. 지금까지 <b>150건 넘게</b> 수입을 마쳤고, 제주에서 파주까지 전국에 공급했습니다.</p>
@@ -1650,6 +1693,122 @@ mark{background:#fff2a8;color:inherit;border-radius:2px}
 </div>
 </div>
 </section>
+<!-- ===== 성공 사례 (Parchment) ===== -->
+<section class="tile tile--parchment tile-center" id="cases">
+<div class="tile-wrap--wide">
+<!-- 2026-10-14 나나파파 「해」 — 수입 서류 폴더 근거 사례로 교체. 고객사 실명은 나나파파 허락(2026-10-14). 「수입대행 성공 사례」라고 쓰지 않는다(의뢰 수입대행인지 당사 수입 판매인지 폴더로 구분 안 됨) -->
+<span class="t-eyebrow">해외 수입 공급 사례</span>
+<h2 class="t-display mb-8">고객의 성과가 저희의 실적입니다</h2>
+<p class="t-lead c-muted" style="max-width:560px;margin:0 auto;">수입 서류가 남아 있는 실제 공급 건입니다.</p>
+<div class="case-grid">
+<div class="case-card">
+<span class="case-label">✓ 완료</span>
+<h3>CNC 가공기·루터기 → LX하우시스</h3>
+<p>2022년부터 2024년까지 CNC 가공기와 루터기를 세 차례 수입해 공급했고, 예비 부품도 함께 챙겼습니다.</p>
+</div>
+<div class="case-card">
+<span class="case-label">✓ 완료</span>
+<h3>4헤드 CNC 피스체결기·코너기 → 윈플러스</h3>
+<p>2023년 2월 4헤드 CNC 피스체결기 1대와 코너기 5대를 수입해 공급했습니다.</p>
+</div>
+<div class="case-card">
+<span class="case-label">✓ 완료</span>
+<h3>파이프 축관기 → 금산 한국철강</h3>
+<p>2025년 9월 축관기 1대를 수입해 공급했습니다. 창호기계가 아닌 산업기계도 같은 방식으로 들여옵니다.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ===== 글로벌 파트너 네트워크 (Dark) ===== -->
+<section class="tile tile--dark tile-center" id="network">
+<div class="tile-wrap--wide">
+<span class="t-eyebrow t-eyebrow--dark">글로벌 소싱 네트워크</span>
+<h2 class="t-display" style="color:#fff;margin-bottom:16px;">현지 직거래, 22년 신뢰의 파트너십</h2>
+<p class="t-lead c-muted-dark" style="max-width:560px;margin:0 auto;">중간 유통 없이 검증된 제조사와 직접 계약합니다.<br/>투명한 가격과 안정적인 사후 관리.</p>
+<div class="network-grid">
+<div class="network-card">
+<span class="network-flag">🇹🇷</span>
+<div class="network-country">터키</div>
+<div class="network-brands">BURSA · ISTANBUL 지역<br/>알루미늄 창호 전문</div>
+</div>
+<div class="network-card">
+<span class="network-flag">🇨🇳</span>
+<div class="network-country">중국</div>
+<div class="network-brands">광저우 · 상하이 지역<br/>산업용 기계 OEM</div>
+</div>
+<div class="network-card">
+<span class="network-flag">🇩🇪</span>
+<div class="network-country">독일 · 유럽</div>
+<div class="network-brands">산업용 부품 조달<br/>DIN 규격 인증 제품</div>
+</div>
+<div class="network-card">
+<span class="network-flag">🇰🇷</span>
+<div class="network-country">한국 (김해)</div>
+<div class="network-brands">WTM 기술팀 상주<br/>김해 직접 수리</div>
+</div>
+</div>
+<div class="network-stat">
+<div class="network-stat-item">
+<strong>22년+</strong>
+<span>업력</span>
+</div>
+<div class="network-stat-item">
+<strong>해외 제조사</strong>
+<span>직거래 소싱</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ===== 자가수리 안내 카드 줄 · 2026-10-18 추가 (검색칸 = repair/?q= 로 넘김) ===== -->
+<section class="tile tile--light tile-center" id="repair-band">
+<div class="tile-wrap--wide">
+<span class="t-eyebrow" style="color:#1f8a6d">자가수리 안내</span>
+<h2 class="t-display mb-8">직접 해 보는 정비</h2>
+<p class="t-lead c-muted" style="max-width:600px;margin:0 auto;word-break:keep-all;">문의가 잦은 정비를 사진과 순서로 정리했습니다. 직접 하기 어려우면 수리를 맡겨 주세요.</p>
+<form action="repair/" class="rp-find" method="get" role="search"><input aria-label="정비 안내 검색" name="q" placeholder="기계 이름이나 증상으로 찾기 (예: 톱날, 퓨즈, 에러)" type="search"/><button type="submit">찾기</button></form>
+<p class="rp-keys">자주 찾는 정비 <a href="repair/?q=톱날">톱날 교체</a><a href="repair/?q=열판지">열판지 교체</a><a href="repair/?q=퓨즈">퓨즈 교체</a><a href="repair/?q=에러">에러 해결</a></p>
+<div class="rp-row">
+<a class="rp-card" href="repair/wtm-1c-02-blade-replace.html"><img alt="16인치 원반절단기 톱날은 어떻게 교체하나요?" height="360" loading="lazy" src="repair/img/261009-blade-01-list.jpg" width="640"/><div class="rp-body"><div class="rp-meta">자가수리 · 원반절단기 · 톱날 교체</div><div class="rp-tt">16인치 원반절단기 톱날은 어떻게 교체하나요?</div></div></a>
+<a class="rp-card" href="repair/pvc-welder-ptfe-adhesive-replace.html"><img alt="용접기 접착식 열판지는 어떻게 교체하나요?" height="360" loading="lazy" src="repair/img/261009-ptfe-01-list.jpg" width="640"/><div class="rp-body"><div class="rp-meta">자가수리 · PVC 용접기 · 열판지 교체</div><div class="rp-tt">용접기 접착식 열판지는 어떻게 교체하나요?</div></div></a>
+<a class="rp-card" href="repair/servo-tapper-fuse-replace.html"><img alt="서보 탭핑기 퓨즈는 어떻게 교체하나요?" height="360" loading="lazy" src="repair/img/261018-fuse-01-list.jpg" width="640"/><div class="rp-body"><div class="rp-meta">자가수리 · 서보 탭핑기 · 퓨즈 교체</div><div class="rp-tt">서보 탭핑기 퓨즈는 어떻게 교체하나요?</div></div></a>
+<a class="rp-card" href="repair/servo-tapper-error-codes.html"><img alt="서보 탭핑기 화면에 에러 번호가 뜨면 어떻게 하나요?" height="360" loading="lazy" src="repair/img/ecode-01-list.jpg" width="640"/><div class="rp-body"><div class="rp-meta">자가수리 · 서보 탭핑기 · 에러 해결</div><div class="rp-tt">서보 탭핑기 화면에 에러 번호가 뜨면 어떻게 하나요?</div></div></a>
+</div>
+<p class="rp-more"><a class="btn btn-ghost-blue" href="repair/">정비 안내 모두 보기 →</a><a class="btn-rep" href="#contact">수리 접수하기</a></p>
+</div>
+</section>
+<!-- ===== 최근 고객지원 사례 (Light) · 2026-10-03 추가 ===== -->
+<section class="tile tile--light tile-center" id="recent-cases">
+<style>
+#recent-cases .rc-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:40px;text-align:left;}
+#recent-cases .rc-card{display:flex;flex-direction:column;background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--card-r);overflow:hidden;color:var(--ink);text-decoration:none;transition:border-color .15s,box-shadow .15s;}
+#recent-cases .rc-card:hover{border-color:var(--blue);box-shadow:0 6px 18px rgba(0,0,0,.07);}
+#recent-cases .rc-card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:var(--parchment);}
+#recent-cases .rc-body{padding:14px 16px 18px;}
+#recent-cases .rc-meta{font-size:12px;color:var(--blue);font-weight:600;margin-bottom:6px;word-break:keep-all;}
+#recent-cases .rc-tt{font-size:15px;font-weight:600;line-height:1.45;word-break:keep-all;}
+#recent-cases .rc-more{margin-top:32px;}
+@media (max-width:1024px){
+#recent-cases .rc-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:8px;-webkit-overflow-scrolling:touch;}
+#recent-cases .rc-card{flex:0 0 240px;scroll-snap-align:start;}
+}
+@media (max-width:480px){
+#recent-cases .rc-card{flex-basis:72%;}
+}
+</style>
+<div class="tile-wrap--wide">
+<span class="t-eyebrow">고객지원 사례</span>
+<h2 class="t-display mb-8">최근 사례</h2>
+<p class="t-lead c-muted" style="max-width:600px;margin:0 auto;word-break:keep-all;">고객 현장에 맞춰 만들고, 설치하고, 시운전한 작업을 사례별로 정리했습니다.</p>
+<div class="rc-row">
+<a class="rc-card" href="cases/cutter-die-rollerdie-260930.html"><img alt="사용 중인 각도절단기에 맞춰 절단기 다이와 롤러다이를 만들 수 있나요?" height="360" loading="lazy" src="cases/img/260930-cutter-die-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2026.09 · 롤러다이 · 작업대 · 목재</div><div class="rc-tt">사용 중인 각도절단기에 맞춰 절단기 다이와 롤러다이를 만들 수 있나요?</div></div></a>
+<a class="rc-card" href="cases/motor-notcher-380v-260904.html"><img alt="공장 삼상 전원에 연결하는 R 노칭기, 380V로 보낼 수 있나요?" height="360" loading="lazy" src="cases/img/260904-motor-notcher-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2026.09 · R 노칭기 · 강관</div><div class="rc-tt">공장 삼상 전원에 연결하는 R 노칭기, 380V로 보낼 수 있나요?</div></div></a>
+<a class="rc-card" href="cases/portable-drill-punch-260818.html"><img alt="전원선 없이 쓰는 충전 드릴 물구멍 펀칭기, 현장에서 쓸 수 있나요?" height="360" loading="lazy" src="cases/img/260818-portable-punch-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2026.08 · 물구멍 펀칭기</div><div class="rc-tt">전원선 없이 쓰는 충전 드릴 물구멍 펀칭기, 현장에서 쓸 수 있나요?</div></div></a>
+<a class="rc-card" href="cases/chamfer-wtm50d-import-260707.html"><img alt="수입대행으로 들여온 챔버 머신, 출고 전에 시운전해 볼 수 있나요?" height="360" loading="lazy" src="cases/img/260707-chamfer-50d-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2026.07 · 챔버 · 금속</div><div class="rc-tt">수입대행으로 들여온 챔버 머신, 출고 전에 시운전해 볼 수 있나요?</div></div></a>
+<a class="rc-card" href="cases/servotap-fall-repair-260629.html"><img alt="지게차에서 떨어져 파손된 서보 탭핑기, 수리할 수 있나요?" height="360" loading="lazy" src="cases/img/260629-servotap-repair-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2026.06 · 서보탭핑기</div><div class="rc-tt">지게차에서 떨어져 파손된 서보 탭핑기, 수리할 수 있나요?</div></div></a>
+</div>
+<p class="rc-more"><a class="btn btn-ghost-blue" href="cases/">사례 모두 보기 →</a></p>
+</div>
+</section>
 <!-- ===== 경쟁 우위 USP (Dark) ===== -->
 <section class="tile tile--dark tile-center" id="usp">
 <span class="t-eyebrow t-eyebrow--dark">경쟁 우위</span>
@@ -1728,65 +1887,6 @@ mark{background:#fff2a8;color:inherit;border-radius:2px}
 </div>
 </div>
 </section>
-<!-- ===== 최근 고객지원 사례 (Light) · 2026-10-03 추가 ===== -->
-<section class="tile tile--light tile-center" id="recent-cases">
-<style>
-#recent-cases .rc-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:40px;text-align:left;}
-#recent-cases .rc-card{display:flex;flex-direction:column;background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--card-r);overflow:hidden;color:var(--ink);text-decoration:none;transition:border-color .15s,box-shadow .15s;}
-#recent-cases .rc-card:hover{border-color:var(--blue);box-shadow:0 6px 18px rgba(0,0,0,.07);}
-#recent-cases .rc-card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:var(--parchment);}
-#recent-cases .rc-body{padding:14px 16px 18px;}
-#recent-cases .rc-meta{font-size:12px;color:var(--blue);font-weight:600;margin-bottom:6px;word-break:keep-all;}
-#recent-cases .rc-tt{font-size:15px;font-weight:600;line-height:1.45;word-break:keep-all;}
-#recent-cases .rc-more{margin-top:32px;}
-@media (max-width:1024px){
-#recent-cases .rc-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:8px;-webkit-overflow-scrolling:touch;}
-#recent-cases .rc-card{flex:0 0 240px;scroll-snap-align:start;}
-}
-@media (max-width:480px){
-#recent-cases .rc-card{flex-basis:72%;}
-}
-</style>
-<div class="tile-wrap--wide">
-<span class="t-eyebrow">고객지원 사례</span>
-<h2 class="t-display mb-8">최근 사례</h2>
-<p class="t-lead c-muted" style="max-width:600px;margin:0 auto;word-break:keep-all;">고객 현장에 맞춰 만들고, 설치하고, 시운전한 작업을 사례별로 정리했습니다.</p>
-<div class="rc-row">
-<a class="rc-card" href="cases/cutter-die-rollerdie-260930.html"><img alt="사용 중인 각도절단기에 맞춰 절단기 다이와 롤러다이를 만들 수 있나요?" height="360" loading="lazy" src="cases/img/260930-cutter-die-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2026.09 · 롤러다이 · 작업대 · 목재</div><div class="rc-tt">사용 중인 각도절단기에 맞춰 절단기 다이와 롤러다이를 만들 수 있나요?</div></div></a>
-<a class="rc-card" href="cases/motor-notcher-380v-260904.html"><img alt="공장 삼상 전원에 연결하는 R 노칭기, 380V로 보낼 수 있나요?" height="360" loading="lazy" src="cases/img/260904-motor-notcher-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2026.09 · R 노칭기 · 강관</div><div class="rc-tt">공장 삼상 전원에 연결하는 R 노칭기, 380V로 보낼 수 있나요?</div></div></a>
-<a class="rc-card" href="cases/portable-drill-punch-260818.html"><img alt="전원선 없이 쓰는 충전 드릴 물구멍 펀칭기, 현장에서 쓸 수 있나요?" height="360" loading="lazy" src="cases/img/260818-portable-punch-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2026.08 · 물구멍 펀칭기</div><div class="rc-tt">전원선 없이 쓰는 충전 드릴 물구멍 펀칭기, 현장에서 쓸 수 있나요?</div></div></a>
-<a class="rc-card" href="cases/chamfer-wtm50d-import-260707.html"><img alt="수입대행으로 들여온 챔버 머신, 출고 전에 시운전해 볼 수 있나요?" height="360" loading="lazy" src="cases/img/260707-chamfer-50d-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2026.07 · 챔버 · 금속</div><div class="rc-tt">수입대행으로 들여온 챔버 머신, 출고 전에 시운전해 볼 수 있나요?</div></div></a>
-<a class="rc-card" href="cases/servotap-fall-repair-260629.html"><img alt="지게차에서 떨어져 파손된 서보 탭핑기, 수리할 수 있나요?" height="360" loading="lazy" src="cases/img/260629-servotap-repair-list.jpg" width="640"/><div class="rc-body"><div class="rc-meta">2026.06 · 서보탭핑기</div><div class="rc-tt">지게차에서 떨어져 파손된 서보 탭핑기, 수리할 수 있나요?</div></div></a>
-</div>
-<p class="rc-more"><a class="btn btn-ghost-blue" href="cases/">사례 모두 보기 →</a></p>
-</div>
-</section>
-<!-- ===== 성공 사례 (Parchment) ===== -->
-<section class="tile tile--parchment tile-center" id="cases">
-<div class="tile-wrap--wide">
-<!-- 2026-10-14 나나파파 「해」 — 수입 서류 폴더 근거 사례로 교체. 고객사 실명은 나나파파 허락(2026-10-14). 「수입대행 성공 사례」라고 쓰지 않는다(의뢰 수입대행인지 당사 수입 판매인지 폴더로 구분 안 됨) -->
-<span class="t-eyebrow">해외 수입 공급 사례</span>
-<h2 class="t-display mb-8">고객의 성과가 저희의 실적입니다</h2>
-<p class="t-lead c-muted" style="max-width:560px;margin:0 auto;">수입 서류가 남아 있는 실제 공급 건입니다.</p>
-<div class="case-grid">
-<div class="case-card">
-<span class="case-label">✓ 완료</span>
-<h3>CNC 가공기·루터기 → LX하우시스</h3>
-<p>2022년부터 2024년까지 CNC 가공기와 루터기를 세 차례 수입해 공급했고, 예비 부품도 함께 챙겼습니다.</p>
-</div>
-<div class="case-card">
-<span class="case-label">✓ 완료</span>
-<h3>4헤드 CNC 피스체결기·코너기 → 윈플러스</h3>
-<p>2023년 2월 4헤드 CNC 피스체결기 1대와 코너기 5대를 수입해 공급했습니다.</p>
-</div>
-<div class="case-card">
-<span class="case-label">✓ 완료</span>
-<h3>파이프 축관기 → 금산 한국철강</h3>
-<p>2025년 9월 축관기 1대를 수입해 공급했습니다. 창호기계가 아닌 산업기계도 같은 방식으로 들여옵니다.</p>
-</div>
-</div>
-</div>
-</section>
 <!-- ===== 기술자료 (Light) ===== -->
 <section class="tile tile--light tile-center" id="resources">
 <div class="tile-wrap">
@@ -1814,46 +1914,6 @@ mark{background:#fff2a8;color:inherit;border-radius:2px}
 <a href="tel:055-327-4112">055-327-4112 전화하기 →</a>
 <a href="https://pf.kakao.com/_xojdTX" rel="noopener" target="_blank">카카오톡 채널로 문의 →</a>
 </div>
-</div>
-</div>
-</div>
-</section>
-<!-- ===== 글로벌 파트너 네트워크 (Dark) ===== -->
-<section class="tile tile--dark tile-center" id="network">
-<div class="tile-wrap--wide">
-<span class="t-eyebrow t-eyebrow--dark">글로벌 소싱 네트워크</span>
-<h2 class="t-display" style="color:#fff;margin-bottom:16px;">현지 직거래, 22년 신뢰의 파트너십</h2>
-<p class="t-lead c-muted-dark" style="max-width:560px;margin:0 auto;">중간 유통 없이 검증된 제조사와 직접 계약합니다.<br/>투명한 가격과 안정적인 사후 관리.</p>
-<div class="network-grid">
-<div class="network-card">
-<span class="network-flag">🇹🇷</span>
-<div class="network-country">터키</div>
-<div class="network-brands">BURSA · ISTANBUL 지역<br/>알루미늄 창호 전문</div>
-</div>
-<div class="network-card">
-<span class="network-flag">🇨🇳</span>
-<div class="network-country">중국</div>
-<div class="network-brands">광저우 · 상하이 지역<br/>산업용 기계 OEM</div>
-</div>
-<div class="network-card">
-<span class="network-flag">🇩🇪</span>
-<div class="network-country">독일 · 유럽</div>
-<div class="network-brands">산업용 부품 조달<br/>DIN 규격 인증 제품</div>
-</div>
-<div class="network-card">
-<span class="network-flag">🇰🇷</span>
-<div class="network-country">한국 (김해)</div>
-<div class="network-brands">WTM 기술팀 상주<br/>김해 직접 수리</div>
-</div>
-</div>
-<div class="network-stat">
-<div class="network-stat-item">
-<strong>22년+</strong>
-<span>업력</span>
-</div>
-<div class="network-stat-item">
-<strong>해외 제조사</strong>
-<span>직거래 소싱</span>
 </div>
 </div>
 </div>
