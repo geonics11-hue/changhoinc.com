@@ -1197,24 +1197,24 @@ mark{background:#fff2a8;color:inherit;border-radius:2px}
 .qm b{font-size:15px;word-break:keep-all}
 .qm .s{font-size:12.5px;color:#6b7280;line-height:1.4;word-break:keep-all}
 .qm a.imp{border-color:#268FCE;background:#eef6fc}
-.qm a.rep{border-color:#1f8a6d;background:#edf8f4}
+.qm a.rep{border-color:#268FCE;background:#eef6fc}
 @media(max-width:900px){.qm-row{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:480px){.qm-row{grid-template-columns:repeat(2,1fr)}}
 #repair-band .rp-find{max-width:620px;margin:28px auto 0;display:flex;gap:8px}
 #repair-band .rp-find input{flex:1;min-width:0;font:inherit;font-size:16px;padding:12px 16px;border:1px solid var(--hairline);border-radius:999px;background:#fff;color:var(--ink)}
-#repair-band .rp-find input:focus{outline:none;border-color:#1f8a6d}
-#repair-band .rp-find button{font:inherit;font-weight:700;font-size:15px;padding:0 22px;border:0;border-radius:999px;background:#1f8a6d;color:#fff;cursor:pointer}
+#repair-band .rp-find input:focus{outline:none;border-color:#268FCE}
+#repair-band .rp-find button{font:inherit;font-weight:700;font-size:15px;padding:0 22px;border:0;border-radius:999px;background:#0066cc;color:#fff;cursor:pointer}
 #repair-band .rp-keys{margin-top:12px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;font-size:13px;color:#6b7280}
-#repair-band .rp-keys a{color:#1f6f59;background:#edf8f4;border-radius:999px;padding:4px 11px;text-decoration:none;font-weight:600}
+#repair-band .rp-keys a{color:#0066cc;background:#eef6fc;border-radius:999px;padding:4px 11px;text-decoration:none;font-weight:600}
 #repair-band .rp-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px;text-align:left}
 #repair-band .rp-card{display:flex;flex-direction:column;background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--card-r);overflow:hidden;color:var(--ink);text-decoration:none;transition:border-color .15s,box-shadow .15s}
-#repair-band .rp-card:hover{border-color:#1f8a6d;box-shadow:0 6px 18px rgba(0,0,0,.07)}
+#repair-band .rp-card:hover{border-color:#268FCE;box-shadow:0 6px 18px rgba(0,0,0,.07)}
 #repair-band .rp-card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:var(--parchment)}
 #repair-band .rp-body{padding:14px 16px 18px}
-#repair-band .rp-meta{font-size:12px;color:#1f8a6d;font-weight:700;margin-bottom:6px;word-break:keep-all}
+#repair-band .rp-meta{font-size:12px;color:#0066cc;font-weight:700;margin-bottom:6px;word-break:keep-all}
 #repair-band .rp-tt{font-size:15px;font-weight:600;line-height:1.45;word-break:keep-all}
 #repair-band .rp-more{margin-top:30px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-#repair-band .btn-rep{display:inline-block;padding:11px 22px;border-radius:999px;background:#1f8a6d;color:#fff;text-decoration:none;font-weight:600}
+#repair-band .btn-rep{display:inline-block;padding:11px 22px;border-radius:999px;background:#0066cc;color:#fff;text-decoration:none;font-weight:600}
 @media(max-width:1024px){#repair-band .rp-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:8px}#repair-band .rp-card{flex:0 0 240px;scroll-snap-align:start}}
 @media(max-width:480px){#repair-band .rp-card{flex-basis:72%}}
 </style>
@@ -1762,7 +1762,7 @@ mark{background:#fff2a8;color:inherit;border-radius:2px}
 <!-- ===== 자가수리 안내 카드 줄 · 2026-10-18 추가 (검색칸 = repair/?q= 로 넘김) ===== -->
 <section class="tile tile--light tile-center" id="repair-band">
 <div class="tile-wrap--wide">
-<span class="t-eyebrow" style="color:#1f8a6d">자가수리 안내</span>
+<span class="t-eyebrow" style="color:#0066cc">자가수리 안내</span>
 <h2 class="t-display mb-8">직접 해 보는 정비</h2>
 <p class="t-lead c-muted" style="max-width:600px;margin:0 auto;word-break:keep-all;">문의가 잦은 정비를 사진과 순서로 정리했습니다. 직접 하기 어려우면 수리를 맡겨 주세요.</p>
 <form action="repair/" class="rp-find" method="get" role="search"><input aria-label="정비 안내 검색" name="q" placeholder="기계 이름이나 증상으로 찾기 (예: 톱날, 퓨즈, 에러)" type="search"/><button type="submit">찾기</button></form>
