@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+<!--
+② 상세페이지 · 자사몰판 낱개(D형) — 304002004 / EH-PR-02B / eh-pr-02b.html (2026-10-29 · 틀 = eh-pr-01b.html)
+셸·CSS = 배포된 기종군 pvc-punch.html (09-17 304 A세션 배포본) 무수정 재사용
+계보 = 111 · --ac #487a59 · 로고 A' e3b0b7c0 · 히어로 §B-5 채움 90.0% · 1000×750
+sku = 304002004 · 기종군 304001
+🚫 비교표 금지(§B-3-a) · 가격·단가·VAT 0 · h1/pill 원산지 0 · CSS 신규 0줄
+-->
+<html lang="ko"><head><meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>EH-PR-02B — 난간용 물구멍 펀칭기 | 창호종합기계</title>
+<meta content="아파트 난간이 설치된 창틀에서도 PVC 문틀 프로파일에 타원형 물구멍을 내는 충전드릴 타입 휴대용 펀칭기입니다. EH-PR-01B를 개선한 기종으로 20V 5.0Ah 배터리로 가동하며, 펀칭기 뒤쪽에 45mm 이상 공간이 있으면 작업할 수 있습니다. 구멍 크기는 30 × 8mm입니다." name="description"/>
+<style>
+/* ===== base ===== */
+:root{
+  --ac:#487a59;            /* 계열 주색 — §B-4 v2 계열4색 SSOT(ch_palette.json)에서만 가져온다 */
+  --ink:#161a22;
+  /* 🔒 틴트 5색은 하드코드하지 않는다. 빌더가 --ac 기준으로 재산출해 주입한다.
+        세션66 정본의 #faf1f0·#f0dcda·#f5e6e5·#eccac7·#e8a0a0 은 100계열 파생이라
+        타 계열에 쓰면 §B-4 계열 불일치가 된다. (2026-08-16 치환맵 확정) */
+  --t-tech-bg:#f3f6f4;      /* tech 밴드 배경   (구 #faf1f0) */
+  --t-tech-bd:#dfe8e2;      /* tech 밴드 테두리 (구 #f0dcda) */
+  --t-cta-bg:#e9efeb;        /* foot-cta 배경   (구 #f5e6e5) */
+  --t-cta-bd:#d2ded6;        /* foot-cta 테두리 (구 #eccac7) */
+  --t-cur-sub:#b8ccbf;      /* .lu.cur 보조문자 (구 #e8a0a0) */
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(--ink);
+ background:#ffffff;line-height:1.7;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1040px;margin:0 auto;background:#fff;box-shadow:0 2px 40px rgba(0,0,0,.10);}
+.sec{padding:64px 56px;}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+ color:var(--ac);margin-bottom:14px;}
+.h2{font-size:29px;font-weight:900;color:var(--ink);letter-spacing:-.5px;margin-bottom:8px;}
+.h2 em{color:var(--ac);font-style:normal;}
+.sub{font-size:17px;color:#6b7684;margin-bottom:34px;max-width:680px;line-height:1.6;}
+
+/* ===== top bar ===== */
+/* 🔄 2026-08-16 개정 — 바(.top/.footer)는 카탈로그(①④)와 동일하게 계열 주색을 따른다.
+      세션144 「전 계열 고정 #404b63」 조항은 철회됨. [[decision_detail_page_bar_series_color_260816]] */
+.top{background:#fff;display:flex;align-items:center;gap:11px;padding:13px 56px;border-bottom:3px solid #268FCE;}
+.top .lg{width:52.5px;height:36px;background:#fff;border-radius:3px;display:flex;
+ align-items:center;justify-content:center;flex:none;border:1px solid #dfe8e2;}
+.top .lg img{max-width:100%;max-height:100%;object-fit:contain;display:block;}
+.top .co{color:#1c2733;font-size:15px;font-weight:800;letter-spacing:-.3px;}
+.top .co small{display:block;font-size:10.5px;font-weight:600;color:#dfe7f2;letter-spacing:1.2px;}
+.top .rt{margin-left:auto;color:#455166;font-size:13px;font-weight:700;text-align:right;}
+
+/* ===== hero ===== */
+.hero{background:#ffffff;
+ color:var(--ink);padding:56px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;
+ border-top:4px solid #268FCE;}
+.hero .ey{color:var(--ac);font-size:12.5px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;}
+.hero h1{font-size:40px;line-height:1.24;font-weight:900;letter-spacing:-.8px;color:var(--ink);}
+.hero h1 em{color:var(--ac);font-style:normal;}
+.hero .en{font-size:14px;color:#6b7684;margin-top:10px;font-weight:600;letter-spacing:.2px;}
+.hero .ld{font-size:17px;color:#4a5561;margin-top:18px;line-height:1.75;}
+.hero .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px;}
+.pill{font-size:12px;font-weight:700;color:#fff;padding:6px 13px;border-radius:20px;}
+.pill.pd{background:#eef2f7;color:#37414d;} .pill.pr{background:#e8f3fb;color:#0f5f8c;}
+.pill.pb{background:#eef2f7;color:#5c6673;}
+.hero .cta{display:inline-flex;align-items:center;gap:8px;margin-top:28px;background:var(--ac);
+ color:#fff;font-size:15px;font-weight:800;padding:14px 30px;border-radius:6px;text-decoration:none;
+ box-shadow:0 4px 14px rgba(0,0,0,.14);}
+.hcard{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;
+ display:flex;align-items:center;justify-content:center;min-height:300px;border-top:3px solid #EF8943;}
+.hcard img{max-width:100%;max-height:340px;object-fit:contain;display:block;}
+
+/* ===== kpis ===== */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-bottom:1px solid #e6ebf2;}
+.kpi{padding:26px 20px;text-align:center;border-right:1px solid #eef2f7;}
+.kpi:last-child{border-right:none;}
+.kv{font-size:34px;font-weight:900;color:var(--ink);letter-spacing:-1px;}
+.kv span{font-size:14px;font-weight:700;color:var(--ac);margin-left:4px;}
+.kl{font-size:12.5px;color:#7c8698;font-weight:700;margin-top:4px;letter-spacing:.2px;}
+
+/* ===== features ===== */
+.feats{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.feat{background:#f6f8fb;border:1px solid #e6ebf2;border-left:3px solid var(--ac);
+ border-radius:7px;padding:22px 24px;}
+.feat .fh{font-size:15.5px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+.feat .fd{font-size:15px;color:#5c6673;line-height:1.65;}
+
+/* ===== usp ===== */
+.usp-sec{background:#f6f8fb;}
+.usps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.usp{background:#fff;border:1px solid #e6ebf2;border-radius:9px;padding:26px 22px;}
+.usp .un{font-size:15px;font-weight:900;color:#fff;background:var(--ac);width:38px;height:38px;
+ border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:15px;}
+.usp .ut b{display:block;font-size:16px;color:var(--ink);font-weight:800;margin-bottom:7px;}
+.usp .ut span{font-size:16px;color:#5c6673;line-height:1.6;}
+
+/* ===== tech band ===== */
+.tech{background:var(--t-tech-bg);color:var(--ink);display:grid;grid-template-columns:.9fr 1.1fr;
+ gap:40px;align-items:center;border-top:1px solid var(--t-tech-bd);border-bottom:1px solid var(--t-tech-bd);}
+.tech .ey{color:var(--ac);}
+.tech .tl{font-size:26px;font-weight:900;line-height:1.3;letter-spacing:-.5px;color:var(--ink);}
+.tech .tl em{color:var(--ac);font-style:normal;}
+.tech .tb{color:#5c6673;font-size:17px;line-height:1.75;}
+
+/* ===== spec table ===== */
+.spectbl{width:100%;border-collapse:collapse;font-size:16px;border:1px solid #e2e8f0;}
+.spectbl th{background:#f0f3f8;color:var(--ink);font-weight:800;text-align:left;
+ padding:14px 20px;width:215px;border-bottom:1px solid #e2e8f0;vertical-align:top;}
+.spectbl td{padding:14px 20px;color:#37414d;border-bottom:1px solid #eef2f7;}
+.spectbl tr:last-child th,.spectbl tr:last-child td{border-bottom:none;}
+.spectbl tr:nth-child(even) th{background:#eaeef4;}
+.mats{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap;}
+.mat{background:#fff;border:1px solid #d7dfea;color:var(--ink);font-size:12.5px;font-weight:700;
+ padding:6px 14px;border-radius:20px;}
+
+/* ===== gallery (var) ===== */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.gcell{background:#fff;border:1px solid #e6ebf2;border-radius:8px;overflow:hidden;}
+.gcell img{width:100%;height:190px;object-fit:cover;display:block;}
+.gcell .gc{font-size:12.5px;color:#6b7684;padding:9px 12px;line-height:1.5;}
+
+/* ===== video (var) — facade. 클릭 전 외부 요청 0건 ===== */
+.vfacade{position:relative;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;cursor:pointer;
+ background:#0d1117;max-width:720px;}
+.vfacade img{width:100%;display:block;opacity:.86;}
+.vfacade .vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+ width:74px;height:74px;border-radius:50%;background:rgba(0,0,0,.62);display:flex;
+ align-items:center;justify-content:center;}
+.vfacade .vplay::after{content:"";border-style:solid;border-width:13px 0 13px 22px;
+ border-color:transparent transparent transparent #fff;margin-left:5px;}
+.vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
+ padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+.vfacade.vshort{max-width:360px;margin:0 auto;background:#fff;}
+.vfacade.vshort .vt{font-size:13px;padding:40px 14px 14px;}
+.vfacade.vwhite{background:#fff;}
+.video-sec .vfacade+.vfacade{margin:16px 0 0;}
+.vmore{max-width:720px;margin:18px 0 0;border-top:1px solid #e6ebf2;}
+.video-sec > .vshort:nth-child(3) + .vmore{margin:18px auto 0;}
+.vmore .vm-h{font-size:14px;font-weight:700;color:#4a5568;margin:14px 0 4px;}
+.vmore a{display:flex;gap:10px;align-items:baseline;padding:10px 2px;border-bottom:1px solid #f0f2f6;color:#1f2a37;text-decoration:none;font-size:14.5px;line-height:1.45;}
+.vmore a::before{content:"\25B6";flex:none;color:#FF0000;font-size:11px;}
+.vmore a .vm-t{margin-left:auto;flex:none;font-size:12.5px;color:#7a8594;}
+.vmore a.vm-all{color:var(--ac);font-weight:700;border-bottom:0;}
+
+/* ===== lineup (core — ②의 차별점) ===== */
+.lineup-sec{background:#f6f8fb;}
+.lineup{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.lu{background:#fff;border:1px solid #e6ebf2;border-radius:7px;padding:14px 16px;}
+.lu .lm{font-size:14px;font-weight:800;color:var(--ink);}
+.lu .ln{font-size:12px;color:#6b7684;margin-top:3px;}
+.lu.cur{background:var(--ink);border-color:var(--ink);}
+.lu.cur .lm{color:#fff;} .lu.cur .ln{color:var(--t-cur-sub);}
+
+/* ===== order (add) ===== */
+.orders{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.ord{background:#f6f8fb;border:1px solid #e6ebf2;border-radius:8px;padding:20px 22px;}
+.ord .oh{font-size:14px;font-weight:800;color:var(--ac);margin-bottom:7px;}
+.ord .od{font-size:15px;color:#5c6673;line-height:1.65;}
+
+/* ===== channel (add) — 8칸 4열×2행 ===== */
+.chs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.ch{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+ background:#fff;border:1px solid #e6ebf2;border-radius:8px;padding:18px 10px;
+ text-decoration:none;color:var(--ink);font-size:13px;font-weight:700;text-align:center;}
+.ch .cn{font-size:12.5px;color:#6b7684;font-weight:600;}
+.ch.off{opacity:.42;pointer-events:none;}
+
+/* ===== cta / footer ===== */
+.foot-cta{background:var(--t-cta-bg);color:var(--ink);text-align:center;border-top:1px solid var(--t-cta-bd);}
+.foot-cta h3{font-size:26px;font-weight:900;margin-bottom:10px;color:var(--ink);}
+.foot-cta p{font-size:17px;color:#5c6673;margin-bottom:24px;}
+.foot-cta .tels{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;font-size:17px;font-weight:800;color:var(--ac);}
+.foot-cta .tels span{opacity:.6;font-weight:400;color:#7c8698;}
+.footer{background:var(--ac);color:#e8eef7;padding:22px 56px;display:flex;align-items:center;gap:12px;font-size:12px;}
+.footer b{color:#fff;font-size:13px;}
+.footer .web{margin-left:auto;color:#fff;}
+@media print{
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+ body{background:#fff;}
+ .wrap{box-shadow:none;max-width:100%;}
+ .kpi,.feat,.usp,.lu,.spectbl tr,.hcard,.mats,.tels,.gcell,.ord,.ch{break-inside:avoid;page-break-inside:avoid;}
+ .hero,.top,.foot-cta{break-inside:avoid;page-break-inside:avoid;}
+ .h2,.eyebrow{break-after:avoid;page-break-after:avoid;}
+ .sec{padding:32px 40px;}
+ .hero{padding:36px 40px;}
+ .hero .cta{box-shadow:none;}
+ .vfacade{display:none;}
+}
+@media(max-width:760px){
+ .sec{padding:44px 24px;} .top{padding:12px 24px;} .hero{padding:40px 24px;grid-template-columns:1fr;}
+ .hero h1{font-size:29px;} .kpis{grid-template-columns:1fr 1fr;}
+ .feats,.usps,.lineup,.gallery,.orders{grid-template-columns:1fr;} .tech{grid-template-columns:1fr;}
+ .chs{grid-template-columns:repeat(2,1fr);}
+ .footer{padding:18px 24px;flex-wrap:wrap;} .footer .web{margin-left:0;width:100%;}
+}
+
+/* ===== [PATCH 260820] 인쇄 안정성 보강 — 이번 세션 신규 섹션 print break-inside 보호 (신규 블록 추가, 기존 @media print 블록 미수정) ===== */
+@media print{
+ .achcard,.step,.mtx tbody tr,.selg .g,.sizetbl tbody tr,.acgcell{break-inside:avoid;page-break-inside:avoid;}
+}
+
+/* ===== channel 8칸 — 브랜드 컬러 아이콘 + 호버 (2026-08-19 append) ===== */
+.chs .ch{transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;}
+.chs .ch:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(22,26,34,.10);
+ border-color:#d7dfea;}
+.chs .ci{display:block;margin-bottom:2px;}
+@media print{.chs .ch{transition:none;transform:none;box-shadow:none;}}
+
+/* ===== size-list table (그룹형 상세페이지 전용 · append) ===== */
+.sizetbl{width:100%;border-collapse:collapse;font-size:15px;border:1px solid #e2e8f0;}
+.sizetbl thead th{background:var(--ac);color:#fff;font-weight:800;text-align:left;padding:11px 16px;}
+.sizetbl td{padding:9px 16px;color:#37414d;border-bottom:1px solid #eef2f7;}
+.sizetbl tr:nth-child(even) td{background:#f7f8fa;}
+.sizetbl .sn{color:#9aa5b3;width:40px;}
+.sizetbl .sc{font-weight:800;color:var(--ink);font-family:'Consolas','Malgun Gothic',monospace;width:200px;}
+.sizetbl .ss{color:#37414d;}
+.sizetbl .st{color:#5a6672;}
+.sizetbl .sh{font-weight:800;color:var(--ac);}
+
+/* ===== hole-system 이미지 밴드 (원본 통합페이지 .sysrow 계승 · append) ===== */
+.sysrow{padding:0 56px 64px;display:flex;gap:32px;align-items:center;}
+.sysrow .simg{flex:0 0 42%;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.sysrow .simg img{width:100%;display:block;}
+.sysrow .sys{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.sysrow .sysbox{text-align:center;background:var(--ink);color:#fff;border-radius:10px;padding:20px 10px;}
+.sysrow .sysbox .big{font-size:32px;font-weight:900;color:#ff8a80;}
+.sysrow .sysbox .lb{font-size:12.5px;color:#c7cdd4;margin-top:6px;line-height:1.5;}
+@media(max-width:760px){.sysrow{flex-direction:column;padding:0 24px 44px;}.sysrow .simg{flex:none;width:100%;}}
+
+/* ===== 히어로 메인 사진 확대 — 좌우 컬럼비는 유지, 사진 박스 안에서 사진 자체를 70%까지 확대
+        (나나파파 지시 · append, 기존 .hero/.hcard 규칙 무변경) ===== */
+.hcard.photo-fill{padding:10px;min-height:250px;overflow:hidden;}
+.hcard.photo-fill img{max-height:520px;}
+
+/* ===== 히어로 사진 20% 추가 확대 (나나파파 지시 2026-08-20 "사각 박스는 그대로 두고 사진만 20% 크게")
+   박스 크기·테두리는 무변경, 사진만 transform:scale로 확대 후 박스 overflow:hidden으로 클리핑.
+   사진 원본 파일은 무수정(그대로 사용 원칙 유지). ===== */
+.hcard.photo-fill img{transform:translate(3.3%,-7.4%) scale(1.44);}
+
+/* ===== 히어로 스토어 버튼 신설 (나나파파 확정 2026-08-20 — 채널 8칸 고정 유지, 히어로에 별도 신설) ===== */
+/* 스마트스토어는 가격대별로 상품이 2건씩 나뉘어 있어(스토어 그율 규정), 색상 구분 없이
+   카테고리 목록 페이지 1개로 공용 링크한다. 값 출처: 나나파파 2026-08-20 확정. */
+.cta.cta-store{background:#fff;color:var(--ac);border:2px solid var(--ac);box-shadow:none;margin-left:12px;}
+@media(max-width:760px){.cta.cta-store{margin-left:0;margin-top:12px;}}
+
+/* ===== 주문 안내 4번째 카드 대응 (기존 .orders 3열 그리드 재사용 · append 없음, 콘텐츠만 추가) ===== */
+
+/* ===== 품질 검증 — 실측 인증 사진 2건 (Hebei Bocheng 제조사 실측, 나나파파 확인 2026-08-20 · append)
+   2026-08-20 후속1 — 제조사 원본 배너 그래픽(가공 없이 그대로) 사용으로 교체.
+   2026-08-20 후속2 — 나나파파 지시("사각 틀이 같아야되") 반영: 두 배너 비율이 달라(1202px vs 929px)
+   height:auto 자연비율로는 카드 높이가 달라 보였음 → 고정 높이(440px) + object-fit:contain +
+   흰 배경으로 전환. 사진은 자르지 않고(대비 object-fit:cover는 미사용) 프레임 크기만 통일. ===== */
+.qcheck{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start;}
+.qcheck .qc{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.qcheck .qc img{width:100%;height:440px;object-fit:contain;background:#fff;display:block;}
+.qcheck .qcap{padding:14px 18px;background:#fff;font-size:14px;color:#37414d;line-height:1.5;}
+.qcheck .qcap b{color:var(--ink);}
+@media(max-width:760px){.qcheck{grid-template-columns:1fr;}}
+
+/* ===== D28 홀 패턴 참고 도면 2종 (Hebei Bocheng 제조사 원본, 나나파파 지시 2026-08-20 · append)
+   그대로 사용(가공 없음). 대각(DIAGONAL) 패턴은 당사 표준 사양이 아닌 제조사 참고 도면 —
+   캡션으로 "별도 확인 필요" 명시(추측 표기 금지 원칙). ===== */
+.d28grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.d28grid .df{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.d28grid .df img{width:100%;height:320px;object-fit:contain;background:#fff;display:block;}
+.d28grid .dcap{padding:12px 16px;background:#fff;font-size:13.5px;color:#37414d;text-align:center;line-height:1.5;}
+.d28grid .dcap b{color:var(--ink);}
+@media(max-width:760px){.d28grid{grid-template-columns:1fr;}.d28grid .df img{height:260px;}}
+
+/* ===== 정밀 가공 디테일 클로즈업 3장 (Hebei Bocheng 제조사 원본, 나나파파 지시 2026-08-20 · append)
+   그대로 사용(가공 없음). R3 챔퍼는 선택 옵션 배지(.optbadge) 표기. ===== */
+.detailgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.detailgrid .dt{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.detailgrid .dt img{width:100%;height:330px;object-fit:contain;background:#fff;display:block;}
+.detailgrid .dcap2{padding:12px 16px;background:#fff;font-size:13.5px;color:#37414d;line-height:1.5;}
+.detailgrid .dcap2 b{color:var(--ink);}
+.optbadge{display:inline-block;background:var(--ac);color:#fff;font-size:10.5px;font-weight:800;
+  padding:3px 8px;border-radius:20px;margin-left:6px;vertical-align:middle;letter-spacing:.03em;}
+@media(max-width:760px){.detailgrid{grid-template-columns:1fr;}.detailgrid .dt img{height:280px;}}
+
+/* ===== 절단 공정 · 실사용 현장 4장 (CNC 워터젯 1 + Hebei Bocheng 제조사 제공 실사용 현장 3,
+   나나파파 지시 2026-08-20 · append) — 실사용 현장 사진은 제조사 자료이며 당사 개별 판매·설치
+   사례를 나타내지 않음(캡션에 출처 명시, 추측 표기 금지 원칙). ===== */
+.procgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.procgrid .pc{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.procgrid .pc img{width:100%;height:420px;object-fit:contain;background:#fff;display:block;}
+.procgrid .pcap{padding:12px 18px;background:#fff;font-size:13.5px;color:#37414d;line-height:1.5;}
+.procgrid .pcap b{color:var(--ink);}
+@media(max-width:760px){.procgrid{grid-template-columns:1fr;}.procgrid .pc img{height:320px;}}
+
+/* ===== [PATCH 260820] 악세사리 세트 SET1~5 섹션 — 구 통합페이지 이식, 클래스 3종 리네임(hcard/gcell/gc 충돌 회피) ===== */
+.lead{font-size:28px;color:#455;line-height:1.75;margin-top:16px;max-width:720px;}
+.lead b{color:#00838f;}
+.scards{margin-top:26px;}
+.achcard{display:flex;gap:20px;align-items:center;border:1px solid #e7ecef;border-radius:14px;padding:16px;margin-top:14px;background:#fff;}
+.achcard .hph{flex:0 0 236px;height:196px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.achcard .hph img{max-width:100%;max-height:196px;object-fit:contain;}
+.achcard .hnm{font-size:34px;font-weight:800;color:#00838f;}
+.achcard .hnm .hq{font-size:23px;color:#607d8b;font-weight:700;margin-left:4px;}
+.achcard .huse{font-size:27px;font-weight:700;margin-top:8px;color:#263238;}
+.achcard .hadd{font-size:24px;color:#5a6672;line-height:1.6;margin-top:7px;}
+.subhd{font-size:30px;font-weight:800;color:#263238;margin-top:40px;padding-left:12px;border-left:5px solid #00838f;line-height:1.3;}
+.mtx{width:100%;border-collapse:collapse;margin-top:16px;font-size:20px;table-layout:auto;}
+.mtx thead th{background:#37474f;color:#fff;padding:11px 7px;font-size:19px;text-align:center;white-space:nowrap;}
+.mtx thead th.h-item{text-align:left;}
+.mtx thead th.h-spec{text-align:left;}
+.mtx tbody td{padding:8px 7px;border-bottom:1px solid #eceff1;text-align:center;}
+.mtx tbody tr:nth-child(even){background:#fafbfc;}
+.mtx .m-item{text-align:left;font-weight:700;color:#263238;line-height:1.28;white-space:nowrap;}
+.mtx .m-item .en{display:block;font-size:14px;color:#98a6b0;font-weight:500;white-space:nowrap;}
+.mtx .m-spec{text-align:left;color:#5a6672;white-space:nowrap;font-size:18px;}
+.mtx .q{font-weight:800;color:#00838f;}
+.mtx .z{color:#cfd8dc;}
+.mtx tfoot td{border-top:2px solid #37474f;font-weight:800;padding:10px 7px;text-align:center;background:#eef7f8;font-size:20px;}
+.mtx tfoot td.f-lb{text-align:right;color:#37474f;}
+.mtx tfoot .ft-pt{color:#487a59;}
+.tnote{font-size:24px;color:#8a94a0;margin-top:14px;line-height:1.6;}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px;}
+.setgal{margin-top:16px;}
+.setgal .acgc b{color:#00695c;}
+.acgcell{border:1px solid #e7ecef;border-radius:10px;overflow:hidden;background:#f7f9fa;}
+.acgcell .gph{aspect-ratio:4/3;overflow:hidden;}
+.acgcell img{width:100%;height:100%;object-fit:cover;}
+.acgcell .acgc{font-size:22px;color:#5a6672;padding:9px 11px;line-height:1.5;}
+.selg{background:#f7f9fa;border:1px solid #e7ecef;border-radius:12px;padding:14px 24px;margin-top:18px;}
+.selg .g{display:flex;justify-content:space-between;gap:16px;align-items:baseline;font-size:26px;padding:11px 0;border-bottom:1px dashed #dfe6e9;line-height:1.5;}
+.selg .g:last-child{border-bottom:none;}
+.selg .gq{color:#37474f;}
+.selg .ga{color:#00838f;font-weight:800;white-space:nowrap;}
+
+/* ===== [PATCH 260820] SUPPLY JOURNEY 섹션 — 구 통합페이지 이식, 강조색 티얼→계열색(var(--ac)) 재배색 ===== */
+.journey{background:#0f151c;border-bottom:1px solid #eceff1;}
+.journey .inr{padding:70px 46px;max-width:860px;margin:0 auto;}
+.journey .eyebrow{color:var(--ac);}
+.journey .h2{color:#fff;}
+.journey .jlead{font-size:27px;color:#aeb6bf;line-height:1.7;margin-top:14px;max-width:680px;}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px;}
+.step{background:#18212b;border:1px solid #263341;border-radius:12px;overflow:hidden;}
+.step .ph{position:relative;aspect-ratio:4/3;overflow:hidden;}
+.step .ph img{width:100%;height:100%;object-fit:cover;}
+.step .bg{position:absolute;top:8px;left:8px;background:var(--ac);color:#fff;font-size:21px;font-weight:800;padding:3px 9px;border-radius:14px;letter-spacing:.5px;}
+.step .tx{padding:14px 14px 18px;}
+.step .tt{font-size:27px;font-weight:800;color:#fff;}
+.step .dd{font-size:22px;color:#9aa6b2;line-height:1.55;margin-top:7px;}
+.jclose{margin-top:26px;font-size:28px;color:#fff;font-weight:700;text-align:center;line-height:1.6;}
+.jclose b{color:var(--ac);}
+
+/* ===== [PATCH 260820] 모바일(680px 이하) — 세트 카드/갤러리/스텝 반응형 (구 통합페이지 동일 규칙 이식) ===== */
+@media(max-width:680px){
+  .steps,.gal{grid-template-columns:1fr 1fr;}
+  .achcard{flex-direction:column;align-items:stretch;}
+  .achcard .hph{flex:none;width:100%;}
+}
+
+/* ===== §6 검사·방청 4장 — 16:9 레터박스 제거 (2026-08-21 append) ===== */
+.qcheck .qc img{height:260px;}
+
+
+/* ===== [APPEND 260823] 폰트 확대 시안 A — 나나파파 「글씨가 너무 작다」
+   🚫 기존 규칙 무수정. 이 블록만 뒤에 붙는다(§B-6.3).
+   계보 기준값(h1 40 / .h2 29 / 본문 16) 미접촉 — 111 계보 유지 ===== */
+.eyebrow{font-size:13.5px;}
+.pill{font-size:13.5px;}
+.kl{font-size:14.5px;}
+.mat{font-size:14px;}
+.gcell .gc{font-size:15px;}
+.sysrow .sysbox .lb{font-size:14.5px;}
+.lu .lm{font-size:16px;}
+.lu .ln{font-size:14px;}
+.ord .oh{font-size:16px;}
+.ord .od{font-size:17px;}
+.feat .fh{font-size:17.5px;}
+.feat .fd{font-size:17px;}
+.sizetbl{font-size:16.5px;}
+.sizetbl thead th{font-size:16.5px;}
+.chs .ch{font-size:14.5px;}
+.chs .ch .cn{font-size:14px;}
+.footer{font-size:13.5px;}
+.footer b{font-size:14.5px;}
+
+/* ===== [APPEND 260823] 갤러리 칸 — 세로 제품컷 클리핑 방지 (나나파파 사진 지정 반영)
+   🚫 기존 .gcell 규칙 무수정. 높이·맞춤만 뒤에서 덮는다. ===== */
+.gallery-sec .gcell img{height:250px;object-fit:contain;background:#fff;}
+
+/* [2026-08-30 나나파파 승격 · 2026-09-05 소급] 비교표 행 썸네일 — 104/index.html 정본 이식 */
+.sizetbl td.tc,.sizetbl th.tc{width:56px;padding:4px 6px 4px 10px;}
+.rowthumb{width:44px;height:33px;object-fit:cover;border-radius:4px;display:block;background:#eef0f5;}
+</style>
+
+<link href="https://www.changhoinc.com/products/304/eh-pr-02b.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="창호종합기계" property="og:site_name"/>
+<meta content="EH-PR-02B — 난간용 물구멍 펀칭기 | 창호종합기계" property="og:title"/>
+<meta content="아파트 난간이 설치된 창틀에서도 PVC 문틀 프로파일에 타원형 물구멍을 내는 충전드릴 타입 휴대용 펀칭기입니다. EH-PR-01B를 개선한 기종으로 20V 5.0Ah 배터리로 가동하며, 펀칭기 뒤쪽에 45mm 이상 공간이 있으면 작업할 수 있습니다. 구멍 크기는 30 × 8mm입니다." property="og:description"/>
+<meta content="https://www.changhoinc.com/products/304/eh-pr-02b.html" property="og:url"/>
+<meta content="https://www.changhoinc.com/products/304/img/og-9938f317fec6.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4SVNEP6MSK"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4SVNEP6MSK');</script>
+<style>
+/* 2026-09-09 낱개 도입부 기종 띠 — 정본 규칙 무수정, 뒤에서 덮는다 (§B-3-e) */
+.lineband{background:#fff;border-bottom:1px solid #e6ebf2;padding:18px 22px 20px;}
+.lineband .lb-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;}
+.lineband .lb-strip img{width:72px;height:44px;object-fit:contain;background:#fff;border:1px solid #eef1f5;border-radius:4px;padding:3px;display:block;}
+.lineband .lb-strip img.cur{border:2px solid var(--ac);padding:2px;}
+.lineband .lb-cap{font-size:11.5px;color:#6b7684;text-align:center;margin-top:11px;}
+@media(min-width:761px) and (max-width:960px){.lineband .lb-strip img{width:60px;}}
+@media(max-width:760px){.lineband{padding:14px 14px 16px;}}
+</style>
+<script type="application/ld+json" data-ch="ai-card-v1">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.changhoinc.com/products/304/eh-pr-02b.html","url":"https://www.changhoinc.com/products/304/eh-pr-02b.html","name":"EH-PR-02B — 난간용 물구멍 펀칭기 | 창호종합기계","inLanguage":"ko-KR","isPartOf":{"@id":"https://www.changhoinc.com/#website"},"breadcrumb":{"@id":"https://www.changhoinc.com/products/304/eh-pr-02b.html#breadcrumb"},"publisher":{"@id":"https://www.changhoinc.com/#organization"},"description":"아파트 난간이 설치된 창틀에서도 PVC 문틀 프로파일에 타원형 물구멍을 내는 충전드릴 타입 휴대용 펀칭기입니다. EH-PR-01B를 개선한 기종으로 20V 5.0Ah 배터리로 가동하며, 펀칭기 뒤쪽에 45mm 이상 공간이 있으면 작업할 수 있습니다. 구멍 크기는 30 × 8mm입니다.","mainEntity":{"@id":"https://www.changhoinc.com/products/304/eh-pr-02b.html#product"}},{"@type":"Product","@id":"https://www.changhoinc.com/products/304/eh-pr-02b.html#product","name":"EH-PR-02B — 난간용 물구멍 펀칭기","model":"EH-PR-02B","url":"https://www.changhoinc.com/products/304/eh-pr-02b.html","image":"https://www.changhoinc.com/products/304/img/9938f317fec6.jpg","description":"아파트 난간이 설치된 창틀에서도 PVC 문틀 프로파일에 타원형 물구멍을 내는 충전드릴 타입 휴대용 펀칭기입니다. EH-PR-01B를 개선한 기종으로 20V 5.0Ah 배터리로 가동하며, 펀칭기 뒤쪽에 45mm 이상 공간이 있으면 작업할 수 있습니다. 구멍 크기는 30 × 8mm입니다.","additionalProperty":[{"@type":"PropertyValue","name":"가공 범위","value":"타원형 물구멍 30 × 8mm"},{"@type":"PropertyValue","name":"구동 방식","value":"충전드릴 타입"},{"@type":"PropertyValue","name":"사용전원","value":"20V 5.0Ah 배터리"},{"@type":"PropertyValue","name":"사용 조건","value":"펀칭기 뒤쪽 공간 45mm 이상(난간이 있는 창틀)"},{"@type":"PropertyValue","name":"공구 크기(mm)","value":"190 × 80 × 140"},{"@type":"PropertyValue","name":"중량","value":"5kg"},{"@type":"PropertyValue","name":"제품 상태","value":"신품"},{"@type":"PropertyValue","name":"원산지","value":"국내산"}]},{"@type":"Organization","@id":"https://www.changhoinc.com/#organization","name":"창호종합기계","url":"https://www.changhoinc.com/"},{"@type":"BreadcrumbList","@id":"https://www.changhoinc.com/products/304/eh-pr-02b.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"처음 화면","item":"https://www.changhoinc.com/"},{"@type":"ListItem","position":2,"name":"PVC 창호기계 · PVC 용접기","item":"https://www.changhoinc.com/products/301/"},{"@type":"ListItem","position":3,"name":"EH-PR-02B","item":"https://www.changhoinc.com/products/304/eh-pr-02b.html"}]}]}</script>
+<style>@media(max-width:480px){.journey .steps{grid-template-columns:1fr}.journey .inr{padding-left:20px;padding-right:20px}}</style>
+<style id="chg-css">
+/* 공통 상단 메뉴 줄 — 대문(index.html) 유틸 바·카테고리 바와 같은 모양. 원본 CSS 는 건드리지 않는다 */
+html{scroll-padding-top:112px}
+.chg{position:sticky;top:0;z-index:170;background:#111;color:#fff;
+  font-family:"Nanum Gothic","Noto Sans KR","Apple SD Gothic Neo",system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.5;letter-spacing:-0.3px}
+.chg a{color:inherit;text-decoration:none}
+.chg ul{list-style:none;margin:0;padding:0}
+.chg-in{max-width:1240px;margin:0 auto;padding:9px 20px;display:flex;align-items:center;gap:16px}
+.chg-logo{background:#fff;border-radius:7px;padding:5px 9px;display:block;line-height:0;flex:none}
+.chg-logo img{height:26px;width:auto;display:block}
+.chg-s{flex:1;position:relative;max-width:660px}
+.chg-s input{width:100%;height:42px;border-radius:8px;border:2px solid transparent;padding:0 44px 0 15px;
+  font-size:15px;background:#fff;color:#1d1d1f;font-family:inherit}
+.chg-s input:focus{outline:0;border-color:#0066cc}
+.chg-s .mag{position:absolute;right:6px;top:5px;width:32px;height:32px;border-radius:6px;background:#0066cc;
+  color:#fff;font-size:15px;display:grid;place-items:center;pointer-events:none}
+.chg-sg{position:absolute;left:0;right:0;top:46px;background:#fff;border:1px solid #d2d2d7;border-radius:10px;
+  box-shadow:0 12px 34px rgba(0,0,0,.18);overflow:hidden;z-index:190}
+.chg-sg[hidden]{display:none}
+.chg-sg li{margin:0;list-style:none;line-height:1.5;padding:9px 14px;font-size:14px;color:#1d1d1f;display:flex;gap:9px;align-items:center;cursor:pointer}
+.chg-sg li:hover,.chg-sg li[aria-selected="true"]{background:#f5f5f7}
+.chg-sg .chg-k{font-size:10.5px;color:#fff;background:#9a9aa0;border-radius:4px;padding:2px 6px;flex:none}
+.chg-sg .chg-k.chg-k1{background:#0066cc}
+.chg-sg .chg-sub{color:#9a9aa0;display:inline}
+.chg-sg .chg-none{color:#6e6e73;cursor:default}
+.chg-nav{display:flex;align-items:center;gap:16px;flex:none}
+.chg-nav ul{display:flex;gap:16px;align-items:center}
+.chg-nav ul a{font-size:13.5px;color:#d7d7db;white-space:nowrap}
+.chg-nav ul a:hover{color:#fff}
+.chg-nav .cta{background:#0066cc;color:#fff;padding:6px 14px;border-radius:9999px;font-size:12px}
+.chg-nav .ln{display:none}
+.chg-hb{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:4px;
+  position:relative;z-index:200}
+.chg-hb span{display:block;width:20px;height:1.5px;background:rgba(255,255,255,.8);transition:transform .2s,opacity .2s}
+.chg-hb.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.chg-hb.open span:nth-child(2){opacity:0}
+.chg-hb.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+.chg-cat{background:#000;border-top:1px solid #26262a;position:relative}
+.chg-cat::after{content:"";position:absolute;right:0;top:0;bottom:0;width:clamp(16px,5vw,44px);
+  background:linear-gradient(270deg,#000,rgba(0,0,0,0));pointer-events:none}
+.chg-cat-in{max-width:none;margin:0;padding:0 7px 0 max(7px,calc((100% - 1240px)/2 + 7px));display:flex;overflow-x:auto;scrollbar-width:none}
+.chg-cat-in::-webkit-scrollbar{display:none}
+.chg-cat a{padding:11px 13px;font-size:13.5px;color:#d7d7db;white-space:nowrap;flex:none}
+.chg-cat a:hover{color:#fff}
+.chg-cat a.all{font-weight:700;color:#fff}
+.chg-cat a[aria-current]{color:#fff;font-weight:700;box-shadow:inset 0 -3px 0 #0066cc}
+.chg-crumb{max-width:1040px;margin:0 auto;padding:12px 20px 0;font-size:13px;color:#6e6e73;
+  font-family:"Nanum Gothic","Noto Sans KR",system-ui,sans-serif}
+.chg-crumb a{color:#0066cc;text-decoration:none}
+.chg-crumb a:hover{text-decoration:underline}
+.chg-crumb span.sep{margin:0 7px;color:#b0b0b5}
+.wrap>.top{display:none}
+@media(max-width:834px){
+  html{scroll-padding-top:70px}
+  .chg-in{padding:8px 12px;gap:10px}
+  .chg-logo{padding:4px 7px}.chg-logo img{height:22px}
+  .chg-s input{height:38px;font-size:14px}
+  .chg-s .mag{top:4px;width:30px;height:30px}
+  .chg-sg{top:42px}
+  .chg-cat{display:none}
+  .chg-hb{display:flex}
+  .chg-nav ul:not(.open){display:none}
+  .chg-nav ul.open{display:flex;flex-direction:column;align-items:flex-start;position:fixed;
+    top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.97);padding:76px 28px 28px;gap:18px;
+    overflow-y:auto;z-index:150}
+  .chg-nav ul.open a{font-size:19px;font-weight:600;color:rgba(255,255,255,.9)}
+  .chg-nav ul.open .cta{font-size:19px;padding:10px 26px}
+  .chg-nav ul.open .ln{display:block}
+  .chg-nav ul.open .lnh{font-size:13px;color:#9a9aa0;margin-top:10px}
+  .chg-nav ul.open .ln a{font-size:16px;font-weight:400;color:#d7d7db}
+  .chg-nav ul.open .ln a[aria-current]{color:#fff;font-weight:700}
+  .chg-crumb{padding:10px 16px 0;font-size:12px}
+}
+@media print{.chg,.chg-crumb{display:none}.wrap>.top{display:flex}}
+</style>
+<style id="jstrip-css">.jstrip{background:#f4f6f9;border-top:1px solid #e3e7ec;border-bottom:1px solid #e3e7ec;padding:18px 22px;text-align:center;font-size:15px;line-height:1.6;word-break:keep-all}
+.jstrip a{color:#37474f;text-decoration:none}.jstrip a b{color:var(--ac,#268FCE);white-space:nowrap}
+.jstrip a:hover b{text-decoration:underline}</style>
+</head>
+<body>
+<!-- ===== 공통 상단 메뉴 줄 (chg) ===== -->
+<header class="chg">
+<div class="chg-in">
+<a class="chg-logo" href="/"><img alt="창호종합기계 처음 화면" src="/images/CH_Logo_MD_700700_배경검은색.png"/></a>
+<div class="chg-s"><input aria-controls="chg-sg" aria-expanded="false" aria-label="제품 검색" autocomplete="off" id="chg-q" placeholder="기계 이름으로 찾기 (예: 탭핑기, 노칭)" role="combobox" type="search"/><span aria-hidden="true" class="mag">⌕</span><ul class="chg-sg" hidden="" id="chg-sg" role="listbox"></ul></div>
+<nav aria-label="주 메뉴" class="chg-nav"><ul id="chg-links"><li><a href="/#about">회사소개</a></li><li><a href="/#import-service">수입대행</a></li><li><a href="/#products">제품소개</a></li><li><a href="/#resources">기술자료</a></li><li><a href="/cases/">고객지원 사례</a></li><li><a href="/repair/">자가수리 안내</a></li><li><a class="cta" href="/#contact">문의하기</a></li><li class="ln lnh">제품 라인</li><li class="ln"><a href="/products/111/">용접테이블 · D28 악세사리</a></li><li class="ln"><a href="/products/101/">알루미늄 절단기 · 원형절단기</a></li><li class="ln"><a href="/products/104/">탭핑기 · 서보탭핑기</a></li><li class="ln"><a href="/products/103/">유압 펀칭기 · 프레스</a></li><li class="ln"><a href="/products/109/">R노칭기 · 파이프 노칭기</a></li><li class="ln"><a href="/products/109/index-b.html">파이프 축관기 · 벤딩기</a></li><li class="ln"><a href="/products/107/">챔버 · 면취기 · 모따기</a></li><li class="ln"><a href="/products/100/">금속절단기 · 밴드쏘</a></li><li class="ln"><a href="/products/105/">절곡·벤딩기 · 전선탈피기</a></li><li class="ln"><a href="/products/207/">알루미늄 창호기계</a></li><li class="ln"><a href="/products/301/" aria-current="page">PVC 창호기계 · PVC 용접기</a></li><li class="ln"><a href="/products/400/">랩핑기 · 목공/유리 가공기</a></li><li class="ln"><a href="/products/503/">톱날 · 컷트날 · 열판</a></li></ul><button aria-expanded="false" aria-label="메뉴 열기" class="chg-hb" id="chg-hb" type="button"><span></span><span></span><span></span></button></nav>
+</div>
+<nav aria-label="제품 라인" class="chg-cat"><div class="chg-cat-in"><a class="all" href="/#products">☰ 전체 13개 라인</a><a href="/products/111/">용접테이블</a><a href="/products/101/">알루미늄 절단기</a><a href="/products/104/">탭핑기</a><a href="/products/103/">유압 펀칭기</a><a href="/products/109/">R노칭기</a><a href="/products/109/index-b.html">축관기 · 벤딩기</a><a href="/products/107/">챔버</a><a href="/products/100/">금속절단기</a><a href="/products/105/">절곡·벤딩기</a><a href="/products/207/">알루미늄 창호기계</a><a href="/products/301/" aria-current="page">PVC 창호기계</a><a href="/products/400/">랩핑기</a><a href="/products/503/">톱날</a></div></nav>
+</header>
+<nav aria-label="현재 위치" class="chg-crumb"><a href="/">처음 화면</a><span class="sep">›</span><a href="/products/301/">PVC 창호기계 · PVC 용접기</a><span class="sep">›</span><span>EH-PR-02B</span></nav>
+<!-- ===== /공통 상단 메뉴 줄 ===== -->
+
+<div class="wrap">
+<!-- ══ 01 core ｜ top ══ -->
+<div class="top">
+<div class="lg"><img alt="창호종합기계" src="img/e3b0b7c00681.png"/></div>
+<div class="co">창호종합기계<small>CHANGHO INC</small></div>
+<div class="rt">304. PVC 펀칭기 · 가공금형<br/>055-327-4112</div>
+</div>
+<!-- ══ 02 core ｜ hero ══  🚫 h1·.pill.pd 원산지 금지 -->
+<div class="hero">
+<div>
+<div class="ey">PVC Drainage Hole Punching Machine</div>
+<h1>난간이 있는 창틀에서도<br/><em>물구멍을 냅니다</em></h1>
+<div class="en">CORDLESS DRAINAGE HOLE PUNCHING TOOL EH-PR-02B · RAILING TYPE · 20V 5.0Ah BATTERY · 30×8 mm · 5 kg</div>
+<div class="ld">아파트 난간(현장 용어: 데스리)이 설치된 창틀에서도 PVC 문틀 프로파일에 타원형 물구멍을 내는 충전드릴 타입 휴대용 펀칭기입니다. EH-PR-01B를 개선한 기종으로 20V 5.0Ah 배터리로 가동하며, 펀칭기 뒤쪽에 45mm 이상 공간이 있으면 작업할 수 있습니다. 구멍 크기는 30 × 8mm입니다.</div>
+<div class="pills"><span class="pill pr">타원형 30 × 8mm</span><span class="pill pb">난간용</span><span class="pill pb">20V 5.0Ah 배터리</span><span class="pill pb">5kg</span></div>
+<a class="cta" href="#contact">이 모델 견적 문의</a>
+</div>
+<div class="hcard"><img alt="난간용 충전드릴 타입 물구멍 펀칭기 EH-PR-02B" src="img/9938f317fec6.jpg"/></div>
+</div>
+<!-- ══ 03 core ｜ kpis ×4 (§B-3-c · 값은 이 페이지 제원표에서) ══ -->
+<div class="kpis"><div class="kpi"><div class="kv">20<span>V</span></div><div class="kl">배터리 전압</div></div><div class="kpi"><div class="kv">5.0<span>Ah</span></div><div class="kl">배터리 용량</div></div><div class="kpi"><div class="kv">30×8<span>mm</span></div><div class="kl">타원형 물구멍</div></div><div class="kpi"><div class="kv">5<span>kg</span></div><div class="kl">공구 중량</div></div></div><!-- ══ 03-b core ｜ 기종 띠 (§B-3-f) ══ -->
+<div class="lineband"><div class="lb-strip"><a class="lb-go" href="wtm-pr-02.html"><img alt="WTM-PR-02" src="img/6f3925ac171f.jpg"/></a><a class="lb-go" href="wtm-pr-02ms.html"><img alt="WTM-PR-02MS" src="img/c9a7057b4e0e.jpg"/></a><a class="lb-go" href="wtm-pr-02-02.html"><img alt="WTM-PR-02-02" src="img/3c638980786d.jpg"/></a><a class="lb-go" href="wtm-pr-01a.html"><img alt="WTM-PR-01A" src="img/2f989711252c.jpg"/></a><a class="lb-go" href="wtm-pr-lxs.html"><img alt="WTM-PR-LXS" src="img/f17be1982d99.jpg"/></a><a class="lb-go" href="pvc-punch-line.html"><img alt="WTM-RD-03 + WTM-PR-01A + WTMJ-AR-N045" src="img/c281952f881a.jpg"/></a><a class="lb-go" href="wtm-24pvc-l1.html"><img alt="WTM-24PVC-L1" src="img/19e17a52a437.jpg"/></a><a class="lb-go" href="eh-pr-01a.html"><img alt="EH-PR-01A" src="img/a0379e263b4f.jpg"/></a><a class="lb-go" href="eh-pr-01b.html"><img alt="EH-PR-01B" src="img/f992314f1879.jpg"/></a><img alt="EH-PR-02B" class="cur" src="img/b82917708f77.jpg"/><a class="lb-go" href="eh-pr-lx55.html"><img alt="EH-PR-LX55" src="img/e6085ff50ed1.jpg"/></a></div><div class="lb-cap">이 계열 11기종 — 테두리가 있는 사진이 지금 보고 계신 기종입니다</div></div>
+<!-- ══ 05 core ｜ 문의가 많은 세 가지 ══ -->
+<div class="sec usp-sec">
+<div class="eyebrow">Selling Points</div>
+<div class="h2">EH-PR-02B의 <em>특징</em></div>
+<div class="sub">아래 세 가지는 물구멍 펀칭기 기종군 11종 가운데 <b>EH-PR-02B</b>에 해당하는 내용입니다. 공급 방식은 11종이 같습니다. 이 모델의 수리는 제조사가 담당합니다.</div>
+<div class="usps"><div class="usp"><div class="un">01</div><div class="ut"><b>아파트 난간이 있는 창틀에서도 작업하실 수 있습니다</b><span>난간에 막히지 않도록 만든 기종입니다. 펀칭기 뒤쪽에 45mm 이상 공간이 있으면 난간이 설치된 자리에서도 물구멍을 냅니다.</span></div></div><div class="usp"><div class="un">02</div><div class="ut"><b>20V 5.0Ah 배터리로 전선 없이 가동합니다</b><span>콘센트가 없는 현장에서도 연장선을 끌고 다니지 않고 작업하실 수 있습니다.</span></div></div><div class="usp"><div class="un">03</div><div class="ut"><b>EH-PR-01B를 개선한 기종입니다</b><span>구멍 크기는 타원형 30 × 8mm이고, 본체 크기(190 × 80 × 140mm)와 중량(5kg)은 EH-PR-01B와 같습니다.</span></div></div></div>
+</div>
+<!-- ══ 06 core ｜ tech 밴드 ══ -->
+<div class="sec tech">
+<div>
+<div class="eyebrow ey">Working Space</div>
+<div class="tl">펀칭기 뒤쪽에 <em>45mm 이상 공간</em>이 있어야 합니다</div>
+</div>
+<div class="tb">난간이 창틀에서 45mm보다 가까이 붙어 있으면 이 기종으로도 물구멍을 낼 수 없습니다. 구매하시기 전에 현장 창틀과 난간 사이 간격을 재어 알려 주시면 작업할 수 있는지 먼저 확인해 드립니다.</div>
+</div>
+<!-- ══ 07 var ｜ 공급 여정 6단계 ══ -->
+<div class="jstrip"><a href="index.html#journey">직접 수입 · 김해 전시장 시연 · 입고 수리까지 저희가 직접 합니다 — <b>공급 과정 6단계 보기 →</b></a></div>
+<!-- ══ 09 core ｜ 제원 (이 모델 고유 + 기종군 공통) ══  🚫 금액 일절 금지 -->
+<div class="sec usp-sec">
+<div class="eyebrow">Specifications</div>
+<div class="h2">EH-PR-02B <em>제원</em></div>
+<div class="sub">위 표가 이 모델의 값이고, 아래 표는 물구멍 펀칭기 기종군 11종에 공통으로 적용됩니다.</div>
+<table class="spectbl"><tr><th>모델명</th><td>EH-PR-02B</td></tr><tr><th>가공 범위</th><td>타원형 물구멍 30 × 8mm</td></tr><tr><th>구동 방식</th><td>충전드릴 타입</td></tr><tr><th>사용전원</th><td>20V 5.0Ah 배터리</td></tr><tr><th>사용 조건</th><td>펀칭기 뒤쪽 공간 45mm 이상(난간이 있는 창틀)</td></tr><tr><th>공구 크기(mm)</th><td>190 × 80 × 140</td></tr><tr><th>중량</th><td>5kg</td></tr><tr><th>제품 상태</th><td>신품</td></tr><tr><th>원산지</th><td>국내산</td></tr></table>
+<div class="sub" style="margin-top:18px;">전원 · 공압 칸에는 물구멍 펀칭기 11종의 값을 함께 적었습니다. 이 모델의 값은 위 표를 참고해 주십시오.</div>
+<table class="spectbl"><tr><th>적용 소재</th><td>PVC 창호 프로파일</td></tr><tr><th>가공</th><td>물구멍(반달형 · 타원형 · 사각) · 금형 추가 장착(WTM-PR-01A)</td></tr><tr><th>구동</th><td>유압식(WTM-PR-02 · 02MS · 02-02) · 공압식(WTM-PR-01A · WTM-PR-LXS · 자동 라인) · 수동(WTM-24PVC-L1) · 전기드릴 · 충전드릴(EH-PR 4종)</td></tr><tr><th>전원</th><td>220V 단상 0.75kW(WTM-PR-02 · 02MS) · AC 220V/380V(WTM-PR-02-02) · 380V/220V(자동 라인) · 220V 650W(EH-PR-01A) · 18V 4.0Ah 배터리(EH-PR-01B · EH-PR-LX55) · 20V 5.0Ah 배터리(EH-PR-02B) · 전원 없음(WTM-PR-01A · WTM-24PVC-L1)</td></tr><tr><th>공압</th><td>6~7bar(WTM-PR-01A) · 5~8kgf/cm²(WTM-PR-LXS) · 5.0~8.0kgf/cm²(자동 라인) · 0.5~0.8MPa(WTM-PR-02-02)</td></tr><tr><th>부속</th><td>유압식 헤드 WTM-PR-PVCH — 4kg · 파워팩 WTM-PR-PP01 — AC 220V 단상 0.75kW · 8kg</td></tr><tr><th>원산지</th><td>국내산(11종)</td></tr><tr><th>사후 관리</th><td>제조사 수리 — 받으신 직후 불량은 판매처 교환</td></tr></table>
+<div class="mats"><span class="mat">PVC 프로파일</span><span class="mat">창틀</span><span class="mat">창짝</span><span class="mat">문틀</span></div>
+</div>
+<!-- ══ 11 var ｜ gallery (기종군 실물 · 재소싱 0) ══ -->
+<div class="sec gallery-sec">
+<div class="eyebrow">Real Product</div>
+<div class="h2">실물 · EH-PR-02B</div>
+<div class="sub">EH-PR-02B 실물과 시험 가공 사진입니다.</div>
+<div class="gallery"><div class="gcell"><img alt="EH-PR-02B — 펀칭기 본체와 20V 5.0Ah 충전드릴" src="img/fa0932c77d3f.jpg"/><div class="gc">EH-PR-02B — 펀칭기 본체와 20V 5.0Ah 충전드릴</div></div><div class="gcell"><img alt="창틀 프로파일에 펀칭기를 끼운 모습" src="img/42f66e70401f.jpg"/><div class="gc">창틀 프로파일에 펀칭기를 끼운 모습</div></div><div class="gcell"><img alt="충전드릴로 프로파일에 물구멍을 내는 장면" src="img/366582bc2a3a.jpg"/><div class="gc">충전드릴로 프로파일에 물구멍을 내는 장면</div></div><div class="gcell"><img alt="가공한 타원형 물구멍과 펀칭 조각" src="img/711b353b8971.jpg"/><div class="gc">가공한 타원형 물구멍과 펀칭 조각</div></div><div class="gcell"><img alt="펀칭 헤드 부분" src="img/41e9e02ecfa2.jpg"/><div class="gc">펀칭 헤드 부분</div></div><div class="gcell"><img alt="펀칭기 본체와 충전드릴 — 위에서 본 모습" src="img/690da3035d18.jpg"/><div class="gc">펀칭기 본체와 충전드릴 — 위에서 본 모습</div></div></div>
+</div>
+<!-- ══ 12 core ｜ 같은 기종군 라인업 ══  게이트: .lu ≥1 · .lu.cur 정확히 1개 -->
+<div class="sec lineup-sec">
+<div class="eyebrow">Line-up</div>
+<div class="h2">물구멍 펀칭기 <em>11종</em> 한눈에 보기</div>
+<div class="sub">지금 보고 계신 모델은 <b>EH-PR-02B</b>입니다. 조건이 맞지 않으면 아래에서 다른 모델을 눌러 비교하실 수 있습니다. 두 기종군 전체는 <a href="index.html">PVC 펀칭기 · 가공금형 색인</a>에서, 이 기종군의 전체 비교표는 <a href="pvc-punch.html">물구멍 펀칭기</a> 페이지에서 보실 수 있습니다.</div>
+<div class="lineup"><a class="lu" href="wtm-pr-02.html" style="text-decoration:none;display:block;"><div class="lm">WTM-PR-02</div><div class="ln">PVC 물구멍 · 유압식 일반형</div></a><a class="lu" href="wtm-pr-02ms.html" style="text-decoration:none;display:block;"><div class="lm">WTM-PR-02MS</div><div class="ln">PVC 물구멍 · 모헤어레일 전용</div></a><a class="lu" href="wtm-pr-02-02.html" style="text-decoration:none;display:block;"><div class="lm">WTM-PR-02-02</div><div class="ln">헤드 미포함 세트 · 카트 · 파워팩 · 배선</div></a><a class="lu" href="wtm-pr-01a.html" style="text-decoration:none;display:block;"><div class="lm">WTM-PR-01A</div><div class="ln">프레스 개공 · 금형 추가 장착 · 1100 확장형</div></a><a class="lu" href="wtm-pr-lxs.html" style="text-decoration:none;display:block;"><div class="lm">WTM-PR-LXS</div><div class="ln">LX 뷰프레임 사각 물구멍 · 풋 스위치</div></a><a class="lu" href="pvc-punch-line.html" style="text-decoration:none;display:block;"><div class="lm">WTM-RD-03 + WTM-PR-01A + WTMJ-AR-N045</div><div class="ln">공급 롤러 + 가공기 + 자동 롤러다이</div></a><a class="lu" href="wtm-24pvc-l1.html" style="text-decoration:none;display:block;"><div class="lm">WTM-24PVC-L1</div><div class="ln">반달형 20×8mm · 수동</div></a><a class="lu" href="eh-pr-01a.html" style="text-decoration:none;display:block;"><div class="lm">EH-PR-01A</div><div class="ln">타원형 30×8mm · 전기드릴 타입</div></a><a class="lu" href="eh-pr-01b.html" style="text-decoration:none;display:block;"><div class="lm">EH-PR-01B</div><div class="ln">타원형 30×8mm · 충전드릴 타입</div></a><div class="lu cur"><div class="lm">EH-PR-02B</div><div class="ln">타원형 30×8mm · 충전드릴 타입 · 난간용</div></div><a class="lu" href="eh-pr-lx55.html" style="text-decoration:none;display:block;"><div class="lm">EH-PR-LX55</div><div class="ln">LX 창호용 크기(주문할 때 확정) · 충전드릴 타입</div></a></div>
+</div>
+<!-- ══ 13 add ｜ 주문·납기 ══  🚫 금액·단가 일절 금지 -->
+<div class="sec">
+<div class="eyebrow">Order &amp; Shipping</div>
+<div class="h2">주문 · 출고 안내</div>
+<div class="orders"><div class="ord"><div class="oh">창틀 · 난간 간격 확인</div><div class="od">현장 창틀과 난간 사이 간격(펀칭기 뒤쪽 45mm 이상 필요)과 문틀 프로파일 단면을 알려 주시면 이 모델로 가공할 수 있는지 먼저 확인해 드립니다.</div></div><div class="ord"><div class="oh">사용 준비</div><div class="od">20V 5.0Ah 배터리로 가동합니다. 전원 공사나 에어 배관이 필요 없습니다.</div></div><div class="ord"><div class="oh">재고 · 출고</div><div class="od">국내에 재고가 있으면 주문이 확정되는 대로 출고합니다. 재고가 없으면 사양을 확정한 뒤 납기를 안내해 드립니다.</div></div><div class="ord"><div class="oh">사전 시연</div><div class="od">시연은 김해 전시장에서 진행합니다. 사용하시는 프로파일 단면과 물구멍 도면을 알려 주시면 같은 조건으로 가공해 보여 드립니다. 방문 일정은 아래 채널로 미리 예약해 주십시오.</div></div><div class="ord"><div class="oh">사후 관리</div><div class="od">수리는 제조사에 직접 맡겨 주십시오. 받으신 직후 발견된 불량은 저희가 교환해 드립니다.</div></div></div>
+</div>
+<!-- ══ 14 add ｜ 채널 8칸 (셸 무수정) ══ -->
+<div class="sec">
+<div class="eyebrow">Channels</div>
+<div class="h2">채널 안내</div>
+<div class="chs">
+<a class="ch" href="tel:055-327-4112" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#1E3A8A" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="M15.6 21A16.6 16.6 0 0 1 3 8.4 3 3 0 0 1 6 5.4h2.1a1 1 0 0 1 1 .86c.1.9.3 1.77.6 2.6a1 1 0 0 1-.24 1.05L8.2 11.2a14 14 0 0 0 4.6 4.6l1.3-1.3a1 1 0 0 1 1.05-.23c.83.3 1.7.5 2.6.6a1 1 0 0 1 .86 1V18a3 3 0 0 1-2.9 3Z"></path></g></svg>전화<span class="cn">055-327-4112</span></a>
+<a class="ch" href="tel:010-4465-4112" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#334155" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><rect height="19" rx="2.4" width="11" x="6.5" y="2.5"></rect><path d="M11 18.6h2"></path></g></svg>휴대전화<span class="cn">010-4465-4112</span></a>
+<a class="ch" href="http://pf.kakao.com/_xojdTX" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#FEE500" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M12 6.2c-3.2 0-5.8 2-5.8 4.5 0 1.6 1.1 3 2.7 3.8l-.6 2.1c-.08.3.24.53.5.36l2.5-1.6c.23.02.46.03.7.03 3.2 0 5.8-2 5.8-4.7S15.2 6.2 12 6.2Z" fill="#3C1E1E"></path></svg>카카오 채널<span class="cn">상담 연결</span></a>
+<a class="ch" href="https://talk.naver.com/W4UBZ1" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#03C75A" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M12 6.5c-3.15 0-5.7 1.95-5.7 4.45 0 1.55.98 2.92 2.47 3.73l-.52 2.06c-.07.29.24.52.49.36l2.72-1.72c.17.01.35.02.54.02 3.15 0 5.7-1.95 5.7-4.45S15.15 6.5 12 6.5Z" fill="#fff"></path></svg>네이버 톡톡<span class="cn">상담 연결</span></a>
+<a class="ch" href="mailto:geonics@hanmail.net" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#475569" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><rect height="14.4" rx="2.2" width="18.8" x="2.6" y="4.8"></rect><path d="m3.4 6.6 8.6 5.9 8.6-5.9"></path></g></svg>이메일<span class="cn">geonics@hanmail.net</span></a>
+<a class="ch" href="https://www.youtube.com/@machinelab/videos" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>유튜브<span class="cn">가공 영상</span></a>
+<a class="ch" href="https://blog.naver.com/geonics" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#03C75A" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M8.5 7.6h2.6l2.2 3.4V7.6h2.4v8.8h-2.6l-2.2-3.4v3.4H8.5V7.6Z" fill="#fff"></path></svg>블로그<span class="cn">네이버 블로그</span></a>
+<a class="ch" href="https://www.changhoinc.com/#about" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#0284C7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"><path d="M3.6 21h16.8"></path><path d="M5.4 21V4.4a1 1 0 0 1 1-1h6.2a1 1 0 0 1 1 1V21"></path><path d="M13.6 10.2h4.4a1 1 0 0 1 1 1V21"></path><path d="M8.2 7.4h2.6M8.2 11h2.6M8.2 14.6h2.6M15.6 14h1.2M15.6 17.4h1.2"></path></g></svg>회사 소개<span class="cn">changhoinc.com</span></a>
+</div>
+</div>
+<!-- ══ 15 core ｜ foot-cta ══ -->
+<div class="sec foot-cta" id="contact">
+<h3>EH-PR-02B 견적 문의</h3>
+<p>창틀과 난간 사이 간격, 프로파일 단면과 물구멍 위치를 알려 주시면 이 모델로 가공할 수 있는지 확인해 드립니다.</p>
+<div class="tels">
+<div>055-327-4112 <span>대표</span></div>
+<div>010-4465-4112 <span>휴대전화</span></div>
+<div>geonics@hanmail.net <span>이메일</span></div>
+</div>
+</div>
+<!-- ══ 16 core ｜ footer ══ -->
+<div class="footer">
+<b>창호종합기계</b>
+<span>경남 김해시 상동면 상동로375번길 21</span>
+<span class="web">www.changhoinc.com</span>
+</div>
+</div>
+<script>
+document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
+el.addEventListener('click', function(){
+var id = el.getAttribute('data-yt');
+el.innerHTML = '';
+el.style.aspectRatio = '16 / 9';
+var f = document.createElement('iframe');
+f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
+f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+f.setAttribute('allowfullscreen','');
+el.appendChild(f);
+}, {once:true});
+});
+</script>
+<script id="chg-js">
+(function(){"use strict";
+var D=[{"l":"용접테이블 · D28 악세사리","b":"111","u":"/products/111/","s":["용접정반 흑착색","용접정반 질화","D28 악세사리 세트","D28 악세사리 단품"]},{"l":"알루미늄 절단기 · 원형절단기","b":"101 102","u":"/products/101/","s":["CNC 절단기","2헤드 절단기","1헤드 절단기","휴대용 절단기","롤러다이","작업다이 · 디지털 디스플레이"]},{"l":"탭핑기 · 서보탭핑기","b":"104","u":"/products/104/","s":["서보탭핑기 본체","절삭유 분사식 (미스트)","탭핑기 + 주철다이 세트","마그네틱척 · 정밀바이스","탭 콜렛척 · 악세사리"]},{"l":"유압 펀칭기 · 프레스","b":"103","u":"/products/103/","s":["유압 펀칭기","CNC 펀칭기","사각 노칭기","앵글 · 파이프 절단기","다구멍 펀칭기"]},{"l":"R노칭기 · 파이프 노칭기","b":"109","u":"/products/109/","s":["R노칭기","유압 R노칭기","모터식 R노칭기","수동식 R노칭기","홀소 노칭기","파이프 노칭"]},{"l":"파이프 축관기 · 벤딩기","b":"","u":"/products/109/index-b.html","s":["축관기","파이프 압착기","유압 파이프 벤더","파이프 벤딩기"]},{"l":"챔버 · 면취기 · 모따기","b":"107","u":"/products/107/","s":["직각 면취기","원형 챔버"]},{"l":"금속절단기 · 밴드쏘","b":"100","u":"/products/100/","s":["밴드쏘","원형톱기계","휴대용 밴드쏘"]},{"l":"절곡·벤딩기 · 전선탈피기","b":"105 106 108 110 199","u":"/products/105/","s":["절곡 · 벤딩기","레이저 가공기","전선탈피기 · 차핑기","연마기 · 나사포장기 · 기타"]},{"l":"알루미늄 창호기계","b":"200 202 203 204 205 206 207 208","u":"/products/207/","s":["코너클램프기","카피루터기","엔드밀링기","AL 펀칭기 · 가공금형","드릴머신 · 피스체결기","단열 프로파일 롤러프레스기 · 널링기","단열 프로파일 CNC 라인","방충망 밀대"]},{"l":"PVC 창호기계 · PVC 용접기","b":"300 301 302 303 304 305 306 307","u":"/products/301/","s":["PVC 절단기","PVC 용접기","PVC 루터 · 드릴 · 피스체결기","PVC 펀칭기 · 가공금형","PVC 엔드밀링기","PVC 벤딩기","PVC 사상기 · 압착기","PVC 기타 가공기"]},{"l":"랩핑기 · 목공/유리 가공기","b":"400 401 410","u":"/products/400/","s":["랩핑기","유리 가공기계","목공기계","윈치 · 견인 회전장치","창호 시험 설비"]},{"l":"톱날 · 컷트날 · 열판","b":"501 502 503","u":"/products/503/","s":["톱날","컷트날","열판","열판지"]}];
+var q=document.getElementById('chg-q'),sg=document.getElementById('chg-sg'),hb=document.getElementById('chg-hb'),nl=document.getElementById('chg-links'),items=[];
+function n(s){return(s||'').toLowerCase().replace(/[\s·¡¤]/g,'');}
+function esc(s){return s.replace(/[<>&"]/g,function(c){return{'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];});}
+function go(u){window.location.href=u;}
+function suggest(raw){var t=n(raw);items=[];
+ if(!t){sg.hidden=true;q.setAttribute('aria-expanded','false');return;}
+ D.forEach(function(k){if(n(k.l).indexOf(t)!==-1||n(k.b).indexOf(t)!==-1)items.push({k:'라인',x:k.l,u:k.u});});
+ D.forEach(function(k){k.s.forEach(function(s){if(n(s).indexOf(t)!==-1)items.push({k:'중분류',x:s,sub:k.l,u:k.u});});});
+ items=items.slice(0,8);
+ sg.innerHTML=items.length?items.map(function(o,i){return '<li role="option" data-i="'+i+'"><span class="chg-k'+(o.k==='라인'?' chg-k1':'')+'">'+o.k+'</span>'+esc(o.x)+(o.sub?' <span class="chg-sub">— '+esc(o.sub)+'</span>':'')+'</li>';}).join('')
+  :'<li class="chg-none">일치하는 라인이 없습니다 — <a href="/#contact" style="color:#0066cc">문의 주시면 찾아드립니다</a></li>';
+ sg.hidden=false;q.setAttribute('aria-expanded','true');}
+q.addEventListener('input',function(){suggest(q.value);});
+q.addEventListener('keydown',function(e){if(e.key==='Escape')sg.hidden=true;if(e.key==='Enter'&&items.length){e.preventDefault();go(items[0].u);}});
+sg.addEventListener('click',function(e){var li=e.target.closest('li[data-i]');if(li)go(items[+li.dataset.i].u);});
+document.addEventListener('click',function(e){if(!e.target.closest('.chg-s'))sg.hidden=true;});
+function setMenu(o){nl.classList.toggle('open',o);hb.classList.toggle('open',o);hb.setAttribute('aria-expanded',o);
+ hb.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기');document.body.style.overflow=o?'hidden':'';}
+hb.addEventListener('click',function(){setMenu(!nl.classList.contains('open'));});
+nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+})();
+</script>
+<!-- ===== 사진 크게 보기 (zoom) ===== -->
+<style id="zoom-css">
+.hcard img.zm-on,.gallery img.zm-on{cursor:zoom-in}
+.lb-strip a.lb-go{display:block;line-height:0;border-radius:4px}
+.lb-strip a.lb-go:hover img{opacity:.75}
+.zm{position:fixed;inset:0;z-index:10000;background:rgba(10,12,16,.92);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:56px 64px 20px}
+.zm[hidden]{display:none}
+.zm img{max-width:100%;max-height:calc(100vh - 130px);object-fit:contain;background:#fff;border-radius:4px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+.zm .zm-cap{color:#e8eaee;font-size:15px;line-height:1.5;margin-top:12px;text-align:center;max-width:900px}
+.zm .zm-n{color:#9aa3ad;font-size:13px;margin-top:4px}
+.zm button{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:50%;width:48px;height:48px;font-size:26px;line-height:48px;cursor:pointer;padding:0}
+.zm button:hover{background:rgba(255,255,255,.25)}
+.zm .zm-x{top:12px;right:14px}
+.zm .zm-p{left:10px;top:50%;margin-top:-24px}
+.zm .zm-q{right:10px;top:50%;margin-top:-24px}
+@media (max-width:640px){.zm{padding:56px 8px 16px}.zm .zm-p,.zm .zm-q{top:auto;bottom:14px;margin:0}.zm img{max-height:calc(100vh - 170px)}}
+@media print{.zm{display:none!important}}
+</style>
+<div class="zm" id="zm" hidden role="dialog" aria-modal="true" aria-label="사진 크게 보기">
+<button type="button" class="zm-x" aria-label="닫기">&times;</button>
+<button type="button" class="zm-p" aria-label="이전 사진">&#8249;</button>
+<img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=">
+<div class="zm-cap"></div><div class="zm-n"></div>
+<button type="button" class="zm-q" aria-label="다음 사진">&#8250;</button>
+</div>
+<script id="zoom-js">
+(function(){var z=document.getElementById('zm');if(!z)return;
+var L=[].slice.call(document.querySelectorAll('.hcard img,.gallery img')).filter(function(i){return !i.closest('a')&&!i.closest('.vfacade')&&!i.closest('.zm');});
+if(!L.length)return;var im=z.querySelector('img'),cp=z.querySelector('.zm-cap'),nn=z.querySelector('.zm-n'),k=0,ov='';
+function cap(i){var c=i.closest('.gcell');var g=c&&c.querySelector('.gc');return (g&&g.textContent.trim())||i.alt||'';}
+function show(n){k=(n+L.length)%L.length;var i=L[k];im.src=i.currentSrc||i.src;im.alt=i.alt;cp.textContent=cap(i);nn.textContent=L.length>1?(k+1)+' / '+L.length:'';z.querySelector('.zm-p').style.display=z.querySelector('.zm-q').style.display=L.length>1?'':'none';}
+function open(n){show(n);z.hidden=false;ov=document.body.style.overflow;document.body.style.overflow='hidden';}
+function shut(){z.hidden=true;document.body.style.overflow=ov;}
+L.forEach(function(i,n){i.classList.add('zm-on');i.addEventListener('click',function(){open(n);});});
+z.querySelector('.zm-x').onclick=shut;z.querySelector('.zm-p').onclick=function(e){e.stopPropagation();show(k-1);};z.querySelector('.zm-q').onclick=function(e){e.stopPropagation();show(k+1);};
+z.addEventListener('click',function(e){if(e.target===z)shut();});
+document.addEventListener('keydown',function(e){if(z.hidden)return;if(e.key==='Escape')shut();else if(e.key==='ArrowLeft')show(k-1);else if(e.key==='ArrowRight')show(k+1);});
+var sx=null;z.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+z.addEventListener('touchend',function(e){if(sx===null)return;var d=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(d)>50)show(d<0?k+1:k-1);});
+})();
+</script>
+<!-- ===== /사진 크게 보기 ===== -->
+</body></html>
