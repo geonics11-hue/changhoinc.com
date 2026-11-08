@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 490" width="960" height="490" font-family="'Pretendard','Noto Sans KR','Malgun Gothic',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#596fa1"/></marker></defs>
+<rect width="960" height="490" fill="#fff"/>
+<text x="24" y="34" font-size="19" font-weight="800" fill="#1f2937">원형 다이스 — 각 부분 이름</text>
+<circle cx="250" cy="238" r="160" fill="#e9edf3" stroke="#1f2937" stroke-width="2.4"/>
+<circle cx="250" cy="238" r="41.6" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<circle cx="250" cy="238" r="34.112" fill="none" stroke="#1f2937" stroke-width="1" stroke-dasharray="4 3"/>
+<circle cx="297.5" cy="285.5" r="30.4" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<circle cx="202.5" cy="285.5" r="30.4" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<circle cx="202.5" cy="190.5" r="30.4" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<circle cx="297.5" cy="190.5" r="30.4" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<rect x="244.4" y="337.2" width="11.2" height="64.0" fill="#fff" stroke="#1f2937" stroke-width="1.6"/>
+<line x1="90" y1="238" x2="90" y2="438" stroke="#596fa1" stroke-width="1.2"/>
+<line x1="410" y1="238" x2="410" y2="438" stroke="#596fa1" stroke-width="1.2"/>
+<line x1="93" y1="432" x2="407" y2="432" stroke="#596fa1" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="250" y="424" font-size="17" font-weight="800" fill="#596fa1" text-anchor="middle">바깥지름 D</text>
+<rect x="520" y="78" width="46" height="320" rx="4" fill="#e9edf3" stroke="#1f2937" stroke-width="2.4"/>
+<rect x="520" y="196.4" width="46" height="83.2" fill="#fff" stroke="#1f2937" stroke-width="1" stroke-dasharray="4 3"/>
+<path d="M566 196.4 l-8 8 M566 279.6 l-8 -8" stroke="#1f2937" stroke-width="1.4" fill="none"/>
+<circle cx="543.0" cy="126.0" r="7" fill="#fff" stroke="#1f2937" stroke-width="1.6"/>
+<circle cx="543.0" cy="350.0" r="7" fill="#fff" stroke="#1f2937" stroke-width="1.6"/>
+<text x="543.0" y="428" font-size="15" fill="#6b7280" text-anchor="middle">옆에서 본 모습</text>
+<line x1="250" y1="222" x2="592" y2="114" stroke="#6b7280" stroke-width="1"/>
+<circle cx="250" cy="222" r="3.5" fill="#596fa1"/>
+<text x="600" y="116" font-size="16" font-weight="800" fill="#1f2937">나사 구멍</text>
+<text x="600" y="138" font-size="14" fill="#6b7280">가운데의 날이 수나사를 깎습니다</text>
+<line x1="308" y1="180" x2="592" y2="64" stroke="#6b7280" stroke-width="1"/>
+<circle cx="308" cy="180" r="3.5" fill="#596fa1"/>
+<text x="600" y="66" font-size="16" font-weight="800" fill="#1f2937">칩 구멍</text>
+<text x="600" y="88" font-size="14" fill="#6b7280">깎인 부스러기(칩)가 빠지는 구멍</text>
+<line x1="250" y1="376" x2="592" y2="394" stroke="#6b7280" stroke-width="1"/>
+<circle cx="250" cy="376" r="3.5" fill="#596fa1"/>
+<text x="600" y="396" font-size="16" font-weight="800" fill="#1f2937">벌림 홈</text>
+<text x="600" y="418" font-size="14" fill="#6b7280">한쪽이 갈라져 있어 조금 벌리거나 좁힐 수 있습니다</text>
+<line x1="550" y1="126" x2="592" y2="164" stroke="#6b7280" stroke-width="1"/>
+<circle cx="550" cy="126" r="3.5" fill="#596fa1"/>
+<text x="600" y="166" font-size="16" font-weight="800" fill="#1f2937">고정 자리</text>
+<text x="600" y="188" font-size="14" fill="#6b7280">핸들·홀더의 나사가 걸리는 오목한 자리</text>
+<line x1="566" y1="209" x2="592" y2="239" stroke="#6b7280" stroke-width="1"/>
+<circle cx="566" cy="209" r="3.5" fill="#596fa1"/>
+<text x="600" y="241" font-size="16" font-weight="800" fill="#1f2937">물림 쪽</text>
+<text x="600" y="263" font-size="14" fill="#6b7280">나사 구멍 입구가 넓게 깎여 있는 면부터 자재에 댑니다</text>
+<text x="24" y="476" font-size="13" fill="#6b7280">그림은 모양을 설명하는 것이며 실제 크기·비율과 다릅니다 · 두께는 제조사와 크기마다 다릅니다</text>
+</svg>
