@@ -5,7 +5,7 @@
  *  창호종합기계 적용 (2026-11-08): 이 사이트는 구글 태그 관리자(GTM) 없이 gtag 만 쓴다.
  *  그래서 원본의 dataLayer.push({event:...}) 한 줄만 gtag('event','phone_click',...) 로 바꿨다.
  *  나머지 줄은 원본 그대로다(page_path 1줄만 뺐다 · 아래 설명). 싣는 값 = 누른 회사 번호(사이트에 공개된 번호)·링크 글자.
- *  손님 정보·금액은 싣지 않는다. 카톡 채널은 구글 자동 기록(click)으로 세므로 여기서 세지 않는다. */
+ *  손님 정보·금액은 싣지 않는다. 카톡 채널 링크(pf.kakao.com)도 이 파일이 kakao_click 으로 센다. */
 (function () {
   if (window.__ctDetectPhoneClick) return;
   window.__ctDetectPhoneClick = true;
@@ -41,6 +41,21 @@
 
       // closest() because the click usually lands on an icon or span INSIDE
       // the anchor, not the anchor itself.
+      // 창호종합기계(2026-11-08 나나파파 「전화 파일에 카톡 추가」): 카카오 채널 링크는 kakao_click 으로 센다.
+      // 구글 애널리틱스 「이벤트 만들기」 화면이 click 을 기준으로 고를 수 없어 코드로 보낸다.
+      var kakao = target.closest('a[href*="pf.kakao.com"]');
+      if (kakao) {
+        var kNow = new Date().getTime();
+        if (lastNumber === 'kakao' && (kNow - lastAt) < DEDUPE_MS) return;
+        lastNumber = 'kakao';
+        lastAt = kNow;
+        if (typeof window.gtag !== 'function') return;
+        window.gtag('event', 'kakao_click', {
+          link_text: (kakao.textContent || '').trim().slice(0, 100)
+        });
+        return;
+      }
+
       var link = target.closest('a[href^="tel:"], a[href^="TEL:"]');
       if (!link) return;
 
