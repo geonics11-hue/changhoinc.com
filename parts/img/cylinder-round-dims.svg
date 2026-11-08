@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-label="둥근 실린더 치수 위치 그림"><defs><marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M0,1 L7,4 L0,7 z" fill="#1e3a8a"/></marker></defs>
+<rect x="0" y="0" width="760" height="300" fill="#fff"/>
+<!-- 뒤 고정 나사 -->
+<rect x="70" y="126" width="40" height="48" stroke="#222" stroke-width="2" fill="#fff"/>
+<path d="M76 126v48M84 126v48M92 126v48M100 126v48" stroke="#999" stroke-width="1"/>
+<!-- 뒤 덮개 -->
+<rect x="110" y="108" width="34" height="84" rx="6" stroke="#222" stroke-width="2" fill="#fff"/>
+<!-- 몸통 -->
+<rect x="144" y="114" width="300" height="72" stroke="#222" stroke-width="2" fill="#fff"/>
+<!-- 앞 덮개 -->
+<rect x="444" y="108" width="34" height="84" rx="6" stroke="#222" stroke-width="2" fill="#fff"/>
+<!-- 앞 고정 나사 + 너트 -->
+<rect x="478" y="126" width="56" height="48" stroke="#222" stroke-width="2" fill="#fff"/>
+<path d="M486 126v48M494 126v48M502 126v48M510 126v48M518 126v48M526 126v48" stroke="#999" stroke-width="1"/>
+<rect x="496" y="116" width="18" height="68" fill="#e6ebf2" stroke="#222" stroke-width="1.5"/>
+<!-- 로드 -->
+<rect x="534" y="140" width="110" height="20" stroke="#222" stroke-width="2" fill="#fff"/>
+<!-- 로드 끝 나사 -->
+<rect x="644" y="142" width="40" height="16" stroke="#222" stroke-width="2" fill="#fff"/>
+<path d="M650 142v16M656 142v16M662 142v16M668 142v16M674 142v16" stroke="#999" stroke-width="1"/>
+<!-- 공기 구멍 -->
+<rect x="118" y="92" width="18" height="16" fill="#e6ebf2" stroke="#222" stroke-width="1.5"/>
+<rect x="452" y="92" width="18" height="16" fill="#e6ebf2" stroke="#222" stroke-width="1.5"/>
+<line x1="127" y1="92" x2="160" y2="52" stroke="#555" stroke-width="1"/><text x="166" y="48" font-size="15" fill="#161a22" font-weight="700" text-anchor="start">공기 구멍 P</text>
+<line x1="461" y1="92" x2="430" y2="52" stroke="#555" stroke-width="1"/><text x="424" y="48" font-size="15" fill="#161a22" font-weight="700" text-anchor="end">공기 구멍 P</text>
+<line x1="520" y1="126" x2="560" y2="74" stroke="#555" stroke-width="1"/><text x="566" y="70" font-size="15" fill="#161a22" font-weight="700" text-anchor="start">앞 고정 수나사 M</text>
+<line x1="590" y1="140" x2="610" y2="100" stroke="#555" stroke-width="1"/><text x="616" y="96" font-size="15" fill="#161a22" font-weight="700" text-anchor="start">로드 굵기 ØD</text>
+<line x1="668" y1="158" x2="700" y2="216" stroke="#555" stroke-width="1"/><text x="700" y="234" font-size="15" fill="#161a22" font-weight="700" text-anchor="middle">로드 끝 나사 KK</text>
+<line x1="144" y1="224" x2="444" y2="224" stroke="#1e3a8a" stroke-width="1.4" marker-start="url(#a)" marker-end="url(#a)"/><text x="294" y="216" font-size="15" fill="#1e3a8a" font-weight="700" text-anchor="middle">몸통 길이 L</text>
+<line x1="144" y1="186" x2="144" y2="232" stroke="#888" stroke-dasharray="3 3"/><line x1="444" y1="186" x2="444" y2="232" stroke="#888" stroke-dasharray="3 3"/>
+<line x1="70" y1="270" x2="684" y2="270" stroke="#1e3a8a" stroke-width="1.4" marker-start="url(#a)" marker-end="url(#a)"/><text x="377" y="262" font-size="15" fill="#1e3a8a" font-weight="700" text-anchor="middle">전체 길이 TL (행정 0)</text>
+<line x1="70" y1="174" x2="70" y2="278" stroke="#888" stroke-dasharray="3 3"/><line x1="684" y1="158" x2="684" y2="278" stroke="#888" stroke-dasharray="3 3"/>
+</svg>
