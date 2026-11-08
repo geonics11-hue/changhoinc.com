@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" width="960" height="330" font-family="'Pretendard','Noto Sans KR','Malgun Gothic',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#596fa1"/></marker><pattern id="h" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#cfd6e0"/><line x1="0" y1="0" x2="0" y2="8" stroke="#8a96a8" stroke-width="2"/></pattern></defs>
+<rect width="960" height="330" fill="#fff"/>
+<text x="24" y="34" font-size="19" font-weight="800" fill="#1f2937">톱날 내경 크기 비교 — 원 크기는 실제 지름에 비례합니다</text>
+<circle cx="110" cy="150" r="43.18" fill="#fff" stroke="#596fa1" stroke-width="2.4"/>
+<text x="110" y="156" font-size="17" font-weight="800" fill="#596fa1" text-anchor="middle">Φ25.4</text>
+<text x="110" y="248" font-size="14.5" font-weight="800" fill="#1f2937" text-anchor="middle">국내 알루미늄 절단기</text>
+<text x="110" y="270" font-size="13" font-weight="600" fill="#4b5563" text-anchor="middle">중국 기종에도 많음</text>
+<circle cx="290" cy="150" r="51.0" fill="#fff" stroke="#596fa1" stroke-width="2.4"/>
+<text x="290" y="156" font-size="17" font-weight="800" fill="#596fa1" text-anchor="middle">Φ30</text>
+<text x="290" y="248" font-size="14.5" font-weight="800" fill="#1f2937" text-anchor="middle">유럽·중국 기종</text>
+<circle cx="470" cy="150" r="54.4" fill="#fff" stroke="#596fa1" stroke-width="2.4"/>
+<text x="470" y="156" font-size="17" font-weight="800" fill="#596fa1" text-anchor="middle">Φ32</text>
+<text x="470" y="248" font-size="14.5" font-weight="800" fill="#1f2937" text-anchor="middle">유럽·중국 기종</text>
+<text x="470" y="270" font-size="13" font-weight="600" fill="#4b5563" text-anchor="middle">30과 둘 다 사용하는 기종도</text>
+<circle cx="660" cy="150" r="64.6" fill="#fff" stroke="#596fa1" stroke-width="2.4"/>
+<text x="660" y="156" font-size="17" font-weight="800" fill="#596fa1" text-anchor="middle">Φ38</text>
+<text x="660" y="248" font-size="14.5" font-weight="800" fill="#1f2937" text-anchor="middle">국내 PVC 절단기</text>
+<text x="660" y="270" font-size="13" font-weight="600" fill="#4b5563" text-anchor="middle">중국 기종은 드묾</text>
+<circle cx="850" cy="150" r="68.0" fill="#fff" stroke="#596fa1" stroke-width="2.4"/>
+<text x="850" y="156" font-size="17" font-weight="800" fill="#596fa1" text-anchor="middle">Φ40</text>
+<text x="850" y="248" font-size="14.5" font-weight="800" fill="#1f2937" text-anchor="middle">금속절단기 톱날</text>
+<text x="850" y="270" font-size="13" font-weight="600" fill="#4b5563" text-anchor="middle">38·40mm처럼 큰 내경</text>
+<text x="24" y="312" font-size="13" font-weight="600" fill="#6b7280" text-anchor="start">※ 많이 쓰는 경우를 적은 것입니다. 같은 나라에서 들여온 기종이라도 다를 수 있습니다.</text>
+</svg>
