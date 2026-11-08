@@ -2421,7 +2421,21 @@ document.querySelectorAll('form').forEach(form => {
         headers: { 'Accept': 'application/json' }
       }).then(function (r) {
         if (!r.ok) throw new Error('formspree ' + r.status);
-        window.location.href = dest;
+        /* 2026-11-08 접수가 확인된 뒤에만 구글 애널리틱스에 「문의 접수」(generate_lead) 1건.
+           손님 이름·연락처·금액은 싣지 않는다. 신호가 늦어도 1.5초 안에 넘어간다. */
+        var moved = false;
+        var go = function () { if (!moved) { moved = true; window.location.href = dest; } };
+        try {
+          var ft = f.querySelector('input[name="form_type"]');
+          if (typeof gtag === 'function') {
+            gtag('event', 'generate_lead', {
+              form_type: ft ? ft.value : '',
+              event_callback: go,
+              event_timeout: 1500
+            });
+          } else { go(); }
+        } catch (e) { go(); }
+        setTimeout(go, 1600);
       }).catch(function () {
         if (btn) { btn.disabled = false; btn.textContent = label; }
         f.submit();
