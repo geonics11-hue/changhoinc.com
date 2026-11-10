@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 612" width="960" height="612" font-family="'Pretendard','Noto Sans KR','Malgun Gothic',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#596fa1"/></marker><marker id="g" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#b7793b"/></marker></defs>
+<rect width="960" height="612" fill="#fff"/>
+<text x="24" y="34" font-size="19" font-weight="800" fill="#1f2937">리밋 스위치 머리 모양 6가지</text>
+<rect x="24" y="56" width="296" height="256" rx="10" fill="#fff" stroke="#e3e8f0" stroke-width="1.5"/>
+<text x="40" y="84" font-size="16" font-weight="800" fill="#1f2937" text-anchor="start">① 누름 막대형</text>
+<text x="40" y="298" font-size="13.5" font-weight="600" fill="#4b5563" text-anchor="start">막대를 곧게 누릅니다</text>
+<rect x="129" y="176" width="86" height="90" rx="6" fill="#e9edf3" stroke="#1f2937" stroke-width="2"/>
+<circle cx="141" cy="188" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="141" cy="254" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="203" cy="188" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="203" cy="254" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<rect x="159.0" y="266" width="26" height="14" fill="#cfd6e0" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="156" y="162" width="32" height="14" fill="#cfd6e0" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="164" y="118" width="16" height="44" rx="3" fill="#b8c0cc" stroke="#1f2937" stroke-width="2"/>
+<line x1="172" y1="88" x2="172" y2="110" stroke="#b7793b" stroke-width="2.4" marker-end="url(#g)"/>
+<rect x="332" y="56" width="296" height="256" rx="10" fill="#fff" stroke="#e3e8f0" stroke-width="1.5"/>
+<text x="348" y="84" font-size="16" font-weight="800" fill="#1f2937" text-anchor="start">② 롤러 누름형</text>
+<text x="348" y="298" font-size="13.5" font-weight="600" fill="#4b5563" text-anchor="start">막대 끝에 작은 바퀴</text>
+<rect x="437" y="176" width="86" height="90" rx="6" fill="#e9edf3" stroke="#1f2937" stroke-width="2"/>
+<circle cx="449" cy="188" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="449" cy="254" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="511" cy="188" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="511" cy="254" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<rect x="467.0" y="266" width="26" height="14" fill="#cfd6e0" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="464" y="162" width="32" height="14" fill="#cfd6e0" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="472" y="118" width="16" height="44" rx="3" fill="#b8c0cc" stroke="#1f2937" stroke-width="2"/>
+<circle cx="480" cy="112" r="12" fill="#fff" stroke="#1f2937" stroke-width="2.2"/><circle cx="480" cy="112" r="3" fill="#1f2937"/>
+<line x1="480" y1="80" x2="480" y2="96" stroke="#b7793b" stroke-width="2.4" marker-end="url(#g)"/>
+<rect x="640" y="56" width="296" height="256" rx="10" fill="#fff" stroke="#e3e8f0" stroke-width="1.5"/>
+<text x="656" y="84" font-size="16" font-weight="800" fill="#1f2937" text-anchor="start">③ 롤러 레버형</text>
+<text x="656" y="298" font-size="13.5" font-weight="600" fill="#4b5563" text-anchor="start">팔 끝 바퀴 · 팔이 돌며 작동</text>
+<rect x="745" y="176" width="86" height="90" rx="6" fill="#e9edf3" stroke="#1f2937" stroke-width="2"/>
+<circle cx="757" cy="188" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="757" cy="254" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="819" cy="188" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="819" cy="254" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<rect x="775.0" y="266" width="26" height="14" fill="#cfd6e0" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="805" y="150" width="40" height="30" rx="4" fill="#cfd6e0" stroke="#1f2937" stroke-width="1.8"/>
+<circle cx="837" cy="164" r="6" fill="#b8c0cc" stroke="#1f2937" stroke-width="1.6"/>
+<line x1="837" y1="164" x2="866.7" y2="119.18" stroke="#1f2937" stroke-width="7" stroke-linecap="round"/>
+<line x1="837" y1="164" x2="866.7" y2="119.18" stroke="#b8c0cc" stroke-width="4" stroke-linecap="round"/>
+<circle cx="866.7" cy="119.18" r="11" fill="#fff" stroke="#1f2937" stroke-width="2.2"/><circle cx="866.7" cy="119.18" r="3" fill="#1f2937"/>
+<path d="M832.7 113.18 q14 -20 34 -22" fill="none" stroke="#b7793b" stroke-width="2.2" marker-end="url(#g)"/>
+<rect x="24" y="324" width="296" height="256" rx="10" fill="#fff" stroke="#e3e8f0" stroke-width="1.5"/>
+<text x="40" y="352" font-size="16" font-weight="800" fill="#1f2937" text-anchor="start">④ 길이 조절 롤러 레버형</text>
+<text x="40" y="566" font-size="13.5" font-weight="600" fill="#4b5563" text-anchor="start">③과 같고 팔 길이 조절</text>
+<rect x="129" y="444" width="86" height="90" rx="6" fill="#e9edf3" stroke="#1f2937" stroke-width="2"/>
+<circle cx="141" cy="456" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="141" cy="522" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="203" cy="456" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="203" cy="522" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<rect x="159.0" y="534" width="26" height="14" fill="#cfd6e0" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="189" y="418" width="40" height="30" rx="4" fill="#cfd6e0" stroke="#1f2937" stroke-width="1.8"/>
+<circle cx="221" cy="432" r="6" fill="#b8c0cc" stroke="#1f2937" stroke-width="1.6"/>
+<line x1="221" y1="432" x2="259.5" y2="373.9" stroke="#1f2937" stroke-width="7" stroke-linecap="round"/>
+<line x1="221" y1="432" x2="259.5" y2="373.9" stroke="#b8c0cc" stroke-width="4" stroke-linecap="round"/>
+<circle cx="259.5" cy="373.9" r="11" fill="#fff" stroke="#1f2937" stroke-width="2.2"/><circle cx="259.5" cy="373.9" r="3" fill="#1f2937"/>
+<line x1="235.1" y1="392.0" x2="253.1" y2="402.0" stroke="#596fa1" stroke-width="1.6"/>
+<text x="275.5" y="403.9" font-size="12" font-weight="700" fill="#596fa1" text-anchor="start">길이 조절</text>
+<path d="M225.5 367.9 q14 -20 34 -22" fill="none" stroke="#b7793b" stroke-width="2.2" marker-end="url(#g)"/>
+<rect x="332" y="324" width="296" height="256" rx="10" fill="#fff" stroke="#e3e8f0" stroke-width="1.5"/>
+<text x="348" y="352" font-size="16" font-weight="800" fill="#1f2937" text-anchor="start">⑤ 막대 레버형</text>
+<text x="348" y="566" font-size="13.5" font-weight="600" fill="#4b5563" text-anchor="start">바퀴 대신 가는 막대</text>
+<rect x="437" y="444" width="86" height="90" rx="6" fill="#e9edf3" stroke="#1f2937" stroke-width="2"/>
+<circle cx="449" cy="456" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="449" cy="522" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="511" cy="456" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="511" cy="522" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<rect x="467.0" y="534" width="26" height="14" fill="#cfd6e0" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="497" y="418" width="40" height="30" rx="4" fill="#cfd6e0" stroke="#1f2937" stroke-width="1.8"/>
+<circle cx="529" cy="432" r="6" fill="#b8c0cc" stroke="#1f2937" stroke-width="1.6"/>
+<line x1="529" y1="432" x2="559" y2="346" stroke="#1f2937" stroke-width="3.2" stroke-linecap="round"/>
+<path d="M523 354 q14 -18 32 -16" fill="none" stroke="#b7793b" stroke-width="2.2" marker-end="url(#g)"/>
+<rect x="640" y="324" width="296" height="256" rx="10" fill="#fff" stroke="#e3e8f0" stroke-width="1.5"/>
+<text x="656" y="352" font-size="16" font-weight="800" fill="#1f2937" text-anchor="start">⑥ 코일 스프링형</text>
+<text x="656" y="566" font-size="13.5" font-weight="600" fill="#4b5563" text-anchor="start">어느 방향에서 건드려도 작동</text>
+<rect x="745" y="444" width="86" height="90" rx="6" fill="#e9edf3" stroke="#1f2937" stroke-width="2"/>
+<circle cx="757" cy="456" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="757" cy="522" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="819" cy="456" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<circle cx="819" cy="522" r="4" fill="#fff" stroke="#1f2937" stroke-width="1.4"/>
+<rect x="775.0" y="534" width="26" height="14" fill="#cfd6e0" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="772" y="430" width="32" height="14" fill="#cfd6e0" stroke="#1f2937" stroke-width="1.6"/>
+<path d="M788 430 q9 -5 0 -10 q-9 -5 0 -10 q9 -5 0 -10 q-9 -5 0 -10 q9 -5 0 -10" fill="none" stroke="#1f2937" stroke-width="2.4"/>
+<line x1="788" y1="380" x2="788" y2="364" stroke="#1f2937" stroke-width="2.6" />
+<line x1="744" y1="372" x2="770.4" y2="372" stroke="#b7793b" stroke-width="2.2" marker-end="url(#g)"/>
+<line x1="832" y1="372" x2="805.6" y2="372" stroke="#b7793b" stroke-width="2.2" marker-end="url(#g)"/>
+<text x="24" y="602" font-size="12.5" font-weight="600" fill="#6b7280" text-anchor="start">※ 모양을 설명하는 그림입니다. 주황 화살표는 움직이는 부분이 닿는 방향입니다.</text>
+</svg>
