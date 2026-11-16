@@ -152,7 +152,14 @@ body{margin:0;background:#fff}
 .hm .rest b{font-size:16px}
 .hm .rest a{color:#e8ebee;font-size:14px;border-bottom:1px solid #2c3238;padding:3px 0}
 .hm .rest a:last-child{border:0}
-.hm .partner{margin-top:12px;font-size:14px;color:#3d454c;background:#fff;border:1px dashed #b9c0c6;border-radius:8px;padding:12px 16px}
+.hm .pt{margin-top:28px}
+.hm .pt-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 12px}
+.hm .pt-h h3{margin:0;font-size:19px}
+.hm .pt-h span{font-size:14px;color:#5a636b}
+.hm .card .im{position:relative}
+.hm .card .tag{position:absolute;top:8px;left:8px;background:#15181c;color:#fff;font-size:12px;font-weight:700;padding:2px 8px;border-radius:4px}
+.hm .pt-note{grid-column:span 2;border:1px dashed #b9c0c6;border-radius:10px;padding:16px 18px;font-size:14px;color:#3d454c;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.hm .pt-note b{font-size:15px;color:#1b1f24}
 /* WTM */
 .hm .b-d .lead2{color:#c9cfd4;margin:0 0 20px}
 .hm .wg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -279,7 +286,14 @@ body{margin:0;background:#fff}
 <a href="/products/line-blade/">톱날 · 컷트날 · 열판 →</a>
 </div>
 </div>
-<p class="partner" id="partner">협력사 제품 — 문의는 해당 업체에 해 주십시오. 식품 관련 기계(명푸드시스템 계란지단기 · 김밥시트기) <a href="/products/partner/myeongfood.html">보기 →</a> · 알루미늄 창호 가네고(중앙가네고 후렘가네고 · 코너피스 · 브라켓트) <a href="/products/partner/jungang.html">보기 →</a></p>
+<div class="pt" id="partner">
+<div class="pt-h"><h3>협력사 제품</h3><span>함께 일하는 업체의 제품입니다.</span></div>
+<div class="lg">
+<a class="card" href="/products/partner/myeongfood.html"><div class="im"><span class="tag">협력사</span><img src="/images/partner/myeongfood/mf_machine_01.jpg" alt="명푸드시스템 계란지단기" width="1024" height="768" loading="lazy"/></div><div class="t"><b>명푸드시스템</b><span>식품 기계 · 계란지단기 · 김밥시트기</span></div></a>
+<a class="card" href="/products/partner/jungang.html"><div class="im"><span class="tag">협력사</span><img src="/images/partner/jungang/frame_00.jpg" alt="중앙가네고 후렘가네고" width="249" height="232" loading="lazy"/></div><div class="t"><b>중앙가네고</b><span>알루미늄 창호 가네고 · 코너피스 · 브라켓트</span></div></a>
+<div class="pt-note"><b>문의는 해당 업체로</b>협력사 제품 문의는 각 업체로 직접 해 주십시오. 연락처는 각 업체 페이지에서 확인하실 수 있습니다.</div>
+</div>
+</div>
 </div></section>
 
 <section class="band b-d" id="wtm"><div class="wrap">
