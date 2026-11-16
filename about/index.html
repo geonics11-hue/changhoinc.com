@@ -156,6 +156,23 @@ body{margin:0;background:#fff}
 }
 @media print{.ab-bar{display:none}}
 </style>
+<style id="video-css">
+/* ===== video (var) — facade. 클릭 전 외부 요청 0건 ===== */
+.vfacade{position:relative;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;cursor:pointer;
+ background:#0d1117;max-width:720px;}
+.vfacade img{width:100%;display:block;opacity:.86;}
+.vfacade .vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+ width:74px;height:74px;border-radius:50%;background:rgba(0,0,0,.62);display:flex;
+ align-items:center;justify-content:center;}
+.vfacade .vplay::after{content:"";border-style:solid;border-width:13px 0 13px 22px;
+ border-color:transparent transparent transparent #fff;margin-left:5px;}
+.vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
+ padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+.ab .vbox{margin-top:26px;max-width:720px}
+.ab .vbox .ey{margin-bottom:10px}
+.ab .vbox .vfacade img{height:auto}
+@media print{.vfacade{display:none}}
+</style>
 </head>
 <body>
 <!-- ===== 공통 상단 메뉴 줄 (chg) ===== -->
@@ -179,6 +196,7 @@ body{margin:0;background:#fff}
 <section class="band b-w"><div class="wrap">
 <p class="quote">"우리는 기계만 팔지 않습니다. 고객의 생산성을 팝니다." <span>— 대표 이예택</span></p>
 <p class="bd">창호종합기계는 2004년 12월 창업 이래 22년째 글로벌 산업장비 수입 및 유통 사업을 해 왔습니다. 터키, 중국, 유럽의 검증된 제조사와 직거래하며, WTM(World Trading Machine) 브랜드로 자체 제품을 개발합니다. 도입 뒤 고장이 나면 저희가 직접 수리합니다. wtm.kr 은 저희 회사 사이트가 아닙니다.</p>
+<div class="vbox"><div class="ey">회사 소개 영상</div><div class="vfacade" data-yt="TKpreS1duRU"><img alt="회사 소개 — 산업기계 수입대행 · 유지보수 관리 · 창호종합기계 유튜브" loading="lazy" src="img/company-video-cover.jpg" width="1280" height="720"/><div class="vplay"></div><div class="vt">회사 소개 — 산업기계 수입대행 · 유지보수 관리 · 창호종합기계 유튜브</div></div></div>
 </div></section>
 
 <section class="band b-g"><div class="wrap"><div class="ey">숫자로 보는 창호종합기계</div><h2>22년째, 공급과 수리를 함께 합니다</h2>
@@ -227,6 +245,24 @@ body{margin:0;background:#fff}
 </main>
 <footer class="ab-foot"><div class="wrap"><b>창호종합기계 (CHANGHO INC)</b><span>경남 김해시 상동면 상동로375번길 21</span><span>TEL 055-327-4112 · FAX 055-327-3112</span><span>대표 이예택 · 사업자등록번호 606-05-17769 · 통신판매업신고 2007-경남김해-0106</span><span><a href="/privacy.html">개인정보처리방침</a></span></div></footer>
 <div class="ab-bar"><a href="tel:055-327-4112" style="background:#1f6fa3;color:#fff">☎ 전화하기</a><a href="https://pf.kakao.com/_xojdTX" rel="noopener" target="_blank" style="background:#FEE500;color:#191919">카카오톡 문의</a></div>
+<script>
+document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
+el.addEventListener('click', function(){
+var id = el.getAttribute('data-yt');
+el.innerHTML = '';
+if (el.classList.contains('vshort')) { el.style.aspectRatio = '9 / 16'; } else {
+el.style.aspectRatio = '16 / 9';
+}
+var f = document.createElement('iframe');
+f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
+f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+f.setAttribute('allowfullscreen','');
+el.appendChild(f);
+}, {once:true});
+});
+</script>
+<script type="application/ld+json" id="video-ld">{"@context":"https://schema.org","@type":"VideoObject","name":"창호종합기계 회사 소개","description":"회사 소개 — 산업기계 수입대행 · 유지보수 관리 · 창호종합기계 유튜브 영상","thumbnailUrl":"https://www.changhoinc.com/about/img/company-video-cover.jpg","uploadDate":"2026-10-12","embedUrl":"https://www.youtube.com/embed/TKpreS1duRU","publisher":{"@id":"https://www.changhoinc.com/#organization"}}</script>
 <script id="chg-js">
 (function(){"use strict";
 var D=[{"l":"용접테이블 · D28 악세사리","b":"111","u":"/products/111/","s":["용접정반 흑착색","용접정반 질화","D28 악세사리 세트","D28 악세사리 단품"]},{"l":"알루미늄 절단기 · 원형절단기","b":"101 102","u":"/products/101/","s":["CNC 절단기","2헤드 절단기","1헤드 절단기","휴대용 절단기","롤러다이","작업다이 · 디지털 디스플레이"]},{"l":"탭핑기 · 서보탭핑기","b":"104","u":"/products/104/","s":["서보탭핑기 본체","절삭유 분사식 (미스트)","탭핑기 + 주철다이 세트","마그네틱척 · 정밀바이스","탭 콜렛척 · 악세사리"]},{"l":"유압 펀칭기 · 프레스","b":"103","u":"/products/103/","s":["유압 펀칭기","CNC 펀칭기","사각 노칭기","앵글 · 파이프 절단기","다구멍 펀칭기"]},{"l":"R노칭기 · 파이프 노칭기","b":"109","u":"/products/109/","s":["R노칭기","유압 R노칭기","모터식 R노칭기","수동식 R노칭기","홀소 노칭기","파이프 노칭"]},{"l":"파이프 축관기 · 벤딩기","b":"","u":"/products/109/index-b.html","s":["축관기","파이프 압착기","유압 파이프 벤더","파이프 벤딩기"]},{"l":"챔버 · 면취기 · 모따기","b":"107","u":"/products/107/","s":["직각 면취기","원형 챔버"]},{"l":"금속절단기 · 밴드쏘","b":"100","u":"/products/100/","s":["밴드쏘","원형톱기계","휴대용 밴드쏘"]},{"l":"절곡·벤딩기 · 전선탈피기","b":"105 106 108 110 199","u":"/products/line-bend/","s":["절곡 · 벤딩기","레이저 가공기","전선탈피기 · 차핑기","연마기 · 나사포장기 · 기타"]},{"l":"알루미늄 창호기계","b":"200 202 203 204 205 206 207 208","u":"/products/line-al/","s":["코너클램프기","카피루터기","엔드밀링기","AL 펀칭기 · 가공금형","드릴머신 · 피스체결기","단열 프로파일 롤러프레스기 · 널링기","단열 프로파일 CNC 라인","방충망 밀대"]},{"l":"PVC 창호기계 · PVC 용접기","b":"300 301 302 303 304 305 306 307","u":"/products/line-pvc/","s":["PVC 절단기","PVC 용접기","PVC 루터 · 드릴 · 피스체결기","PVC 펀칭기 · 가공금형","PVC 엔드밀링기","PVC 벤딩기","PVC 사상기 · 압착기","PVC 기타 가공기"]},{"l":"랩핑기 · 목공/유리 가공기","b":"400 401 410","u":"/products/400/","s":["랩핑기","유리 가공기계","목공기계","윈치 · 견인 회전장치","창호 시험 설비"]},{"l":"톱날 · 컷트날 · 열판","b":"501 502 503","u":"/products/line-blade/","s":["톱날","컷트날","열판","열판지"]}];
