@@ -177,6 +177,17 @@ body{margin:0;background:#fff}
 .hm .mini h3{margin:0;font-size:19px;flex:0 0 auto}.hm .mini p{margin:0;color:#3d454c;font-size:14px;flex:1 1 300px}
 .hm .links{display:flex;gap:10px;flex-wrap:wrap}
 .hm .links a{border:1px solid #b9c0c6;border-radius:8px;padding:10px 14px;font-weight:700;font-size:14px;color:#1b1f24}
+/* 기술자료 */
+.hm .rs-hd{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 12px}.hm .rs-hd h3{margin:0;font-size:19px}.hm .rs-hd span{font-size:14px;color:#5a636b}
+.hm .rs-box{background:#fff;border:1px solid #d0d6db;border-radius:12px;padding:20px 24px}
+.hm .rs-top{display:flex;align-items:baseline;gap:8px 14px;flex-wrap:wrap;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid #eef0f2}.hm .rs-top b{font-size:17px}.hm .rs-top span{font-size:14px;color:#3d454c;flex:1 1 300px}.hm .rs-top a{font-weight:700;font-size:14px}
+.hm .rs-cat{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 20px}
+.hm .rs-cat h4{margin:0 0 6px;font-size:14px;color:#1f6fa3}
+.hm .rs-cat a{display:block;font-size:14px;line-height:1.5;color:#1b1f24;padding:3px 0}.hm .rs-cat a:hover{color:#1f6fa3;text-decoration:underline}
+.hm .rs-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.hm .rs-cards .cc{border:1px solid #d0d6db}.hm .rs-cards .cc img{height:200px}
+@media(max-width:900px){.hm .rs-cat{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.hm .rs-box{padding:16px}.hm .rs-cards{grid-template-columns:1fr}.hm .rs-cards .cc img{height:170px}}
 /* 문의 */
 .hm .ask{background:#fff;color:#1b1f24;border-radius:14px;padding:32px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 .hm .ask-hd{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:flex-end;margin-bottom:24px}
@@ -317,7 +328,20 @@ body{margin:0;background:#fff}
 </div></section>
 
 <section class="band b-g" id="resources" style="padding-bottom:14px"><div class="wrap">
-<div class="mini"><h3>기술자료</h3><p>제품 영상, 납품 사례 글, 표준 부품 캐드 도면, 에어 부품 고르는 법을 보실 수 있습니다.</p><div class="links"><a href="https://www.youtube.com/@machinelab/videos" rel="noopener" target="_blank">유튜브 채널</a><a href="https://blog.naver.com/geonics" rel="noopener" target="_blank">네이버 블로그</a><a href="/parts/">부품 도면 자료실 · 에어 부품 안내</a></div></div>
+<div class="rs-hd"><h3>기술자료</h3><span>표준 부품 도면, 부품 고르는 법, 제품 영상, 납품 사례 글을 보실 수 있습니다.</span></div>
+<div class="rs-box">
+<div class="rs-top"><b>부품 도면 자료실</b><span>표준 부품의 캐드 도면을 무료로 내려받으실 수 있고, 부품 고르는 법도 보실 수 있습니다.</span><a href="/parts/">자료실 전체 보기 →</a></div>
+<div class="rs-cat">
+<div><h4>베어링 · 직선 이동 부품</h4><a href="/parts/bearing-deep-groove.html">볼베어링</a><a href="/parts/bearing-unit-ucfl.html">UCFL 플랜지 유니트</a><a href="/parts/linear-bushing.html">리니어 부싱</a><a href="/parts/linear-shaft.html">리니어 샤프트</a><a href="/parts/lm-guide-block.html">LM 가이드 블록</a><a href="/parts/rod-end-pos.html">로드엔드</a></div>
+<div><h4>에어 부품</h4><a href="/parts/air-cylinder-compat.html">에어 실린더 호환표</a><a href="/products/500/onetouch-fitting.html">원터치피팅</a><a href="/products/500/brass-pipe-fitting.html">황동 호스니플 · 부싱</a><a href="/products/500/silencer.html">소음기</a><a href="/products/500/hand-valve.html">핸드밸브</a><a href="/products/500/ball-valve.html">볼밸브</a><a href="/products/500/speed-controller.html">스피드컨트롤러</a><a href="/products/500/air-unit.html">에어 유닛</a></div>
+<div><h4>공구</h4><a href="/parts/endmill.html">엔드밀</a><a href="/parts/step-drill.html">2단 드릴</a><a href="/parts/dies.html">다이스</a><a href="/parts/saw-blade-ring.html">톱날 가락지</a></div>
+<div><h4>벨트 · 오일씰 · 전기 부품</h4><a href="/parts/belt-v-timing.html">V벨트 · 타이밍벨트</a><a href="/parts/oil-seal-tc.html">오일씰</a><a href="/parts/limit-switch.html">리밋 스위치</a></div>
+</div>
+</div>
+<div class="rs-cards">
+<a class="cc" href="https://www.youtube.com/@machinelab/videos" rel="noopener" target="_blank"><img src="/cases/img/261106-cnc3000-strike-list.jpg" alt="WTMM-CNC-3000 홈 가공 시운전" width="640" height="360" loading="lazy"/><div class="t"><span>유튜브 채널 · 제품 영상</span><b>기계가 작동하는 모습과 시운전 과정을 영상으로 보실 수 있습니다</b></div></a>
+<a class="cc" href="https://blog.naver.com/geonics" rel="noopener" target="_blank"><img src="/cases/img/250831-wtm-355-delivery-list.jpg" alt="WTM-355 액자 절단기 납품 설치" width="640" height="360" loading="lazy"/><div class="t"><span>네이버 블로그 · 납품 사례 글</span><b>납품 · 설치 · 수리 사례를 사진과 글로 보실 수 있습니다</b></div></a>
+</div>
 </div></section>
 <section class="band b-g" id="about" style="padding-top:0"><div class="wrap">
 <div class="mini"><h3>회사소개</h3><p>2004년 12월 창업 이래 22년째, 해외 기계 수입대행과 설치 · 수리를 함께 해 왔습니다. 자체 브랜드는 WTM입니다.</p><div class="links"><a href="/about/">회사소개 · 연혁 보기 →</a></div></div>
