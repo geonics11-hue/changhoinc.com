@@ -438,6 +438,9 @@ a.card:hover{border-color:var(--ac);box-shadow:0 8px 20px rgba(22,26,34,.08);}
 .vfacade.vshort .vt{font-size:13px;padding:40px 14px 14px;}
 .vfacade .vtag{position:absolute;left:12px;top:12px;font-size:12px;font-weight:800;color:#fff;background:rgba(0,0,0,.6);border-radius:4px;padding:3px 8px;}
 @media(max-width:760px){.vpair{flex-direction:column;align-items:stretch;} .vpair .vfacade.vshort{flex:none;width:100%;max-width:280px;margin:0 auto;}}
+/* ===== [APPEND 261117] 쇼츠 영상 틀 — 가로 사진을 오려 쓰지 않고 전체가 보이게 (나나파파 지시 2026-11-17) =====
+   기존 .vfacade.vshort 규칙 무수정. 틀(9:16)은 그대로 두고 사진만 전체가 보이게 한다(위아래에 틀 바탕색이 보인다). ===== */
+.vfacade.vshort img{object-fit:contain;}
 </style>
 <style id="vmore-css">
 .vmore{max-width:720px;margin:18px 0 0;border-top:1px solid #e6ebf2;}
