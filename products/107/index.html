@@ -366,6 +366,9 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 /* [2026-08-30 나나파파 승격] 비교표 행 썸네일 — 104/index.html 정본 이식 */
 .sizetbl td.tc,.sizetbl th.tc{width:56px;padding:4px 6px 4px 10px;}
 .rowthumb{width:44px;height:33px;object-fit:cover;border-radius:4px;display:block;background:#eef0f5;}
+/* ===== [APPEND 261117] 안내 단계 사진칸 — 사진을 자르지 않고 전체가 보이게 (나나파파 지시 2026-11-17) =====
+   기존 .step .ph 규칙 무수정. 칸(4:3)은 그대로 두고 사진만 전체가 보이게 한다(가로 사진은 위아래에 카드 바탕색이 보인다). ===== */
+.step .ph img{object-fit:contain;}
 </style>
 <link href="https://www.changhoinc.com/products/107/" rel="canonical"/>
 <meta content="website" property="og:type"/>

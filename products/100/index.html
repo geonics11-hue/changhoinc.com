@@ -372,6 +372,9 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 .rowthumb{width:44px;height:33px;object-fit:cover;border-radius:4px;display:block;background:#eef0f5;}
 .oi{display:block;text-decoration:none;color:inherit;}.oi .oimg{display:block;aspect-ratio:4/3;background:#fff;margin:-20px -22px 14px;border-bottom:1px solid #e6ebf2;border-radius:8px 8px 0 0;overflow:hidden;}.oi .oimg img{width:100%;height:100%;object-fit:contain;display:block;}.oi .ogo{color:#0066cc;text-decoration:underline;}
 @media(max-width:760px){.oix{grid-template-columns:1fr 1fr;gap:8px;}.oix .ord{padding:10px 12px;}.oix .oimg{margin:-10px -12px 8px;}.oix .oh{font-size:14px;}.oix .od{font-size:13px;line-height:1.5;}}
+/* ===== [APPEND 261117] 안내 단계 사진칸 — 사진을 자르지 않고 전체가 보이게 (나나파파 지시 2026-11-17) =====
+   기존 .step .ph 규칙 무수정. 칸(4:3)은 그대로 두고 사진만 전체가 보이게 한다(가로 사진은 위아래에 카드 바탕색이 보인다). ===== */
+.step .ph img{object-fit:contain;}
 </style><link href="https://www.changhoinc.com/products/100/" rel="canonical"/><meta content="website" property="og:type"/><meta content="창호종합기계" property="og:site_name"/><meta content="금속절단기 · 밴드쏘 · 하이스 원형톱 절단기 | 창호종합기계" property="og:title"/><meta content="철재 절단기 14종. 밴드쏘 2종과 하이스 원형톱 12종(수동·공압·유압·CNC)을 공급합니다." property="og:description"/><meta content="https://www.changhoinc.com/products/100/" property="og:url"/><meta content="https://www.changhoinc.com/images/og-default.png" property="og:image"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-4SVNEP6MSK"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4SVNEP6MSK');</script><script src="/js/ch-call.js" defer></script><style>
 /* [2026-09-09 나나파파 확정 「C안으로 간다」 · §B-6-2 예외] 대문 히어로 도입부 대표 이미지.
    정본 .hero/.hcard 규칙 무수정 — 뒤에서 배치만 덮는다. */

@@ -374,6 +374,9 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 .rowthumb{width:44px;height:33px;object-fit:cover;border-radius:4px;display:block;background:#eef0f5;}
 .oi{display:block;text-decoration:none;color:inherit;}.oi .oimg{display:block;aspect-ratio:4/3;background:#fff;margin:-20px -22px 14px;border-bottom:1px solid #e6ebf2;border-radius:8px 8px 0 0;overflow:hidden;}.oi .oimg img{width:100%;height:100%;object-fit:contain;display:block;}.oi .ogo{color:#0066cc;text-decoration:underline;}
 @media(max-width:760px){.oix{grid-template-columns:1fr 1fr;gap:8px;}.oix .ord{padding:10px 12px;}.oix .oimg{margin:-10px -12px 8px;}.oix .oh{font-size:14px;}.oix .od{font-size:13px;line-height:1.5;}}
+/* ===== [APPEND 261117] 안내 단계 사진칸 — 사진을 자르지 않고 전체가 보이게 (나나파파 지시 2026-11-17) =====
+   기존 .step .ph 규칙 무수정. 칸(4:3)은 그대로 두고 사진만 전체가 보이게 한다(가로 사진은 위아래에 카드 바탕색이 보인다). ===== */
+.step .ph img{object-fit:contain;}
 </style>
 <link href="https://www.changhoinc.com/products/103/" rel="canonical"/>
 <meta content="website" property="og:type"/>
