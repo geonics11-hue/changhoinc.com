@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.changhoinc.com/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-17</lastmod>
   </url>
   <url>
     <loc>https://www.changhoinc.com/about/</loc>
@@ -690,7 +690,7 @@
   </url>
   <url>
     <loc>https://www.changhoinc.com/parts/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-17</lastmod>
   </url>
   <url>
     <loc>https://www.changhoinc.com/parts/air-cylinder-compat.html</loc>
@@ -1102,7 +1102,7 @@
   </url>
   <url>
     <loc>https://www.changhoinc.com/products/101/wtmm-2h90-200x400.html</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-17</lastmod>
   </url>
   <url>
     <loc>https://www.changhoinc.com/products/101/wtmm-500.html</loc>
@@ -3087,6 +3087,10 @@
   <url>
     <loc>https://www.changhoinc.com/products/500/silencer.html</loc>
     <lastmod>2026-11-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.changhoinc.com/products/500/solenoid-valve.html</loc>
+    <lastmod>2026-11-17</lastmod>
   </url>
   <url>
     <loc>https://www.changhoinc.com/products/500/speed-controller.html</loc>
