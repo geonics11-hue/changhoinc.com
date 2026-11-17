@@ -364,6 +364,10 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 /* [2026-08-30 나나파파 승격 · 2026-09-05 소급] 비교표 행 썸네일 — 104/index.html 정본 이식 */
 .sizetbl td.tc,.sizetbl th.tc{width:56px;padding:4px 6px 4px 10px;}
 .rowthumb{width:44px;height:33px;object-fit:cover;border-radius:4px;display:block;background:#eef0f5;}
+/* ===== [APPEND 261117] 카드 목록 사진칸 — 사진을 자르지 않고 전체가 보이게 (나나파파 지시 2026-11-17) =====
+   기존 .gcell 규칙 무수정. 2026-08-23 규칙(.gallery-sec)이 못 걸리던 쪽까지 같은 방식으로 맞춘다.
+   대표컷(.gmain)은 기존 규칙(height:auto)을 그대로 둔다. ===== */
+.gallery .gcell:not(.gmain) img{height:250px;object-fit:contain;background:#fff;}
 </style>
 
 <link href="https://www.changhoinc.com/products/line-blade/" rel="canonical"/>

@@ -411,6 +411,10 @@ body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(
 .rowthumb{width:44px;height:44px;object-fit:contain;background:#fff;border:1px solid #e2e8f0;
  border-radius:4px;display:block;margin:0 auto;}
 
+/* ===== [APPEND 261117] 카드 목록 사진칸 — 사진을 자르지 않고 전체가 보이게 (나나파파 지시 2026-11-17) =====
+   기존 .gcell 규칙 무수정. 2026-08-23 규칙(.gallery-sec)이 못 걸리던 쪽까지 같은 방식으로 맞춘다.
+   대표컷(.gmain)은 기존 규칙(height:auto)을 그대로 둔다. ===== */
+.gallery .gcell:not(.gmain) img{height:250px;object-fit:contain;background:#fff;}
 </style>
 
 <link href="https://www.changhoinc.com/products/111/d28-level-ruler-3.html" rel="canonical"/>
