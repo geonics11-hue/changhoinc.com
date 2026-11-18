@@ -3194,7 +3194,7 @@
   </url>
   <url>
     <loc>https://www.changhoinc.com/repair/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
   </url>
   <url>
     <loc>https://www.changhoinc.com/repair/air-cylinder-rod-packing-replace.html</loc>
@@ -3319,6 +3319,18 @@
   <url>
     <loc>https://www.changhoinc.com/repair/corner-clamp-slide-lube-holes.html</loc>
     <lastmod>2026-11-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.changhoinc.com/repair/corner-cleat-saw-blade-check.html</loc>
+    <lastmod>2026-11-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.changhoinc.com/repair/corner-cleat-saw-daily-check.html</loc>
+    <lastmod>2026-11-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.changhoinc.com/repair/corner-cleat-saw-troubleshooting.html</loc>
+    <lastmod>2026-11-18</lastmod>
   </url>
   <url>
     <loc>https://www.changhoinc.com/repair/cutter-clamp-release-cleaning.html</loc>
@@ -3471,5 +3483,13 @@
   <url>
     <loc>https://www.changhoinc.com/repair/wtm-1c-02-blade-replace.html</loc>
     <lastmod>2026-11-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.changhoinc.com/repair/wtmz-blade-replace.html</loc>
+    <lastmod>2026-11-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.changhoinc.com/repair/wtmz-material-sensor-check.html</loc>
+    <lastmod>2026-11-18</lastmod>
   </url>
 </urlset>
