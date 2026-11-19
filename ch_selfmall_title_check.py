@@ -73,7 +73,7 @@ def check(path, info, titles):
         block.append('원산지 낱말이 제목에 있음')
     if INNER.search(t):
         warn.append('사내 말·옛 표기: ' + ','.join(sorted(set(INNER.findall(t)))))
-    others = [p for p in titles.get(t, []) if p != path]
+    others = [p for p in titles.get(t, []) if p.replace('\\', '/') != path.replace('\\', '/')]
     if others:
         block.append('다른 쪽과 제목이 같음: ' + others[0])
     lim = LIMIT.get(sec)
