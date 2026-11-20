@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Noto Sans CJK KR, Noto Sans KR, sans-serif" viewBox="0 0 900 400" role="img" aria-label="손으로 켜는 톱과 원형톱 비교 그림 — 왼쪽 손으로 켜는 톱은 앞뒤로 움직이며 한쪽 방향에서만 깎고, 오른쪽 원형톱은 한 방향으로 계속 돌며 톱니가 쉬지 않고 자재를 깎아 칩이 떨어집니다">
+<defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1e3a8a"/></marker>
+<marker id="b" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker></defs>
+<rect width="900" height="400" fill="#fff"/>
+<line x1="450" y1="20" x2="450" y2="380" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6"/>
+<text x="225" y="40" font-size="21" font-weight="800" fill="#0f172a" text-anchor="middle">손으로 켜는 톱 — 밀고 당깁니다</text>
+<rect x="70" y="150" width="310" height="46" fill="#9fb0c8" stroke="#334155" stroke-width="2"/>
+<polyline points="70,196 80,196 88,208 96,196 104,208 112,196 120,208 128,196 136,208 144,196 152,208 160,196 168,208 176,196 184,208 192,196 200,208 208,196 216,208 224,196 232,208 240,196 248,208 256,196 264,208 272,196 280,208 288,196 296,208 304,196 312,208 320,196 328,208 336,196 344,208 352,196 360,208 368,196 376,208 384,196" fill="#9fb0c8" stroke="#334155" stroke-width="2"/>
+<rect x="30" y="160" width="44" height="26" rx="6" fill="#b45309" stroke="#334155" stroke-width="2"/>
+<rect x="90" y="214" width="270" height="70" fill="#e5e7eb" stroke="#334155" stroke-width="2"/>
+<text x="225" y="256" font-size="17" fill="#334155" text-anchor="middle">자재</text>
+<line x1="110" y1="115" x2="200" y2="115" stroke="#c2410c" stroke-width="4" marker-end="url(#b)"/>
+<text x="110" y="100" font-size="17" fill="#c2410c" font-weight="800">이쪽으로 갈 때 깎음</text>
+<line x1="335" y1="126" x2="245" y2="126" stroke="#94a3b8" stroke-width="4" marker-end="url(#a)" stroke-dasharray="8 5"/>
+<text x="345" y="118" font-size="15" fill="#64748b">돌아올 때는</text><text x="345" y="137" font-size="15" fill="#64748b">깎지 않음</text>
+<text x="225" y="330" font-size="17" fill="#334155" text-anchor="middle">움직임의 절반은 날을 되돌리는 시간입니다</text>
+<text x="675" y="40" font-size="21" font-weight="800" fill="#0f172a" text-anchor="middle">원형톱 — 한 방향으로 돕니다</text>
+<polygon points="780.0,175.0 791.4,187.2 778.4,193.2 787.5,207.2 773.7,210.9 780.2,226.3 765.9,227.5 769.7,243.8 755.4,242.5 756.3,259.2 742.5,255.4 740.4,272.0 727.5,265.9 722.6,281.9 710.9,273.7 703.3,288.5 693.2,278.4 683.2,291.7 675.0,280.0 662.8,291.4 656.8,278.4 642.8,287.5 639.1,273.7 623.7,280.2 622.5,265.9 606.2,269.7 607.5,255.4 590.8,256.3 594.6,242.5 578.0,240.4 584.1,227.5 568.1,222.6 576.3,210.9 561.5,203.3 571.6,193.2 558.3,183.2 570.0,175.0 558.6,162.8 571.6,156.8 562.5,142.8 576.3,139.1 569.8,123.7 584.1,122.5 580.3,106.2 594.6,107.5 593.7,90.8 607.5,94.6 609.6,78.0 622.5,84.1 627.4,68.1 639.1,76.3 646.7,61.5 656.8,71.6 666.8,58.3 675.0,70.0 687.2,58.6 693.2,71.6 707.2,62.5 710.9,76.3 726.3,69.8 727.5,84.1 743.8,80.3 742.5,94.6 759.2,93.7 755.4,107.5 772.0,109.6 765.9,122.5 781.9,127.4 773.7,139.1 788.5,146.7 778.4,156.8 791.7,166.8" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+<circle cx="675" cy="175" r="16" fill="#fff" stroke="#334155" stroke-width="2"/>
+<path d="M615 135 A72 72 0 0 1 737 137" fill="none" stroke="#1e3a8a" stroke-width="4" marker-end="url(#a)"/>
+<text x="675" y="181" font-size="0"> </text><rect x="560" y="262" width="230" height="56" fill="#e5e7eb" stroke="#334155" stroke-width="2"/><text x="610" y="298" font-size="17" fill="#334155">자재</text>
+<path d="M548 250 l-9 -5 l-3 8 z" fill="#c2410c"/><path d="M533 236 l-9 -5 l-3 8 z" fill="#c2410c"/><path d="M522 256 l-9 -5 l-3 8 z" fill="#c2410c"/><path d="M540 268 l-9 -5 l-3 8 z" fill="#c2410c"/><text x="505" y="226" font-size="16" fill="#c2410c" font-weight="800">칩</text>
+<text x="675" y="355" font-size="17" fill="#334155" text-anchor="middle">톱니가 쉬지 않고 같은 방향으로 깎습니다</text>
+</svg>

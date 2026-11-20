@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Noto Sans CJK KR, Noto Sans KR, sans-serif" viewBox="0 0 900 470" role="img" aria-label="원반 절단기를 위에서 본 그림 — 자재를 대는 판에 프로파일을 붙이고, 각도 돌림판으로 톱날을 45도로 돌린 뒤, 손잡이를 당기면 톱 머리가 안내 봉을 따라 작업자 쪽으로 오며 자재를 비스듬히 자릅니다">
+<defs><marker id="c" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker></defs>
+<rect width="900" height="470" fill="#fff"/>
+<text x="450" y="34" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">위에서 본 모습 — 45°로 자를 때</text>
+<circle cx="450" cy="250" r="150" fill="#eef2f7" stroke="#334155" stroke-width="2"/>
+<rect x="110" y="138" width="680" height="22" fill="#86a789" stroke="#334155" stroke-width="2"/>
+<rect x="130" y="160" width="640" height="60" fill="#9fb0c8" stroke="#334155" stroke-width="2"/>
+<text x="230" y="197" font-size="17" fill="#0f172a">알루미늄 프로파일</text>
+<g transform="rotate(-45 450 250)">
+<rect x="444" y="80" width="12" height="340" fill="#475569"/>
+<line x1="470" y1="150" x2="470" y2="350" stroke="#c2410c" stroke-width="4" marker-end="url(#c)"/>
+</g>
+<path d="M432 150 A72 72 0 0 1 411 201" fill="none" stroke="#1e3a8a" stroke-width="3"/>
+<text x="440" y="192" font-size="19" fill="#1e3a8a" font-weight="800">45°</text>
+<text x="120" y="128" font-size="16" fill="#334155">⑤ 자재를 대는 판</text>
+<text x="300" y="430" font-size="16" fill="#334155">⑥ 각도 돌림판 — 45°~90° 사이에서 돌려 맞춤</text>
+<text x="575" y="372" font-size="16" fill="#c2410c" font-weight="800">③ 손잡이를 당기면</text>
+<text x="575" y="394" font-size="16" fill="#c2410c">톱 머리가 ④ 안내 봉을 따라 이동</text>
+<text x="250" y="98" font-size="16" fill="#334155">② 원형 톱날(위에서 본 두께)</text>
+<line x1="345" y1="104" x2="372" y2="140" stroke="#334155" stroke-width="1.5"/>
+<text x="450" y="462" font-size="15" fill="#64748b" text-anchor="middle">작업자 쪽 ↓</text>
+</svg>
