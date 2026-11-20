@@ -1,18 +1,49 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
-<rect width="900" height="400" fill="#fff"/>
-<defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker></defs>
-<text x="225" y="40" font-size="24" font-weight="900" fill="#1e3a8a" text-anchor="middle">선반 — 재료가 돈다</text>
-<text x="675" y="40" font-size="24" font-weight="900" fill="#1e3a8a" text-anchor="middle">밀링 — 칼이 돈다</text>
-<line x1="450" y1="60" x2="450" y2="340" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6"/>
-<rect x="95" y="150" width="260" height="70" fill="#cfd8e6" stroke="#334155" stroke-width="2.5"/>
-<path d="M200 185 a28 28 0 1 1 56 0" fill="none" stroke="#c2410c" stroke-width="4" marker-end="url(#a)" transform="translate(-10 -50)"/>
-<polygon points="225,228 255,262 195,262" fill="#7a5c1e" stroke="#334155" stroke-width="2" transform="translate(0 -8)"/>
-<text x="225" y="300" font-size="17" fill="#334155" text-anchor="middle" font-weight="700">돌아가는 쇠 막대에 날을 대어 깎습니다</text>
-<text x="225" y="326" font-size="15" fill="#4b5563" text-anchor="middle">둥근 모양을 만들기 좋습니다</text>
-<rect x="540" y="230" width="270" height="60" fill="#cfd8e6" stroke="#334155" stroke-width="2.5"/>
-<rect x="650" y="96" width="50" height="60" fill="#9fb0c8" stroke="#334155" stroke-width="2.5"/>
-<rect x="640" y="156" width="70" height="72" fill="#7a5c1e" stroke="#334155" stroke-width="2.5"/>
-<path d="M610 178 a30 30 0 0 1 20 -34" fill="none" stroke="#c2410c" stroke-width="4" marker-end="url(#a)"/>
-<text x="675" y="326" font-size="17" fill="#334155" text-anchor="middle" font-weight="700">돌아가는 칼에 가만히 있는 재료를 댑니다</text>
-<text x="675" y="352" font-size="15" fill="#4b5563" text-anchor="middle">평평한 면·홈·구멍을 만들기 좋습니다</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+<rect width="900" height="430" fill="#fff"/>
+<defs>
+<marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker>
+<marker id="ab" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1e3a8a"/></marker>
+<linearGradient id="cy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8edf5"/><stop offset=".5" stop-color="#b9c6d9"/><stop offset="1" stop-color="#8797b0"/></linearGradient>
+<linearGradient id="cx" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6a2c"/><stop offset=".45" stop-color="#d8b36a"/><stop offset="1" stop-color="#7a5c1e"/></linearGradient>
+</defs>
+<text x="225" y="38" font-size="25" font-weight="900" fill="#1e3a8a" text-anchor="middle">선반 — 재료가 돈다</text>
+<text x="675" y="38" font-size="25" font-weight="900" fill="#1e3a8a" text-anchor="middle">밀링 — 칼이 돈다</text>
+<line x1="450" y1="58" x2="450" y2="400" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6"/>
+<!-- lathe -->
+<rect x="40" y="120" width="60" height="130" rx="6" fill="#64748b" stroke="#334155" stroke-width="2"/>
+<text x="70" y="275" font-size="15" fill="#334155" text-anchor="middle" font-weight="700">척</text>
+<rect x="100" y="160" width="290" height="50" fill="url(#cy)" stroke="#334155" stroke-width="2"/>
+<ellipse cx="390" cy="185" rx="12" ry="25" fill="#cfd8e6" stroke="#334155" stroke-width="2"/>
+<rect x="250" y="160" width="140" height="8" fill="#fff" opacity=".0"/>
+<path d="M300 140 C 330 112, 370 116, 392 140" fill="none" stroke="#c2410c" stroke-width="4" marker-end="url(#ar)"/>
+<text x="330" y="105" font-size="16" fill="#c2410c" text-anchor="middle" font-weight="900">빙글빙글 돈다</text>
+<polygon points="250,212 236,290 288,290" fill="url(#cx)" stroke="#334155" stroke-width="2"/>
+<text x="262" y="314" font-size="15" fill="#7a5c1e" text-anchor="middle" font-weight="700">날(가만히)</text>
+<path d="M262 214 c18 4 26 16 20 30 c-5 10 -18 8 -16 -2" fill="none" stroke="#7a5c1e" stroke-width="3"/>
+<text x="292" y="252" font-size="14" fill="#4b5563" font-weight="700">칩</text>
+<text x="225" y="358" font-size="17" fill="#334155" text-anchor="middle" font-weight="700">돌아가는 쇠 막대에 날을 대어 깎습니다</text>
+<text x="225" y="384" font-size="15" fill="#4b5563" text-anchor="middle">둥근 막대·축·나사를 만들기 좋습니다</text>
+<!-- mill -->
+<rect x="640" y="62" width="70" height="40" rx="4" fill="#64748b" stroke="#334155" stroke-width="2"/>
+<text x="722" y="88" font-size="15" fill="#334155" font-weight="700">스핀들</text>
+<rect x="660" y="102" width="30" height="58" fill="url(#cy)" stroke="#334155" stroke-width="2"/>
+<rect x="660" y="160" width="30" height="62" fill="url(#cx)" stroke="#334155" stroke-width="2"/>
+<path d="M660 170 l30 14 M660 186 l30 14 M660 202 l30 14" stroke="#5c4415" stroke-width="2"/>
+<ellipse cx="675" cy="135" rx="38" ry="11" fill="none" stroke="#c2410c" stroke-width="4" stroke-dasharray="150 40" />
+<path d="M640 133 l-2 8" stroke="#c2410c" stroke-width="4" marker-end="url(#ar)"/>
+<text x="600" y="128" font-size="16" fill="#c2410c" text-anchor="end" font-weight="900">칼이 돈다</text>
+<text x="600" y="198" font-size="15" fill="#7a5c1e" text-anchor="end" font-weight="700">엔드밀</text>
+<polygon points="520,262 850,262 820,232 550,232" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+<rect x="520" y="262" width="330" height="46" fill="#cfd8e6" stroke="#334155" stroke-width="2"/>
+<path d="M550 247 L668 247 L668 240 L682 240 L682 247" fill="none"/>
+<polygon points="552,240 676,240 682,247 558,247" fill="#64748b"/>
+<text x="600" y="236" font-size="13" fill="#334155" text-anchor="middle" font-weight="700">파인 홈</text>
+<path d="M698 222 c10 -4 18 2 14 10 M706 214 c8 -2 12 4 8 8" fill="none" stroke="#7a5c1e" stroke-width="2.5"/>
+<rect x="500" y="308" width="370" height="14" fill="#94a3b8" stroke="#334155" stroke-width="2"/>
+<path d="M770 340 h70" stroke="#1e3a8a" stroke-width="4" marker-end="url(#ab)"/>
+<text x="760" y="346" font-size="15" fill="#1e3a8a" text-anchor="end" font-weight="700">테이블이 재료를 민다</text>
+<text x="675" y="376" font-size="17" fill="#334155" text-anchor="middle" font-weight="700">돌아가는 칼에 재료를 밀어 넣어 깎습니다</text>
+<text x="675" y="402" font-size="15" fill="#4b5563" text-anchor="middle">평평한 면·홈·구멍을 만들기 좋습니다</text>
+<rect x="660" y="218" width="30" height="27" fill="url(#cx)" stroke="#334155" stroke-width="2"/>
+<path d="M660 226 l30 12" stroke="#5c4415" stroke-width="2"/>
 </svg>

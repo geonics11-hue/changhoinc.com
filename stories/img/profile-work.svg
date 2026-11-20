@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+<rect width="900" height="430" fill="#fff"/>
+<text x="225" y="38" font-size="23" font-weight="900" fill="#1e3a8a" text-anchor="middle">카피루터기 · CNC 루터</text>
+<text x="675" y="38" font-size="23" font-weight="900" fill="#1e3a8a" text-anchor="middle">엔드밀링기</text>
+<line x1="450" y1="58" x2="450" y2="400" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6"/>
+<!-- profile face -->
+<polygon points="40,150 400,150 420,130 60,130" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+<rect x="40" y="150" width="360" height="110" fill="#cfd8e6" stroke="#334155" stroke-width="2.5"/>
+<rect x="70" y="182" width="64" height="40" rx="20" fill="#fff" stroke="#334155" stroke-width="2.5"/>
+<rect x="160" y="188" width="70" height="26" rx="4" fill="#fff" stroke="#334155" stroke-width="2.5"/>
+<rect x="258" y="176" width="44" height="50" rx="3" fill="#fff" stroke="#334155" stroke-width="2.5"/>
+<rect x="326" y="236" width="50" height="12" rx="6" fill="#fff" stroke="#334155" stroke-width="2.5"/>
+<text x="102" y="290" font-size="14" fill="#334155" text-anchor="middle" font-weight="700">손잡이 구멍</text>
+<text x="195" y="290" font-size="14" fill="#334155" text-anchor="middle" font-weight="700">잠금장치 홈</text>
+<text x="280" y="290" font-size="14" fill="#334155" text-anchor="middle" font-weight="700">경첩 자리</text>
+<text x="360" y="290" font-size="14" fill="#334155" text-anchor="middle" font-weight="700">물빠짐 구멍</text>
+<text x="225" y="350" font-size="17" fill="#334155" text-anchor="middle" font-weight="700">프로파일 옆면에 구멍과 홈을 팝니다</text>
+<text x="225" y="376" font-size="15" fill="#4b5563" text-anchor="middle">자른 프로파일에 부품이 들어갈 자리를 냅니다</text>
+<!-- end milling -->
+<path d="M500 110 H850 V170 H720 Q700 170 696 186 Q690 200 670 200 Q650 200 644 186 Q640 170 620 170 H500 Z" fill="#cfd8e6" stroke="#334155" stroke-width="2.5"/>
+<text x="560" y="146" font-size="15" fill="#334155" text-anchor="middle" font-weight="700">가로 부재</text>
+<path d="M626 300 V176 Q640 176 644 190 Q652 208 670 208 Q688 208 696 190 Q700 176 714 176 V300 Z" fill="#e2e8f0" stroke="#334155" stroke-width="2.5"/>
+<path d="M626 176 Q640 176 644 190 Q652 208 670 208 Q688 208 696 190 Q700 176 714 176" fill="none" stroke="#c2410c" stroke-width="4"/>
+<text x="670" y="260" font-size="15" fill="#334155" text-anchor="middle" font-weight="700">세로 부재</text>
+<path d="M730 210 h40" stroke="#c2410c" stroke-width="3"/>
+<text x="776" y="206" font-size="14" fill="#c2410c" font-weight="700">상대 면 모양대로</text>
+<text x="776" y="224" font-size="14" fill="#c2410c" font-weight="700">깎은 끝단</text>
+<text x="675" y="350" font-size="17" fill="#334155" text-anchor="middle" font-weight="700">자른 프로파일 끝단을 상대 부재에 맞물리게 깎습니다</text>
+<text x="675" y="376" font-size="15" fill="#4b5563" text-anchor="middle">끝단이 상대 면에 꼭 맞아 틈 없이 맞댈 수 있습니다</text>
+</svg>

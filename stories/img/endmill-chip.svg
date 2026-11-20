@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+<rect width="900" height="430" fill="#fff"/>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker>
+<marker id="ab" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1e3a8a"/></marker></defs>
+<text x="450" y="38" font-size="24" font-weight="900" fill="#1e3a8a" text-anchor="middle">위에서 내려다본 엔드밀 — 날이 지나갈 때마다 칩이 한 조각씩</text>
+<!-- workpiece top view with slot -->
+<rect x="60" y="140" width="560" height="170" fill="#cfd8e6" stroke="#334155" stroke-width="2.5"/>
+<rect x="60" y="180" width="330" height="80" fill="#fff" stroke="#334155" stroke-width="2"/>
+<text x="150" y="228" font-size="17" fill="#334155" text-anchor="middle" font-weight="700">이미 판 홈</text>
+<text x="520" y="168" font-size="16" fill="#334155" text-anchor="middle" font-weight="700">알루미늄 자재</text>
+<!-- end mill circle -->
+<circle cx="390" cy="220" r="40" fill="#d8b36a" stroke="#334155" stroke-width="2.5"/>
+<path d="M390 180 C 410 200, 400 215, 430 220 L 420 236 C 395 225, 395 210, 376 190 Z" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<path d="M390 260 C 370 240, 380 225, 350 220 L 360 204 C 385 215, 385 230, 404 250 Z" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+<circle cx="430" cy="219" r="5" fill="#c2410c"/><circle cx="350" cy="221" r="5" fill="#c2410c"/>
+<path d="M335 128 A 80 80 0 0 1 450 132" fill="none" stroke="#c2410c" stroke-width="4" marker-end="url(#ar)"/>
+<text x="392" y="84" font-size="16" fill="#c2410c" text-anchor="middle" font-weight="900">칼이 돈다</text>
+<!-- chips -->
+<path d="M300 200 c-22 4 -32 20 -20 32 c8 8 20 0 14 -8" fill="#e9d5a8" stroke="#7a5c1e" stroke-width="2.5"/>
+<path d="M250 232 c-14 2 -20 12 -12 20 c6 5 13 -1 9 -6" fill="#e9d5a8" stroke="#7a5c1e" stroke-width="2"/>
+<text x="120" y="290" font-size="15" fill="#7a5c1e" font-weight="700">칩(깎인 부스러기)이 홈 쪽으로 빠진다</text>
+<path d="M420 360 h120" stroke="#1e3a8a" stroke-width="4" marker-end="url(#ab)"/>
+<text x="410" y="366" font-size="15" fill="#1e3a8a" text-anchor="end" font-weight="700">칼이 나아가는 방향</text>
+<!-- legend -->
+<circle cx="660" cy="150" r="7" fill="#c2410c"/><text x="676" y="156" font-size="16" fill="#334155" font-weight="700">날 끝 — 자재를 떼어 낸다</text>
+<rect x="652" y="182" width="16" height="16" fill="#fff" stroke="#334155" stroke-width="1.6"/><text x="676" y="196" font-size="16" fill="#334155" font-weight="700">칩 홈 — 칩이 빠지는 길</text>
+<text x="652" y="246" font-size="15" fill="#4b5563">날이 2개면 한 바퀴에 칩 2조각,</text>
+<text x="652" y="270" font-size="15" fill="#4b5563">날이 4개면 4조각입니다.</text>
+<text x="652" y="300" font-size="15" fill="#4b5563">날이 적을수록 칩 홈이 넓어</text>
+<text x="652" y="324" font-size="15" fill="#4b5563">무른 알루미늄 칩이 잘 빠집니다.</text>
+</svg>

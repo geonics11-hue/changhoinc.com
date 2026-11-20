@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+<rect width="900" height="450" fill="#fff"/>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker></defs>
+<text x="450" y="38" font-size="24" font-weight="900" fill="#1e3a8a" text-anchor="middle">카피루터기 — 더듬이가 카피판을 따라가면 엔드밀이 같은 모양을 판다</text>
+<!-- head bar -->
+<rect x="180" y="78" width="540" height="40" rx="8" fill="#f1a16a" stroke="#334155" stroke-width="2.5"/>
+<text x="450" y="104" font-size="17" fill="#fff" text-anchor="middle" font-weight="900">머리 — 더듬이와 엔드밀이 한 몸으로 움직인다</text>
+<rect x="250" y="118" width="20" height="90" fill="#94a3b8" stroke="#334155" stroke-width="2"/>
+<rect x="630" y="118" width="20" height="90" fill="#d8b36a" stroke="#334155" stroke-width="2"/>
+<text x="230" y="170" font-size="16" fill="#334155" text-anchor="end" font-weight="700">더듬이</text>
+<text x="670" y="170" font-size="16" fill="#7a5c1e" font-weight="700">엔드밀</text>
+<!-- template -->
+<rect x="90" y="225" width="340" height="120" fill="#e2e8f0" stroke="#334155" stroke-width="2.5"/>
+<rect x="190" y="262" width="140" height="44" rx="22" fill="#fff" stroke="#334155" stroke-width="2.5"/>
+<circle cx="260" cy="284" r="9" fill="#94a3b8" stroke="#334155" stroke-width="2"/>
+<path d="M270 252 h60" stroke="#c2410c" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#ar)"/>
+<text x="260" y="370" font-size="17" fill="#334155" text-anchor="middle" font-weight="700">카피판 — 판 모양대로 홈이 나 있다</text>
+<!-- profile -->
+<rect x="470" y="225" width="340" height="120" fill="#cfd8e6" stroke="#334155" stroke-width="2.5"/>
+<path d="M640 262 h48 a22 22 0 0 1 0 44 h-48" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="6 5"/>
+<path d="M640 262 h-48 a22 22 0 0 0 0 44 h48" fill="#fff" stroke="#334155" stroke-width="2.5"/>
+<rect x="640" y="263" width="48" height="42" fill="#fff"/>
+<text x="680" y="289" font-size="12" fill="#64748b" text-anchor="middle">팔 자리</text>
+<circle cx="640" cy="284" r="9" fill="#d8b36a" stroke="#334155" stroke-width="2"/>
+<text x="640" y="370" font-size="17" fill="#334155" text-anchor="middle" font-weight="700">자재(프로파일) — 같은 모양이 파인다</text>
+<text x="450" y="410" font-size="16" fill="#4b5563" text-anchor="middle">손잡이로 더듬이를 카피판 홈 테두리에 대고 한 바퀴 따라가게 하면, 엔드밀이 자재에 같은 크기의 구멍을 냅니다.</text>
+<text x="450" y="434" font-size="16" fill="#4b5563" text-anchor="middle">카피판만 바꾸면 다른 모양의 구멍을 같은 자리에 몇 번이고 똑같이 낼 수 있습니다.</text>
+<path d="M650 252 h60" stroke="#c2410c" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#ar)"/>
+</svg>
