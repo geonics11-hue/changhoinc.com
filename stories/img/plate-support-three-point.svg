@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Noto Sans CJK KR, Noto Sans KR, sans-serif" viewBox="0 0 900 380" role="img" aria-label="받침 비교 그림 — 왼쪽 네 점 받침은 바닥이 고르지 않으면 한 점이 떠서 판이 흔들립니다. 가운데 세 점 받침은 바닥이 고르지 않아도 세 점이 모두 닿습니다. 오른쪽 용접정반은 다리마다 수평 조절 발이 있어 발 높이를 바꿔 바닥에 맞춥니다">
+<rect width="900" height="380" fill="#fff"/>
+<line x1="300" y1="20" x2="300" y2="360" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6"/>
+<line x1="600" y1="20" x2="600" y2="360" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6"/>
+<g font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">
+<text x="150" y="44">① 네 점 받침</text><text x="450" y="44">② 세 점 받침</text><text x="750" y="44">③ 용접정반 다리</text></g>
+<!-- floors with bump -->
+<g fill="#e2e8f0" stroke="#64748b" stroke-width="2">
+<path d="M20 250 L120 250 L130 240 L280 240 L280 280 L20 280 Z"/>
+<path d="M320 250 L420 250 L430 240 L580 240 L580 280 L320 280 Z"/>
+<path d="M620 250 L720 250 L730 240 L880 240 L880 280 L620 280 Z"/>
+</g>
+<!-- 1: plate seen in perspective as box, 4 legs: 3 touch, one floats -->
+<g stroke="#334155" stroke-width="2.5">
+<path d="M50 150 L250 150 L270 130 L70 130 Z" fill="#cbd5e1"/>
+<rect x="50" y="150" width="200" height="34" fill="#94a3b8"/>
+<rect x="60" y="184" width="16" height="66" fill="#596fa1"/>
+<rect x="224" y="184" width="16" height="56" fill="#596fa1"/>
+<rect x="84" y="164" width="12" height="86" fill="#7b8db8"/>
+<rect x="246" y="164" width="12" height="60" fill="#7b8db8"/>
+</g>
+<rect x="244" y="224" width="16" height="16" fill="#fde2cc" stroke="#ef8943" stroke-width="2"/>
+<text x="150" y="306" font-size="17" fill="#0f172a" text-anchor="middle">바닥이 조금만 고르지 않아도</text>
+<text x="150" y="330" font-size="17" fill="#c2410c" text-anchor="middle" font-weight="700">한 점이 뜹니다(주황) → 판이 흔들림</text>
+<!-- 2: three legs -->
+<g stroke="#334155" stroke-width="2.5">
+<path d="M350 150 L550 150 L570 130 L370 130 Z" fill="#cbd5e1"/>
+<rect x="350" y="150" width="200" height="34" fill="#94a3b8"/>
+<rect x="360" y="184" width="16" height="66" fill="#596fa1"/>
+<rect x="524" y="184" width="16" height="56" fill="#596fa1"/>
+<rect x="452" y="164" width="12" height="76" fill="#7b8db8"/>
+</g>
+<g fill="#1e3a8a"><circle cx="368" cy="250" r="5"/><circle cx="532" cy="240" r="5"/><circle cx="458" cy="240" r="5"/></g>
+<text x="450" y="306" font-size="17" fill="#0f172a" text-anchor="middle">바닥이 고르지 않아도</text>
+<text x="450" y="330" font-size="17" fill="#1e3a8a" text-anchor="middle" font-weight="700">세 점이 모두 닿습니다(파랑)</text>
+<!-- 3: weld table, four legs with level feet -->
+<g stroke="#334155" stroke-width="2.5">
+<path d="M650 140 L850 140 L870 120 L670 120 Z" fill="#475569"/>
+<rect x="650" y="140" width="200" height="40" fill="#334155"/>
+<rect x="662" y="180" width="18" height="52" fill="#3b82f6"/>
+<rect x="820" y="180" width="18" height="52" fill="#3b82f6"/>
+</g>
+<g fill="#1e293b" stroke="#0f172a" stroke-width="1.5">
+<rect x="667" y="232" width="8" height="12"/><rect x="660" y="244" width="22" height="6"/>
+<rect x="825" y="232" width="8" height="2"/><rect x="818" y="234" width="22" height="6"/>
+</g>
+<g fill="#fff" font-size="13"><circle cx="671" cy="160" r="4"/><circle cx="700" cy="160" r="4"/><circle cx="730" cy="160" r="4"/><circle cx="760" cy="160" r="4"/><circle cx="790" cy="160" r="4"/><circle cx="820" cy="160" r="4"/></g>
+<line x1="684" y1="246" x2="704" y2="210" stroke="#8b4513" stroke-width="1.5"/><text x="708" y="208" font-size="14" fill="#0f172a">나사로 높이 조절</text>
+<text x="750" y="306" font-size="17" fill="#0f172a" text-anchor="middle">다리마다 수평 조절 발</text>
+<text x="750" y="330" font-size="17" fill="#1e3a8a" text-anchor="middle" font-weight="700">발 높이를 바꿔 바닥에 맞춥니다</text>
+</svg>
