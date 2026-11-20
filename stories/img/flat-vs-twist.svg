@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+<rect width="900" height="440" fill="#fff"/>
+<text x="450" y="36" font-size="24" font-weight="900" fill="#1e3a8a" text-anchor="middle">납작한 날과 나선형 날 — 부스러기가 빠질 길이 있느냐</text>
+<line x1="450" y1="60" x2="450" y2="420" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6"/>
+<!-- LEFT flat bit -->
+<rect x="40" y="250" width="380" height="130" fill="#cfd8e6" stroke="#334155" stroke-width="2.5"/>
+<path d="M196 250 V330 L230 362 L264 330 V250 Z" fill="#fff" stroke="#334155" stroke-width="2"/>
+<rect x="223" y="80" width="14" height="170" fill="#9aa8bb" stroke="#334155" stroke-width="2"/>
+<path d="M208 250 H252 V286 L230 306 L208 286 Z" fill="#9aa8bb" stroke="#334155" stroke-width="2.5"/>
+<g fill="#a16207"><circle cx="210" cy="330" r="5"/><circle cx="222" cy="340" r="5"/><circle cx="238" cy="340" r="5"/><circle cx="250" cy="330" r="5"/><circle cx="230" cy="350" r="5"/><circle cx="216" cy="318" r="5"/><circle cx="244" cy="318" r="5"/><circle cx="230" cy="326" r="5"/><circle cx="202" cy="300" r="4"/><circle cx="258" cy="300" r="4"/><circle cx="201" cy="275" r="4"/><circle cx="259" cy="275" r="4"/></g>
+<text x="230" y="70" font-size="18" fill="#334155" text-anchor="middle" font-weight="800">납작한 날</text>
+<text x="230" y="404" font-size="16" fill="#b91c1c" text-anchor="middle" font-weight="800">부스러기가 구멍 안에 남는다</text>
+<text x="230" y="426" font-size="14" fill="#4b5563" text-anchor="middle">날에 부스러기가 빠질 길이 따로 없다</text>
+<!-- RIGHT twist bit -->
+<rect x="480" y="250" width="380" height="130" fill="#cfd8e6" stroke="#334155" stroke-width="2.5"/>
+<path d="M640 250 V320 L670 345 L700 320 V250 Z" fill="#fff" stroke="#334155" stroke-width="2"/>
+<clipPath id="tb"><path d="M645 80 H695 V318 L670 342 L645 318 Z"/></clipPath>
+<g clip-path="url(#tb)"><rect x="645" y="80" width="50" height="270" fill="#9aa8bb"/>
+<g fill="#e7ecf3" stroke="#334155" stroke-width="1.5"><path d="M640 160 L700 125 L700 142 L640 177 Z"/><path d="M640 205 L700 170 L700 187 L640 222 Z"/><path d="M640 250 L700 215 L700 232 L640 267 Z"/><path d="M640 295 L700 260 L700 277 L640 312 Z"/></g></g>
+<path d="M645 80 H695 V318 L670 342 L645 318 Z" fill="none" stroke="#334155" stroke-width="2.5"/>
+<g fill="none" stroke="#a16207" stroke-width="3" stroke-linecap="round">
+<path d="M700 244 q14 -10 6 -20 q-6 -8 6 -14"/><path d="M712 248 q16 -4 18 8 q2 10 14 6"/><path d="M640 244 q-14 -8 -8 -18 q6 -8 -6 -14"/>
+</g>
+<path d="M730 205 q30 -30 60 -40" stroke="#a16207" stroke-width="3" fill="none" marker-end="url(#ac)"/>
+<defs><marker id="ac" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#a16207"/></marker></defs>
+<text x="670" y="70" font-size="18" fill="#334155" text-anchor="middle" font-weight="800">나선형 날(트위스트 드릴)</text>
+<text x="670" y="404" font-size="16" fill="#15803d" text-anchor="middle" font-weight="800">부스러기가 홈을 타고 위로 나온다</text>
+<text x="670" y="426" font-size="14" fill="#4b5563" text-anchor="middle">구멍이 덜 막힌다</text>
+</svg>

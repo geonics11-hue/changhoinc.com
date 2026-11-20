@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+<rect width="900" height="440" fill="#fff"/>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker></defs>
+<text x="450" y="36" font-size="24" font-weight="900" fill="#1e3a8a" text-anchor="middle">드릴을 돌리는 힘 — 천장의 벨트에서 기계마다 붙은 모터로</text>
+<!-- LEFT: line shaft -->
+<text x="220" y="78" font-size="18" fill="#334155" text-anchor="middle" font-weight="800">벨트로 돌리던 공장 드릴</text>
+<line x1="30" y1="110" x2="410" y2="110" stroke="#334155" stroke-width="6"/>
+<circle cx="200" cy="110" r="24" fill="#e2e8f0" stroke="#334155" stroke-width="3"/>
+<circle cx="380" cy="110" r="18" fill="#e2e8f0" stroke="#334155" stroke-width="3"/>
+<circle cx="60" cy="110" r="18" fill="#e2e8f0" stroke="#334155" stroke-width="3"/>
+<text x="250" y="160" font-size="14" fill="#4b5563">천장의 긴 축을</text>
+<text x="250" y="180" font-size="14" fill="#4b5563">여러 기계가 함께 쓴다</text>
+<path d="M176 112 L186 222 M224 112 L214 222" stroke="#a16207" stroke-width="3.5" fill="none"/>
+<text x="168" y="190" font-size="15" fill="#a16207" font-weight="800" text-anchor="end">벨트</text>
+<rect x="170" y="218" width="60" height="22" rx="4" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+<rect x="194" y="240" width="12" height="60" fill="#94a3b8" stroke="#334155" stroke-width="2"/>
+<rect x="197" y="300" width="6" height="32" fill="#9aa8bb" stroke="#334155" stroke-width="1.5"/>
+<rect x="270" y="200" width="16" height="210" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+<path d="M230 229 H270" stroke="#334155" stroke-width="7"/>
+<rect x="130" y="346" width="156" height="20" fill="#cfd8e6" stroke="#334155" stroke-width="2"/>
+<rect x="110" y="410" width="200" height="10" fill="#64748b"/>
+<!-- arrow -->
+<path d="M440 260 h60" stroke="#c2410c" stroke-width="5" marker-end="url(#ar)"/>
+<!-- RIGHT: own motor -->
+<text x="690" y="78" font-size="18" fill="#334155" text-anchor="middle" font-weight="800">모터가 머리에 붙은 지금의 드릴</text>
+<rect x="640" y="110" width="60" height="90" rx="6" fill="#1f2937" stroke="#334155" stroke-width="2"/>
+<text x="625" y="160" font-size="16" fill="#c2410c" font-weight="800" text-anchor="end">모터</text>
+<rect x="650" y="200" width="40" height="60" fill="#94a3b8" stroke="#334155" stroke-width="2"/>
+<rect x="642" y="260" width="56" height="26" fill="#475569" stroke="#334155" stroke-width="2"/>
+<g fill="#9aa8bb" stroke="#334155" stroke-width="1.5"><rect x="648" y="286" width="7" height="34"/><rect x="666" y="286" width="7" height="34"/><rect x="684" y="286" width="7" height="34"/></g>
+<rect x="745" y="150" width="16" height="260" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+<path d="M700 230 H745" stroke="#334155" stroke-width="8"/>
+<rect x="600" y="340" width="200" height="24" fill="#cfd8e6" stroke="#334155" stroke-width="2"/>
+<rect x="590" y="410" width="230" height="10" fill="#64748b"/>
+<text x="690" y="440" font-size="0"> </text>
+<text x="780" y="200" font-size="14" fill="#4b5563">기계마다</text>
+<text x="780" y="220" font-size="14" fill="#4b5563">자기 모터</text>
+<text x="450" y="436" font-size="0"> </text>
+</svg>

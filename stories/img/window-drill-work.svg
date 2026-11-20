@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+<rect width="900" height="430" fill="#fff"/>
+<text x="450" y="36" font-size="24" font-weight="900" fill="#1e3a8a" text-anchor="middle">창호 공장에서 드릴링기와 피스체결기가 하는 일</text>
+<!-- profile bar (top face) -->
+<path d="M60 130 L90 100 H860 L830 130 Z" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+<rect x="60" y="130" width="770" height="60" fill="#cfd8e6" stroke="#334155" stroke-width="2.5"/>
+<path d="M830 130 L860 100 V160 L830 190 Z" fill="#b6c3d6" stroke="#334155" stroke-width="2"/>
+<text x="70" y="214" font-size="14" fill="#4b5563" font-weight="700">길이대로 자른 알루미늄 · PVC 프로파일</text>
+<!-- 3-hole group -->
+<g fill="#fff" stroke="#334155" stroke-width="2"><ellipse cx="180" cy="115" rx="8" ry="4.5"/><ellipse cx="215" cy="115" rx="8" ry="4.5"/><ellipse cx="250" cy="115" rx="8" ry="4.5"/>
+<ellipse cx="420" cy="115" rx="8" ry="4.5"/><ellipse cx="455" cy="115" rx="8" ry="4.5"/><ellipse cx="490" cy="115" rx="8" ry="4.5"/></g>
+<path d="M215 106 V70" stroke="#334155" stroke-width="1.5"/><path d="M455 106 V70" stroke="#334155" stroke-width="1.5"/>
+<text x="335" y="64" font-size="16" fill="#1e3a8a" text-anchor="middle" font-weight="800">3축 드릴 — 같은 간격 구멍 세 개를 한 번에</text>
+<!-- lock hole slot -->
+<path d="M620 108 h80 a7 7 0 0 1 0 14 h-80 a7 7 0 0 1 0 -14 z" fill="#fff" stroke="#334155" stroke-width="2"/>
+<ellipse cx="740" cy="115" rx="9" ry="5" fill="#fff" stroke="#334155" stroke-width="2"/>
+<path d="M680 106 V70" stroke="#334155" stroke-width="1.5"/>
+<text x="700" y="64" font-size="16" fill="#1e3a8a" text-anchor="middle" font-weight="800">락홀 가공기 — 드릴 구멍과 톱날 긴 홈</text>
+<!-- screw fastening section -->
+<text x="450" y="252" font-size="18" fill="#334155" text-anchor="middle" font-weight="800">피스체결기 — 보강재를 나사로 고정</text>
+<rect x="250" y="290" width="400" height="56" fill="#cfd8e6" stroke="#334155" stroke-width="2.5"/>
+<rect x="270" y="304" width="360" height="28" fill="#94a3b8" stroke="#334155" stroke-width="1.5"/>
+<text x="450" y="323" font-size="14" fill="#fff" text-anchor="middle" font-weight="700">안에 넣은 보강재</text>
+<g stroke="#334155" stroke-width="2"><g fill="#d8b36a"><rect x="327" y="270" width="12" height="40"/><rect x="447" y="270" width="12" height="40"/><rect x="567" y="270" width="12" height="40"/></g>
+<g fill="#475569"><rect x="319" y="266" width="28" height="8"/><rect x="439" y="266" width="28" height="8"/><rect x="559" y="266" width="28" height="8"/></g></g>
+<text x="450" y="378" font-size="14" fill="#4b5563" text-anchor="middle">프로파일 겉에서 나사를 박아 안의 보강재와 한 몸으로 붙인다</text>
+<text x="450" y="412" font-size="15" fill="#334155" text-anchor="middle" font-weight="700">구멍의 자리 · 크기 · 개수는 손님의 창호 도면을 보고 기종과 함께 정합니다.</text>
+</svg>

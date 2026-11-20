@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+<rect width="900" height="440" fill="#fff"/>
+<defs>
+<marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker>
+<marker id="ab" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1e3a8a"/></marker>
+</defs>
+<text x="450" y="36" font-size="24" font-weight="900" fill="#1e3a8a" text-anchor="middle">3축 CNC 드릴 — 숫자대로 자재를 밀고, 세 구멍을 한 번에</text>
+<!-- screen -->
+<rect x="30" y="70" width="230" height="140" rx="10" fill="#1f2937"/>
+<rect x="44" y="84" width="202" height="112" rx="4" fill="#e0f2fe"/>
+<text x="58" y="114" font-size="17" fill="#0f172a" font-weight="800">이송 거리  300</text>
+<text x="58" y="146" font-size="17" fill="#0f172a" font-weight="800"></text>
+<text x="58" y="178" font-size="17" fill="#0f172a" font-weight="800"></text>
+<text x="272" y="196" font-size="15" fill="#334155" font-weight="700">⑤ 화면에 이송 거리를 넣는다</text>
+<!-- head -->
+<rect x="530" y="66" width="70" height="70" rx="6" fill="#1f2937"/>
+<text x="616" y="98" font-size="15" fill="#334155" font-weight="700">① 모터</text>
+<rect x="520" y="136" width="90" height="34" fill="#475569" stroke="#334155" stroke-width="2"/>
+<text x="616" y="160" font-size="15" fill="#334155" font-weight="700">② 3축 머리</text>
+<g fill="#9aa8bb" stroke="#334155" stroke-width="1.5"><rect x="531" y="170" width="8" height="52"/><rect x="561" y="170" width="8" height="52"/><rect x="591" y="170" width="8" height="52"/></g>
+<path d="M500 150 V200" stroke="#1e3a8a" stroke-width="4" marker-end="url(#ab)"/>
+<text x="490" y="122" font-size="14" fill="#1e3a8a" font-weight="700" text-anchor="end">제자리에서 내려와 뚫는다</text>
+<text x="490" y="142" font-size="13" fill="#4b5563" text-anchor="end">세 드릴 간격은 작업자가 머리에서 맞춤</text>
+<!-- profile -->
+<path d="M140 240 L160 222 H880 L860 240 Z" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+<rect x="140" y="240" width="720" height="44" fill="#cfd8e6" stroke="#334155" stroke-width="2.5"/>
+<path d="M860 240 L880 222 V266 L860 284 Z" fill="#b6c3d6" stroke="#334155" stroke-width="2"/>
+<g fill="#fff" stroke="#334155" stroke-width="1.8">
+<ellipse cx="685" cy="231" rx="6" ry="3.5"/><ellipse cx="715" cy="231" rx="6" ry="3.5"/><ellipse cx="745" cy="231" rx="6" ry="3.5"/>
+<ellipse cx="805" cy="231" rx="6" ry="3.5"/><ellipse cx="835" cy="231" rx="6" ry="3.5"/>
+</g>
+<text x="715" y="212" font-size="14" fill="#334155" font-weight="700" text-anchor="middle">먼저 뚫은 구멍</text>
+<!-- clamp & feeder -->
+<rect x="100" y="228" width="50" height="68" rx="4" fill="#ef8943" stroke="#334155" stroke-width="2"/>
+<rect x="430" y="226" width="24" height="18" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+<rect x="430" y="280" width="24" height="18" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+<text x="442" y="320" font-size="14" fill="#334155" text-anchor="middle" font-weight="700">④ 고정 장치</text>
+<line x1="40" y1="262" x2="100" y2="262" stroke="#334155" stroke-width="4" stroke-dasharray="6 4"/>
+<text x="125" y="334" font-size="14" fill="#334155" font-weight="700" text-anchor="middle">서보 · 리드스크루</text>
+<path d="M170 350 H420" stroke="#c2410c" stroke-width="5" marker-end="url(#ar)"/>
+<text x="295" y="380" font-size="16" fill="#c2410c" text-anchor="middle" font-weight="800">자재를 숫자만큼 민다</text>
+<!-- table -->
+<rect x="120" y="296" width="760" height="12" fill="#94a3b8"/>
+<text x="450" y="420" font-size="15" fill="#4b5563" text-anchor="middle">밀고 → 멈추고 → 세 구멍을 한 번에 뚫고 → 다시 민다. 화면의 숫자는 이해를 돕는 예시입니다.</text>
+</svg>

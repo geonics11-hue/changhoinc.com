@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+<rect width="900" height="470" fill="#fff"/>
+<defs>
+<marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker>
+<marker id="ab" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1e3a8a"/></marker>
+<clipPath id="bit"><path d="M420 70 H480 V330 L450 362 L420 330 Z"/></clipPath>
+</defs>
+<text x="450" y="36" font-size="24" font-weight="900" fill="#1e3a8a" text-anchor="middle">드릴이 구멍을 뚫는 원리 — 돌리고, 누르고, 칩을 빼낸다</text>
+<!-- workpiece cut view -->
+<rect x="150" y="270" width="600" height="150" fill="#cfd8e6" stroke="#334155" stroke-width="2.5"/>
+<path d="M150 270 l14 -14 h600 l-14 14 z" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+<path d="M764 256 v150 l-14 14 v-150 z" fill="#b6c3d6" stroke="#334155" stroke-width="2"/>
+<path d="M418 270 V332 L450 366 L482 332 V270 Z" fill="#fff" stroke="#334155" stroke-width="2"/>
+<text x="172" y="300" font-size="16" fill="#334155" font-weight="700">알루미늄 자재(잘라서 본 모습)</text>
+<!-- drill bit -->
+<g clip-path="url(#bit)">
+<rect x="420" y="70" width="60" height="300" fill="#9aa8bb"/>
+<g fill="#e7ecf3" stroke="#334155" stroke-width="1.5">
+<path d="M410 170 L490 130 L490 150 L410 190 Z"/>
+<path d="M410 220 L490 180 L490 200 L410 240 Z"/>
+<path d="M410 270 L490 230 L490 250 L410 290 Z"/>
+<path d="M410 320 L490 280 L490 300 L410 340 Z"/>
+</g>
+</g>
+<path d="M420 70 H480 V330 L450 362 L420 330 Z" fill="none" stroke="#334155" stroke-width="2.5"/>
+<line x1="420" y1="140" x2="480" y2="140" stroke="#334155" stroke-width="1.5" stroke-dasharray="4 4"/>
+<text x="498" y="80" font-size="15" fill="#4b5563" font-weight="700">자루 — 기계에 끼운다</text>
+<!-- rotation -->
+<path d="M395 112 A58 16 0 1 0 505 112" fill="none" stroke="#c2410c" stroke-width="4" marker-end="url(#ar)"/>
+<text x="120" y="96" font-size="18" fill="#c2410c" font-weight="800">① 돌린다</text>
+<text x="120" y="120" font-size="15" fill="#334155">모터가 드릴을 빠르게 돌린다</text>
+<!-- feed -->
+<path d="M560 128 V200" stroke="#1e3a8a" stroke-width="5" marker-end="url(#ab)"/>
+<text x="580" y="152" font-size="18" fill="#1e3a8a" font-weight="800">② 누른다</text>
+<text x="580" y="176" font-size="15" fill="#334155">드릴을 자재 쪽으로 민다</text>
+<!-- chips -->
+<g fill="none" stroke="#a16207" stroke-width="3" stroke-linecap="round">
+<path d="M486 262 q14 -12 4 -22 q-8 -8 4 -14"/>
+<path d="M500 254 q16 -4 18 8 q2 10 14 6"/>
+<path d="M520 262 q12 -10 22 -2 q8 8 18 -2"/>
+<path d="M398 258 q-14 -8 -8 -18 q6 -8 -6 -14"/>
+<path d="M376 262 q-14 -6 -24 4"/>
+</g>
+<text x="600" y="214" font-size="18" fill="#a16207" font-weight="800">③ 칩이 빠진다</text>
+<text x="600" y="238" font-size="15" fill="#334155">깎인 부스러기가 나선 홈을 타고 올라온다</text>
+<!-- tip -->
+<path d="M450 362 L360 440" stroke="#334155" stroke-width="1.5"/>
+<text x="150" y="455" font-size="15" fill="#334155" font-weight="700">날 끝이 구멍 바닥을 조금씩 깎아 낸다</text>
+</svg>
