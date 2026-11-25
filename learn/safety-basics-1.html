@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<!-- 기계 배움터 · 안전 기초 1 · 자사몰 — 셸 = learn/drawing-development-1.html · 빌더 build_sb1_261125.py · 🚫 가격 0 · 그림 전부 직접 그림 -->
+<html lang="ko"><head><meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>안전 기초 1 — 기계 작업장 안전 기본과 보호구 | 창호종합기계</title>
+<meta content="기계 작업장에서 다치는 여섯 가지 모습, 위험을 줄이는 순서, 기계에 말려 들지 않는 옷차림과 장갑, 작업에 맞는 보호구를 고르고 관리하는 법을 산업안전보건기준에 관한 규칙과 한국산업안전보건공단 자료를 바탕으로 직접 그린 그림과 함께 쉽게 정리했습니다. 기계 배움터 안전 과목 기초 첫 번째 글입니다." name="description"/>
+<style>
+/* ===== base ===== */
+:root{
+  --ac:#596fa1;            /* 계열 주색 — §B-4 v2 계열4색 SSOT(ch_palette.json)에서만 가져온다 */
+  --ink:#161a22;
+  /* 🔒 틴트 5색은 하드코드하지 않는다. 빌더가 --ac 기준으로 재산출해 주입한다.
+        세션66 정본의 #faf1f0·#f0dcda·#f5e6e5·#eccac7·#e8a0a0 은 100계열 파생이라
+        타 계열에 쓰면 §B-4 계열 불일치가 된다. (2026-08-16 치환맵 확정) */
+  --t-tech-bg:#f4f5f9;      /* tech 밴드 배경   (구 #faf1f0) */
+  --t-tech-bd:#e2e6ef;      /* tech 밴드 테두리 (구 #f0dcda) */
+  --t-cta-bg:#ebeef4;        /* foot-cta 배경   (구 #f5e6e5) */
+  --t-cta-bd:#d6dbe8;        /* foot-cta 테두리 (구 #eccac7) */
+  --t-cur-sub:#bfc7db;      /* .lu.cur 보조문자 (구 #e8a0a0) */
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(--ink);
+ background:#ffffff;line-height:1.7;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1040px;margin:0 auto;background:#fff;box-shadow:0 2px 40px rgba(0,0,0,.10);}
+.sec{padding:64px 56px;}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+ color:var(--ac);margin-bottom:14px;}
+.h2{font-size:29px;font-weight:900;color:var(--ink);letter-spacing:-.5px;margin-bottom:8px;}
+.h2 em{color:var(--ac);font-style:normal;}
+.sub{font-size:17px;color:#6b7684;margin-bottom:34px;max-width:680px;line-height:1.6;}
+
+/* ===== top bar ===== */
+/* 🔄 2026-08-16 개정 — 바(.top/.footer)는 카탈로그(①④)와 동일하게 계열 주색을 따른다.
+      세션144 「전 계열 고정 #404b63」 조항은 철회됨. [[decision_detail_page_bar_series_color_260816]] */
+.top{background:#fff;display:flex;align-items:center;gap:11px;padding:13px 56px;border-bottom:3px solid #268FCE;}
+.top .lg{width:52.5px;height:36px;background:#fff;border-radius:3px;display:flex;
+ align-items:center;justify-content:center;flex:none;border:1px solid #e2e6ef;}
+.top .lg img{max-width:100%;max-height:100%;object-fit:contain;display:block;}
+.top .co{color:#1c2733;font-size:15px;font-weight:800;letter-spacing:-.3px;}
+.top .co small{display:block;font-size:10.5px;font-weight:600;color:#dfe7f2;letter-spacing:1.2px;}
+.top .rt{margin-left:auto;color:#455166;font-size:13px;font-weight:700;text-align:right;}
+
+/* ===== hero ===== */
+.hero{background:#ffffff;
+ color:var(--ink);padding:56px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;
+ border-top:4px solid #268FCE;}
+.hero .ey{color:var(--ac);font-size:12.5px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;}
+.hero h1{font-size:40px;line-height:1.24;font-weight:900;letter-spacing:-.8px;color:var(--ink);}
+.hero h1 em{color:var(--ac);font-style:normal;}
+.hero .en{font-size:14px;color:#6b7684;margin-top:10px;font-weight:600;letter-spacing:.2px;}
+.hero .ld{font-size:17px;color:#4a5561;margin-top:18px;line-height:1.75;}
+.hero .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px;}
+.pill{font-size:12px;font-weight:700;color:#fff;padding:6px 13px;border-radius:20px;}
+.pill.pd{background:#eef2f7;color:#37414d;} .pill.pr{background:#e8f3fb;color:#0f5f8c;}
+.pill.pb{background:#eef2f7;color:#5c6673;}
+.hero .cta{display:inline-flex;align-items:center;gap:8px;margin-top:28px;background:var(--ac);
+ color:#fff;font-size:15px;font-weight:800;padding:14px 30px;border-radius:6px;text-decoration:none;
+ box-shadow:0 4px 14px rgba(0,0,0,.14);}
+.hcard{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;
+ display:flex;align-items:center;justify-content:center;min-height:300px;border-top:3px solid #EF8943;}
+.hcard img{max-width:100%;max-height:340px;object-fit:contain;display:block;}
+
+/* ===== kpis ===== */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-bottom:1px solid #e6ebf2;}
+.kpi{padding:26px 20px;text-align:center;border-right:1px solid #eef2f7;}
+.kpi:last-child{border-right:none;}
+.kv{font-size:34px;font-weight:900;color:var(--ink);letter-spacing:-1px;}
+.kv span{font-size:14px;font-weight:700;color:var(--ac);margin-left:4px;}
+.kl{font-size:12.5px;color:#7c8698;font-weight:700;margin-top:4px;letter-spacing:.2px;}
+
+/* ===== features ===== */
+.feats{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.feat{background:#f6f8fb;border:1px solid #e6ebf2;border-left:3px solid var(--ac);
+ border-radius:7px;padding:22px 24px;}
+.feat .fh{font-size:15.5px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+.feat .fd{font-size:15px;color:#5c6673;line-height:1.65;}
+
+/* ===== usp ===== */
+.usp-sec{background:#f6f8fb;}
+.usps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.usp{background:#fff;border:1px solid #e6ebf2;border-radius:9px;padding:26px 22px;}
+.usp .un{font-size:15px;font-weight:900;color:#fff;background:var(--ac);width:38px;height:38px;
+ border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:15px;}
+.usp .ut b{display:block;font-size:16px;color:var(--ink);font-weight:800;margin-bottom:7px;}
+.usp .ut span{font-size:16px;color:#5c6673;line-height:1.6;}
+
+/* ===== tech band ===== */
+.tech{background:var(--t-tech-bg);color:var(--ink);display:grid;grid-template-columns:.9fr 1.1fr;
+ gap:40px;align-items:center;border-top:1px solid var(--t-tech-bd);border-bottom:1px solid var(--t-tech-bd);}
+.tech .ey{color:var(--ac);}
+.tech .tl{font-size:26px;font-weight:900;line-height:1.3;letter-spacing:-.5px;color:var(--ink);}
+.tech .tl em{color:var(--ac);font-style:normal;}
+.tech .tb{color:#5c6673;font-size:17px;line-height:1.75;}
+
+/* ===== spec table ===== */
+.spectbl{width:100%;border-collapse:collapse;font-size:16px;border:1px solid #e2e8f0;}
+.spectbl th{background:#f0f3f8;color:var(--ink);font-weight:800;text-align:left;
+ padding:14px 20px;width:215px;border-bottom:1px solid #e2e8f0;vertical-align:top;}
+.spectbl td{padding:14px 20px;color:#37414d;border-bottom:1px solid #eef2f7;}
+.spectbl tr:last-child th,.spectbl tr:last-child td{border-bottom:none;}
+.spectbl tr:nth-child(even) th{background:#eaeef4;}
+.mats{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap;}
+.mat{background:#fff;border:1px solid #d7dfea;color:var(--ink);font-size:12.5px;font-weight:700;
+ padding:6px 14px;border-radius:20px;}
+
+/* ===== gallery (var) ===== */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.gcell{background:#fff;border:1px solid #e6ebf2;border-radius:8px;overflow:hidden;}
+.gcell img{width:100%;height:190px;object-fit:cover;display:block;}
+.gcell .gc{font-size:12.5px;color:#6b7684;padding:9px 12px;line-height:1.5;}
+
+/* ===== video (var) — facade. 클릭 전 외부 요청 0건 ===== */
+.vfacade{position:relative;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;cursor:pointer;
+ background:#0d1117;max-width:720px;}
+.vfacade img{width:100%;display:block;opacity:.86;}
+.vfacade .vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+ width:74px;height:74px;border-radius:50%;background:rgba(0,0,0,.62);display:flex;
+ align-items:center;justify-content:center;}
+.vfacade .vplay::after{content:"";border-style:solid;border-width:13px 0 13px 22px;
+ border-color:transparent transparent transparent #fff;margin-left:5px;}
+.vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
+ padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+
+/* ===== lineup (core — ②의 차별점) ===== */
+.lineup-sec{background:#f6f8fb;}
+.lineup{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.lu{background:#fff;border:1px solid #e6ebf2;border-radius:7px;padding:14px 16px;}
+.lu .lm{font-size:14px;font-weight:800;color:var(--ink);}
+.lu .ln{font-size:12px;color:#6b7684;margin-top:3px;}
+.lu.cur{background:var(--ink);border-color:var(--ink);}
+.lu.cur .lm{color:#fff;} .lu.cur .ln{color:var(--t-cur-sub);}
+
+/* ===== order (add) ===== */
+.orders{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.ord{background:#f6f8fb;border:1px solid #e6ebf2;border-radius:8px;padding:20px 22px;}
+.ord .oh{font-size:14px;font-weight:800;color:var(--ac);margin-bottom:7px;}
+.ord .od{font-size:15px;color:#5c6673;line-height:1.65;}
+
+/* ===== channel (add) — 8칸 4열×2행 ===== */
+.chs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.ch{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+ background:#fff;border:1px solid #e6ebf2;border-radius:8px;padding:18px 10px;
+ text-decoration:none;color:var(--ink);font-size:13px;font-weight:700;text-align:center;}
+.ch .cn{font-size:12.5px;color:#6b7684;font-weight:600;}
+.ch.off{opacity:.42;pointer-events:none;}
+
+/* ===== cta / footer ===== */
+.foot-cta{background:var(--t-cta-bg);color:var(--ink);text-align:center;border-top:1px solid var(--t-cta-bd);}
+.foot-cta h3{font-size:26px;font-weight:900;margin-bottom:10px;color:var(--ink);}
+.foot-cta p{font-size:17px;color:#5c6673;margin-bottom:24px;}
+.foot-cta .tels{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;font-size:17px;font-weight:800;color:var(--ac);}
+.foot-cta .tels span{opacity:.6;font-weight:400;color:#7c8698;}
+.footer{background:var(--ac);color:#e8eef7;padding:22px 56px;display:flex;align-items:center;gap:12px;font-size:12px;}
+.footer b{color:#fff;font-size:13px;}
+.footer .web{margin-left:auto;color:#fff;}
+@media print{
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+ body{background:#fff;}
+ .wrap{box-shadow:none;max-width:100%;}
+ .kpi,.feat,.usp,.lu,.spectbl tr,.hcard,.mats,.tels,.gcell,.ord,.ch{break-inside:avoid;page-break-inside:avoid;}
+ .hero,.top,.foot-cta{break-inside:avoid;page-break-inside:avoid;}
+ .h2,.eyebrow{break-after:avoid;page-break-after:avoid;}
+ .sec{padding:32px 40px;}
+ .hero{padding:36px 40px;}
+ .hero .cta{box-shadow:none;}
+ .vfacade{display:none;}
+}
+@media(max-width:760px){
+ .sec{padding:44px 24px;} .top{padding:12px 24px;} .hero{padding:40px 24px;grid-template-columns:1fr;}
+ .hero h1{font-size:29px;} .kpis{grid-template-columns:1fr 1fr;}
+ .feats,.usps,.lineup,.gallery,.orders{grid-template-columns:1fr;} .tech{grid-template-columns:1fr;}
+ .chs{grid-template-columns:repeat(2,1fr);}
+ .footer{padding:18px 24px;flex-wrap:wrap;} .footer .web{margin-left:0;width:100%;}
+}
+
+/* ===== [PATCH 260820] 인쇄 안정성 보강 — 이번 세션 신규 섹션 print break-inside 보호 (신규 블록 추가, 기존 @media print 블록 미수정) ===== */
+@media print{
+ .achcard,.step,.mtx tbody tr,.selg .g,.sizetbl tbody tr,.acgcell{break-inside:avoid;page-break-inside:avoid;}
+}
+
+/* ===== channel 8칸 — 브랜드 컬러 아이콘 + 호버 (2026-08-19 append) ===== */
+.chs .ch{transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;}
+.chs .ch:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(22,26,34,.10);
+ border-color:#d7dfea;}
+.chs .ci{display:block;margin-bottom:2px;}
+@media print{.chs .ch{transition:none;transform:none;box-shadow:none;}}
+
+/* ===== size-list table (그룹형 상세페이지 전용 · append) ===== */
+.sizetbl{width:100%;border-collapse:collapse;font-size:15px;border:1px solid #e2e8f0;}
+.sizetbl thead th{background:var(--ac);color:#fff;font-weight:800;text-align:left;padding:11px 16px;}
+.sizetbl td{padding:9px 16px;color:#37414d;border-bottom:1px solid #eef2f7;}
+.sizetbl tr:nth-child(even) td{background:#f7f8fa;}
+.sizetbl .sn{color:#9aa5b3;width:40px;}
+.sizetbl .sc{font-weight:800;color:var(--ink);font-family:'Consolas','Malgun Gothic',monospace;width:200px;}
+.sizetbl .ss{color:#37414d;}
+.sizetbl .st{color:#5a6672;}
+.sizetbl .sh{font-weight:800;color:var(--ac);}
+
+/* ===== hole-system 이미지 밴드 (원본 통합페이지 .sysrow 계승 · append) ===== */
+.sysrow{padding:0 56px 64px;display:flex;gap:32px;align-items:center;}
+.sysrow .simg{flex:0 0 42%;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.sysrow .simg img{width:100%;display:block;}
+.sysrow .sys{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.sysrow .sysbox{text-align:center;background:var(--ink);color:#fff;border-radius:10px;padding:20px 10px;}
+.sysrow .sysbox .big{font-size:32px;font-weight:900;color:#ff8a80;}
+.sysrow .sysbox .lb{font-size:12.5px;color:#c7cdd4;margin-top:6px;line-height:1.5;}
+@media(max-width:760px){.sysrow{flex-direction:column;padding:0 24px 44px;}.sysrow .simg{flex:none;width:100%;}}
+
+/* ===== 히어로 메인 사진 확대 — 좌우 컬럼비는 유지, 사진 박스 안에서 사진 자체를 70%까지 확대
+        (나나파파 지시 · append, 기존 .hero/.hcard 규칙 무변경) ===== */
+.hcard.photo-fill{padding:10px;min-height:250px;overflow:hidden;}
+.hcard.photo-fill img{max-height:520px;}
+
+/* ===== 히어로 사진 20% 추가 확대 (나나파파 지시 2026-08-20 "사각 박스는 그대로 두고 사진만 20% 크게")
+   박스 크기·테두리는 무변경, 사진만 transform:scale로 확대 후 박스 overflow:hidden으로 클리핑.
+   사진 원본 파일은 무수정(그대로 사용 원칙 유지). ===== */
+.hcard.photo-fill img{transform:translate(3.3%,-7.4%) scale(1.44);}
+
+/* ===== 히어로 스토어 버튼 신설 (나나파파 확정 2026-08-20 — 채널 8칸 고정 유지, 히어로에 별도 신설) ===== */
+/* 스마트스토어는 가격대별로 상품이 2건씩 나뉘어 있어(스토어 그율 규정), 색상 구분 없이
+   카테고리 목록 페이지 1개로 공용 링크한다. 값 출처: 나나파파 2026-08-20 확정. */
+.cta.cta-store{background:#fff;color:var(--ac);border:2px solid var(--ac);box-shadow:none;margin-left:12px;}
+@media(max-width:760px){.cta.cta-store{margin-left:0;margin-top:12px;}}
+
+/* ===== 주문 안내 4번째 카드 대응 (기존 .orders 3열 그리드 재사용 · append 없음, 콘텐츠만 추가) ===== */
+
+/* ===== 품질 검증 — 실측 인증 사진 2건 (Hebei Bocheng 제조사 실측, 나나파파 확인 2026-08-20 · append)
+   2026-08-20 후속1 — 제조사 원본 배너 그래픽(가공 없이 그대로) 사용으로 교체.
+   2026-08-20 후속2 — 나나파파 지시("사각 틀이 같아야되") 반영: 두 배너 비율이 달라(1202px vs 929px)
+   height:auto 자연비율로는 카드 높이가 달라 보였음 → 고정 높이(440px) + object-fit:contain +
+   흰 배경으로 전환. 사진은 자르지 않고(대비 object-fit:cover는 미사용) 프레임 크기만 통일. ===== */
+.qcheck{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start;}
+.qcheck .qc{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.qcheck .qc img{width:100%;height:440px;object-fit:contain;background:#fff;display:block;}
+.qcheck .qcap{padding:14px 18px;background:#fff;font-size:14px;color:#37414d;line-height:1.5;}
+.qcheck .qcap b{color:var(--ink);}
+@media(max-width:760px){.qcheck{grid-template-columns:1fr;}}
+
+/* ===== D28 홀 패턴 참고 도면 2종 (Hebei Bocheng 제조사 원본, 나나파파 지시 2026-08-20 · append)
+   그대로 사용(가공 없음). 대각(DIAGONAL) 패턴은 당사 표준 사양이 아닌 제조사 참고 도면 —
+   캡션으로 "별도 확인 필요" 명시(추측 표기 금지 원칙). ===== */
+.d28grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.d28grid .df{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.d28grid .df img{width:100%;height:320px;object-fit:contain;background:#fff;display:block;}
+.d28grid .dcap{padding:12px 16px;background:#fff;font-size:13.5px;color:#37414d;text-align:center;line-height:1.5;}
+.d28grid .dcap b{color:var(--ink);}
+@media(max-width:760px){.d28grid{grid-template-columns:1fr;}.d28grid .df img{height:260px;}}
+
+/* ===== 정밀 가공 디테일 클로즈업 3장 (Hebei Bocheng 제조사 원본, 나나파파 지시 2026-08-20 · append)
+   그대로 사용(가공 없음). R3 챔퍼는 선택 옵션 배지(.optbadge) 표기. ===== */
+.detailgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.detailgrid .dt{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.detailgrid .dt img{width:100%;height:330px;object-fit:contain;background:#fff;display:block;}
+.detailgrid .dcap2{padding:12px 16px;background:#fff;font-size:13.5px;color:#37414d;line-height:1.5;}
+.detailgrid .dcap2 b{color:var(--ink);}
+.optbadge{display:inline-block;background:var(--ac);color:#fff;font-size:10.5px;font-weight:800;
+  padding:3px 8px;border-radius:20px;margin-left:6px;vertical-align:middle;letter-spacing:.03em;}
+@media(max-width:760px){.detailgrid{grid-template-columns:1fr;}.detailgrid .dt img{height:280px;}}
+
+/* ===== 절단 공정 · 실사용 현장 4장 (CNC 워터젯 1 + Hebei Bocheng 제조사 제공 실사용 현장 3,
+   나나파파 지시 2026-08-20 · append) — 실사용 현장 사진은 제조사 자료이며 당사 개별 판매·설치
+   사례를 나타내지 않음(캡션에 출처 명시, 추측 표기 금지 원칙). ===== */
+.procgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.procgrid .pc{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.procgrid .pc img{width:100%;height:420px;object-fit:contain;background:#fff;display:block;}
+.procgrid .pcap{padding:12px 18px;background:#fff;font-size:13.5px;color:#37414d;line-height:1.5;}
+.procgrid .pcap b{color:var(--ink);}
+@media(max-width:760px){.procgrid{grid-template-columns:1fr;}.procgrid .pc img{height:320px;}}
+
+/* ===== [PATCH 260820] 악세사리 세트 SET1~5 섹션 — 구 통합페이지 이식, 클래스 3종 리네임(hcard/gcell/gc 충돌 회피) ===== */
+.lead{font-size:28px;color:#455;line-height:1.75;margin-top:16px;max-width:720px;}
+.lead b{color:#00838f;}
+.scards{margin-top:26px;}
+.achcard{display:flex;gap:20px;align-items:center;border:1px solid #e7ecef;border-radius:14px;padding:16px;margin-top:14px;background:#fff;}
+.achcard .hph{flex:0 0 236px;height:196px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.achcard .hph img{max-width:100%;max-height:196px;object-fit:contain;}
+.achcard .hnm{font-size:34px;font-weight:800;color:#00838f;}
+.achcard .hnm .hq{font-size:23px;color:#607d8b;font-weight:700;margin-left:4px;}
+.achcard .huse{font-size:27px;font-weight:700;margin-top:8px;color:#263238;}
+.achcard .hadd{font-size:24px;color:#5a6672;line-height:1.6;margin-top:7px;}
+.subhd{font-size:30px;font-weight:800;color:#263238;margin-top:40px;padding-left:12px;border-left:5px solid #00838f;line-height:1.3;}
+.mtx{width:100%;border-collapse:collapse;margin-top:16px;font-size:20px;table-layout:auto;}
+.mtx thead th{background:#37474f;color:#fff;padding:11px 7px;font-size:19px;text-align:center;white-space:nowrap;}
+.mtx thead th.h-item{text-align:left;}
+.mtx thead th.h-spec{text-align:left;}
+.mtx tbody td{padding:8px 7px;border-bottom:1px solid #eceff1;text-align:center;}
+.mtx tbody tr:nth-child(even){background:#fafbfc;}
+.mtx .m-item{text-align:left;font-weight:700;color:#263238;line-height:1.28;white-space:nowrap;}
+.mtx .m-item .en{display:block;font-size:14px;color:#98a6b0;font-weight:500;white-space:nowrap;}
+.mtx .m-spec{text-align:left;color:#5a6672;white-space:nowrap;font-size:18px;}
+.mtx .q{font-weight:800;color:#00838f;}
+.mtx .z{color:#cfd8dc;}
+.mtx tfoot td{border-top:2px solid #37474f;font-weight:800;padding:10px 7px;text-align:center;background:#eef7f8;font-size:20px;}
+.mtx tfoot td.f-lb{text-align:right;color:#37474f;}
+.mtx tfoot .ft-pt{color:#596fa1;}
+.tnote{font-size:24px;color:#8a94a0;margin-top:14px;line-height:1.6;}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px;}
+.setgal{margin-top:16px;}
+.setgal .acgc b{color:#00695c;}
+.acgcell{border:1px solid #e7ecef;border-radius:10px;overflow:hidden;background:#f7f9fa;}
+.acgcell .gph{aspect-ratio:4/3;overflow:hidden;}
+.acgcell img{width:100%;height:100%;object-fit:cover;}
+.acgcell .acgc{font-size:22px;color:#5a6672;padding:9px 11px;line-height:1.5;}
+.selg{background:#f7f9fa;border:1px solid #e7ecef;border-radius:12px;padding:14px 24px;margin-top:18px;}
+.selg .g{display:flex;justify-content:space-between;gap:16px;align-items:baseline;font-size:26px;padding:11px 0;border-bottom:1px dashed #dfe6e9;line-height:1.5;}
+.selg .g:last-child{border-bottom:none;}
+.selg .gq{color:#37474f;}
+.selg .ga{color:#00838f;font-weight:800;white-space:nowrap;}
+
+/* ===== [PATCH 260820] SUPPLY JOURNEY 섹션 — 구 통합페이지 이식, 강조색 티얼→계열색(var(--ac)) 재배색 ===== */
+.journey{background:#0f151c;border-bottom:1px solid #eceff1;}
+.journey .inr{padding:70px 46px;max-width:860px;margin:0 auto;}
+.journey .eyebrow{color:var(--ac);}
+.journey .h2{color:#fff;}
+.journey .jlead{font-size:27px;color:#aeb6bf;line-height:1.7;margin-top:14px;max-width:680px;}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px;}
+.step{background:#18212b;border:1px solid #263341;border-radius:12px;overflow:hidden;}
+.step .ph{position:relative;aspect-ratio:4/3;overflow:hidden;}
+.step .ph img{width:100%;height:100%;object-fit:cover;}
+.step .bg{position:absolute;top:8px;left:8px;background:var(--ac);color:#fff;font-size:21px;font-weight:800;padding:3px 9px;border-radius:14px;letter-spacing:.5px;}
+.step .tx{padding:14px 14px 18px;}
+.step .tt{font-size:27px;font-weight:800;color:#fff;}
+.step .dd{font-size:22px;color:#9aa6b2;line-height:1.55;margin-top:7px;}
+.jclose{margin-top:26px;font-size:28px;color:#fff;font-weight:700;text-align:center;line-height:1.6;}
+.jclose b{color:var(--ac);}
+
+/* ===== [PATCH 260820] 모바일(680px 이하) — 세트 카드/갤러리/스텝 반응형 (구 통합페이지 동일 규칙 이식) ===== */
+@media(max-width:680px){
+  .steps,.gal{grid-template-columns:1fr 1fr;}
+  .achcard{flex-direction:column;align-items:stretch;}
+  .achcard .hph{flex:none;width:100%;}
+}
+
+/* ===== §6 검사·방청 4장 — 16:9 레터박스 제거 (2026-08-21 append) ===== */
+.qcheck .qc img{height:260px;}
+
+
+/* ===== [APPEND 260823] 폰트 확대 시안 A — 나나파파 「글씨가 너무 작다」
+   🚫 기존 규칙 무수정. 이 블록만 뒤에 붙는다(§B-6.3).
+   계보 기준값(h1 40 / .h2 29 / 본문 16) 미접촉 — 111 계보 유지 ===== */
+.eyebrow{font-size:13.5px;}
+.pill{font-size:13.5px;}
+.kl{font-size:14.5px;}
+.mat{font-size:14px;}
+.gcell .gc{font-size:15px;}
+.sysrow .sysbox .lb{font-size:14.5px;}
+.lu .lm{font-size:16px;}
+.lu .ln{font-size:14px;}
+.ord .oh{font-size:16px;}
+.ord .od{font-size:17px;}
+.feat .fh{font-size:17.5px;}
+.feat .fd{font-size:17px;}
+.sizetbl{font-size:16.5px;}
+.sizetbl thead th{font-size:16.5px;}
+.chs .ch{font-size:14.5px;}
+.chs .ch .cn{font-size:14px;}
+.footer{font-size:13.5px;}
+.footer b{font-size:14.5px;}
+
+/* ===== [APPEND 260823] 갤러리 칸 — 세로 제품컷 클리핑 방지 (나나파파 사진 지정 반영)
+   🚫 기존 .gcell 규칙 무수정. 높이·맞춤만 뒤에서 덮는다. ===== */
+.gallery-sec .gcell img{height:250px;object-fit:contain;background:#fff;}
+
+/* [2026-08-30 나나파파 승격 · 2026-09-05 소급] 비교표 행 썸네일 — 104/index.html 정본 이식 */
+.sizetbl td.tc,.sizetbl th.tc{width:56px;padding:4px 6px 4px 10px;}
+.rowthumb{width:44px;height:33px;object-fit:cover;border-radius:4px;display:block;background:#eef0f5;}
+</style>
+<style>
+/* 2026-09-27 고를 수 있는 기종 썸네일 칸 — 정본 규칙 무수정, 뒤에 붙인다 (나나파파 추가 지시) */
+.pickhd{font-size:16px;font-weight:800;color:var(--ink);margin:28px 0 10px;padding-left:10px;border-left:4px solid var(--ac);}
+.pickhd span{font-size:13.5px;font-weight:700;color:var(--ac);margin-left:4px;}
+.pick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.pick .pk{display:block;background:#fff;border:1px solid #e6ebf2;border-radius:8px;padding:8px 8px 10px;text-decoration:none;color:var(--ink);word-break:keep-all;}
+.pick .pk:hover{border-color:var(--ac);box-shadow:0 6px 16px rgba(22,26,34,.08);}
+.pick .pk img{width:100%;height:104px;object-fit:contain;background:#fff;display:block;}
+.pick .pn{font-size:16px;font-weight:800;margin-top:6px;color:var(--ac);}
+.pick .ps{font-size:16px;color:#5c6673;line-height:1.45;margin-top:2px;}
+@media(max-width:900px){.pick{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:760px){.pick{grid-template-columns:repeat(2,1fr);}}
+</style>
+<style>
+/* 2026-10-03 고객지원 사례 전용 — 셸 규칙 무수정, 뒤에 붙인다 */
+.crumb{padding:11px 56px;font-size:13px;color:#6b7684;background:#f6f8fb;border-bottom:1px solid #e6ebf2;}
+.crumb a{color:#455166;text-decoration:none;font-weight:700;}
+.crumb span{margin:0 7px;color:#aab3c0;}
+.hero.case h1{font-size:36px;word-break:keep-all;}
+.hero .cta.cta-sub{background:#fff;color:var(--ac);border:1px solid var(--ac);box-shadow:none;margin-left:8px;}
+.cphotos{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:4px;}
+.cphotos figure{margin:0;background:#fff;border:1px solid #e6ebf2;border-radius:8px;overflow:hidden;}
+.cphotos img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#eef0f5;}
+.cphotos figcaption{font-size:14.5px;color:#5c6673;padding:10px 14px 12px;line-height:1.55;word-break:keep-all;}
+.cphotos .wide{grid-column:1/-1;}
+.csec .sub{max-width:none;}
+.csec .h2,.hero.case h1{word-break:keep-all;}
+.hero.case.listhero{padding-bottom:12px;}
+.csec .orders{margin-bottom:22px;}
+.ctags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px;}
+.ctag{font-size:12.5px;font-weight:700;color:#455166;background:#eef2f7;border-radius:20px;padding:5px 12px;text-decoration:none;}
+.backlist{display:inline-block;margin-top:18px;font-size:15px;font-weight:800;color:var(--ac);text-decoration:none;}
+/* 목록 */
+.filters{display:flex;flex-direction:column;gap:10px;margin-bottom:26px;}
+.frow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.frow b{font-size:13.5px;color:#455166;width:78px;flex:none;}
+.fbtn{font-size:13.5px;font-weight:700;color:#455166;background:#fff;border:1px solid #d7dfea;border-radius:20px;padding:6px 14px;cursor:pointer;font-family:inherit;}
+.fbtn.on{background:var(--ac);border-color:var(--ac);color:#fff;}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.card{display:block;background:#fff;border:1px solid #e6ebf2;border-radius:10px;overflow:hidden;text-decoration:none;color:var(--ink);}
+a.card:hover{border-color:var(--ac);box-shadow:0 8px 20px rgba(22,26,34,.08);}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#eef0f5;}
+.card .cb{padding:14px 16px 16px;}
+.card .cm{font-size:12.5px;color:#6b7684;font-weight:700;}
+.card .tt{font-size:17px;font-weight:800;line-height:1.45;margin-top:6px;word-break:keep-all;}
+.card .sm{font-size:14.5px;color:#5c6673;line-height:1.55;margin-top:6px;word-break:keep-all;}
+.card.soon{opacity:.55;}
+.card .soonb{display:inline-block;font-size:11.5px;font-weight:800;color:#fff;background:#7c8698;border-radius:4px;padding:2px 7px;margin-left:6px;}
+.frow input.rq{flex:1;min-width:200px;max-width:420px;font:inherit;font-size:15px;padding:8px 14px;border:1px solid #d7dfea;border-radius:20px;color:var(--ink);}
+.frow input.rq:focus{outline:none;border-color:var(--ac);}
+.empty{display:none;font-size:15px;color:#6b7684;padding:20px 0;}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:760px){.crumb{padding:10px 24px;} .hero.case h1{font-size:27px;} .cphotos{grid-template-columns:1fr;} .cards{grid-template-columns:1fr;} .frow b{width:100%;} .hero .cta.cta-sub{margin-left:0;margin-top:10px;} .hero.case .hcard{min-height:0;padding:12px;}}
+
+/* 2026-10-09 자가수리 안내 전용 — 셸·사례 규칙 무수정, 뒤에 붙인다 */
+.safety{background:#fff6ec;border:1px solid #f3c79a;border-left:6px solid #e8730c;border-radius:10px;padding:22px 26px;}
+.safety h3{margin:0 0 12px;font-size:19px;color:#a14a00;}
+.safety ol{margin:0;padding-left:22px;}
+.safety li{font-size:16px;line-height:1.7;color:#3b2a1a;margin-bottom:6px;word-break:keep-all;}
+.safety li b{color:#a14a00;}
+.rule{background:#eef5ff;border:1px solid #c9dcf6;border-radius:10px;padding:18px 24px;margin-top:22px;font-size:17px;line-height:1.7;font-weight:700;color:#1d3e6e;word-break:keep-all;}
+.rule small{display:block;font-weight:500;font-size:14px;color:#47607f;margin-top:4px;}
+.rsteps{counter-reset:s;display:flex;flex-direction:column;gap:22px;margin-top:6px;}
+.rstep{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:center;background:#fff;border:1px solid #e6ebf2;border-radius:10px;padding:18px;}
+.rstep:nth-child(even) .rtx{order:2;}
+.rtx .rn{display:inline-block;font-size:12.5px;font-weight:800;color:#fff;background:var(--ac);border-radius:4px;padding:2px 9px;}
+.rtx .rh{font-size:19px;font-weight:800;margin-top:8px;line-height:1.45;word-break:keep-all;}
+.rtx .rd{font-size:15.5px;color:#4a5361;line-height:1.7;margin-top:6px;word-break:keep-all;}
+.rst img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-radius:6px;background:#eef0f5;}
+.rst .ph{aspect-ratio:16/9;border:2px dashed #c3ccd8;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;color:#7b8695;background:#f6f8fb;padding:10px;}
+.rst figcaption{font-size:13.5px;color:#6b7684;margin-top:6px;}
+.rst{margin:0;}
+.stuck{background:#f6f8fb;border:1px solid #e0e6ee;border-radius:10px;padding:20px 24px;font-size:16px;line-height:1.75;word-break:keep-all;}
+.relgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.rel{display:block;background:#fff;border:1px solid #e6ebf2;border-radius:10px;padding:16px 18px;text-decoration:none;color:var(--ink);}
+.rel .rk{font-size:12.5px;font-weight:800;color:var(--ac);}
+.rel .rt{font-size:16.5px;font-weight:800;margin-top:6px;line-height:1.45;word-break:keep-all;}
+.rel .rs{font-size:14px;color:#6b7684;margin-top:4px;line-height:1.55;}
+.rel.dim{opacity:.6;}
+.mockbar{background:#2b2f38;color:#ffd9a8;font-size:13px;padding:7px 56px;text-align:center;}
+@media(max-width:760px){.rstep{grid-template-columns:1fr;} .rstep:nth-child(even) .rtx{order:0;} .relgrid{grid-template-columns:1fr;} .mockbar{padding:7px 16px;}}
+</style>
+<link href="https://www.changhoinc.com/learn/safety-basics-1.html" rel="canonical"/>
+<meta content="article" property="og:type"/>
+<meta content="창호종합기계" property="og:site_name"/>
+<meta content="안전 기초 1 — 기계 작업장 안전 기본과 보호구 | 창호종합기계" property="og:title"/>
+<meta content="기계 작업장에서 다치는 여섯 가지 모습, 위험을 줄이는 순서, 기계에 말려 들지 않는 옷차림과 장갑, 작업에 맞는 보호구를 고르고 관리하는 법을 산업안전보건기준에 관한 규칙과 한국산업안전보건공단 자료를 바탕으로 직접 그린 그림과 함께 쉽게 정리했습니다. 기계 배움터 안전 과목 기초 첫 번째 글입니다." property="og:description"/>
+<meta content="https://www.changhoinc.com/learn/safety-basics-1.html" property="og:url"/>
+<meta content="https://www.changhoinc.com/learn/img/safety-basics-1-ppe.png" property="og:image"/>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4SVNEP6MSK"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4SVNEP6MSK');</script><script src="/js/ch-call.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "url": "https://www.changhoinc.com/learn/safety-basics-1.html", "name": "안전 기초 1 — 기계 작업장 안전 기본과 보호구 | 창호종합기계", "description": "기계 작업장에서 다치는 여섯 가지 모습, 위험을 줄이는 순서, 기계에 말려 들지 않는 옷차림과 장갑, 작업에 맞는 보호구를 고르고 관리하는 법을 산업안전보건기준에 관한 규칙과 한국산업안전보건공단 자료를 바탕으로 직접 그린 그림과 함께 쉽게 정리했습니다. 기계 배움터 안전 과목 기초 첫 번째 글입니다.", "inLanguage": "ko", "publisher": {"@type": "Organization", "name": "창호종합기계", "url": "https://www.changhoinc.com/"}}</script>
+<style id="chg-css">
+/* 공통 상단 메뉴 줄 — 대문(index.html) 유틸 바·카테고리 바와 같은 모양. 원본 CSS 는 건드리지 않는다 */
+html{scroll-padding-top:112px}
+.chg{position:sticky;top:0;z-index:170;background:#111;color:#fff;
+  font-family:"Nanum Gothic","Noto Sans KR","Apple SD Gothic Neo",system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.5;letter-spacing:-0.3px}
+.chg a{color:inherit;text-decoration:none}
+.chg ul{list-style:none;margin:0;padding:0}
+.chg-in{max-width:1240px;margin:0 auto;padding:9px 20px;display:flex;align-items:center;gap:16px}
+.chg-logo{background:#fff;border-radius:7px;padding:5px 9px;display:block;line-height:0;flex:none}
+.chg-logo img{height:26px;width:auto;display:block}
+.chg-s{flex:1;position:relative;max-width:420px}@media(max-width:1100px){.chg .chg-nav,.chg .chg-nav ul{gap:11px}}
+.chg-s input{width:100%;height:42px;border-radius:8px;border:2px solid transparent;padding:0 44px 0 15px;
+  font-size:15px;background:#fff;color:#1d1d1f;font-family:inherit}
+.chg-s input:focus{outline:0;border-color:#0066cc}
+.chg-s .mag{position:absolute;right:6px;top:5px;width:32px;height:32px;border-radius:6px;background:#0066cc;
+  color:#fff;font-size:15px;display:grid;place-items:center;pointer-events:none}
+.chg-sg{position:absolute;left:0;right:0;top:46px;background:#fff;border:1px solid #d2d2d7;border-radius:10px;
+  box-shadow:0 12px 34px rgba(0,0,0,.18);overflow:hidden;z-index:190}
+.chg-sg[hidden]{display:none}
+.chg-sg li{margin:0;list-style:none;line-height:1.5;padding:9px 14px;font-size:14px;color:#1d1d1f;display:flex;gap:9px;align-items:center;cursor:pointer}
+.chg-sg li:hover,.chg-sg li[aria-selected="true"]{background:#f5f5f7}
+.chg-sg .chg-k{font-size:10.5px;color:#fff;background:#9a9aa0;border-radius:4px;padding:2px 6px;flex:none}
+.chg-sg .chg-k.chg-k1{background:#0066cc}
+.chg-sg .chg-sub{color:#9a9aa0;display:inline}
+.chg-sg .chg-none{color:#6e6e73;cursor:default}
+.chg-nav{display:flex;align-items:center;gap:16px;flex:none}
+.chg-nav ul{display:flex;gap:16px;align-items:center}
+.chg-nav ul a{font-size:13.5px;color:#d7d7db;white-space:nowrap}
+.chg-nav ul a:hover{color:#fff}
+.chg-nav .cta{background:#0066cc;color:#fff;padding:6px 14px;border-radius:9999px;font-size:12px}
+.chg-nav .ln{display:none}
+.chg-hb{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:4px;
+  position:relative;z-index:200}
+.chg-hb span{display:block;width:20px;height:1.5px;background:rgba(255,255,255,.8);transition:transform .2s,opacity .2s}
+.chg-hb.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.chg-hb.open span:nth-child(2){opacity:0}
+.chg-hb.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+.chg-cat{background:#000;border-top:1px solid #26262a;position:relative}
+.chg-cat::after{content:"";position:absolute;right:0;top:0;bottom:0;width:clamp(16px,5vw,44px);
+  background:linear-gradient(270deg,#000,rgba(0,0,0,0));pointer-events:none}
+.chg-cat-in{max-width:none;margin:0;padding:0 7px 0 max(7px,calc((100% - 1240px)/2 + 7px));display:flex;overflow-x:auto;scrollbar-width:none}
+.chg-cat-in::-webkit-scrollbar{display:none}
+.chg-cat a{padding:11px 13px;font-size:13.5px;color:#d7d7db;white-space:nowrap;flex:none}
+.chg-cat a:hover{color:#fff}
+.chg-cat a.all{font-weight:700;color:#fff}
+.chg-cat a[aria-current]{color:#fff;font-weight:700;box-shadow:inset 0 -3px 0 #0066cc}
+.chg-crumb{max-width:1040px;margin:0 auto;padding:12px 20px 0;font-size:13px;color:#6e6e73;
+  font-family:"Nanum Gothic","Noto Sans KR",system-ui,sans-serif}
+.chg-crumb a{color:#0066cc;text-decoration:none}
+.chg-crumb a:hover{text-decoration:underline}
+.chg-crumb span.sep{margin:0 7px;color:#b0b0b5}
+.wrap>.top{display:none}
+@media(max-width:834px){
+  html{scroll-padding-top:70px}
+  .chg-in{padding:8px 12px;gap:10px}
+  .chg-logo{padding:4px 7px}.chg-logo img{height:22px}
+  .chg-s input{height:38px;font-size:14px}
+  .chg-s .mag{top:4px;width:30px;height:30px}
+  .chg-sg{top:42px}
+  .chg-cat{display:none}
+  .chg-hb{display:flex}
+  .chg-nav ul:not(.open){display:none}
+  .chg-nav ul.open{display:flex;flex-direction:column;align-items:flex-start;position:fixed;
+    top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.97);padding:76px 28px 28px;gap:18px;
+    overflow-y:auto;z-index:150}
+  .chg-nav ul.open a{font-size:19px;font-weight:600;color:rgba(255,255,255,.9)}
+  .chg-nav ul.open .cta{font-size:19px;padding:10px 26px}
+  .chg-nav ul.open .ln{display:block}
+  .chg-nav ul.open .lnh{font-size:13px;color:#9a9aa0;margin-top:10px}
+  .chg-nav ul.open .ln a{font-size:16px;font-weight:400;color:#d7d7db}
+  .chg-nav ul.open .ln a[aria-current]{color:#fff;font-weight:700}
+  .chg-crumb{padding:10px 16px 0;font-size:12px}
+}
+@media print{.chg,.chg-crumb{display:none}.wrap>.top{display:flex}}
+</style>
+<style id="pd-css">
+.pd-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;align-items:start}
+.pd-grid img{width:100%;border:1px solid #e3e8f0;border-radius:10px;background:#fff}
+.pd-p{font-size:16px;line-height:1.75;color:#333b48;margin:0 0 12px}
+.pd-t{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 6px}
+.pd-t th,.pd-t td{border-bottom:1px solid #e6ebf2;padding:7px 8px;text-align:center}
+.pd-t th{background:#f3f6fa;font-weight:700}
+.pd-dl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 8px}
+.pd-dl a{display:block;text-decoration:none;color:#fff;background:#1e3a8a;border-radius:9px;padding:13px 15px;font-weight:800;font-size:15.5px}
+.pd-dl a span{display:block;font-weight:500;font-size:13px;opacity:.85;margin-top:2px}
+.pd-dl a.sub{background:#fff;color:#1e3a8a;border:1.5px solid #1e3a8a}
+.pd-dl a:hover{filter:brightness(1.1)}
+.pd-sum{cursor:pointer;color:#1e3a8a;font-weight:700;font-size:15px;margin-top:6px}
+.pd-jump{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 0}
+.pd-jump a{padding:7px 15px;border:1px solid #c9d3e6;border-radius:20px;text-decoration:none;color:#1e3a8a;font-size:14.5px;background:#fff}
+.pd-note{font-size:14.5px;color:#4b5563;line-height:1.75;padding-left:20px;margin:6px 0 0}
+.pd-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.pd-card{display:block;border:1px solid #e3e8f0;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;background:#fff}
+.pd-card img{width:100%;display:block;border-bottom:1px solid #eef1f6}
+.pd-card .b{padding:16px 18px}.pd-card .k{font-size:13px;color:#596fa1;font-weight:800}
+.pd-card .t{font-size:19px;font-weight:900;color:#161a22;margin:4px 0}.pd-card .s{font-size:14.5px;color:#4b5563;line-height:1.6}
+.pd-ask{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0 4px;padding:12px 15px;background:#fff8e6;border:1px solid #f0d58c;border-radius:9px;font-size:15px;color:#3b3b3b}
+.pd-ask .tx{flex:1 1 100%}.pd-ask b{color:#161a22}.pd-ask a{display:inline-block;padding:7px 14px;border-radius:7px;text-decoration:none;font-weight:800;font-size:14.5px}
+.pd-ask a.k{background:#fee500;color:#191919}.pd-ask a.t{background:#fff;color:#1e3a8a;border:1.5px solid #1e3a8a}
+@media(max-width:760px){.pd-grid,.pd-dl,.pd-cards{grid-template-columns:1fr}}
+</style>
+<style id="ls-css">.sd-fig{overflow-x:auto;margin:0 0 14px}.sd-fig img{display:block;width:100%;min-width:640px;border:1px solid #e3e8f0;border-radius:10px;background:#fff}.sd-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}.sd-photos figure{margin:0;border:1px solid #e3e8f0;border-radius:10px;overflow:hidden;background:#fff}.sd-photos img{display:block;width:100%;height:300px;object-fit:contain;background:#fff}.sd-photos figcaption{font-size:14px;color:#4b5563;padding:8px 12px 10px;line-height:1.5}.ls-cat img{height:auto!important;max-height:none}.ls-catw{margin:14px 0;border:1px solid #e3e8f0;border-radius:10px;overflow:hidden;background:#fff}.ls-catw img{display:block;width:100%;height:auto}.ls-catw figcaption{font-size:14px;color:#4b5563;padding:8px 12px 10px;line-height:1.5}.sd-photos3{grid-template-columns:repeat(3,1fr)}.sd-photos3 img{height:240px}.pd-t td:first-child,.pd-t th:first-child{white-space:nowrap}@media(max-width:760px){.sd-photos{grid-template-columns:1fr}.sd-photos3{grid-template-columns:1fr 1fr}.sd-photos3 img{height:170px}.pd-t td:first-child,.pd-t th:first-child{white-space:normal}.sd-fig::after{content:"그림은 옆으로 밀어서 보실 수 있습니다";display:block;font-size:12.5px;color:#6b7280;margin-top:4px}}</style>
+<style id="learn-css">.pd-t td:first-child,.pd-t th:first-child{white-space:nowrap!important}details.pd-p{margin:0 0 10px;padding:12px 16px;border:1px solid #e3e8f0;border-radius:9px;background:#fff}details.pd-p p{margin:10px 0 0}</style>
+</head>
+<body>
+<!-- ===== 공통 상단 메뉴 줄 (chg) ===== -->
+<header class="chg">
+<div class="chg-in">
+<a class="chg-logo" href="/"><img alt="창호종합기계 처음 화면" src="/images/CH_Logo_MD_700700_배경검은색.png"/></a>
+<div class="chg-s"><input aria-controls="chg-sg" aria-expanded="false" aria-label="제품 검색" autocomplete="off" id="chg-q" placeholder="기계 이름으로 찾기 (예: 탭핑기, 노칭)" role="combobox" type="search"/><span aria-hidden="true" class="mag">⌕</span><ul class="chg-sg" hidden="" id="chg-sg" role="listbox"></ul></div>
+<nav aria-label="주 메뉴" class="chg-nav"><ul id="chg-links"><li><a href="/about/">회사소개</a></li><li><a href="/import/">수입대행</a></li><li><a href="/#products">제품소개</a></li><li><a href="/#resources">기술자료</a></li><li><a href="/cases/">고객지원 사례</a></li><li><a href="/repair/">자가수리 안내</a></li><li><a href="/learn/">기계 배움터</a></li><li><a class="cta" href="/#contact">문의하기</a></li><li class="ln lnh">제품 라인</li><li class="ln"><a href="/products/111/">용접테이블 · D28 악세사리</a></li><li class="ln"><a href="/products/101/">알루미늄 절단기 · 원형절단기</a></li><li class="ln"><a href="/products/104/">탭핑기 · 서보탭핑기</a></li><li class="ln"><a href="/products/103/">유압 펀칭기 · 프레스</a></li><li class="ln"><a href="/products/109/">R노칭기 · 파이프 노칭기</a></li><li class="ln"><a href="/products/109/index-b.html">파이프 축관기 · 벤딩기</a></li><li class="ln"><a href="/products/107/">챔버 · 면취기 · 모따기</a></li><li class="ln"><a href="/products/100/">금속절단기 · 밴드쏘</a></li><li class="ln"><a href="/products/line-bend/">절곡·벤딩기 · 전선탈피기</a></li><li class="ln"><a href="/products/line-al/">알루미늄 창호기계</a></li><li class="ln"><a href="/products/line-pvc/">PVC 창호기계 · PVC 용접기</a></li><li class="ln"><a href="/products/400/">랩핑기 · 유리 가공기 · 창호 설비</a></li><li class="ln"><a href="/products/line-blade/">톱날 · 컷트날 · 열판</a></li></ul><button aria-expanded="false" aria-label="메뉴 열기" class="chg-hb" id="chg-hb" type="button"><span></span><span></span><span></span></button></nav>
+</div>
+<nav aria-label="제품 라인" class="chg-cat"><div class="chg-cat-in"><a class="all" href="/#products">☰ 전체 13개 라인</a><a href="/products/111/">용접테이블</a><a href="/products/101/">알루미늄 절단기</a><a href="/products/104/">탭핑기</a><a href="/products/103/">유압 펀칭기</a><a href="/products/109/">R노칭기</a><a href="/products/109/index-b.html">축관기 · 벤딩기</a><a href="/products/107/">챔버</a><a href="/products/100/">금속절단기</a><a href="/products/line-bend/">절곡·벤딩기</a><a href="/products/line-al/">알루미늄 창호기계</a><a href="/products/line-pvc/">PVC 창호기계</a><a href="/products/400/">랩핑기</a><a href="/products/line-blade/">톱날</a></div></nav>
+</header>
+<!-- ===== /공통 상단 메뉴 줄 ===== -->
+
+<div class="wrap">
+<div class="top">
+<a href="/" title="처음 화면으로" style="display:flex;align-items:center;gap:11px;text-decoration:none"><div class="lg"><img alt="창호종합기계" src="../products/102/img/e3b0b7c00681.png"/></div>
+<div class="co">창호종합기계<small>CHANGHO INC</small></div></a>
+<div class="rt">기계 배움터<br/>055-327-4112</div>
+</div>
+
+
+<div class="crumb"><a href="../">홈</a><span>›</span><a href="./">기계 배움터</a><span>›</span><a href="./#safety">안전</a><span>›</span>기초 1</div>
+<div class="hero case listhero" style="grid-template-columns:1fr;"><div>
+<div class="ey">기계 배움터 · 안전 · 기초 1</div><h1>안전 기초 1 — <em>기계 작업장 안전 기본과 보호구</em></h1>
+<div class="ld">기계 작업장에서는 돌아가는 날과 축, 무거운 자재, 전기, 큰 소리가 한자리에 모여 있습니다. 이 글에서는 작업장에서 다치는 모습을 먼저 살펴봅니다. 이어서 위험을 줄이는 순서, 기계에 말려 들지 않는 옷차림과 장갑, 작업에 맞는 보호구를 고르고 관리하는 법을 차례로 정리합니다. 법령 내용은 「산업안전보건기준에 관한 규칙」과 한국산업안전보건공단 자료를 바탕으로 했습니다.</div>
+<div class="pd-jump"><a href="#sWhy">다치는 경우</a><a href="#sOrder">위험을 줄이는 순서</a><a href="#sWear">옷차림</a><a href="#sGlove">장갑</a><a href="#sPPE">작업에 맞는 보호구</a><a href="#sCare">고르기와 관리</a><a href="#sBefore">기계 앞에 서기 전</a><a href="#sTry">생각해 보기</a><a href="#sSum">정리</a></div>
+</div></div>
+
+<div class="sec" id="sWhy">
+<div class="eyebrow">다치는 경우</div>
+<div class="h2">기계 작업장에서 다치는 대표적인 여섯 가지 경우</div>
+<p class="pd-p">안전은 「무엇에 다치는지」를 아는 데서 시작합니다. 기계 작업장에서 다치는 대표적인 경우는 아래 여섯 가지입니다. 이 밖에 뜨거운 부분에 데거나, 먼지를 들이마시는 위험도 있습니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 412" role="img" aria-label="기계 작업장에서 다치는 여섯 가지 모습을 카드 여섯 장으로 나눈 그림이다. 끼임·말림, 날아오는 조각, 베임, 떨어짐·부딪힘, 감전, 큰 소리이며 카드마다 간단한 모양과 짧은 설명이 있다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="sb1f1" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="sb1f1b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker></defs><rect width="1000" height="412" fill="#fff"/>
+<rect x="15.0" y="20.0" width="310.0" height="176.0" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" />
+<circle cx="57.0" cy="112.0" r="24.0" fill="#eef1f7" stroke="#161a22" stroke-width="2.4" /><circle cx="105.0" cy="112.0" r="24.0" fill="#eef1f7" stroke="#161a22" stroke-width="2.4" />
+<path d="M28.4,128.5 L27.7,127.1 L27.0,125.7 L26.3,124.2 L25.8,122.7 L25.3,121.2 L24.9,119.6 L24.6,118.0 L24.3,116.5 L24.1,114.9 L24.0,113.3 L24.0,111.7 L24.1,110.1 L24.2,108.5 L24.4,106.9 L24.7,105.3 L25.0,103.8 L25.5,102.2 L26.0,100.7 L26.6,99.2 L27.2,97.8 L28.0,96.3 L28.7,94.9 L29.6,93.6 L30.5,92.3 L31.5,91.0 L32.6,89.8 L33.7,88.7 L34.8,87.6 L36.0,86.5 L37.3,85.5 L38.6,84.6 L39.9,83.7 L41.3,83.0 L42.8,82.2 L44.2,81.6 L45.7,81.0" fill="none" stroke="#596fa1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /><polygon points="45.7,81.0 38.0,88.8 34.7,80.5" fill="#596fa1" stroke="#596fa1" stroke-width="0" stroke-linejoin="round"/>
+<path d="M133.6,128.5 L134.3,127.1 L135.0,125.7 L135.7,124.2 L136.2,122.7 L136.7,121.2 L137.1,119.6 L137.4,118.0 L137.7,116.5 L137.9,114.9 L138.0,113.3 L138.0,111.7 L137.9,110.1 L137.8,108.5 L137.6,106.9 L137.3,105.3 L137.0,103.8 L136.5,102.2 L136.0,100.7 L135.4,99.2 L134.8,97.8 L134.0,96.3 L133.3,94.9 L132.4,93.6 L131.5,92.3 L130.5,91.0 L129.4,89.8 L128.3,88.7 L127.2,87.6 L126.0,86.5 L124.7,85.5 L123.4,84.6 L122.1,83.7 L120.7,83.0 L119.2,82.2 L117.8,81.6 L116.3,81.0" fill="none" stroke="#596fa1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /><polygon points="116.3,81.0 127.3,80.5 124.0,88.8" fill="#596fa1" stroke="#596fa1" stroke-width="0" stroke-linejoin="round"/>
+<line x1="81.0" y1="50.0" x2="81.0" y2="71.0" stroke="#c0392b" stroke-width="2.4" /><polygon points="81.0,80.0 76.1,69.0 85.9,69.0" fill="#c0392b" stroke="#c0392b" stroke-width="0" stroke-linejoin="round"/>
+<text x="143" y="86" font-size="20" fill="#161a22" text-anchor="start" font-weight="800">끼임·말림</text>
+<text x="143" y="120" font-size="14.5" fill="#6b7684" text-anchor="start" font-weight="400">도는 부분 사이에</text>
+<text x="143" y="142" font-size="14.5" fill="#6b7684" text-anchor="start" font-weight="400">손·옷이 들어감</text>
+<rect x="345.0" y="20.0" width="310.0" height="176.0" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" />
+<circle cx="403.0" cy="118.0" r="32.0" fill="#eef1f7" stroke="#161a22" stroke-width="2.4" />
+<line x1="435.0" y1="118.0" x2="441.7" y2="122.7" stroke="#161a22" stroke-width="2.2" />
+<line x1="430.7" y1="134.0" x2="434.2" y2="141.4" stroke="#161a22" stroke-width="2.2" />
+<line x1="419.0" y1="145.7" x2="418.3" y2="153.9" stroke="#161a22" stroke-width="2.2" />
+<line x1="403.0" y1="150.0" x2="398.3" y2="156.7" stroke="#161a22" stroke-width="2.2" />
+<line x1="387.0" y1="145.7" x2="379.6" y2="149.2" stroke="#161a22" stroke-width="2.2" />
+<line x1="375.3" y1="134.0" x2="367.1" y2="133.3" stroke="#161a22" stroke-width="2.2" />
+<line x1="371.0" y1="118.0" x2="364.3" y2="113.3" stroke="#161a22" stroke-width="2.2" />
+<line x1="375.3" y1="102.0" x2="371.8" y2="94.6" stroke="#161a22" stroke-width="2.2" />
+<line x1="387.0" y1="90.3" x2="387.7" y2="82.1" stroke="#161a22" stroke-width="2.2" />
+<line x1="403.0" y1="86.0" x2="407.7" y2="79.3" stroke="#161a22" stroke-width="2.2" />
+<line x1="419.0" y1="90.3" x2="426.4" y2="86.8" stroke="#161a22" stroke-width="2.2" />
+<line x1="430.7" y1="102.0" x2="438.9" y2="102.7" stroke="#161a22" stroke-width="2.2" />
+<circle cx="403.0" cy="118.0" r="6.0" fill="#fff" stroke="#161a22" stroke-width="2" />
+<polygon points="445.0,78.0 452.0,75.0 449.0,83.0" fill="#c0392b" stroke="#c0392b" stroke-width="1" stroke-linejoin="round"/>
+<polygon points="453.0,98.0 460.0,95.0 457.0,103.0" fill="#c0392b" stroke="#c0392b" stroke-width="1" stroke-linejoin="round"/>
+<polygon points="437.0,64.0 444.0,61.0 441.0,69.0" fill="#c0392b" stroke="#c0392b" stroke-width="1" stroke-linejoin="round"/>
+<line x1="425.0" y1="96.0" x2="436.6" y2="84.4" stroke="#c0392b" stroke-width="2" /><polygon points="443.0,78.0 438.7,89.2 431.8,82.3" fill="#c0392b" stroke="#c0392b" stroke-width="0" stroke-linejoin="round"/>
+<text x="473" y="86" font-size="20" fill="#161a22" text-anchor="start" font-weight="800">날아오는 조각</text>
+<text x="473" y="120" font-size="14.5" fill="#6b7684" text-anchor="start" font-weight="400">자르고 깎을 때</text>
+<text x="473" y="142" font-size="14.5" fill="#6b7684" text-anchor="start" font-weight="400">조각·부러진 날이 튐</text>
+<rect x="675.0" y="20.0" width="310.0" height="176.0" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" />
+<polygon points="697.0,134.0 781.0,88.0 781.0,134.0" fill="#eef1f7" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round"/>
+<line x1="697.0" y1="134.0" x2="781.0" y2="88.0" stroke="#c0392b" stroke-width="3.2" />
+<text x="803" y="86" font-size="20" fill="#161a22" text-anchor="start" font-weight="800">베임</text>
+<text x="803" y="120" font-size="14.5" fill="#6b7684" text-anchor="start" font-weight="400">날·톱날·자재의</text>
+<text x="803" y="142" font-size="14.5" fill="#6b7684" text-anchor="start" font-weight="400">날카로운 끝에 닿음</text>
+<rect x="15.0" y="216.0" width="310.0" height="176.0" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" />
+<rect x="49.0" y="258.0" width="60.0" height="20.0" rx="0" fill="#eef1f7" stroke="#161a22" stroke-width="2.4" />
+<line x1="79.0" y1="282.0" x2="79.0" y2="301.0" stroke="#c0392b" stroke-width="2.4" /><polygon points="79.0,310.0 74.1,299.0 83.9,299.0" fill="#c0392b" stroke="#c0392b" stroke-width="0" stroke-linejoin="round"/>
+<path d="M41,346 L45,322 L87,322 Q117,328 117,346 Z" fill="#fff" stroke="#161a22" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<text x="143" y="282" font-size="20" fill="#161a22" text-anchor="start" font-weight="800">떨어짐·부딪힘</text>
+<text x="143" y="316" font-size="14.5" fill="#6b7684" text-anchor="start" font-weight="400">무거운 자재가 떨어짐</text>
+<text x="143" y="338" font-size="14.5" fill="#6b7684" text-anchor="start" font-weight="400">통로에서 걸려 넘어짐</text>
+<rect x="345.0" y="216.0" width="310.0" height="176.0" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" />
+<polygon points="417.0,264.0 389.0,314.0 407.0,314.0 397.0,352.0 431.0,298.0 413.0,298.0" fill="#fff" stroke="#c0392b" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="473" y="282" font-size="20" fill="#161a22" text-anchor="start" font-weight="800">감전</text>
+<text x="473" y="316" font-size="14.5" fill="#6b7684" text-anchor="start" font-weight="400">젖은 손·벗겨진 전선</text>
+<text x="473" y="338" font-size="14.5" fill="#6b7684" text-anchor="start" font-weight="400">열린 제어함에 닿음</text>
+<rect x="675.0" y="216.0" width="310.0" height="176.0" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" />
+<path d="M743,338 Q723,318 729,294 Q739,270 761,278 Q773,288 765,304 Q755,316 759,330" fill="none" stroke="#161a22" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M723.2,314.9 L722.9,314.5 L722.7,314.2 L722.5,313.8 L722.3,313.5 L722.1,313.1 L722.0,312.8 L721.8,312.4 L721.7,312.0 L721.6,311.6 L721.4,311.2 L721.3,310.8 L721.2,310.4 L721.2,310.0 L721.1,309.6 L721.1,309.2 L721.0,308.8 L721.0,308.4 L721.0,308.0 L721.0,307.6 L721.0,307.2 L721.1,306.8 L721.1,306.4 L721.2,306.0 L721.2,305.6 L721.3,305.2 L721.4,304.8 L721.6,304.4 L721.7,304.0 L721.8,303.6 L722.0,303.2 L722.1,302.9 L722.3,302.5 L722.5,302.2 L722.7,301.8 L722.9,301.5 L723.2,301.1" fill="none" stroke="#c0392b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M715.0,320.6 L714.6,320.0 L714.2,319.4 L713.8,318.7 L713.4,318.1 L713.1,317.4 L712.8,316.7 L712.5,316.0 L712.3,315.3 L712.0,314.6 L711.8,313.9 L711.6,313.2 L711.5,312.4 L711.3,311.7 L711.2,311.0 L711.1,310.2 L711.1,309.5 L711.0,308.7 L711.0,308.0 L711.0,307.3 L711.1,306.5 L711.1,305.8 L711.2,305.0 L711.3,304.3 L711.5,303.6 L711.6,302.8 L711.8,302.1 L712.0,301.4 L712.3,300.7 L712.5,300.0 L712.8,299.3 L713.1,298.6 L713.4,297.9 L713.8,297.3 L714.2,296.6 L714.6,296.0 L715.0,295.4" fill="none" stroke="#c0392b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M706.8,326.4 L706.2,325.5 L705.6,324.5 L705.1,323.6 L704.5,322.6 L704.1,321.7 L703.6,320.7 L703.2,319.7 L702.8,318.7 L702.5,317.6 L702.2,316.6 L701.9,315.5 L701.7,314.5 L701.5,313.4 L701.3,312.3 L701.2,311.3 L701.1,310.2 L701.0,309.1 L701.0,308.0 L701.0,306.9 L701.1,305.8 L701.2,304.7 L701.3,303.7 L701.5,302.6 L701.7,301.5 L701.9,300.5 L702.2,299.4 L702.5,298.4 L702.8,297.3 L703.2,296.3 L703.6,295.3 L704.1,294.3 L704.5,293.4 L705.1,292.4 L705.6,291.5 L706.2,290.5 L706.8,289.6" fill="none" stroke="#c0392b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+<text x="803" y="282" font-size="20" fill="#161a22" text-anchor="start" font-weight="800">큰 소리</text>
+<text x="803" y="316" font-size="14.5" fill="#6b7684" text-anchor="start" font-weight="400">오래 들으면</text>
+<text x="803" y="338" font-size="14.5" fill="#6b7684" text-anchor="start" font-weight="400">귀가 잘 안 들림</text>
+</svg><figcaption>직접 그린 그림 · 기계 작업장에서 다치는 대표적인 여섯 가지 경우입니다. 한 가지 작업에 여러 위험이 함께 있을 수 있습니다. 원형톱으로 자재를 자를 때는 날에 베일 위험, 조각이 튈 위험, 큰 소리가 함께 있습니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>끼임·말림</b> — 맞물려 도는 롤러, 벨트와 풀리(벨트가 걸려 도는 바퀴), 돌아가는 축, 오르내리는 프레스 사이에 손이나 옷이 들어가는 사고입니다. 기계의 힘은 사람이 버틸 수 없을 만큼 커서, 한번 들어가면 스스로 빼기 어렵습니다.</li>
+<li><b>날아오는 조각</b> — 자르고 깎고 갈 때 나온 조각과 부러진 날 조각이 눈과 얼굴로 날아옵니다.</li>
+<li><b>베임</b> — 날, 톱날, 막 자른 자재의 끝은 날카롭습니다. 날을 바꾸거나 자재를 옮길 때 베이기 쉽습니다.</li>
+<li><b>떨어짐·부딪힘</b> — 무거운 자재나 공구가 발에 떨어지거나, 통로 바닥에 놓인 물건에 걸려 넘어집니다.</li>
+<li><b>감전</b> — 젖은 손, 피복(전선의 겉 덮개)이 벗겨진 전선, 열어 둔 제어함(전기 부품이 든 상자)에 닿아 일어납니다. 전기 이야기는 안전 기초 3 「전기 안전」에서 따로 다룹니다.</li>
+<li><b>큰 소리</b> — 큰 소리를 오래 들으면 귀가 서서히 잘 안 들리게 됩니다. 아프지 않아서 늦게 알아차리는 위험입니다.</li>
+</ul>
+</div>
+
+<div class="sec" id="sOrder">
+<div class="eyebrow">위험을 줄이는 순서</div>
+<div class="h2">보호구는 맨 마지막에 사용합니다</div>
+<p class="pd-p">위험을 줄이는 방법에는 순서가 있습니다. 안전 분야에서 널리 쓰는 기본 원칙입니다. 먼저 위험 자체를 없애거나 줄이고, 그다음 덮개와 방호 장치(손이 못 들어가게 막거나, 들어가면 기계를 멈추게 하는 장치)로 막고, 작업 방법을 정해 알립니다. 보호구는 이렇게 해도 남는 위험을 막는 마지막 방법입니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 452" role="img" aria-label="위험을 줄이는 네 단계를 위에서 아래로 쌓은 그림이다. 1 위험을 없애거나 줄이기, 2 덮개와 방호 장치로 막기, 3 작업 순서를 정하고 알리기, 4 남는 위험을 보호구로 막기 순서이며 왼쪽 화살표가 먼저에서 나중을 가리킨다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="sb1f2" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="sb1f2b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker></defs><rect width="1000" height="452" fill="#fff"/>
+<rect x="130.0" y="40.0" width="760.0" height="74.0" rx="10" fill="#596fa1" stroke="#596fa1" stroke-width="2.2" />
+<circle cx="166.0" cy="77.0" r="17.0" fill="#fff" stroke="#fff" stroke-width="0" /><text x="166.0" y="83.0" font-size="17" fill="#596fa1" text-anchor="middle" font-weight="800">1</text>
+<text x="198.0" y="72.0" font-size="19" fill="#fff" text-anchor="start" font-weight="800">위험을 없애거나 줄입니다</text>
+<text x="198.0" y="97.0" font-size="14.5" fill="#fff" text-anchor="start" font-weight="500">위험한 작업을 없애거나 덜 위험한 기계·공정으로 바꿉니다</text>
+<rect x="165.0" y="132.0" width="690.0" height="74.0" rx="10" fill="#596fa1" stroke="#596fa1" stroke-width="2.2" />
+<circle cx="201.0" cy="169.0" r="17.0" fill="#fff" stroke="#fff" stroke-width="0" /><text x="201.0" y="175.0" font-size="17" fill="#596fa1" text-anchor="middle" font-weight="800">2</text>
+<text x="233.0" y="164.0" font-size="19" fill="#fff" text-anchor="start" font-weight="800">덮개·방호 장치로 막습니다</text>
+<text x="233.0" y="189.0" font-size="14.5" fill="#fff" text-anchor="start" font-weight="500">돌아가는 부분을 덮고, 손이 들어가면 멈추게 합니다</text>
+<rect x="200.0" y="224.0" width="620.0" height="74.0" rx="10" fill="#596fa1" stroke="#596fa1" stroke-width="2.2" />
+<circle cx="236.0" cy="261.0" r="17.0" fill="#fff" stroke="#fff" stroke-width="0" /><text x="236.0" y="267.0" font-size="17" fill="#596fa1" text-anchor="middle" font-weight="800">3</text>
+<text x="268.0" y="256.0" font-size="19" fill="#fff" text-anchor="start" font-weight="800">작업 순서를 정하고 알립니다</text>
+<text x="268.0" y="281.0" font-size="14.5" fill="#fff" text-anchor="start" font-weight="500">작업 순서·교육·안전 표지로 위험을 알립니다</text>
+<rect x="235.0" y="316.0" width="550.0" height="74.0" rx="10" fill="#ffffff" stroke="#596fa1" stroke-width="2.2" />
+<circle cx="271.0" cy="353.0" r="17.0" fill="#596fa1" stroke="#596fa1" stroke-width="0" /><text x="271.0" y="359.0" font-size="17" fill="#fff" text-anchor="middle" font-weight="800">4</text>
+<text x="303.0" y="348.0" font-size="19" fill="#161a22" text-anchor="start" font-weight="800">남는 위험을 보호구로 막습니다</text>
+<text x="303.0" y="373.0" font-size="14.5" fill="#161a22" text-anchor="start" font-weight="500">앞의 조치로 다 막지 못한 위험에 사용합니다</text>
+<line x1="70.0" y1="50.0" x2="70.0" y2="377.0" stroke="#6b7684" stroke-width="2.4" /><polygon points="70.0,386.0 65.1,375.0 74.9,375.0" fill="#6b7684" stroke="#6b7684" stroke-width="0" stroke-linejoin="round"/>
+<text x="70" y="34" font-size="15" fill="#6b7684" text-anchor="middle" font-weight="800">먼저</text>
+<text x="70" y="412" font-size="15" fill="#6b7684" text-anchor="middle" font-weight="800">나중</text>
+<text x="500" y="434" font-size="15" fill="#161a22" text-anchor="middle" font-weight="700">위쪽 조치일수록 사람이 실수해도 효과가 남습니다 · 보호구는 맨 마지막에 사용합니다</text>
+</svg><figcaption>직접 그린 그림 · 위험을 줄이는 네 단계입니다. 위쪽 조치는 사람이 깜빡해도 효과가 남고, 아래로 갈수록 사람이 매번 지켜야 효과가 납니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>법에서도 보호구보다 설비 개선을 먼저 하라고 정합니다</b> — 「산업안전보건기준에 관한 규칙」 제31조(보호구의 제한적 사용)는 보호구 없이도 일하는 사람이 보호받을 수 있도록 설비 개선 같은 조치를 먼저 하라고 정합니다. 그런 조치가 어려울 때 작업에 맞는 보호구를 쓰게 합니다.</li>
+<li><b>덮개는 떼어 두지 않습니다</b> — 같은 규칙 제87조는 기계의 원동기(모터처럼 힘을 내는 장치)·회전축·기어·풀리·벨트처럼 위험한 부분에 덮개·울(둘러막는 틀)·슬리브(축을 감싸는 통) 등을 설치하도록 정합니다. 작업에 걸린다고 덮개를 떼어 두면 「덮개·방호 장치로 막는」 2단계를 통째로 없애는 것이고, 보호구로는 그 자리를 메울 수 없습니다.</li>
+<li><b>보호구는 위험을 없애지 못합니다</b> — 보호구는 다치는 정도를 줄여 주는 마지막 수단입니다. 그래서 보호구를 썼더라도 앞의 세 단계를 함께 지킵니다.</li>
+</ul>
+</div>
+
+<div class="sec" id="sWear">
+<div class="eyebrow">옷차림</div>
+<div class="h2">돌아가는 부분 가까이에서는 늘어진 것을 모두 정리합니다</div>
+<p class="pd-p">돌아가는 축과 날은 닿은 것을 감아 들입니다. 소매 끝, 끈, 머리카락, 목걸이처럼 몸에서 늘어진 것이 닿으면 그것을 따라 몸이 끌려 들어갑니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 430" role="img" aria-label="왼쪽은 돌아가는 축에 소매 끝 천이 닿아 감겨 드는 모습이다. 오른쪽은 말려 들 수 있는 차림 세 가지(풀린 소매와 끈, 헐렁한 면장갑, 늘어뜨린 머리와 목걸이)와 바른 차림 세 가지(소매를 여미고 끈을 넣음, 손에 붙는 가죽 장갑, 머리를 묶고 작업모)를 엑스표와 동그라미표로 짝지어 놓았다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="sb1f3" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="sb1f3b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker></defs><rect width="1000" height="430" fill="#fff"/>
+<rect x="40.0" y="144.0" width="320.0" height="92.0" rx="0" fill="#eef1f7" stroke="#161a22" stroke-width="2.4" />
+<path d="M40,144 Q24,190 40,236" fill="none" stroke="#161a22" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M360,144 Q376,190 360,236" fill="none" stroke="#161a22" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M259.9,168.1 L261.2,164.7 L262.8,161.3 L264.6,158.0 L266.5,154.8 L268.7,151.8 L271.0,148.9 L273.4,146.1 L276.1,143.4 L278.9,141.0 L281.8,138.7 L284.8,136.5 L288.0,134.6 L291.3,132.8 L294.7,131.2 L298.1,129.9 L301.6,128.7 L305.2,127.7 L308.9,127.0 L312.6,126.4 L316.3,126.1 L320.0,126.0 L323.7,126.1 L327.4,126.4 L331.1,127.0 L334.8,127.7 L338.4,128.7 L341.9,129.9 L345.3,131.2 L348.7,132.8 L352.0,134.6 L355.2,136.5 L358.2,138.7 L361.1,141.0 L363.9,143.4 L366.6,146.1 L369.0,148.9" fill="none" stroke="#596fa1" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /><polygon points="369.0,148.9 359.0,144.3 365.7,138.4" fill="#596fa1" stroke="#596fa1" stroke-width="0" stroke-linejoin="round"/>
+<text x="320" y="112" font-size="15" fill="#596fa1" text-anchor="middle" font-weight="800">돌아감</text>
+<path d="M170,346 Q190,276 174,236 L206,236 Q222,280 202,346 Z" fill="#fff" stroke="#c0392b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M174,236 Q170,140 194,144 L222,144 Q210,190 206,236" fill="#fbe3e0" stroke="#c0392b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+<line x1="130.0" y1="332.0" x2="161.7" y2="273.9" stroke="#c0392b" stroke-width="2.2" /><polygon points="166.0,266.0 165.0,278.0 156.5,273.3" fill="#c0392b" stroke="#c0392b" stroke-width="0" stroke-linejoin="round"/>
+<text x="200" y="376" font-size="15" fill="#161a22" text-anchor="middle" font-weight="700">소매 끝이 닿으면 축이 천을 감아 들이고</text>
+<text x="200" y="400" font-size="15" fill="#161a22" text-anchor="middle" font-weight="700">팔이 함께 끌려 들어갑니다</text>
+<line x1="430.0" y1="30.0" x2="430.0" y2="410.0" stroke="#c9d1dc" stroke-width="1" />
+<text x="560" y="50" font-size="18" fill="#c0392b" text-anchor="middle" font-weight="800">말려 들 수 있는 차림</text>
+<text x="840" y="50" font-size="18" fill="#2e7d4f" text-anchor="middle" font-weight="800">바른 차림</text>
+<rect x="452.0" y="70.0" width="228.0" height="70.0" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" /><circle cx="480.0" cy="105.0" r="13.0" fill="#fff" stroke="#c0392b" stroke-width="2.4" /><line x1="473.5" y1="98.5" x2="486.5" y2="111.5" stroke="#c0392b" stroke-width="2.6" /><line x1="486.5" y1="98.5" x2="473.5" y2="111.5" stroke="#c0392b" stroke-width="2.6" />
+<text x="504" y="111" font-size="15.5" fill="#161a22" text-anchor="start" font-weight="700">풀린 소매·늘어진 끈</text>
+<rect x="728.0" y="70.0" width="252.0" height="70.0" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" /><circle cx="756.0" cy="105.0" r="13.0" fill="#fff" stroke="#2e7d4f" stroke-width="2.4" /><circle cx="756.0" cy="105.0" r="5.9" fill="none" stroke="#2e7d4f" stroke-width="2.6" />
+<text x="780" y="111" font-size="15.5" fill="#161a22" text-anchor="start" font-weight="700">소매를 여미고 끈을 넣음</text>
+<line x1="686.0" y1="105.0" x2="715.0" y2="105.0" stroke="#6b7684" stroke-width="2" /><polygon points="722.0,105.0 712.9,109.1 712.9,100.9" fill="#6b7684" stroke="#6b7684" stroke-width="0" stroke-linejoin="round"/>
+<rect x="452.0" y="162.0" width="228.0" height="70.0" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" /><circle cx="480.0" cy="197.0" r="13.0" fill="#fff" stroke="#c0392b" stroke-width="2.4" /><line x1="473.5" y1="190.5" x2="486.5" y2="203.5" stroke="#c0392b" stroke-width="2.6" /><line x1="486.5" y1="190.5" x2="473.5" y2="203.5" stroke="#c0392b" stroke-width="2.6" />
+<text x="504" y="203" font-size="15.5" fill="#161a22" text-anchor="start" font-weight="700">헐렁한 면장갑</text>
+<rect x="728.0" y="162.0" width="252.0" height="70.0" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" /><circle cx="756.0" cy="197.0" r="13.0" fill="#fff" stroke="#2e7d4f" stroke-width="2.4" /><circle cx="756.0" cy="197.0" r="5.9" fill="none" stroke="#2e7d4f" stroke-width="2.6" />
+<text x="780" y="203" font-size="15.5" fill="#161a22" text-anchor="start" font-weight="700">손에 붙는 가죽 장갑</text>
+<line x1="686.0" y1="197.0" x2="715.0" y2="197.0" stroke="#6b7684" stroke-width="2" /><polygon points="722.0,197.0 712.9,201.1 712.9,192.9" fill="#6b7684" stroke="#6b7684" stroke-width="0" stroke-linejoin="round"/>
+<rect x="452.0" y="254.0" width="228.0" height="70.0" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" /><circle cx="480.0" cy="289.0" r="13.0" fill="#fff" stroke="#c0392b" stroke-width="2.4" /><line x1="473.5" y1="282.5" x2="486.5" y2="295.5" stroke="#c0392b" stroke-width="2.6" /><line x1="486.5" y1="282.5" x2="473.5" y2="295.5" stroke="#c0392b" stroke-width="2.6" />
+<text x="504" y="295" font-size="15.5" fill="#161a22" text-anchor="start" font-weight="700">늘어뜨린 머리·목걸이</text>
+<rect x="728.0" y="254.0" width="252.0" height="70.0" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" /><circle cx="756.0" cy="289.0" r="13.0" fill="#fff" stroke="#2e7d4f" stroke-width="2.4" /><circle cx="756.0" cy="289.0" r="5.9" fill="none" stroke="#2e7d4f" stroke-width="2.6" />
+<text x="780" y="295" font-size="15.5" fill="#161a22" text-anchor="start" font-weight="700">머리를 묶고 작업모</text>
+<line x1="686.0" y1="289.0" x2="715.0" y2="289.0" stroke="#6b7684" stroke-width="2" /><polygon points="722.0,289.0 712.9,293.1 712.9,284.9" fill="#6b7684" stroke="#6b7684" stroke-width="0" stroke-linejoin="round"/>
+<text x="716" y="392" font-size="14.5" fill="#6b7684" text-anchor="middle" font-weight="400">장갑은 날·자재·축이 돌아가는 기계에서</text>
+<text x="716" y="414" font-size="14.5" fill="#6b7684" text-anchor="middle" font-weight="400">손이 말려 들지 않는 것을 사용합니다(본문 참고)</text>
+</svg><figcaption>직접 그린 그림 · 왼쪽은 돌아가는 축에 소매 끝이 닿아 감겨 드는 모습입니다. 오른쪽은 말려 들 수 있는 차림과 바른 차림을 짝지어 놓았습니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>작업모·작업복</b> — 「산업안전보건기준에 관한 규칙」 제94조(작업모 등의 착용)는 동력으로 움직이는 기계에 머리카락이나 옷이 말려 들어갈 우려가 있으면 작업에 맞는 작업모나 작업복을 입게 하도록 정합니다. 긴 머리는 묶어 작업모 안에 넣습니다.</li>
+<li><b>소매와 끈</b> — 소매 끝은 단추나 조임으로 여미고, 허리끈·후드 끈·목에 거는 줄은 옷 안으로 넣습니다. 헐렁한 겉옷은 벗습니다.</li>
+<li><b>장신구</b> — 반지·팔찌·목걸이는 벗어 둡니다. 걸리면 빠지지 않고 손가락이나 손목을 끌어당깁니다.</li>
+<li><b>신발</b> — 슬리퍼·샌들은 신지 않습니다. 떨어지는 자재와 바닥의 날카로운 조각에서 발을 지킬 수 없습니다.</li>
+</ul>
+</div>
+
+<div class="sec" id="sGlove">
+<div class="eyebrow">장갑</div>
+<div class="h2">돌아가는 기계에서는 손이 말려 들지 않는 장갑을 사용합니다</div>
+<p class="pd-p">장갑은 베임과 뜨거움을 막아 주지만, 돌아가는 기계에서는 장갑 자체가 말려 들 수 있습니다. 헐렁하거나 실이 풀린 장갑은 돌아가는 날과 축에 쉽게 걸립니다.</p>
+<ul class="pd-note">
+<li><b>법에서 정한 것</b> — 「산업안전보건기준에 관한 규칙」 제95조는 날·공작물(가공하려고 기계에 고정한 재료) 또는 축이 회전하는 기계를 다룰 때, 손에 밀착이 잘되는 가죽 장갑처럼 손이 말려 들어갈 위험이 없는 장갑만 쓰게 하도록 정합니다. 조문 제목이 「장갑의 사용 금지」인 것도 말려 들 수 있는 장갑을 쓰지 말라는 뜻입니다.</li>
+<li><b>기계가 돌 때 손을 넣지 않습니다</b> — 장갑을 꼈든 안 꼈든 돌아가는 부분에는 손을 대지 않습니다. 한국산업안전보건공단의 교육 자료도 장갑 낀 손으로 기계의 움직이는 부분에 닿지 말라고 안내합니다. 점검하거나 손보는 일은 기계를 세운 뒤에 합니다.</li>
+<li><b>일에 따라 장갑을 바꿉니다</b> — 날을 바꾸거나 막 자른 자재를 옮길 때는 베임을 막는 장갑이 필요합니다. 이런 일은 기계를 세운 뒤에 합니다. 기계를 다시 돌릴 때는 그 기계에 맞는 장갑으로 바꿉니다.</li>
+<li><b>전기 작업용 장갑은 따로 있습니다</b> — 감전을 막는 장갑은 절연용 보호구로 따로 나뉩니다. 일반 작업 장갑으로 전기 작업을 하지 않습니다.</li>
+</ul>
+</div>
+
+<div class="sec" id="sPPE">
+<div class="eyebrow">작업에 맞는 보호구</div>
+<div class="h2">보호구는 그 작업의 위험에 맞춰 고릅니다</div>
+<p class="pd-p">「산업안전보건기준에 관한 규칙」 제32조(보호구의 지급 등)는 작업 조건에 맞는 보호구를 작업하는 사람 수 이상으로 나눠 주고 쓰게 하도록 정합니다. 보호구를 받거나 쓰라는 지시를 받은 사람은 그 보호구를 써야 합니다. 같은 조항에는 어떤 위험에 어떤 보호구를 쓰는지가 작업별로 적혀 있습니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 470" role="img" aria-label="가운데 사람 그림에 보호구를 입힌 모습이다. 머리에 안전모, 눈에 보안경, 귀에 귀덮개, 코와 입에 방진마스크, 손에 장갑, 몸에 작업복, 발에 안전화가 있고 양옆 이름표가 각 보호구가 막는 위험을 적었다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="sb1f4" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="sb1f4b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker></defs><rect width="1000" height="470" fill="#fff"/>
+<path d="M484.3,279.5 L477.6,396.0" fill="none" stroke="#dfe5ef" stroke-width="22.400000000000002" stroke-linecap="round" stroke-linejoin="round" /><path d="M515.7,279.5 L522.4,396.0" fill="none" stroke="#dfe5ef" stroke-width="22.400000000000002" stroke-linecap="round" stroke-linejoin="round" /><path d="M484.3,279.5 L477.6,396.0 M515.7,279.5 L522.4,396.0" fill="none" stroke="#161a22" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /><path d="M458.6,409.4 L460.8,391.5 L487.7,391.5 Q502.2,396.0 502.2,409.4 Z" fill="#596fa1" stroke="#161a22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M507.8,409.4 L510.1,391.5 L537.0,391.5 Q551.5,396.0 551.5,409.4 Z" fill="#596fa1" stroke="#161a22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M457.4,138.4 Q500.0,127.2 542.6,138.4 L538.1,284.0 L461.9,284.0 Z" fill="#eef1f7" stroke="#161a22" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /><line x1="500.0" y1="133.9" x2="500.0" y2="284.0" stroke="#6b7684" stroke-width="1.6" /><path d="M457.4,140.6 L441.8,228.0 L439.5,252.6" fill="none" stroke="#eef1f7" stroke-width="20.160000000000004" stroke-linecap="round" stroke-linejoin="round" /><path d="M457.4,140.6 L441.8,228.0 L439.5,252.6" fill="none" stroke="#161a22" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /><line x1="449.6" y1="245.9" x2="429.4" y2="245.9" stroke="#161a22" stroke-width="2" /><circle cx="438.4" cy="268.3" r="13.4" fill="#596fa1" stroke="#161a22" stroke-width="2" /><path d="M542.6,140.6 L558.2,228.0 L560.5,252.6" fill="none" stroke="#eef1f7" stroke-width="20.160000000000004" stroke-linecap="round" stroke-linejoin="round" /><path d="M542.6,140.6 L558.2,228.0 L560.5,252.6" fill="none" stroke="#161a22" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /><line x1="550.4" y1="245.9" x2="570.6" y2="245.9" stroke="#161a22" stroke-width="2" /><circle cx="561.6" cy="268.3" r="13.4" fill="#596fa1" stroke="#161a22" stroke-width="2" /><line x1="500.0" y1="122.7" x2="500.0" y2="133.9" stroke="#161a22" stroke-width="2.6" /><circle cx="500.0" cy="93.6" r="29.1" fill="#ffffff" stroke="#161a22" stroke-width="2.6" /><path d="M461.9,89.1 L538.1,89.1" fill="none" stroke="#161a22" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" /><path d="M468.6,88.0 Q470.9,48.8 500.0,48.8 Q529.1,48.8 531.4,88.0 Z" fill="#596fa1" stroke="#161a22" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /><rect x="477.6" y="94.7" width="44.8" height="12.3" rx="4" fill="#cfe0f5" stroke="#161a22" stroke-width="2" /><rect x="463.0" y="95.8" width="13.4" height="17.9" rx="4" fill="#596fa1" stroke="#161a22" stroke-width="2" /><rect x="523.5" y="95.8" width="13.4" height="17.9" rx="4" fill="#596fa1" stroke="#161a22" stroke-width="2" /><path d="M483.2,108.2 L516.8,108.2 Q515.7,127.2 500.0,128.3 Q484.3,127.2 483.2,108.2 Z" fill="#d7dde7" stroke="#161a22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><line x1="483.2" y1="110.4" x2="473.1" y2="102.6" stroke="#161a22" stroke-width="1.6" /><line x1="516.8" y1="110.4" x2="526.9" y2="102.6" stroke="#161a22" stroke-width="1.6" />
+<text x="330" y="82" font-size="18" fill="#161a22" text-anchor="end" font-weight="800">안전모</text>
+<text x="330" y="106" font-size="14" fill="#6b7684" text-anchor="end" font-weight="400">떨어지거나 날아오는 물체·추락</text>
+<line x1="340.0" y1="76.0" x2="482.0" y2="72.0" stroke="#596fa1" stroke-width="1.4" stroke-dasharray="3 3"/><circle cx="482.0" cy="72.0" r="3.4" fill="#596fa1" stroke="#596fa1" stroke-width="0" />
+<text x="330" y="152" font-size="18" fill="#161a22" text-anchor="end" font-weight="800">보안경 · 보안면</text>
+<text x="330" y="176" font-size="14" fill="#6b7684" text-anchor="end" font-weight="400">날아오는 조각·불꽃</text>
+<line x1="340.0" y1="146.0" x2="478.0" y2="100.0" stroke="#596fa1" stroke-width="1.4" stroke-dasharray="3 3"/><circle cx="478.0" cy="100.0" r="3.4" fill="#596fa1" stroke="#596fa1" stroke-width="0" />
+<text x="330" y="222" font-size="18" fill="#161a22" text-anchor="end" font-weight="800">방진마스크</text>
+<text x="330" y="246" font-size="14" fill="#6b7684" text-anchor="end" font-weight="400">갈거나 자를 때 나는 먼지</text>
+<line x1="340.0" y1="216.0" x2="500.0" y2="128.0" stroke="#596fa1" stroke-width="1.4" stroke-dasharray="3 3"/><circle cx="500.0" cy="128.0" r="3.4" fill="#596fa1" stroke="#596fa1" stroke-width="0" />
+<text x="330" y="322" font-size="18" fill="#161a22" text-anchor="end" font-weight="800">작업 장갑</text>
+<text x="330" y="346" font-size="14" fill="#6b7684" text-anchor="end" font-weight="400">베임·뜨거움(회전 기계는 본문)</text>
+<line x1="340.0" y1="316.0" x2="440.0" y2="268.0" stroke="#596fa1" stroke-width="1.4" stroke-dasharray="3 3"/><circle cx="440.0" cy="268.0" r="3.4" fill="#596fa1" stroke="#596fa1" stroke-width="0" />
+<text x="670" y="122" font-size="18" fill="#161a22" text-anchor="start" font-weight="800">귀마개 · 귀덮개</text>
+<text x="670" y="146" font-size="14" fill="#6b7684" text-anchor="start" font-weight="400">큰 소리</text>
+<line x1="660.0" y1="116.0" x2="536.0" y2="100.0" stroke="#596fa1" stroke-width="1.4" stroke-dasharray="3 3"/><circle cx="536.0" cy="100.0" r="3.4" fill="#596fa1" stroke="#596fa1" stroke-width="0" />
+<text x="670" y="222" font-size="18" fill="#161a22" text-anchor="start" font-weight="800">작업복</text>
+<text x="670" y="246" font-size="14" fill="#6b7684" text-anchor="start" font-weight="400">돌아가는 부분에 말림</text>
+<line x1="660.0" y1="216.0" x2="530.0" y2="170.0" stroke="#596fa1" stroke-width="1.4" stroke-dasharray="3 3"/><circle cx="530.0" cy="170.0" r="3.4" fill="#596fa1" stroke="#596fa1" stroke-width="0" />
+<text x="670" y="386" font-size="18" fill="#161a22" text-anchor="start" font-weight="800">안전화</text>
+<text x="670" y="410" font-size="14" fill="#6b7684" text-anchor="start" font-weight="400">떨어지는 물체·끼임</text>
+<line x1="660.0" y1="380.0" x2="528.0" y2="400.0" stroke="#596fa1" stroke-width="1.4" stroke-dasharray="3 3"/><circle cx="528.0" cy="400.0" r="3.4" fill="#596fa1" stroke="#596fa1" stroke-width="0" />
+<text x="500" y="450" font-size="15" fill="#161a22" text-anchor="middle" font-weight="700">작업마다 필요한 것이 다릅니다 — 모두를 늘 쓰는 것이 아니라 그 작업의 위험에 맞춰 고릅니다</text>
+</svg><figcaption>직접 그린 그림 · 몸의 자리별로 쓰는 보호구와 그 보호구가 막는 위험입니다. 한 사람이 이것을 모두 쓰는 경우는 드물고, 작업에 따라 필요한 것만 고릅니다.</figcaption></figure>
+<table class="pd-t">
+<thead><tr><th>보호구</th><th>막는 위험(법에서 정한 것)</th><th>기계 작업장 예</th></tr></thead>
+<tbody>
+<tr><td>안전모</td><td>물체가 떨어지거나 날아올 위험, 떨어질 위험</td><td>무거운 자재를 들어 올리는 곳</td></tr>
+<tr><td>안전화</td><td>물체가 떨어지거나 부딪힐 위험, 끼일 위험, 감전·정전기 위험</td><td>긴 자재 나르기, 기계 옮기기</td></tr>
+<tr><td>보안경</td><td>물체가 흩날릴 위험</td><td>자르기·깎기·구멍 뚫기·갈기</td></tr>
+<tr><td>보안면</td><td>용접할 때 불꽃이나 물체가 흩날릴 위험</td><td>용접</td></tr>
+<tr><td>절연용 보호구</td><td>감전 위험</td><td>감전 위험이 있는 전기 작업</td></tr>
+<tr><td>귀마개·귀덮개</td><td>소음작업(하루 8시간 기준 85데시벨 이상)</td><td>소리가 큰 절단·가공 작업장</td></tr>
+</tbody></table>
+<ul class="pd-note">
+<li><b>표 읽는 법</b> — 가운데 칸은 제32조와 제516조에 적힌 위험을 쉬운 말로 옮긴 것이고, 오른쪽 칸은 이해를 돕기 위해 든 예입니다. 같은 작업이라도 그 작업장에 실제로 어떤 위험이 있는지에 따라 보호구가 달라집니다.</li>
+<li><b>귀 보호구</b> — 「산업안전보건기준에 관한 규칙」 제512조는 하루 8시간 작업을 기준으로 85데시벨(소리 크기를 나타내는 단위) 이상의 소음이 나는 작업을 소음작업이라고 정합니다. 제516조는 소음작업에 귀마개나 귀덮개를 나눠 주고 쓰게 하며, 한 사람이 자기 것만 쓰도록 하라고 정합니다. 소리 크기는 작업장마다 다르므로 소음을 재어 확인합니다.</li>
+<li><b>먼지</b> — 갈거나 자를 때 먼지가 많이 나면 방진마스크를 착용합니다. 방진마스크는 걸러 내는 성능에 따라 특급·1급·2급으로 나뉘고(특급이 가장 잘 거릅니다), 공기 중 산소가 18% 미만인 곳에서는 쓰면 안 됩니다(한국산업안전보건공단 기술지원규정).</li>
+</ul>
+</div>
+
+<div class="sec" id="sCare">
+<div class="eyebrow">고르기와 관리</div>
+<div class="h2">몸에 맞는 것을 고르고, 늘 점검해 바꿔 줍니다</div>
+<p class="pd-p">보호구는 맞지 않거나 상한 채로 쓰면 제 역할을 못 합니다. 고를 때와 쓸 때, 보관할 때 확인할 것을 정리합니다.</p>
+<ul class="pd-note">
+<li><b>안전인증 표시</b> — 안전모·안전화·보안경·귀마개처럼 일하는 사람이 쓰는 보호구 가운데 법으로 정한 것은 안전인증을 받아야 합니다(산업안전보건법 제84조). 인증을 받은 제품에는 KCs 표시가 붙습니다. 살 때 이 표시가 있는지 봅니다.</li>
+<li><b>위험에 맞는 종류</b> — 안전모는 막는 위험에 따라 AB(떨어지거나 날아오는 물체, 추락), AE(떨어지거나 날아오는 물체, 감전), ABE(셋 모두)로 나뉩니다. 귀마개는 낮은 소리부터 높은 소리까지 막는 1종과 주로 높은 소리를 막는 2종이 있습니다(한국산업안전보건공단 기술지원규정).</li>
+<li><b>몸에 맞게</b> — 안전모 끈, 보안경 다리, 장갑 크기를 쓰는 사람 몸에 맞게 조절합니다. 헐렁한 안전모는 부딪힐 때 벗겨지고, 큰 장갑은 말려 들기 쉽습니다.</li>
+<li><b>늘 점검하고 바꿉니다</b> — 「산업안전보건기준에 관한 규칙」 제33조(보호구의 관리)는 나눠 준 보호구를 늘 점검해 이상이 있으면 고치거나 다른 것으로 바꿔 주도록 정합니다. 금이 간 안전모, 긁혀서 앞이 흐린 보안경, 찢어진 장갑은 바로 바꿉니다. 보안경 렌즈를 바꿀 때는 원래 렌즈와 같은 규격인지 확인합니다(한국산업안전보건공단 기술지원규정).</li>
+<li><b>깨끗하게 보관합니다</b> — 한국산업안전보건공단 기술지원규정은 보호구를 온도 5~30℃, 상대 습도(공기 속 물기의 정도) 70% 이하인 곳에서 전용 상자나 보관함에 보관하도록 안내합니다. 씻을 때는 만든 곳의 안내를 따르고, 중성 세제와 따뜻한 물을 사용합니다.</li>
+</ul>
+</div>
+
+<div class="sec" id="sBefore">
+<div class="eyebrow">기계 앞에 서기 전</div>
+<div class="h2">켜기 전에 네 가지, 켠 뒤에 한 가지를 확인합니다</div>
+<p class="pd-p">작업을 시작할 때 짧게 끝나는 확인입니다. 순서를 정해 두고 매번 같은 순서로 보면 빠뜨리는 것이 줄어듭니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 366" role="img" aria-label="기계를 켜기 전에 확인할 네 가지와 켠 뒤 살필 한 가지를 차례로 늘어놓은 그림이다. 1 주변 정리, 2 덮개와 방호 장치, 3 비상정지 단추 위치, 4 옷차림과 보호구, 5 켠 뒤 이상한 소리·냄새·떨림 살피기이며, 아래 띠에 손볼 때는 기계를 세우고 다른 사람이 켜지 못하게 막는다고 적었다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="sb1f5" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="sb1f5b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker></defs><rect width="1000" height="366" fill="#fff"/>
+<rect x="22.0" y="40.0" width="176.0" height="196.0" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" />
+<circle cx="110.0" cy="82.0" r="20.0" fill="#596fa1" stroke="#596fa1" stroke-width="0" /><text x="110.0" y="88.0" font-size="17" fill="#fff" text-anchor="middle" font-weight="800">1</text>
+<text x="110.0" y="138" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">주변 정리</text>
+<text x="110.0" y="172" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">통로·발밑에 자재·공구·</text>
+<text x="110.0" y="194" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">기름이 없는지</text>
+<line x1="200.0" y1="138.0" x2="208.0" y2="138.0" stroke="#6b7684" stroke-width="2" /><polygon points="214.0,138.0 205.8,141.7 205.8,134.3" fill="#6b7684" stroke="#6b7684" stroke-width="0" stroke-linejoin="round"/>
+<rect x="216.0" y="40.0" width="176.0" height="196.0" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" />
+<circle cx="304.0" cy="82.0" r="20.0" fill="#596fa1" stroke="#596fa1" stroke-width="0" /><text x="304.0" y="88.0" font-size="17" fill="#fff" text-anchor="middle" font-weight="800">2</text>
+<text x="304.0" y="138" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">덮개·방호 장치</text>
+<text x="304.0" y="172" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">떼어 둔 덮개가 없고</text>
+<text x="304.0" y="194" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">제자리에 있는지</text>
+<line x1="394.0" y1="138.0" x2="402.0" y2="138.0" stroke="#6b7684" stroke-width="2" /><polygon points="408.0,138.0 399.8,141.7 399.8,134.3" fill="#6b7684" stroke="#6b7684" stroke-width="0" stroke-linejoin="round"/>
+<rect x="410.0" y="40.0" width="176.0" height="196.0" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" />
+<circle cx="498.0" cy="82.0" r="20.0" fill="#596fa1" stroke="#596fa1" stroke-width="0" /><text x="498.0" y="88.0" font-size="17" fill="#fff" text-anchor="middle" font-weight="800">3</text>
+<text x="498.0" y="138" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">비상정지 단추</text>
+<text x="498.0" y="172" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">어디 있는지 알고</text>
+<text x="498.0" y="194" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">손이 바로 닿는지</text>
+<line x1="588.0" y1="138.0" x2="596.0" y2="138.0" stroke="#6b7684" stroke-width="2" /><polygon points="602.0,138.0 593.8,141.7 593.8,134.3" fill="#6b7684" stroke="#6b7684" stroke-width="0" stroke-linejoin="round"/>
+<rect x="604.0" y="40.0" width="176.0" height="196.0" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" />
+<circle cx="692.0" cy="82.0" r="20.0" fill="#596fa1" stroke="#596fa1" stroke-width="0" /><text x="692.0" y="88.0" font-size="17" fill="#fff" text-anchor="middle" font-weight="800">4</text>
+<text x="692.0" y="138" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">옷차림·보호구</text>
+<text x="692.0" y="172" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">소매·머리를 정리하고</text>
+<text x="692.0" y="194" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">작업에 맞는 보호구</text>
+<line x1="782.0" y1="138.0" x2="790.0" y2="138.0" stroke="#6b7684" stroke-width="2" /><polygon points="796.0,138.0 787.8,141.7 787.8,134.3" fill="#6b7684" stroke="#6b7684" stroke-width="0" stroke-linejoin="round"/>
+<rect x="798.0" y="40.0" width="176.0" height="196.0" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.6" />
+<circle cx="886.0" cy="82.0" r="20.0" fill="#596fa1" stroke="#596fa1" stroke-width="0" /><text x="886.0" y="88.0" font-size="17" fill="#fff" text-anchor="middle" font-weight="800">5</text>
+<text x="886.0" y="138" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">켠 뒤 살피기</text>
+<text x="886.0" y="172" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">이상한 소리·냄새·</text>
+<text x="886.0" y="194" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">떨림이 없는지</text>
+<rect x="22.0" y="262.0" width="956.0" height="84.0" rx="10" fill="#eef1f7" stroke="#eef1f7" stroke-width="0" />
+<text x="500" y="296" font-size="16" fill="#161a22" text-anchor="middle" font-weight="800">날을 바꾸거나 청소·점검할 때는 기계를 세우고, 다른 사람이 켜지 못하게 막은 뒤 손을 넣습니다</text>
+<text x="500" y="324" font-size="14.5" fill="#6b7684" text-anchor="middle" font-weight="400">켜는 장치를 잠그거나 「점검 중」 표지를 붙이는 방법은 안전 기초 6에서 다룹니다</text>
+</svg><figcaption>직접 그린 그림 · 켜기 전에 확인할 네 가지(1~4)와 켠 뒤 살필 한 가지(5)입니다. 아래 띠는 날을 바꾸거나 청소·점검할 때 지킬 것입니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>비상정지 단추</b> — 기계마다 비상정지 단추 자리가 다릅니다. 처음 쓰는 기계는 켜기 전에 단추 자리부터 찾아 둡니다. 비상정지 단추가 하는 일은 안전 기초 5에서 자세히 다룹니다.</li>
+<li><b>켠 뒤 살피기</b> — 손과 옷이 닿지 않는 자리에서 기계를 켜고, 평소와 다른 소리·냄새·떨림이 없는지 잠시 살핀 뒤 작업을 시작합니다. 이상하면 바로 멈춥니다.</li>
+<li><b>손볼 때는 기계를 세웁니다</b> — 「산업안전보건기준에 관한 규칙」 제92조(정비 등의 작업 시의 운전정지 등)는 기계를 청소·수리·점검·조정할 때 위험이 있으면 운전을 멈추게 합니다. 또한 다른 사람이 기계를 켜지 못하도록 켜는 장치에 잠금장치를 하거나 표지판을 붙이는 등의 조치를 하게 합니다. 잠그고 표시하는 방법은 안전 기초 6 「전원 끄고 표시하기」에서 자세히 다룹니다.</li>
+<li><b>기계마다 사용 설명서를 따릅니다</b> — 이 글은 어느 기계에나 맞는 기본을 정리한 것입니다. 기계마다 위험한 곳과 지켜야 할 순서가 다르므로, 그 기계의 사용 설명서와 작업장의 안전 수칙을 먼저 읽습니다.</li>
+</ul>
+</div>
+
+<div class="sec" id="sTry">
+<div class="eyebrow">생각해 보기</div>
+<div class="h2">이런 때는 어떻게 해야 할까요</div>
+<p class="pd-p">답을 생각해 본 뒤, 문제를 눌러 확인해 주세요.</p>
+<details class="pd-p"><summary class="pd-sum">1. 원형톱 날을 바꾸려고 덮개를 열어야 합니다. 덮개를 열기 전에 먼저 할 일은 무엇인가요?</summary><p class="pd-p">기계를 세우고 전원을 끈 뒤, 다른 사람이 켜지 못하도록 켜는 장치를 잠그거나 「점검 중」 표지를 붙입니다. 날이 완전히 멈췄는지 본 다음 덮개를 엽니다. 날을 만질 때는 베임을 막는 장갑을 착용합니다.</p></details>
+<details class="pd-p"><summary class="pd-sum">2. 탁상 드릴로 구멍을 뚫는데 동료가 헐렁한 면장갑을 끼고 있습니다. 무엇이 문제인가요?</summary><p class="pd-p">드릴 날과 축이 돌면서 헐렁한 장갑을 감아 들일 수 있습니다. 날·공작물·축이 회전하는 기계에서는 손에 밀착이 잘되는 장갑처럼 손이 말려 들 위험이 없는 장갑을 써야 합니다(제95조). 그리고 돌고 있는 날 가까이로 손을 넣지 않습니다.</p></details>
+<details class="pd-p"><summary class="pd-sum">3. 덮개가 작업에 자꾸 걸려서 떼어 두고 보안경을 꼈습니다. 이것으로 충분한가요?</summary><p class="pd-p">충분하지 않습니다. 덮개는 위험을 줄이는 순서의 2단계이고, 보안경은 마지막 4단계입니다. 보안경은 눈만 지킬 뿐 손이나 옷이 말려 드는 것을 막지 못합니다. 덮개를 제자리에 달고, 걸리는 까닭은 기계를 판 곳이나 만든 곳에 물어 해결합니다.</p></details>
+<details class="pd-p"><summary class="pd-sum">4. 작업장이 시끄럽지만 귀가 아프지는 않습니다. 귀마개를 쓰지 않아도 되나요?</summary><p class="pd-p">아프지 않다고 괜찮은 것이 아닙니다. 큰 소리로 귀가 상하는 것은 서서히 진행돼 늦게 알아차립니다. 하루 8시간 기준 85데시벨 이상이면 소음작업이고, 귀마개나 귀덮개를 써야 합니다(제512조·제516조). 소리 크기는 재어 보고 판단합니다.</p></details>
+<details class="pd-p"><summary class="pd-sum">5. 보안경이 긁혀 앞이 뿌옇게 보입니다. 그래도 끼고 일해도 되나요?</summary><p class="pd-p">바꿉니다. 앞이 잘 안 보이면 그 자체로 위험하고, 보안경을 벗고 일하게 되기 쉽습니다. 보호구는 늘 점검해 이상이 있으면 고치거나 바꿔야 합니다(제33조).</p></details>
+</div>
+
+<div class="sec" id="sSum">
+<div class="eyebrow">정리</div>
+<div class="h2">이번 글에서 배운 것</div>
+<ul class="pd-note">
+<li>기계 작업장에서 다치는 대표적인 경우는 끼임·말림, 날아오는 조각, 베임, 떨어짐·부딪힘, 감전, 큰 소리입니다.</li>
+<li>위험은 없애기 → 덮개·방호 장치 → 작업 방법 정하기 → 보호구 순서로 줄이고, 보호구는 맨 마지막에 사용합니다.</li>
+<li>돌아가는 부분 가까이에서는 소매·끈·머리카락·장신구처럼 늘어진 것을 모두 정리합니다.</li>
+<li>날·공작물·축이 회전하는 기계에서는 손이 말려 들지 않는 장갑을 쓰고, 도는 부분에는 손을 넣지 않습니다.</li>
+<li>보호구는 작업의 위험에 맞춰 고르고, 안전인증 표시를 확인하며, 늘 점검해 상한 것은 바꿉니다.</li>
+<li>날을 바꾸거나 청소·점검할 때는 기계를 세우고 다른 사람이 켜지 못하게 막은 뒤 손을 넣습니다.</li>
+</ul>
+<p class="pd-p" style="margin-top:16px"><b>다음에 배울 것</b> — 안전 기초 2 「돌아가는 부분의 끼임·말림·튐」: 기계의 어떤 부분이 손과 옷을 끌어들이는지, 덮개와 방호 장치가 그것을 어떻게 막는지를 그림으로 살펴봅니다.</p>
+</div>
+
+<div class="sec">
+<div class="eyebrow">참고</div>
+<div class="h2">자료와 그림에 대하여</div>
+<ul class="pd-note">
+<li>이 글은 기계 작업장의 일반적인 안전 기본을 정리한 교육 자료입니다. 실제 작업에서는 산업안전보건법령, 그 작업장의 안전 수칙, 기계 사용 설명서를 따르십시오.</li>
+<li>법령 내용은 고용노동부령 「산업안전보건기준에 관한 규칙」(2026년 3월 2일 시행판) 제31조·제32조·제33조·제87조·제92조·제94조·제95조·제512조·제516조와 「산업안전보건법」 제84조를 쉬운 말로 옮겨 적었습니다. 조문 원문은 법제처 국가법령정보센터에서 볼 수 있습니다.</li>
+<li>안전모·귀마개 종류, 방진마스크 등급, 보관 온도·습도는 한국산업안전보건공단 「개인보호구의 사용 및 관리에 관한 기술지원규정」(A-G-12-2026)을 따랐습니다. KCs 표시 설명은 한국산업안전보건공단의 보호구 안전인증 안내를 따랐습니다.</li>
+<li>장갑 낀 손으로 움직이는 부분에 닿지 말라는 안내는 한국산업안전보건공단의 교육 자료를 참고했습니다.</li>
+<li>이 글의 그림 5장은 창호종합기계가 이 글을 위해 직접 그렸습니다. 특정 회사의 보호구 제품을 권하지 않습니다.</li>
+</ul>
+</div>
+
+<div class="sec">
+<div class="eyebrow">Channels</div>
+<div class="h2">채널 안내</div>
+<div class="chs">
+<a class="ch" href="tel:055-327-4112" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#1E3A8A" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="M15.6 21A16.6 16.6 0 0 1 3 8.4 3 3 0 0 1 6 5.4h2.1a1 1 0 0 1 1 .86c.1.9.3 1.77.6 2.6a1 1 0 0 1-.24 1.05L8.2 11.2a14 14 0 0 0 4.6 4.6l1.3-1.3a1 1 0 0 1 1.05-.23c.83.3 1.7.5 2.6.6a1 1 0 0 1 .86 1V18a3 3 0 0 1-2.9 3Z"></path></g></svg>전화<span class="cn">055-327-4112</span></a>
+<a class="ch" href="tel:010-4465-4112" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#334155" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><rect height="19" rx="2.4" width="11" x="6.5" y="2.5"></rect><path d="M11 18.6h2"></path></g></svg>휴대전화<span class="cn">010-4465-4112</span></a>
+<a class="ch" href="http://pf.kakao.com/_xojdTX" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#FEE500" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M12 6.2c-3.2 0-5.8 2-5.8 4.5 0 1.6 1.1 3 2.7 3.8l-.6 2.1c-.08.3.24.53.5.36l2.5-1.6c.23.02.46.03.7.03 3.2 0 5.8-2 5.8-4.7S15.2 6.2 12 6.2Z" fill="#3C1E1E"></path></svg>카카오 채널<span class="cn">상담 연결</span></a>
+<a class="ch" href="https://talk.naver.com/W4UBZ1" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#03C75A" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M12 6.5c-3.15 0-5.7 1.95-5.7 4.45 0 1.55.98 2.92 2.47 3.73l-.52 2.06c-.07.29.24.52.49.36l2.72-1.72c.17.01.35.02.54.02 3.15 0 5.7-1.95 5.7-4.45S15.15 6.5 12 6.5Z" fill="#fff"></path></svg>네이버 톡톡<span class="cn">상담 연결</span></a>
+<a class="ch" href="mailto:geonics@hanmail.net" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#475569" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><rect height="14.4" rx="2.2" width="18.8" x="2.6" y="4.8"></rect><path d="m3.4 6.6 8.6 5.9 8.6-5.9"></path></g></svg>이메일<span class="cn">geonics@hanmail.net</span></a>
+<a class="ch" href="https://www.youtube.com/@machinelab/videos" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>유튜브<span class="cn">가공 영상</span></a>
+<a class="ch" href="https://blog.naver.com/geonics" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#03C75A" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M8.5 7.6h2.6l2.2 3.4V7.6h2.4v8.8h-2.6l-2.2-3.4v3.4H8.5V7.6Z" fill="#fff"></path></svg>블로그<span class="cn">네이버 블로그</span></a>
+<a class="ch" href="https://www.changhoinc.com/#about" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#0284C7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"><path d="M3.6 21h16.8"></path><path d="M5.4 21V4.4a1 1 0 0 1 1-1h6.2a1 1 0 0 1 1 1V21"></path><path d="M13.6 10.2h4.4a1 1 0 0 1 1 1V21"></path><path d="M8.2 7.4h2.6M8.2 11h2.6M8.2 14.6h2.6M15.6 14h1.2M15.6 17.4h1.2"></path></g></svg>회사 소개<span class="cn">changhoinc.com</span></a>
+</div>
+</div>
+
+<div class="sec foot-cta" id="contact"><h3>기계 안전에 대해 궁금한 점이 있으신가요?</h3><p>궁금한 점을 남겨 주시면 다음 글을 쓸 때 참고하겠습니다.</p>
+<div class="tels"><div>055-327-4112 <span>대표</span></div><div>010-4465-4112 <span>휴대전화</span></div><div>geonics@hanmail.net <span>이메일</span></div></div></div></div>
+
+<!-- ══ 16 core ｜ footer ══ -->
+<div class="footer">
+<b>창호종합기계</b>
+<span>경남 김해시 상동면 상동로375번길 21</span>
+<span class="web">www.changhoinc.com</span>
+</div>
+
+</div>
+<script>
+document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
+el.addEventListener('click', function(){
+var id = el.getAttribute('data-yt');
+el.innerHTML = '';
+el.style.aspectRatio = '16 / 9';
+var f = document.createElement('iframe');
+f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
+f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+f.setAttribute('allowfullscreen','');
+el.appendChild(f);
+}, {once:true});
+});
+</script>
+<script id="chg-js">
+(function(){"use strict";
+var D=[{"l":"용접테이블 · D28 악세사리","b":"111","u":"/products/111/","s":["용접정반 흑착색","용접정반 질화","D28 악세사리 세트","D28 악세사리 단품"]},{"l":"알루미늄 절단기 · 원형절단기","b":"101 102","u":"/products/101/","s":["CNC 절단기","2헤드 절단기","1헤드 절단기","휴대용 절단기","롤러다이","작업다이 · 디지털 디스플레이"]},{"l":"탭핑기 · 서보탭핑기","b":"104","u":"/products/104/","s":["서보탭핑기 본체","절삭유 분사식 (미스트)","탭핑기 + 주철다이 세트","마그네틱척 · 정밀바이스","탭 콜렛척 · 악세사리"]},{"l":"유압 펀칭기 · 프레스","b":"103","u":"/products/103/","s":["유압 펀칭기","CNC 펀칭기","사각 노칭기","앵글 · 파이프 절단기","다구멍 펀칭기"]},{"l":"R노칭기 · 파이프 노칭기","b":"109","u":"/products/109/","s":["R노칭기","유압 R노칭기","모터식 R노칭기","수동식 R노칭기","홀소 노칭기","파이프 노칭"]},{"l":"파이프 축관기 · 벤딩기","b":"","u":"/products/109/index-b.html","s":["축관기","파이프 압착기","유압 파이프 벤더","파이프 벤딩기"]},{"l":"챔버 · 면취기 · 모따기","b":"107","u":"/products/107/","s":["직각 면취기","원형 챔버"]},{"l":"금속절단기 · 밴드쏘","b":"100","u":"/products/100/","s":["밴드쏘","원형톱기계","휴대용 밴드쏘"]},{"l":"절곡·벤딩기 · 전선탈피기","b":"105 106 108 110 199","u":"/products/line-bend/","s":["절곡 · 벤딩기","레이저 가공기","전선탈피기 · 차핑기","연마기 · 나사포장기 · 기타"]},{"l":"알루미늄 창호기계","b":"200 202 203 204 205 206 207 208","u":"/products/line-al/","s":["코너클램프기","카피루터기","엔드밀링기","AL 펀칭기 · 가공금형","드릴머신 · 피스체결기","단열 프로파일 롤러프레스기 · 널링기","단열 프로파일 CNC 라인","방충망 밀대"]},{"l":"PVC 창호기계 · PVC 용접기","b":"300 301 302 303 304 305 306 307","u":"/products/line-pvc/","s":["PVC 절단기","PVC 용접기","PVC 루터 · 드릴 · 피스체결기","PVC 펀칭기 · 가공금형","PVC 엔드밀링기","PVC 벤딩기","PVC 사상기 · 압착기","PVC 기타 가공기"]},{"l":"랩핑기 · 유리 가공기 · 창호 설비","b":"400 401 410","u":"/products/400/","s":["랩핑기","유리 가공기계","윈치 · 견인 회전장치","창호 시험 설비"]},{"l":"톱날 · 컷트날 · 열판","b":"501 502 503","u":"/products/line-blade/","s":["톱날","컷트날","열판","열판지"]}];
+var q=document.getElementById('chg-q'),sg=document.getElementById('chg-sg'),hb=document.getElementById('chg-hb'),nl=document.getElementById('chg-links'),items=[];
+function n(s){return(s||'').toLowerCase().replace(/[\s·¡¤]/g,'');}
+function esc(s){return s.replace(/[<>&"]/g,function(c){return{'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];});}
+function go(u){window.location.href=u;}
+function suggest(raw){var t=n(raw);items=[];
+ if(!t){sg.hidden=true;q.setAttribute('aria-expanded','false');return;}
+ D.forEach(function(k){if(n(k.l).indexOf(t)!==-1||n(k.b).indexOf(t)!==-1)items.push({k:'라인',x:k.l,u:k.u});});
+ D.forEach(function(k){k.s.forEach(function(s){if(n(s).indexOf(t)!==-1)items.push({k:'중분류',x:s,sub:k.l,u:k.u});});});
+ items=items.slice(0,8);
+ sg.innerHTML=items.length?items.map(function(o,i){return '<li role="option" data-i="'+i+'"><span class="chg-k'+(o.k==='라인'?' chg-k1':'')+'">'+o.k+'</span>'+esc(o.x)+(o.sub?' <span class="chg-sub">— '+esc(o.sub)+'</span>':'')+'</li>';}).join('')
+  :'<li class="chg-none">일치하는 라인이 없습니다 — <a href="/#contact" style="color:#0066cc">문의 주시면 찾아드립니다</a></li>';
+ sg.hidden=false;q.setAttribute('aria-expanded','true');}
+q.addEventListener('input',function(){suggest(q.value);});
+q.addEventListener('keydown',function(e){if(e.key==='Escape')sg.hidden=true;if(e.key==='Enter'&&items.length){e.preventDefault();go(items[0].u);}});
+sg.addEventListener('click',function(e){var li=e.target.closest('li[data-i]');if(li)go(items[+li.dataset.i].u);});
+document.addEventListener('click',function(e){if(!e.target.closest('.chg-s'))sg.hidden=true;});
+function setMenu(o){nl.classList.toggle('open',o);hb.classList.toggle('open',o);hb.setAttribute('aria-expanded',o);
+ hb.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기');document.body.style.overflow=o?'hidden':'';}
+hb.addEventListener('click',function(){setMenu(!nl.classList.contains('open'));});
+nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+})();
+</script>
+<!-- ===== 사진 크게 보기 (zoom) ===== -->
+<style id="zoom-css">
+.hcard img.zm-on,.gallery img.zm-on{cursor:zoom-in}
+.lb-strip a.lb-go{display:block;line-height:0;border-radius:4px}
+.lb-strip a.lb-go:hover img{opacity:.75}
+.zm{position:fixed;inset:0;z-index:10000;background:rgba(10,12,16,.92);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:56px 64px 20px}
+.zm[hidden]{display:none}
+.zm img{max-width:100%;max-height:calc(100vh - 130px);object-fit:contain;background:#fff;border-radius:4px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+.zm .zm-cap{color:#e8eaee;font-size:15px;line-height:1.5;margin-top:12px;text-align:center;max-width:900px}
+.zm .zm-n{color:#9aa3ad;font-size:13px;margin-top:4px}
+.zm button{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:50%;width:48px;height:48px;font-size:26px;line-height:48px;cursor:pointer;padding:0}
+.zm button:hover{background:rgba(255,255,255,.25)}
+.zm .zm-x{top:12px;right:14px}
+.zm .zm-p{left:10px;top:50%;margin-top:-24px}
+.zm .zm-q{right:10px;top:50%;margin-top:-24px}
+@media (max-width:640px){.zm{padding:56px 8px 16px}.zm .zm-p,.zm .zm-q{top:auto;bottom:14px;margin:0}.zm img{max-height:calc(100vh - 170px)}}
+@media print{.zm{display:none!important}}
+</style>
+<div class="zm" id="zm" hidden role="dialog" aria-modal="true" aria-label="사진 크게 보기">
+<button type="button" class="zm-x" aria-label="닫기">&times;</button>
+<button type="button" class="zm-p" aria-label="이전 사진">&#8249;</button>
+<img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=">
+<div class="zm-cap"></div><div class="zm-n"></div>
+<button type="button" class="zm-q" aria-label="다음 사진">&#8250;</button>
+</div>
+<script id="zoom-js">
+(function(){var z=document.getElementById('zm');if(!z)return;
+var L=[].slice.call(document.querySelectorAll('.hcard img,.gallery img')).filter(function(i){return !i.closest('a')&&!i.closest('.vfacade')&&!i.closest('.zm');});
+if(!L.length)return;var im=z.querySelector('img'),cp=z.querySelector('.zm-cap'),nn=z.querySelector('.zm-n'),k=0,ov='';
+function cap(i){var c=i.closest('.gcell');var g=c&&c.querySelector('.gc');return (g&&g.textContent.trim())||i.alt||'';}
+function show(n){k=(n+L.length)%L.length;var i=L[k];im.src=i.currentSrc||i.src;im.alt=i.alt;cp.textContent=cap(i);nn.textContent=L.length>1?(k+1)+' / '+L.length:'';z.querySelector('.zm-p').style.display=z.querySelector('.zm-q').style.display=L.length>1?'':'none';}
+function open(n){show(n);z.hidden=false;ov=document.body.style.overflow;document.body.style.overflow='hidden';}
+function shut(){z.hidden=true;document.body.style.overflow=ov;}
+L.forEach(function(i,n){i.classList.add('zm-on');i.addEventListener('click',function(){open(n);});});
+z.querySelector('.zm-x').onclick=shut;z.querySelector('.zm-p').onclick=function(e){e.stopPropagation();show(k-1);};z.querySelector('.zm-q').onclick=function(e){e.stopPropagation();show(k+1);};
+z.addEventListener('click',function(e){if(e.target===z)shut();});
+document.addEventListener('keydown',function(e){if(z.hidden)return;if(e.key==='Escape')shut();else if(e.key==='ArrowLeft')show(k-1);else if(e.key==='ArrowRight')show(k+1);});
+var sx=null;z.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+z.addEventListener('touchend',function(e){if(sx===null)return;var d=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(d)>50)show(d<0?k+1:k-1);});
+})();
+</script>
+<!-- ===== /사진 크게 보기 ===== -->
+</body></html>
