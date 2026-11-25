@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<!-- 기계 배움터 · 도면 심화 5 · 자사몰 — 셸 = learn/drawing-welding-1.html · 빌더 build_dc1_261125.py · 🚫 가격 0 · 그림 전부 직접 그림 -->
+<html lang="ko"><head><meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>도면 심화 5 — 2D·3D 설계 프로그램 입문 | 창호종합기계</title>
+<meta content="컴퓨터로 도면과 모델을 만드는 설계 프로그램(캐드) 입문 — 2D와 3D의 차이, 3D 모델 만드는 순서, 치수로 움직이는 모델, 3D에서 도면 뽑기, DWG·DXF·STEP·STL 파일 형식, 처음 배울 프로그램 고르기를 직접 그린 그림으로 쉽게 정리했습니다. 기계 배움터 도면 과목 심화 다섯 번째 글입니다." name="description"/>
+<style>
+/* ===== base ===== */
+:root{
+  --ac:#596fa1;            /* 계열 주색 — §B-4 v2 계열4색 SSOT(ch_palette.json)에서만 가져온다 */
+  --ink:#161a22;
+  /* 🔒 틴트 5색은 하드코드하지 않는다. 빌더가 --ac 기준으로 재산출해 주입한다.
+        세션66 정본의 #faf1f0·#f0dcda·#f5e6e5·#eccac7·#e8a0a0 은 100계열 파생이라
+        타 계열에 쓰면 §B-4 계열 불일치가 된다. (2026-08-16 치환맵 확정) */
+  --t-tech-bg:#f4f5f9;      /* tech 밴드 배경   (구 #faf1f0) */
+  --t-tech-bd:#e2e6ef;      /* tech 밴드 테두리 (구 #f0dcda) */
+  --t-cta-bg:#ebeef4;        /* foot-cta 배경   (구 #f5e6e5) */
+  --t-cta-bd:#d6dbe8;        /* foot-cta 테두리 (구 #eccac7) */
+  --t-cur-sub:#bfc7db;      /* .lu.cur 보조문자 (구 #e8a0a0) */
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(--ink);
+ background:#ffffff;line-height:1.7;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1040px;margin:0 auto;background:#fff;box-shadow:0 2px 40px rgba(0,0,0,.10);}
+.sec{padding:64px 56px;}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+ color:var(--ac);margin-bottom:14px;}
+.h2{font-size:29px;font-weight:900;color:var(--ink);letter-spacing:-.5px;margin-bottom:8px;}
+.h2 em{color:var(--ac);font-style:normal;}
+.sub{font-size:17px;color:#6b7684;margin-bottom:34px;max-width:680px;line-height:1.6;}
+
+/* ===== top bar ===== */
+/* 🔄 2026-08-16 개정 — 바(.top/.footer)는 카탈로그(①④)와 동일하게 계열 주색을 따른다.
+      세션144 「전 계열 고정 #404b63」 조항은 철회됨. [[decision_detail_page_bar_series_color_260816]] */
+.top{background:#fff;display:flex;align-items:center;gap:11px;padding:13px 56px;border-bottom:3px solid #268FCE;}
+.top .lg{width:52.5px;height:36px;background:#fff;border-radius:3px;display:flex;
+ align-items:center;justify-content:center;flex:none;border:1px solid #e2e6ef;}
+.top .lg img{max-width:100%;max-height:100%;object-fit:contain;display:block;}
+.top .co{color:#1c2733;font-size:15px;font-weight:800;letter-spacing:-.3px;}
+.top .co small{display:block;font-size:10.5px;font-weight:600;color:#dfe7f2;letter-spacing:1.2px;}
+.top .rt{margin-left:auto;color:#455166;font-size:13px;font-weight:700;text-align:right;}
+
+/* ===== hero ===== */
+.hero{background:#ffffff;
+ color:var(--ink);padding:56px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;
+ border-top:4px solid #268FCE;}
+.hero .ey{color:var(--ac);font-size:12.5px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;}
+.hero h1{font-size:40px;line-height:1.24;font-weight:900;letter-spacing:-.8px;color:var(--ink);}
+.hero h1 em{color:var(--ac);font-style:normal;}
+.hero .en{font-size:14px;color:#6b7684;margin-top:10px;font-weight:600;letter-spacing:.2px;}
+.hero .ld{font-size:17px;color:#4a5561;margin-top:18px;line-height:1.75;}
+.hero .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px;}
+.pill{font-size:12px;font-weight:700;color:#fff;padding:6px 13px;border-radius:20px;}
+.pill.pd{background:#eef2f7;color:#37414d;} .pill.pr{background:#e8f3fb;color:#0f5f8c;}
+.pill.pb{background:#eef2f7;color:#5c6673;}
+.hero .cta{display:inline-flex;align-items:center;gap:8px;margin-top:28px;background:var(--ac);
+ color:#fff;font-size:15px;font-weight:800;padding:14px 30px;border-radius:6px;text-decoration:none;
+ box-shadow:0 4px 14px rgba(0,0,0,.14);}
+.hcard{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;
+ display:flex;align-items:center;justify-content:center;min-height:300px;border-top:3px solid #EF8943;}
+.hcard img{max-width:100%;max-height:340px;object-fit:contain;display:block;}
+
+/* ===== kpis ===== */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-bottom:1px solid #e6ebf2;}
+.kpi{padding:26px 20px;text-align:center;border-right:1px solid #eef2f7;}
+.kpi:last-child{border-right:none;}
+.kv{font-size:34px;font-weight:900;color:var(--ink);letter-spacing:-1px;}
+.kv span{font-size:14px;font-weight:700;color:var(--ac);margin-left:4px;}
+.kl{font-size:12.5px;color:#7c8698;font-weight:700;margin-top:4px;letter-spacing:.2px;}
+
+/* ===== features ===== */
+.feats{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.feat{background:#f6f8fb;border:1px solid #e6ebf2;border-left:3px solid var(--ac);
+ border-radius:7px;padding:22px 24px;}
+.feat .fh{font-size:15.5px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+.feat .fd{font-size:15px;color:#5c6673;line-height:1.65;}
+
+/* ===== usp ===== */
+.usp-sec{background:#f6f8fb;}
+.usps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.usp{background:#fff;border:1px solid #e6ebf2;border-radius:9px;padding:26px 22px;}
+.usp .un{font-size:15px;font-weight:900;color:#fff;background:var(--ac);width:38px;height:38px;
+ border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:15px;}
+.usp .ut b{display:block;font-size:16px;color:var(--ink);font-weight:800;margin-bottom:7px;}
+.usp .ut span{font-size:16px;color:#5c6673;line-height:1.6;}
+
+/* ===== tech band ===== */
+.tech{background:var(--t-tech-bg);color:var(--ink);display:grid;grid-template-columns:.9fr 1.1fr;
+ gap:40px;align-items:center;border-top:1px solid var(--t-tech-bd);border-bottom:1px solid var(--t-tech-bd);}
+.tech .ey{color:var(--ac);}
+.tech .tl{font-size:26px;font-weight:900;line-height:1.3;letter-spacing:-.5px;color:var(--ink);}
+.tech .tl em{color:var(--ac);font-style:normal;}
+.tech .tb{color:#5c6673;font-size:17px;line-height:1.75;}
+
+/* ===== spec table ===== */
+.spectbl{width:100%;border-collapse:collapse;font-size:16px;border:1px solid #e2e8f0;}
+.spectbl th{background:#f0f3f8;color:var(--ink);font-weight:800;text-align:left;
+ padding:14px 20px;width:215px;border-bottom:1px solid #e2e8f0;vertical-align:top;}
+.spectbl td{padding:14px 20px;color:#37414d;border-bottom:1px solid #eef2f7;}
+.spectbl tr:last-child th,.spectbl tr:last-child td{border-bottom:none;}
+.spectbl tr:nth-child(even) th{background:#eaeef4;}
+.mats{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap;}
+.mat{background:#fff;border:1px solid #d7dfea;color:var(--ink);font-size:12.5px;font-weight:700;
+ padding:6px 14px;border-radius:20px;}
+
+/* ===== gallery (var) ===== */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.gcell{background:#fff;border:1px solid #e6ebf2;border-radius:8px;overflow:hidden;}
+.gcell img{width:100%;height:190px;object-fit:cover;display:block;}
+.gcell .gc{font-size:12.5px;color:#6b7684;padding:9px 12px;line-height:1.5;}
+
+/* ===== video (var) — facade. 클릭 전 외부 요청 0건 ===== */
+.vfacade{position:relative;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;cursor:pointer;
+ background:#0d1117;max-width:720px;}
+.vfacade img{width:100%;display:block;opacity:.86;}
+.vfacade .vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+ width:74px;height:74px;border-radius:50%;background:rgba(0,0,0,.62);display:flex;
+ align-items:center;justify-content:center;}
+.vfacade .vplay::after{content:"";border-style:solid;border-width:13px 0 13px 22px;
+ border-color:transparent transparent transparent #fff;margin-left:5px;}
+.vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
+ padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+
+/* ===== lineup (core — ②의 차별점) ===== */
+.lineup-sec{background:#f6f8fb;}
+.lineup{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.lu{background:#fff;border:1px solid #e6ebf2;border-radius:7px;padding:14px 16px;}
+.lu .lm{font-size:14px;font-weight:800;color:var(--ink);}
+.lu .ln{font-size:12px;color:#6b7684;margin-top:3px;}
+.lu.cur{background:var(--ink);border-color:var(--ink);}
+.lu.cur .lm{color:#fff;} .lu.cur .ln{color:var(--t-cur-sub);}
+
+/* ===== order (add) ===== */
+.orders{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.ord{background:#f6f8fb;border:1px solid #e6ebf2;border-radius:8px;padding:20px 22px;}
+.ord .oh{font-size:14px;font-weight:800;color:var(--ac);margin-bottom:7px;}
+.ord .od{font-size:15px;color:#5c6673;line-height:1.65;}
+
+/* ===== channel (add) — 8칸 4열×2행 ===== */
+.chs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.ch{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+ background:#fff;border:1px solid #e6ebf2;border-radius:8px;padding:18px 10px;
+ text-decoration:none;color:var(--ink);font-size:13px;font-weight:700;text-align:center;}
+.ch .cn{font-size:12.5px;color:#6b7684;font-weight:600;}
+.ch.off{opacity:.42;pointer-events:none;}
+
+/* ===== cta / footer ===== */
+.foot-cta{background:var(--t-cta-bg);color:var(--ink);text-align:center;border-top:1px solid var(--t-cta-bd);}
+.foot-cta h3{font-size:26px;font-weight:900;margin-bottom:10px;color:var(--ink);}
+.foot-cta p{font-size:17px;color:#5c6673;margin-bottom:24px;}
+.foot-cta .tels{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;font-size:17px;font-weight:800;color:var(--ac);}
+.foot-cta .tels span{opacity:.6;font-weight:400;color:#7c8698;}
+.footer{background:var(--ac);color:#e8eef7;padding:22px 56px;display:flex;align-items:center;gap:12px;font-size:12px;}
+.footer b{color:#fff;font-size:13px;}
+.footer .web{margin-left:auto;color:#fff;}
+@media print{
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+ body{background:#fff;}
+ .wrap{box-shadow:none;max-width:100%;}
+ .kpi,.feat,.usp,.lu,.spectbl tr,.hcard,.mats,.tels,.gcell,.ord,.ch{break-inside:avoid;page-break-inside:avoid;}
+ .hero,.top,.foot-cta{break-inside:avoid;page-break-inside:avoid;}
+ .h2,.eyebrow{break-after:avoid;page-break-after:avoid;}
+ .sec{padding:32px 40px;}
+ .hero{padding:36px 40px;}
+ .hero .cta{box-shadow:none;}
+ .vfacade{display:none;}
+}
+@media(max-width:760px){
+ .sec{padding:44px 24px;} .top{padding:12px 24px;} .hero{padding:40px 24px;grid-template-columns:1fr;}
+ .hero h1{font-size:29px;} .kpis{grid-template-columns:1fr 1fr;}
+ .feats,.usps,.lineup,.gallery,.orders{grid-template-columns:1fr;} .tech{grid-template-columns:1fr;}
+ .chs{grid-template-columns:repeat(2,1fr);}
+ .footer{padding:18px 24px;flex-wrap:wrap;} .footer .web{margin-left:0;width:100%;}
+}
+
+/* ===== [PATCH 260820] 인쇄 안정성 보강 — 이번 세션 신규 섹션 print break-inside 보호 (신규 블록 추가, 기존 @media print 블록 미수정) ===== */
+@media print{
+ .achcard,.step,.mtx tbody tr,.selg .g,.sizetbl tbody tr,.acgcell{break-inside:avoid;page-break-inside:avoid;}
+}
+
+/* ===== channel 8칸 — 브랜드 컬러 아이콘 + 호버 (2026-08-19 append) ===== */
+.chs .ch{transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;}
+.chs .ch:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(22,26,34,.10);
+ border-color:#d7dfea;}
+.chs .ci{display:block;margin-bottom:2px;}
+@media print{.chs .ch{transition:none;transform:none;box-shadow:none;}}
+
+/* ===== size-list table (그룹형 상세페이지 전용 · append) ===== */
+.sizetbl{width:100%;border-collapse:collapse;font-size:15px;border:1px solid #e2e8f0;}
+.sizetbl thead th{background:var(--ac);color:#fff;font-weight:800;text-align:left;padding:11px 16px;}
+.sizetbl td{padding:9px 16px;color:#37414d;border-bottom:1px solid #eef2f7;}
+.sizetbl tr:nth-child(even) td{background:#f7f8fa;}
+.sizetbl .sn{color:#9aa5b3;width:40px;}
+.sizetbl .sc{font-weight:800;color:var(--ink);font-family:'Consolas','Malgun Gothic',monospace;width:200px;}
+.sizetbl .ss{color:#37414d;}
+.sizetbl .st{color:#5a6672;}
+.sizetbl .sh{font-weight:800;color:var(--ac);}
+
+/* ===== hole-system 이미지 밴드 (원본 통합페이지 .sysrow 계승 · append) ===== */
+.sysrow{padding:0 56px 64px;display:flex;gap:32px;align-items:center;}
+.sysrow .simg{flex:0 0 42%;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.sysrow .simg img{width:100%;display:block;}
+.sysrow .sys{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.sysrow .sysbox{text-align:center;background:var(--ink);color:#fff;border-radius:10px;padding:20px 10px;}
+.sysrow .sysbox .big{font-size:32px;font-weight:900;color:#ff8a80;}
+.sysrow .sysbox .lb{font-size:12.5px;color:#c7cdd4;margin-top:6px;line-height:1.5;}
+@media(max-width:760px){.sysrow{flex-direction:column;padding:0 24px 44px;}.sysrow .simg{flex:none;width:100%;}}
+
+/* ===== 히어로 메인 사진 확대 — 좌우 컬럼비는 유지, 사진 박스 안에서 사진 자체를 70%까지 확대
+        (나나파파 지시 · append, 기존 .hero/.hcard 규칙 무변경) ===== */
+.hcard.photo-fill{padding:10px;min-height:250px;overflow:hidden;}
+.hcard.photo-fill img{max-height:520px;}
+
+/* ===== 히어로 사진 20% 추가 확대 (나나파파 지시 2026-08-20 "사각 박스는 그대로 두고 사진만 20% 크게")
+   박스 크기·테두리는 무변경, 사진만 transform:scale로 확대 후 박스 overflow:hidden으로 클리핑.
+   사진 원본 파일은 무수정(그대로 사용 원칙 유지). ===== */
+.hcard.photo-fill img{transform:translate(3.3%,-7.4%) scale(1.44);}
+
+/* ===== 히어로 스토어 버튼 신설 (나나파파 확정 2026-08-20 — 채널 8칸 고정 유지, 히어로에 별도 신설) ===== */
+/* 스마트스토어는 가격대별로 상품이 2건씩 나뉘어 있어(스토어 그율 규정), 색상 구분 없이
+   카테고리 목록 페이지 1개로 공용 링크한다. 값 출처: 나나파파 2026-08-20 확정. */
+.cta.cta-store{background:#fff;color:var(--ac);border:2px solid var(--ac);box-shadow:none;margin-left:12px;}
+@media(max-width:760px){.cta.cta-store{margin-left:0;margin-top:12px;}}
+
+/* ===== 주문 안내 4번째 카드 대응 (기존 .orders 3열 그리드 재사용 · append 없음, 콘텐츠만 추가) ===== */
+
+/* ===== 품질 검증 — 실측 인증 사진 2건 (Hebei Bocheng 제조사 실측, 나나파파 확인 2026-08-20 · append)
+   2026-08-20 후속1 — 제조사 원본 배너 그래픽(가공 없이 그대로) 사용으로 교체.
+   2026-08-20 후속2 — 나나파파 지시("사각 틀이 같아야되") 반영: 두 배너 비율이 달라(1202px vs 929px)
+   height:auto 자연비율로는 카드 높이가 달라 보였음 → 고정 높이(440px) + object-fit:contain +
+   흰 배경으로 전환. 사진은 자르지 않고(대비 object-fit:cover는 미사용) 프레임 크기만 통일. ===== */
+.qcheck{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start;}
+.qcheck .qc{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.qcheck .qc img{width:100%;height:440px;object-fit:contain;background:#fff;display:block;}
+.qcheck .qcap{padding:14px 18px;background:#fff;font-size:14px;color:#37414d;line-height:1.5;}
+.qcheck .qcap b{color:var(--ink);}
+@media(max-width:760px){.qcheck{grid-template-columns:1fr;}}
+
+/* ===== D28 홀 패턴 참고 도면 2종 (Hebei Bocheng 제조사 원본, 나나파파 지시 2026-08-20 · append)
+   그대로 사용(가공 없음). 대각(DIAGONAL) 패턴은 당사 표준 사양이 아닌 제조사 참고 도면 —
+   캡션으로 "별도 확인 필요" 명시(추측 표기 금지 원칙). ===== */
+.d28grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.d28grid .df{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.d28grid .df img{width:100%;height:320px;object-fit:contain;background:#fff;display:block;}
+.d28grid .dcap{padding:12px 16px;background:#fff;font-size:13.5px;color:#37414d;text-align:center;line-height:1.5;}
+.d28grid .dcap b{color:var(--ink);}
+@media(max-width:760px){.d28grid{grid-template-columns:1fr;}.d28grid .df img{height:260px;}}
+
+/* ===== 정밀 가공 디테일 클로즈업 3장 (Hebei Bocheng 제조사 원본, 나나파파 지시 2026-08-20 · append)
+   그대로 사용(가공 없음). R3 챔퍼는 선택 옵션 배지(.optbadge) 표기. ===== */
+.detailgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.detailgrid .dt{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.detailgrid .dt img{width:100%;height:330px;object-fit:contain;background:#fff;display:block;}
+.detailgrid .dcap2{padding:12px 16px;background:#fff;font-size:13.5px;color:#37414d;line-height:1.5;}
+.detailgrid .dcap2 b{color:var(--ink);}
+.optbadge{display:inline-block;background:var(--ac);color:#fff;font-size:10.5px;font-weight:800;
+  padding:3px 8px;border-radius:20px;margin-left:6px;vertical-align:middle;letter-spacing:.03em;}
+@media(max-width:760px){.detailgrid{grid-template-columns:1fr;}.detailgrid .dt img{height:280px;}}
+
+/* ===== 절단 공정 · 실사용 현장 4장 (CNC 워터젯 1 + Hebei Bocheng 제조사 제공 실사용 현장 3,
+   나나파파 지시 2026-08-20 · append) — 실사용 현장 사진은 제조사 자료이며 당사 개별 판매·설치
+   사례를 나타내지 않음(캡션에 출처 명시, 추측 표기 금지 원칙). ===== */
+.procgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.procgrid .pc{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.procgrid .pc img{width:100%;height:420px;object-fit:contain;background:#fff;display:block;}
+.procgrid .pcap{padding:12px 18px;background:#fff;font-size:13.5px;color:#37414d;line-height:1.5;}
+.procgrid .pcap b{color:var(--ink);}
+@media(max-width:760px){.procgrid{grid-template-columns:1fr;}.procgrid .pc img{height:320px;}}
+
+/* ===== [PATCH 260820] 악세사리 세트 SET1~5 섹션 — 구 통합페이지 이식, 클래스 3종 리네임(hcard/gcell/gc 충돌 회피) ===== */
+.lead{font-size:28px;color:#455;line-height:1.75;margin-top:16px;max-width:720px;}
+.lead b{color:#00838f;}
+.scards{margin-top:26px;}
+.achcard{display:flex;gap:20px;align-items:center;border:1px solid #e7ecef;border-radius:14px;padding:16px;margin-top:14px;background:#fff;}
+.achcard .hph{flex:0 0 236px;height:196px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.achcard .hph img{max-width:100%;max-height:196px;object-fit:contain;}
+.achcard .hnm{font-size:34px;font-weight:800;color:#00838f;}
+.achcard .hnm .hq{font-size:23px;color:#607d8b;font-weight:700;margin-left:4px;}
+.achcard .huse{font-size:27px;font-weight:700;margin-top:8px;color:#263238;}
+.achcard .hadd{font-size:24px;color:#5a6672;line-height:1.6;margin-top:7px;}
+.subhd{font-size:30px;font-weight:800;color:#263238;margin-top:40px;padding-left:12px;border-left:5px solid #00838f;line-height:1.3;}
+.mtx{width:100%;border-collapse:collapse;margin-top:16px;font-size:20px;table-layout:auto;}
+.mtx thead th{background:#37474f;color:#fff;padding:11px 7px;font-size:19px;text-align:center;white-space:nowrap;}
+.mtx thead th.h-item{text-align:left;}
+.mtx thead th.h-spec{text-align:left;}
+.mtx tbody td{padding:8px 7px;border-bottom:1px solid #eceff1;text-align:center;}
+.mtx tbody tr:nth-child(even){background:#fafbfc;}
+.mtx .m-item{text-align:left;font-weight:700;color:#263238;line-height:1.28;white-space:nowrap;}
+.mtx .m-item .en{display:block;font-size:14px;color:#98a6b0;font-weight:500;white-space:nowrap;}
+.mtx .m-spec{text-align:left;color:#5a6672;white-space:nowrap;font-size:18px;}
+.mtx .q{font-weight:800;color:#00838f;}
+.mtx .z{color:#cfd8dc;}
+.mtx tfoot td{border-top:2px solid #37474f;font-weight:800;padding:10px 7px;text-align:center;background:#eef7f8;font-size:20px;}
+.mtx tfoot td.f-lb{text-align:right;color:#37474f;}
+.mtx tfoot .ft-pt{color:#596fa1;}
+.tnote{font-size:24px;color:#8a94a0;margin-top:14px;line-height:1.6;}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px;}
+.setgal{margin-top:16px;}
+.setgal .acgc b{color:#00695c;}
+.acgcell{border:1px solid #e7ecef;border-radius:10px;overflow:hidden;background:#f7f9fa;}
+.acgcell .gph{aspect-ratio:4/3;overflow:hidden;}
+.acgcell img{width:100%;height:100%;object-fit:cover;}
+.acgcell .acgc{font-size:22px;color:#5a6672;padding:9px 11px;line-height:1.5;}
+.selg{background:#f7f9fa;border:1px solid #e7ecef;border-radius:12px;padding:14px 24px;margin-top:18px;}
+.selg .g{display:flex;justify-content:space-between;gap:16px;align-items:baseline;font-size:26px;padding:11px 0;border-bottom:1px dashed #dfe6e9;line-height:1.5;}
+.selg .g:last-child{border-bottom:none;}
+.selg .gq{color:#37474f;}
+.selg .ga{color:#00838f;font-weight:800;white-space:nowrap;}
+
+/* ===== [PATCH 260820] SUPPLY JOURNEY 섹션 — 구 통합페이지 이식, 강조색 티얼→계열색(var(--ac)) 재배색 ===== */
+.journey{background:#0f151c;border-bottom:1px solid #eceff1;}
+.journey .inr{padding:70px 46px;max-width:860px;margin:0 auto;}
+.journey .eyebrow{color:var(--ac);}
+.journey .h2{color:#fff;}
+.journey .jlead{font-size:27px;color:#aeb6bf;line-height:1.7;margin-top:14px;max-width:680px;}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px;}
+.step{background:#18212b;border:1px solid #263341;border-radius:12px;overflow:hidden;}
+.step .ph{position:relative;aspect-ratio:4/3;overflow:hidden;}
+.step .ph img{width:100%;height:100%;object-fit:cover;}
+.step .bg{position:absolute;top:8px;left:8px;background:var(--ac);color:#fff;font-size:21px;font-weight:800;padding:3px 9px;border-radius:14px;letter-spacing:.5px;}
+.step .tx{padding:14px 14px 18px;}
+.step .tt{font-size:27px;font-weight:800;color:#fff;}
+.step .dd{font-size:22px;color:#9aa6b2;line-height:1.55;margin-top:7px;}
+.jclose{margin-top:26px;font-size:28px;color:#fff;font-weight:700;text-align:center;line-height:1.6;}
+.jclose b{color:var(--ac);}
+
+/* ===== [PATCH 260820] 모바일(680px 이하) — 세트 카드/갤러리/스텝 반응형 (구 통합페이지 동일 규칙 이식) ===== */
+@media(max-width:680px){
+  .steps,.gal{grid-template-columns:1fr 1fr;}
+  .achcard{flex-direction:column;align-items:stretch;}
+  .achcard .hph{flex:none;width:100%;}
+}
+
+/* ===== §6 검사·방청 4장 — 16:9 레터박스 제거 (2026-08-21 append) ===== */
+.qcheck .qc img{height:260px;}
+
+
+/* ===== [APPEND 260823] 폰트 확대 시안 A — 나나파파 「글씨가 너무 작다」
+   🚫 기존 규칙 무수정. 이 블록만 뒤에 붙는다(§B-6.3).
+   계보 기준값(h1 40 / .h2 29 / 본문 16) 미접촉 — 111 계보 유지 ===== */
+.eyebrow{font-size:13.5px;}
+.pill{font-size:13.5px;}
+.kl{font-size:14.5px;}
+.mat{font-size:14px;}
+.gcell .gc{font-size:15px;}
+.sysrow .sysbox .lb{font-size:14.5px;}
+.lu .lm{font-size:16px;}
+.lu .ln{font-size:14px;}
+.ord .oh{font-size:16px;}
+.ord .od{font-size:17px;}
+.feat .fh{font-size:17.5px;}
+.feat .fd{font-size:17px;}
+.sizetbl{font-size:16.5px;}
+.sizetbl thead th{font-size:16.5px;}
+.chs .ch{font-size:14.5px;}
+.chs .ch .cn{font-size:14px;}
+.footer{font-size:13.5px;}
+.footer b{font-size:14.5px;}
+
+/* ===== [APPEND 260823] 갤러리 칸 — 세로 제품컷 클리핑 방지 (나나파파 사진 지정 반영)
+   🚫 기존 .gcell 규칙 무수정. 높이·맞춤만 뒤에서 덮는다. ===== */
+.gallery-sec .gcell img{height:250px;object-fit:contain;background:#fff;}
+
+/* [2026-08-30 나나파파 승격 · 2026-09-05 소급] 비교표 행 썸네일 — 104/index.html 정본 이식 */
+.sizetbl td.tc,.sizetbl th.tc{width:56px;padding:4px 6px 4px 10px;}
+.rowthumb{width:44px;height:33px;object-fit:cover;border-radius:4px;display:block;background:#eef0f5;}
+</style>
+<style>
+/* 2026-09-27 고를 수 있는 기종 썸네일 칸 — 정본 규칙 무수정, 뒤에 붙인다 (나나파파 추가 지시) */
+.pickhd{font-size:16px;font-weight:800;color:var(--ink);margin:28px 0 10px;padding-left:10px;border-left:4px solid var(--ac);}
+.pickhd span{font-size:13.5px;font-weight:700;color:var(--ac);margin-left:4px;}
+.pick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.pick .pk{display:block;background:#fff;border:1px solid #e6ebf2;border-radius:8px;padding:8px 8px 10px;text-decoration:none;color:var(--ink);word-break:keep-all;}
+.pick .pk:hover{border-color:var(--ac);box-shadow:0 6px 16px rgba(22,26,34,.08);}
+.pick .pk img{width:100%;height:104px;object-fit:contain;background:#fff;display:block;}
+.pick .pn{font-size:16px;font-weight:800;margin-top:6px;color:var(--ac);}
+.pick .ps{font-size:16px;color:#5c6673;line-height:1.45;margin-top:2px;}
+@media(max-width:900px){.pick{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:760px){.pick{grid-template-columns:repeat(2,1fr);}}
+</style>
+<style>
+/* 2026-10-03 고객지원 사례 전용 — 셸 규칙 무수정, 뒤에 붙인다 */
+.crumb{padding:11px 56px;font-size:13px;color:#6b7684;background:#f6f8fb;border-bottom:1px solid #e6ebf2;}
+.crumb a{color:#455166;text-decoration:none;font-weight:700;}
+.crumb span{margin:0 7px;color:#aab3c0;}
+.hero.case h1{font-size:36px;word-break:keep-all;}
+.hero .cta.cta-sub{background:#fff;color:var(--ac);border:1px solid var(--ac);box-shadow:none;margin-left:8px;}
+.cphotos{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:4px;}
+.cphotos figure{margin:0;background:#fff;border:1px solid #e6ebf2;border-radius:8px;overflow:hidden;}
+.cphotos img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#eef0f5;}
+.cphotos figcaption{font-size:14.5px;color:#5c6673;padding:10px 14px 12px;line-height:1.55;word-break:keep-all;}
+.cphotos .wide{grid-column:1/-1;}
+.csec .sub{max-width:none;}
+.csec .h2,.hero.case h1{word-break:keep-all;}
+.hero.case.listhero{padding-bottom:12px;}
+.csec .orders{margin-bottom:22px;}
+.ctags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px;}
+.ctag{font-size:12.5px;font-weight:700;color:#455166;background:#eef2f7;border-radius:20px;padding:5px 12px;text-decoration:none;}
+.backlist{display:inline-block;margin-top:18px;font-size:15px;font-weight:800;color:var(--ac);text-decoration:none;}
+/* 목록 */
+.filters{display:flex;flex-direction:column;gap:10px;margin-bottom:26px;}
+.frow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.frow b{font-size:13.5px;color:#455166;width:78px;flex:none;}
+.fbtn{font-size:13.5px;font-weight:700;color:#455166;background:#fff;border:1px solid #d7dfea;border-radius:20px;padding:6px 14px;cursor:pointer;font-family:inherit;}
+.fbtn.on{background:var(--ac);border-color:var(--ac);color:#fff;}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.card{display:block;background:#fff;border:1px solid #e6ebf2;border-radius:10px;overflow:hidden;text-decoration:none;color:var(--ink);}
+a.card:hover{border-color:var(--ac);box-shadow:0 8px 20px rgba(22,26,34,.08);}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#eef0f5;}
+.card .cb{padding:14px 16px 16px;}
+.card .cm{font-size:12.5px;color:#6b7684;font-weight:700;}
+.card .tt{font-size:17px;font-weight:800;line-height:1.45;margin-top:6px;word-break:keep-all;}
+.card .sm{font-size:14.5px;color:#5c6673;line-height:1.55;margin-top:6px;word-break:keep-all;}
+.card.soon{opacity:.55;}
+.card .soonb{display:inline-block;font-size:11.5px;font-weight:800;color:#fff;background:#7c8698;border-radius:4px;padding:2px 7px;margin-left:6px;}
+.frow input.rq{flex:1;min-width:200px;max-width:420px;font:inherit;font-size:15px;padding:8px 14px;border:1px solid #d7dfea;border-radius:20px;color:var(--ink);}
+.frow input.rq:focus{outline:none;border-color:var(--ac);}
+.empty{display:none;font-size:15px;color:#6b7684;padding:20px 0;}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:760px){.crumb{padding:10px 24px;} .hero.case h1{font-size:27px;} .cphotos{grid-template-columns:1fr;} .cards{grid-template-columns:1fr;} .frow b{width:100%;} .hero .cta.cta-sub{margin-left:0;margin-top:10px;} .hero.case .hcard{min-height:0;padding:12px;}}
+
+/* 2026-10-09 자가수리 안내 전용 — 셸·사례 규칙 무수정, 뒤에 붙인다 */
+.safety{background:#fff6ec;border:1px solid #f3c79a;border-left:6px solid #e8730c;border-radius:10px;padding:22px 26px;}
+.safety h3{margin:0 0 12px;font-size:19px;color:#a14a00;}
+.safety ol{margin:0;padding-left:22px;}
+.safety li{font-size:16px;line-height:1.7;color:#3b2a1a;margin-bottom:6px;word-break:keep-all;}
+.safety li b{color:#a14a00;}
+.rule{background:#eef5ff;border:1px solid #c9dcf6;border-radius:10px;padding:18px 24px;margin-top:22px;font-size:17px;line-height:1.7;font-weight:700;color:#1d3e6e;word-break:keep-all;}
+.rule small{display:block;font-weight:500;font-size:14px;color:#47607f;margin-top:4px;}
+.rsteps{counter-reset:s;display:flex;flex-direction:column;gap:22px;margin-top:6px;}
+.rstep{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:center;background:#fff;border:1px solid #e6ebf2;border-radius:10px;padding:18px;}
+.rstep:nth-child(even) .rtx{order:2;}
+.rtx .rn{display:inline-block;font-size:12.5px;font-weight:800;color:#fff;background:var(--ac);border-radius:4px;padding:2px 9px;}
+.rtx .rh{font-size:19px;font-weight:800;margin-top:8px;line-height:1.45;word-break:keep-all;}
+.rtx .rd{font-size:15.5px;color:#4a5361;line-height:1.7;margin-top:6px;word-break:keep-all;}
+.rst img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-radius:6px;background:#eef0f5;}
+.rst .ph{aspect-ratio:16/9;border:2px dashed #c3ccd8;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;color:#7b8695;background:#f6f8fb;padding:10px;}
+.rst figcaption{font-size:13.5px;color:#6b7684;margin-top:6px;}
+.rst{margin:0;}
+.stuck{background:#f6f8fb;border:1px solid #e0e6ee;border-radius:10px;padding:20px 24px;font-size:16px;line-height:1.75;word-break:keep-all;}
+.relgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.rel{display:block;background:#fff;border:1px solid #e6ebf2;border-radius:10px;padding:16px 18px;text-decoration:none;color:var(--ink);}
+.rel .rk{font-size:12.5px;font-weight:800;color:var(--ac);}
+.rel .rt{font-size:16.5px;font-weight:800;margin-top:6px;line-height:1.45;word-break:keep-all;}
+.rel .rs{font-size:14px;color:#6b7684;margin-top:4px;line-height:1.55;}
+.rel.dim{opacity:.6;}
+.mockbar{background:#2b2f38;color:#ffd9a8;font-size:13px;padding:7px 56px;text-align:center;}
+@media(max-width:760px){.rstep{grid-template-columns:1fr;} .rstep:nth-child(even) .rtx{order:0;} .relgrid{grid-template-columns:1fr;} .mockbar{padding:7px 16px;}}
+</style>
+<link href="https://www.changhoinc.com/learn/drawing-cad-1.html" rel="canonical"/>
+<meta content="article" property="og:type"/>
+<meta content="창호종합기계" property="og:site_name"/>
+<meta content="도면 심화 5 — 2D·3D 설계 프로그램 입문 | 창호종합기계" property="og:title"/>
+<meta content="컴퓨터로 도면과 모델을 만드는 설계 프로그램(캐드) 입문 — 2D와 3D의 차이, 3D 모델 만드는 순서, 치수로 움직이는 모델, 3D에서 도면 뽑기, DWG·DXF·STEP·STL 파일 형식, 처음 배울 프로그램 고르기를 직접 그린 그림으로 쉽게 정리했습니다. 기계 배움터 도면 과목 심화 다섯 번째 글입니다." property="og:description"/>
+<meta content="https://www.changhoinc.com/learn/drawing-cad-1.html" property="og:url"/>
+<meta content="https://www.changhoinc.com/learn/img/drawing-cad-1-model.png" property="og:image"/>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4SVNEP6MSK"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4SVNEP6MSK');</script><script src="/js/ch-call.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "url": "https://www.changhoinc.com/learn/drawing-cad-1.html", "name": "도면 심화 5 — 2D·3D 설계 프로그램 입문 | 창호종합기계", "description": "컴퓨터로 도면과 모델을 만드는 설계 프로그램(캐드) 입문 — 2D와 3D의 차이, 3D 모델 만드는 순서, 치수로 움직이는 모델, 3D에서 도면 뽑기, DWG·DXF·STEP·STL 파일 형식, 처음 배울 프로그램 고르기를 직접 그린 그림으로 쉽게 정리했습니다. 기계 배움터 도면 과목 심화 다섯 번째 글입니다.", "inLanguage": "ko", "publisher": {"@type": "Organization", "name": "창호종합기계", "url": "https://www.changhoinc.com/"}}</script>
+<style id="chg-css">
+/* 공통 상단 메뉴 줄 — 대문(index.html) 유틸 바·카테고리 바와 같은 모양. 원본 CSS 는 건드리지 않는다 */
+html{scroll-padding-top:112px}
+.chg{position:sticky;top:0;z-index:170;background:#111;color:#fff;
+  font-family:"Nanum Gothic","Noto Sans KR","Apple SD Gothic Neo",system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.5;letter-spacing:-0.3px}
+.chg a{color:inherit;text-decoration:none}
+.chg ul{list-style:none;margin:0;padding:0}
+.chg-in{max-width:1240px;margin:0 auto;padding:9px 20px;display:flex;align-items:center;gap:16px}
+.chg-logo{background:#fff;border-radius:7px;padding:5px 9px;display:block;line-height:0;flex:none}
+.chg-logo img{height:26px;width:auto;display:block}
+.chg-s{flex:1;position:relative;max-width:420px}@media(max-width:1100px){.chg .chg-nav,.chg .chg-nav ul{gap:11px}}
+.chg-s input{width:100%;height:42px;border-radius:8px;border:2px solid transparent;padding:0 44px 0 15px;
+  font-size:15px;background:#fff;color:#1d1d1f;font-family:inherit}
+.chg-s input:focus{outline:0;border-color:#0066cc}
+.chg-s .mag{position:absolute;right:6px;top:5px;width:32px;height:32px;border-radius:6px;background:#0066cc;
+  color:#fff;font-size:15px;display:grid;place-items:center;pointer-events:none}
+.chg-sg{position:absolute;left:0;right:0;top:46px;background:#fff;border:1px solid #d2d2d7;border-radius:10px;
+  box-shadow:0 12px 34px rgba(0,0,0,.18);overflow:hidden;z-index:190}
+.chg-sg[hidden]{display:none}
+.chg-sg li{margin:0;list-style:none;line-height:1.5;padding:9px 14px;font-size:14px;color:#1d1d1f;display:flex;gap:9px;align-items:center;cursor:pointer}
+.chg-sg li:hover,.chg-sg li[aria-selected="true"]{background:#f5f5f7}
+.chg-sg .chg-k{font-size:10.5px;color:#fff;background:#9a9aa0;border-radius:4px;padding:2px 6px;flex:none}
+.chg-sg .chg-k.chg-k1{background:#0066cc}
+.chg-sg .chg-sub{color:#9a9aa0;display:inline}
+.chg-sg .chg-none{color:#6e6e73;cursor:default}
+.chg-nav{display:flex;align-items:center;gap:16px;flex:none}
+.chg-nav ul{display:flex;gap:16px;align-items:center}
+.chg-nav ul a{font-size:13.5px;color:#d7d7db;white-space:nowrap}
+.chg-nav ul a:hover{color:#fff}
+.chg-nav .cta{background:#0066cc;color:#fff;padding:6px 14px;border-radius:9999px;font-size:12px}
+.chg-nav .ln{display:none}
+.chg-hb{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:4px;
+  position:relative;z-index:200}
+.chg-hb span{display:block;width:20px;height:1.5px;background:rgba(255,255,255,.8);transition:transform .2s,opacity .2s}
+.chg-hb.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.chg-hb.open span:nth-child(2){opacity:0}
+.chg-hb.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+.chg-cat{background:#000;border-top:1px solid #26262a;position:relative}
+.chg-cat::after{content:"";position:absolute;right:0;top:0;bottom:0;width:clamp(16px,5vw,44px);
+  background:linear-gradient(270deg,#000,rgba(0,0,0,0));pointer-events:none}
+.chg-cat-in{max-width:none;margin:0;padding:0 7px 0 max(7px,calc((100% - 1240px)/2 + 7px));display:flex;overflow-x:auto;scrollbar-width:none}
+.chg-cat-in::-webkit-scrollbar{display:none}
+.chg-cat a{padding:11px 13px;font-size:13.5px;color:#d7d7db;white-space:nowrap;flex:none}
+.chg-cat a:hover{color:#fff}
+.chg-cat a.all{font-weight:700;color:#fff}
+.chg-cat a[aria-current]{color:#fff;font-weight:700;box-shadow:inset 0 -3px 0 #0066cc}
+.chg-crumb{max-width:1040px;margin:0 auto;padding:12px 20px 0;font-size:13px;color:#6e6e73;
+  font-family:"Nanum Gothic","Noto Sans KR",system-ui,sans-serif}
+.chg-crumb a{color:#0066cc;text-decoration:none}
+.chg-crumb a:hover{text-decoration:underline}
+.chg-crumb span.sep{margin:0 7px;color:#b0b0b5}
+.wrap>.top{display:none}
+@media(max-width:834px){
+  html{scroll-padding-top:70px}
+  .chg-in{padding:8px 12px;gap:10px}
+  .chg-logo{padding:4px 7px}.chg-logo img{height:22px}
+  .chg-s input{height:38px;font-size:14px}
+  .chg-s .mag{top:4px;width:30px;height:30px}
+  .chg-sg{top:42px}
+  .chg-cat{display:none}
+  .chg-hb{display:flex}
+  .chg-nav ul:not(.open){display:none}
+  .chg-nav ul.open{display:flex;flex-direction:column;align-items:flex-start;position:fixed;
+    top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.97);padding:76px 28px 28px;gap:18px;
+    overflow-y:auto;z-index:150}
+  .chg-nav ul.open a{font-size:19px;font-weight:600;color:rgba(255,255,255,.9)}
+  .chg-nav ul.open .cta{font-size:19px;padding:10px 26px}
+  .chg-nav ul.open .ln{display:block}
+  .chg-nav ul.open .lnh{font-size:13px;color:#9a9aa0;margin-top:10px}
+  .chg-nav ul.open .ln a{font-size:16px;font-weight:400;color:#d7d7db}
+  .chg-nav ul.open .ln a[aria-current]{color:#fff;font-weight:700}
+  .chg-crumb{padding:10px 16px 0;font-size:12px}
+}
+@media print{.chg,.chg-crumb{display:none}.wrap>.top{display:flex}}
+</style>
+<style id="pd-css">
+.pd-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;align-items:start}
+.pd-grid img{width:100%;border:1px solid #e3e8f0;border-radius:10px;background:#fff}
+.pd-p{font-size:16px;line-height:1.75;color:#333b48;margin:0 0 12px}
+.pd-t{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 6px}
+.pd-t th,.pd-t td{border-bottom:1px solid #e6ebf2;padding:7px 8px;text-align:center}
+.pd-t th{background:#f3f6fa;font-weight:700}
+.pd-dl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 8px}
+.pd-dl a{display:block;text-decoration:none;color:#fff;background:#1e3a8a;border-radius:9px;padding:13px 15px;font-weight:800;font-size:15.5px}
+.pd-dl a span{display:block;font-weight:500;font-size:13px;opacity:.85;margin-top:2px}
+.pd-dl a.sub{background:#fff;color:#1e3a8a;border:1.5px solid #1e3a8a}
+.pd-dl a:hover{filter:brightness(1.1)}
+.pd-sum{cursor:pointer;color:#1e3a8a;font-weight:700;font-size:15px;margin-top:6px}
+.pd-jump{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 0}
+.pd-jump a{padding:7px 15px;border:1px solid #c9d3e6;border-radius:20px;text-decoration:none;color:#1e3a8a;font-size:14.5px;background:#fff}
+.pd-note{font-size:14.5px;color:#4b5563;line-height:1.75;padding-left:20px;margin:6px 0 0}
+.pd-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.pd-card{display:block;border:1px solid #e3e8f0;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;background:#fff}
+.pd-card img{width:100%;display:block;border-bottom:1px solid #eef1f6}
+.pd-card .b{padding:16px 18px}.pd-card .k{font-size:13px;color:#596fa1;font-weight:800}
+.pd-card .t{font-size:19px;font-weight:900;color:#161a22;margin:4px 0}.pd-card .s{font-size:14.5px;color:#4b5563;line-height:1.6}
+.pd-ask{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0 4px;padding:12px 15px;background:#fff8e6;border:1px solid #f0d58c;border-radius:9px;font-size:15px;color:#3b3b3b}
+.pd-ask .tx{flex:1 1 100%}.pd-ask b{color:#161a22}.pd-ask a{display:inline-block;padding:7px 14px;border-radius:7px;text-decoration:none;font-weight:800;font-size:14.5px}
+.pd-ask a.k{background:#fee500;color:#191919}.pd-ask a.t{background:#fff;color:#1e3a8a;border:1.5px solid #1e3a8a}
+@media(max-width:760px){.pd-grid,.pd-dl,.pd-cards{grid-template-columns:1fr}}
+</style>
+<style id="ls-css">.sd-fig{overflow-x:auto;margin:0 0 14px}.sd-fig img{display:block;width:100%;min-width:640px;border:1px solid #e3e8f0;border-radius:10px;background:#fff}.sd-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}.sd-photos figure{margin:0;border:1px solid #e3e8f0;border-radius:10px;overflow:hidden;background:#fff}.sd-photos img{display:block;width:100%;height:300px;object-fit:contain;background:#fff}.sd-photos figcaption{font-size:14px;color:#4b5563;padding:8px 12px 10px;line-height:1.5}.ls-cat img{height:auto!important;max-height:none}.ls-catw{margin:14px 0;border:1px solid #e3e8f0;border-radius:10px;overflow:hidden;background:#fff}.ls-catw img{display:block;width:100%;height:auto}.ls-catw figcaption{font-size:14px;color:#4b5563;padding:8px 12px 10px;line-height:1.5}.sd-photos3{grid-template-columns:repeat(3,1fr)}.sd-photos3 img{height:240px}.pd-t td:first-child,.pd-t th:first-child{white-space:nowrap}@media(max-width:760px){.sd-photos{grid-template-columns:1fr}.sd-photos3{grid-template-columns:1fr 1fr}.sd-photos3 img{height:170px}.pd-t td:first-child,.pd-t th:first-child{white-space:normal}.sd-fig::after{content:"그림은 옆으로 밀어서 보실 수 있습니다";display:block;font-size:12.5px;color:#6b7280;margin-top:4px}}</style>
+<style id="learn-css">.pd-t td:first-child,.pd-t th:first-child{white-space:nowrap!important}details.pd-p{margin:0 0 10px;padding:12px 16px;border:1px solid #e3e8f0;border-radius:9px;background:#fff}details.pd-p p{margin:10px 0 0}</style>
+</head>
+<body>
+<!-- ===== 공통 상단 메뉴 줄 (chg) ===== -->
+<header class="chg">
+<div class="chg-in">
+<a class="chg-logo" href="/"><img alt="창호종합기계 처음 화면" src="/images/CH_Logo_MD_700700_배경검은색.png"/></a>
+<div class="chg-s"><input aria-controls="chg-sg" aria-expanded="false" aria-label="제품 검색" autocomplete="off" id="chg-q" placeholder="기계 이름으로 찾기 (예: 탭핑기, 노칭)" role="combobox" type="search"/><span aria-hidden="true" class="mag">⌕</span><ul class="chg-sg" hidden="" id="chg-sg" role="listbox"></ul></div>
+<nav aria-label="주 메뉴" class="chg-nav"><ul id="chg-links"><li><a href="/about/">회사소개</a></li><li><a href="/import/">수입대행</a></li><li><a href="/#products">제품소개</a></li><li><a href="/#resources">기술자료</a></li><li><a href="/cases/">고객지원 사례</a></li><li><a href="/repair/">자가수리 안내</a></li><li><a href="/learn/">기계 배움터</a></li><li><a class="cta" href="/#contact">문의하기</a></li><li class="ln lnh">제품 라인</li><li class="ln"><a href="/products/111/">용접테이블 · D28 악세사리</a></li><li class="ln"><a href="/products/101/">알루미늄 절단기 · 원형절단기</a></li><li class="ln"><a href="/products/104/">탭핑기 · 서보탭핑기</a></li><li class="ln"><a href="/products/103/">유압 펀칭기 · 프레스</a></li><li class="ln"><a href="/products/109/">R노칭기 · 파이프 노칭기</a></li><li class="ln"><a href="/products/109/index-b.html">파이프 축관기 · 벤딩기</a></li><li class="ln"><a href="/products/107/">챔버 · 면취기 · 모따기</a></li><li class="ln"><a href="/products/100/">금속절단기 · 밴드쏘</a></li><li class="ln"><a href="/products/line-bend/">절곡·벤딩기 · 전선탈피기</a></li><li class="ln"><a href="/products/line-al/">알루미늄 창호기계</a></li><li class="ln"><a href="/products/line-pvc/">PVC 창호기계 · PVC 용접기</a></li><li class="ln"><a href="/products/400/">랩핑기 · 유리 가공기 · 창호 설비</a></li><li class="ln"><a href="/products/line-blade/">톱날 · 컷트날 · 열판</a></li></ul><button aria-expanded="false" aria-label="메뉴 열기" class="chg-hb" id="chg-hb" type="button"><span></span><span></span><span></span></button></nav>
+</div>
+<nav aria-label="제품 라인" class="chg-cat"><div class="chg-cat-in"><a class="all" href="/#products">☰ 전체 13개 라인</a><a href="/products/111/">용접테이블</a><a href="/products/101/">알루미늄 절단기</a><a href="/products/104/">탭핑기</a><a href="/products/103/">유압 펀칭기</a><a href="/products/109/">R노칭기</a><a href="/products/109/index-b.html">축관기 · 벤딩기</a><a href="/products/107/">챔버</a><a href="/products/100/">금속절단기</a><a href="/products/line-bend/">절곡·벤딩기</a><a href="/products/line-al/">알루미늄 창호기계</a><a href="/products/line-pvc/">PVC 창호기계</a><a href="/products/400/">랩핑기</a><a href="/products/line-blade/">톱날</a></div></nav>
+</header>
+<!-- ===== /공통 상단 메뉴 줄 ===== -->
+
+<div class="wrap">
+<div class="top">
+<a href="/" title="처음 화면으로" style="display:flex;align-items:center;gap:11px;text-decoration:none"><div class="lg"><img alt="창호종합기계" src="../products/102/img/e3b0b7c00681.png"/></div>
+<div class="co">창호종합기계<small>CHANGHO INC</small></div></a>
+<div class="rt">기계 배움터<br/>055-327-4112</div>
+</div>
+
+
+<div class="crumb"><a href="../">홈</a><span>›</span><a href="./">기계 배움터</a><span>›</span><a href="./#drawing">도면</a><span>›</span>심화 5</div>
+<div class="hero case listhero" style="grid-template-columns:1fr;"><div>
+<div class="ey">기계 배움터 · 도면 · 심화 5</div><h1>도면 심화 5 — <em>2D·3D 설계 프로그램 입문</em></h1>
+<div class="ld">요즘 기계 도면은 대부분 컴퓨터 프로그램으로 그립니다. 선을 그어 도면을 만드는 2D 프로그램도 있고, 컴퓨터 안에 입체를 먼저 만든 뒤 도면을 뽑는 3D 프로그램도 있습니다. 이 글에서는 2D와 3D의 차이, 3D 모델을 만드는 순서, 치수를 고치면 모양이 따라 바뀌는 원리를 먼저 봅니다. 이어서 도면을 뽑는 법, 주고받는 파일 형식, 처음 배울 때 고를 프로그램을 그림과 연습 문제로 살펴봅니다.</div>
+<div class="pd-jump"><a href="#sWhat">설계 프로그램이란</a><a href="#s2D3D">2D와 3D</a><a href="#sModel">3D 모델 만드는 순서</a><a href="#sParam">치수로 움직이는 모델</a><a href="#sDrawing">3D에서 도면 뽑기</a><a href="#sFile">파일 형식</a><a href="#sStart">처음 배울 프로그램</a><a href="#sTry">생각해 보기</a><a href="#sSum">정리</a></div>
+</div></div>
+
+<div class="sec" id="sWhat">
+<div class="eyebrow">설계 프로그램이란</div>
+<div class="h2">컴퓨터로 도면과 모델을 만드는 프로그램, 캐드(CAD)</div>
+<p class="pd-p">설계 프로그램을 흔히 <b>캐드(CAD)</b>라고 부릅니다. 컴퓨터의 도움을 받는 설계라는 뜻의 영어(Computer-Aided Design) 머리글자입니다. 자와 연필 대신 마우스와 숫자로 선과 모양을 만듭니다.</p>
+<ul class="pd-note">
+<li><b>고치기 쉽습니다</b> — 손으로 그린 도면은 한 곳을 고치려면 지우고 다시 그려야 하지만, 캐드는 그 선이나 숫자만 바꾸면 됩니다.</li>
+<li><b>정확합니다</b> — 길이를 숫자로 넣으므로 자로 읽을 때 생기는 읽기 오차가 없고, 같은 모양을 몇 번이고 똑같이 복사할 수 있습니다.</li>
+<li><b>기계로 이어집니다</b> — 캐드로 만든 모양은 가공용 자료로 바꿔 레이저 절단기, CNC 기계(컴퓨터가 움직이는 공작 기계), 3D 프린터에 넘길 수 있습니다.</li>
+<li><b>도면 규칙은 같습니다</b> — 프로그램으로 그려도 선의 종류, 세 방향에서 본 그림, 치수 넣는 법 같은 약속은 그대로입니다. 지금까지 배운 도면 기초가 캐드에서도 그대로 쓰입니다.</li>
+</ul>
+</div>
+
+<div class="sec" id="s2D3D">
+<div class="eyebrow">2D와 3D</div>
+<div class="h2">2D는 선으로 그리고, 3D는 입체를 만듭니다</div>
+<p class="pd-p">2D는 가로·세로 두 방향(2차원)만 있는 평면, 3D는 높이까지 세 방향(3차원)이 있는 공간이라는 뜻입니다. 같은 부품을 두 가지로 나타내면 아래와 같습니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 420" role="img" aria-label="같은 L 받침을 2D와 3D로 나타낸 그림. 왼쪽 2D는 정면도·평면도·우측면도 세 그림을 선으로 그렸고, 오른쪽 3D는 밑판에 벽이 서 있고 밑판에 구멍이 뚫린 입체 모델이다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="dc1f1" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="dc1f1b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker><pattern id="dc1f1h1" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f1h2" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f1h3" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f1h4" patternUnits="userSpaceOnUse" width="5.5" height="5.5" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5.5" stroke="#161a22" stroke-width="1.3"/></pattern></defs><rect width="1000" height="420" fill="#fff"/>
+<text x="250" y="34" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">2D — 평면에 선으로 그림</text>
+<text x="750" y="34" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">3D — 컴퓨터 안에 입체를 만듦</text>
+<polygon points="110.0,340.0 266.0,340.0 266.0,301.0 149.0,301.0 149.0,210.0 110.0,210.0" fill="#fff" stroke="#161a22" stroke-width="2.6" stroke-linejoin="round" /><line x1="198.4" y1="340.0" x2="198.4" y2="301.0" stroke="#161a22" stroke-width="1.4" stroke-dasharray="7 4"/><line x1="229.6" y1="340.0" x2="229.6" y2="301.0" stroke="#161a22" stroke-width="1.4" stroke-dasharray="7 4"/><rect x="110.0" y="88.0" width="156.0" height="104.0" fill="#fff" stroke="#161a22" stroke-width="2.6"/><line x1="149.0" y1="88.0" x2="149.0" y2="192.0" stroke="#161a22" stroke-width="2.6" /><circle cx="214.0" cy="140.0" r="15.6" fill="none" stroke="#161a22" stroke-width="2.6" /><polygon points="284.0,340.0 388.0,340.0 388.0,210.0 284.0,210.0" fill="#fff" stroke="#161a22" stroke-width="2.6" stroke-linejoin="round" /><line x1="284.0" y1="301.0" x2="388.0" y2="301.0" stroke="#161a22" stroke-width="2.6" /><line x1="320.4" y1="340.0" x2="320.4" y2="301.0" stroke="#161a22" stroke-width="1.4" stroke-dasharray="7 4"/><line x1="351.6" y1="340.0" x2="351.6" y2="301.0" stroke="#161a22" stroke-width="1.4" stroke-dasharray="7 4"/>
+<text x="188.0" y="362.0" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">정면도</text>
+<text x="188.0" y="78.0" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">평면도</text>
+<text x="336.0" y="362.0" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">우측면도</text>
+<polygon points="763.8,190.5 865.1,249.0 775.0,301.0 673.7,242.5" fill="#e9edf5" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="763.8,190.5 673.7,242.5 673.7,151.5 763.8,99.5" fill="#cfd7e6" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="865.1,288.0 775.0,340.0 775.0,301.0 865.1,249.0" fill="#cfd7e6" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="639.9,262.0 775.0,340.0 775.0,301.0 673.7,242.5 673.7,151.5 639.9,132.0" fill="#ffffff" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="730.0,80.0 763.8,99.5 673.7,151.5 639.9,132.0" fill="#e9edf5" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="788.5,256.8 786.0,258.0 783.1,259.0 780.0,259.7 776.7,260.0 773.4,260.0 770.1,259.7 767.0,259.0 764.1,258.0 761.5,256.8 759.4,255.3 757.7,253.7 756.6,251.9 756.0,250.0 756.0,248.0 756.6,246.1 757.7,244.3 759.4,242.7 761.5,241.2 764.1,240.0 767.0,239.0 770.1,238.3 773.4,238.0 776.7,238.0 780.0,238.3 783.1,239.0 786.0,240.0 788.5,241.2 790.7,242.7 792.3,244.3 793.5,246.1 794.1,248.0 794.1,250.0 793.5,251.9 792.3,253.7 790.7,255.3" fill="#ffffff" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polyline points="764.1,250.4 767.0,249.4 770.1,248.7 773.4,248.4 776.7,248.4 780.0,248.7 783.1,249.4 786.0,250.4 788.5,251.6 790.7,253.1 792.3,254.7 793.5,256.5 794.1,258.4 794.1,260.4 793.5,262.3 792.3,264.1 790.7,265.7 788.5,267.2" fill="none" stroke="#6b7684" stroke-width="1.4" stroke-linejoin="round" />
+<text x="750.0" y="362.0" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">돌려 보고, 잘라 보고, 무게도 셈할 수 있음</text>
+<line x1="500.0" y1="20.0" x2="500.0" y2="380.0" stroke="#c9d1dc" stroke-width="1" />
+<text x="500.0" y="402.0" font-size="14" fill="#161a22" text-anchor="middle" font-weight="400">같은 L 받침 · 왼쪽은 세 방향에서 본 그림(3각법), 오른쪽은 입체 모델</text>
+</svg><figcaption>직접 그린 그림 · 같은 L 받침입니다. 왼쪽은 2D 프로그램으로 그린 세 방향 그림, 오른쪽은 3D 프로그램으로 만든 입체 모델입니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>2D 프로그램</b> — 종이에 그리듯 선과 원으로 정면도·평면도·측면도를 하나하나 그립니다. 배우기 쉽고, 간단한 부품이나 배치도에 알맞습니다. 다만 세 그림이 서로 이어져 있지 않아서, 한 그림을 고치면 다른 그림도 손으로 고쳐야 합니다.</li>
+<li><b>3D 프로그램</b> — 컴퓨터 안에 부품을 입체로 만듭니다. 이리저리 돌려 볼 수 있고, 부품끼리 맞물리는지, 무게가 얼마인지도 셈할 수 있습니다.</li>
+<li><b>세 방향 그림을 먼저 익힌 까닭</b> — 3D 프로그램도 결국 세 방향 그림으로 도면을 뽑습니다. 세 방향 그림은 <a href="drawing-basics-3.html">「세 방향에서 본 그림(정투상)」</a>에서 배웠습니다.</li>
+</ul>
+</div>
+
+<div class="sec" id="sModel">
+<div class="eyebrow">3D 모델 만드는 순서</div>
+<div class="h2">평면에 단면을 그리고, 밀어서 입체로 만듭니다</div>
+<p class="pd-p">3D 프로그램마다 화면은 달라도 모델을 만드는 순서는 비슷합니다. 평면에 그린 모양을 입체로 바꾸고, 거기에 구멍을 뚫거나 모서리를 다듬는 식으로 하나씩 더해 갑니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 404" role="img" aria-label="3D 모델을 만드는 네 단계. 1 평면에 L자 단면을 치수와 함께 스케치하고, 2 깊이 40만큼 돌출해 입체를 만들고, 3 밑판에 구멍을 뚫고, 4 모서리를 둥글게 다듬는다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="dc1f2" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="dc1f2b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker><pattern id="dc1f2h1" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f2h2" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f2h3" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f2h4" patternUnits="userSpaceOnUse" width="5.5" height="5.5" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5.5" stroke="#161a22" stroke-width="1.3"/></pattern></defs><rect width="1000" height="404" fill="#fff"/>
+<rect x="13" y="20" width="224" height="330" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="125" y="52" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">① 스케치</text>
+<text x="125" y="330" font-size="14" fill="#596fa1" text-anchor="middle" font-weight="700">평면에 단면 모양과 치수</text>
+<polygon points="253.0,185.0 242.0,189.9 242.0,180.1" fill="#596fa1" stroke="none"/>
+<rect x="263" y="20" width="224" height="330" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="375" y="52" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">② 돌출</text>
+<text x="375" y="330" font-size="14" fill="#596fa1" text-anchor="middle" font-weight="700">단면을 깊이만큼 밀어냄</text>
+<polygon points="503.0,185.0 492.0,189.9 492.0,180.1" fill="#596fa1" stroke="none"/>
+<rect x="513" y="20" width="224" height="330" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="625" y="52" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">③ 구멍</text>
+<text x="625" y="330" font-size="14" fill="#596fa1" text-anchor="middle" font-weight="700">구멍 위치·지름을 정함</text>
+<polygon points="753.0,185.0 742.0,189.9 742.0,180.1" fill="#596fa1" stroke="none"/>
+<rect x="763" y="20" width="224" height="330" rx="10" fill="#fff" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="875" y="52" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">④ 모서리 다듬기</text>
+<text x="875" y="330" font-size="14" fill="#596fa1" text-anchor="middle" font-weight="700">모서리를 둥글게</text>
+<polygon points="60.0,250.0 180.0,250.0 180.0,220.0 90.0,220.0 90.0,150.0 60.0,150.0" fill="none" stroke="#596fa1" stroke-width="2.4" stroke-linejoin="round" />
+<text x="120.0" y="274.0" font-size="14" fill="#596fa1" text-anchor="middle" font-weight="400">60</text>
+<text x="188.0" y="240.0" font-size="14" fill="#596fa1" text-anchor="start" font-weight="400">15</text>
+<text x="52.0" y="205.0" font-size="14" fill="#596fa1" text-anchor="end" font-weight="400">50</text>
+<text x="98.0" y="162.0" font-size="14" fill="#596fa1" text-anchor="start" font-weight="400">15</text>
+<polygon points="379.7,160.8 453.7,203.5 387.9,241.5 313.9,198.8" fill="#e9edf5" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="379.7,160.8 313.9,198.8 313.9,132.2 379.7,94.2" fill="#cfd7e6" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="453.7,232.0 387.9,270.0 387.9,241.5 453.7,203.5" fill="#cfd7e6" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="289.2,213.0 387.9,270.0 387.9,241.5 313.9,198.8 313.9,132.2 289.2,118.0" fill="#ffffff" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="355.0,80.0 379.7,94.2 313.9,132.2 289.2,118.0" fill="#e9edf5" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" />
+<text x="300" y="290" font-size="14" fill="#596fa1" text-anchor="middle" font-weight="700">깊이 40</text>
+<polygon points="629.7,160.8 703.7,203.5 637.9,241.5 563.9,198.8" fill="#e9edf5" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="629.7,160.8 563.9,198.8 563.9,132.2 629.7,94.2" fill="#cfd7e6" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="703.7,232.0 637.9,270.0 637.9,241.5 703.7,203.5" fill="#cfd7e6" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="539.2,213.0 637.9,270.0 637.9,241.5 563.9,198.8 563.9,132.2 539.2,118.0" fill="#ffffff" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="605.0,80.0 629.7,94.2 563.9,132.2 539.2,118.0" fill="#e9edf5" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="647.8,209.2 645.9,210.1 643.8,210.8 641.5,211.3 639.1,211.5 636.7,211.5 634.3,211.3 632.0,210.8 629.9,210.1 628.0,209.2 626.5,208.1 625.3,206.9 624.4,205.6 624.0,204.2 624.0,202.8 624.4,201.4 625.3,200.1 626.5,198.9 628.0,197.8 629.9,196.9 632.0,196.2 634.3,195.7 636.7,195.5 639.1,195.5 641.5,195.7 643.8,196.2 645.9,196.9 647.8,197.8 649.3,198.9 650.6,200.1 651.4,201.4 651.8,202.8 651.8,204.2 651.4,205.6 650.6,206.9 649.3,208.1" fill="#ffffff" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polyline points="629.9,204.5 632.0,203.8 634.3,203.3 636.7,203.1 639.1,203.1 641.5,203.3 643.8,203.8 645.9,204.5 647.8,205.4 649.3,206.5 650.6,207.7 651.4,209.0 651.8,210.4 651.8,211.8 651.4,213.2 650.6,214.5 649.3,215.7 647.8,216.8" fill="none" stroke="#6b7684" stroke-width="1.4" stroke-linejoin="round" />
+<polygon points="879.7,160.8 953.7,203.5 887.9,241.5 813.9,198.8" fill="#e9edf5" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="879.7,160.8 813.9,198.8 813.9,132.2 879.7,94.2" fill="#cfd7e6" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="953.7,232.0 887.9,270.0 887.9,241.5 953.7,203.5" fill="#cfd7e6" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="789.2,213.0 887.9,270.0 887.9,241.5 813.9,198.8 813.9,132.2 789.2,118.0" fill="#ffffff" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="855.0,80.0 879.7,94.2 813.9,132.2 789.2,118.0" fill="#e9edf5" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="897.8,209.2 895.9,210.1 893.8,210.8 891.5,211.3 889.1,211.5 886.7,211.5 884.3,211.3 882.0,210.8 879.9,210.1 878.0,209.2 876.5,208.1 875.3,206.9 874.4,205.6 874.0,204.2 874.0,202.8 874.4,201.4 875.3,200.1 876.5,198.9 878.0,197.8 879.9,196.9 882.0,196.2 884.3,195.7 886.7,195.5 889.1,195.5 891.5,195.7 893.8,196.2 895.9,196.9 897.8,197.8 899.3,198.9 900.6,200.1 901.4,201.4 901.8,202.8 901.8,204.2 901.4,205.6 900.6,206.9 899.3,208.1" fill="#ffffff" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polyline points="879.9,204.5 882.0,203.8 884.3,203.3 886.7,203.1 889.1,203.1 891.5,203.3 893.8,203.8 895.9,204.5 897.8,205.4 899.3,206.5 900.6,207.7 901.4,209.0 901.8,210.4 901.8,211.8 901.4,213.2 900.6,214.5 899.3,215.7 897.8,216.8" fill="none" stroke="#6b7684" stroke-width="1.4" stroke-linejoin="round" />
+<polyline points="855.0,80.0 789.2,118.0" fill="none" stroke="#596fa1" stroke-width="4" stroke-linejoin="round" />
+<polyline points="953.7,203.5 887.9,241.5" fill="none" stroke="#596fa1" stroke-width="4" stroke-linejoin="round" />
+<text x="875" y="300" font-size="13" fill="#6b7684" text-anchor="middle" font-weight="400">파란 모서리를 둥글게</text>
+<text x="500.0" y="384.0" font-size="14" fill="#161a22" text-anchor="middle" font-weight="400">대부분의 3D 설계 프로그램이 이 순서로 모델을 만듭니다 · 한 단계가 하나의 「작업 기록」으로 남습니다</text>
+</svg><figcaption>직접 그린 그림 · L 받침을 만드는 네 단계입니다. 단계마다 한 가지 작업을 하고, 그 작업이 기록으로 남습니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>① 스케치</b> — 평면 위에 단면 모양을 그리고 치수를 넣습니다. 2D 도면을 그리는 것과 비슷합니다.</li>
+<li><b>② 돌출</b> — 스케치를 정한 깊이만큼 밀어내 입체를 만듭니다. 그림에서는 깊이 40입니다. 단면을 축 둘레로 돌려 둥근 입체를 만드는 「회전」도 자주 사용합니다.</li>
+<li><b>③ 구멍</b> — 구멍의 자리와 지름, 깊이를 정합니다. 나사 구멍도 이 단계에서 만듭니다.</li>
+<li><b>④ 모서리 다듬기</b> — 날카로운 모서리를 둥글게(필릿) 하거나 비스듬히 깎습니다(모따기).</li>
+</ul>
+</div>
+
+<div class="sec" id="sParam">
+<div class="eyebrow">치수로 움직이는 모델</div>
+<div class="h2">숫자 하나를 고치면 모양이 따라 바뀝니다</div>
+<p class="pd-p">대부분의 3D 설계 프로그램은 모델을 만든 순서와 치수를 기록해 둡니다. 그래서 나중에 치수 하나를 고치면, 그 뒤의 단계가 다시 계산되어 모양 전체가 따라 바뀝니다. 이런 방식을 <b>파라메트릭</b>(치수 값을 바꿀 수 있는 숫자로 다룬다는 뜻) 설계라고 부릅니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 398" role="img" aria-label="왼쪽은 스케치·돌출·구멍 순서로 쌓인 작업 기록 목록이고, 첫 줄 스케치의 밑판 길이를 60에서 80으로 고친다. 가운데는 고치기 전 길이 60 모델, 오른쪽은 길이 80으로 늘어난 모델이다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="dc1f3" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="dc1f3b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker><pattern id="dc1f3h1" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f3h2" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f3h3" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f3h4" patternUnits="userSpaceOnUse" width="5.5" height="5.5" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5.5" stroke="#161a22" stroke-width="1.3"/></pattern></defs><rect width="1000" height="398" fill="#fff"/>
+<rect x="30" y="40" width="250" height="300" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="155" y="70" font-size="16" fill="#161a22" text-anchor="middle" font-weight="800">작업 기록(만든 순서)</text>
+<rect x="46" y="90" width="218" height="38" rx="6" fill="rgba(89,111,161,0.15)" stroke="#596fa1" stroke-width="1.4"/>
+<text x="58" y="115" font-size="14" fill="#161a22" text-anchor="start" font-weight="700">스케치 1 — 밑판 길이 60</text>
+<rect x="46" y="142" width="218" height="38" rx="6" fill="#f6f8fb" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="58" y="167" font-size="14" fill="#161a22" text-anchor="start" font-weight="400">돌출 1 — 깊이 40</text>
+<rect x="46" y="194" width="218" height="38" rx="6" fill="#f6f8fb" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="58" y="219" font-size="14" fill="#161a22" text-anchor="start" font-weight="400">구멍 1 — Φ12 · 끝에서 20</text>
+<text x="155" y="326" font-size="15" fill="#596fa1" text-anchor="middle" font-weight="700">60 → 80으로 고침</text>
+<polygon points="316.0,190.0 305.0,194.9 305.0,185.1" fill="#596fa1" stroke="none"/>
+<line x1="286.0" y1="190.0" x2="312.0" y2="190.0" stroke="#596fa1" stroke-width="2" />
+<polygon points="459.9,152.8 549.5,204.5 469.8,250.5 380.2,198.8" fill="#e9edf5" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="459.9,152.8 380.2,198.8 380.2,118.3 459.9,72.3" fill="#cfd7e6" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="549.5,239.0 469.8,285.0 469.8,250.5 549.5,204.5" fill="#cfd7e6" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="350.3,216.0 469.8,285.0 469.8,250.5 380.2,198.8 380.2,118.3 350.3,101.0" fill="#ffffff" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="430.0,55.0 459.9,72.3 380.2,118.3 350.3,101.0" fill="#e9edf5" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="481.8,211.4 479.5,212.5 477.0,213.3 474.2,213.9 471.3,214.2 468.4,214.2 465.5,213.9 462.7,213.3 460.1,212.5 457.9,211.4 456.0,210.1 454.5,208.6 453.5,207.0 453.0,205.4 453.0,203.6 453.5,202.0 454.5,200.4 456.0,198.9 457.9,197.6 460.1,196.5 462.7,195.7 465.5,195.1 468.4,194.8 471.3,194.8 474.2,195.1 477.0,195.7 479.5,196.5 481.8,197.6 483.7,198.9 485.2,200.4 486.2,202.0 486.7,203.6 486.7,205.4 486.2,207.0 485.2,208.6 483.7,210.1" fill="#ffffff" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polyline points="460.1,205.7 462.7,204.9 465.5,204.3 468.4,204.0 471.3,204.0 474.2,204.3 477.0,204.9 479.5,205.7 481.8,206.8 483.7,208.1 485.2,209.6 486.2,211.2 486.7,212.8 486.7,214.6 486.2,216.2 485.2,217.8 483.7,219.3 481.8,220.6" fill="none" stroke="#6b7684" stroke-width="1.4" stroke-linejoin="round" />
+<text x="470" y="330" font-size="15" fill="#161a22" text-anchor="middle" font-weight="700">고치기 전 (길이 60)</text>
+<polygon points="640.0,190.0 629.0,194.9 629.0,185.1" fill="#596fa1" stroke="none"/>
+<line x1="600.0" y1="190.0" x2="636.0" y2="190.0" stroke="#596fa1" stroke-width="2" />
+<polygon points="789.9,147.8 919.3,222.5 839.7,268.5 710.2,193.8" fill="#e9edf5" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="789.9,147.8 710.2,193.8 710.2,113.3 789.9,67.3" fill="#cfd7e6" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="919.3,257.0 839.7,303.0 839.7,268.5 919.3,222.5" fill="#cfd7e6" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="680.3,211.0 839.7,303.0 839.7,268.5 710.2,193.8 710.2,113.3 680.3,96.0" fill="#ffffff" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="760.0,50.0 789.9,67.3 710.2,113.3 680.3,96.0" fill="#e9edf5" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="851.6,229.4 849.4,230.5 846.8,231.3 844.0,231.9 841.1,232.2 838.2,232.2 835.3,231.9 832.5,231.3 830.0,230.5 827.7,229.4 825.8,228.1 824.4,226.6 823.3,225.0 822.8,223.4 822.8,221.6 823.3,220.0 824.4,218.4 825.8,216.9 827.7,215.6 830.0,214.5 832.5,213.7 835.3,213.1 838.2,212.8 841.1,212.8 844.0,213.1 846.8,213.7 849.4,214.5 851.6,215.6 853.5,216.9 855.0,218.4 856.0,220.0 856.5,221.6 856.5,223.4 856.0,225.0 855.0,226.6 853.5,228.1" fill="#ffffff" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polyline points="830.0,223.7 832.5,222.9 835.3,222.3 838.2,222.0 841.1,222.0 844.0,222.3 846.8,222.9 849.4,223.7 851.6,224.8 853.5,226.1 855.0,227.6 856.0,229.2 856.5,230.8 856.5,232.6 856.0,234.2 855.0,235.8 853.5,237.3 851.6,238.6" fill="none" stroke="#6b7684" stroke-width="1.4" stroke-linejoin="round" />
+<text x="820" y="330" font-size="15" fill="#596fa1" text-anchor="middle" font-weight="700">고친 뒤 (길이 80)</text>
+<text x="500.0" y="378.0" font-size="14" fill="#161a22" text-anchor="middle" font-weight="400">숫자 하나만 고치면 그 뒤 단계(돌출·구멍)가 다시 계산되어 모양이 따라 바뀝니다</text>
+</svg><figcaption>직접 그린 그림 · 작업 기록의 첫 줄에서 밑판 길이를 60에서 80으로 고친 모습입니다. 구멍은 밑판 오른쪽 끝에서 20 떨어지게 정해 두어서 함께 옮겨 갔습니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>작업 기록</b> — 스케치·돌출·구멍처럼 만든 순서가 목록으로 남습니다. 만든 작업 하나하나를 「피처」라고 해서, 프로그램마다 「피처 트리」, 「모델 트리」 같은 이름으로 부릅니다.</li>
+<li><b>기준을 잘 잡아야 합니다</b> — 구멍 자리를 어느 면에서 잴지 정하는 것은 도면에서 치수 기준을 정하는 것과 같습니다. 기준을 잘못 잡으면 길이를 고쳤을 때 구멍이 엉뚱한 곳으로 갑니다. 치수 기준은 <a href="drawing-basics-5.html">「치수 넣는 법」</a>에서 배웠습니다.</li>
+<li><b>비슷한 부품을 빨리 만듭니다</b> — 길이만 다른 부품 여러 개를 숫자만 바꿔 만들 수 있습니다. 여러 크기의 부품을 만드는 곳에서 특히 쓸모가 큽니다.</li>
+</ul>
+</div>
+
+<div class="sec" id="sDrawing">
+<div class="eyebrow">3D에서 도면 뽑기</div>
+<div class="h2">입체 모델에서 세 방향 그림을 뽑아 도면을 만듭니다</div>
+<p class="pd-p">공장에서 사람이 보고 만들고 검사하려면, 공차(치수가 벗어나도 되는 범위)·표면 거칠기·용접 기호 같은 약속을 적은 2D 도면이 함께 있어야 합니다. 3D 프로그램은 모델에서 세 방향 그림을 자동으로 뽑아 도면 종이 위에 놓아 줍니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 412" role="img" aria-label="왼쪽 3D 모델에서 화살표를 따라 오른쪽 도면 종이로 이어진다. 도면 종이에는 정면도·평면도·우측면도 세 그림과 치수 60·50, 오른쪽 아래 표제란이 들어 있다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="dc1f4" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="dc1f4b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker><pattern id="dc1f4h1" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f4h2" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f4h3" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f4h4" patternUnits="userSpaceOnUse" width="5.5" height="5.5" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5.5" stroke="#161a22" stroke-width="1.3"/></pattern></defs><rect width="1000" height="412" fill="#fff"/>
+<polygon points="203.8,150.5 305.1,209.0 215.0,261.0 113.7,202.5" fill="#e9edf5" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="203.8,150.5 113.7,202.5 113.7,111.5 203.8,59.5" fill="#cfd7e6" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="305.1,248.0 215.0,300.0 215.0,261.0 305.1,209.0" fill="#cfd7e6" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="79.9,222.0 215.0,300.0 215.0,261.0 113.7,202.5 113.7,111.5 79.9,92.0" fill="#ffffff" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="170.0,40.0 203.8,59.5 113.7,111.5 79.9,92.0" fill="#e9edf5" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polygon points="228.5,216.8 226.0,218.0 223.1,219.0 220.0,219.7 216.7,220.0 213.4,220.0 210.1,219.7 207.0,219.0 204.1,218.0 201.5,216.8 199.4,215.3 197.7,213.7 196.6,211.9 196.0,210.0 196.0,208.0 196.6,206.1 197.7,204.3 199.4,202.7 201.5,201.2 204.1,200.0 207.0,199.0 210.1,198.3 213.4,198.0 216.7,198.0 220.0,198.3 223.1,199.0 226.0,200.0 228.5,201.2 230.7,202.7 232.3,204.3 233.5,206.1 234.1,208.0 234.1,210.0 233.5,211.9 232.3,213.7 230.7,215.3" fill="#ffffff" stroke="#161a22" stroke-width="2.4" stroke-linejoin="round" /><polyline points="204.1,210.4 207.0,209.4 210.1,208.7 213.4,208.4 216.7,208.4 220.0,208.7 223.1,209.4 226.0,210.4 228.5,211.6 230.7,213.1 232.3,214.7 233.5,216.5 234.1,218.4 234.1,220.4 233.5,222.3 232.3,224.1 230.7,225.7 228.5,227.2" fill="none" stroke="#6b7684" stroke-width="1.4" stroke-linejoin="round" />
+<text x="200" y="330" font-size="16" fill="#161a22" text-anchor="middle" font-weight="800">3D 모델</text>
+<line x1="360.0" y1="200.0" x2="412.0" y2="200.0" stroke="#596fa1" stroke-width="2.4" />
+<polygon points="420.0,200.0 407.2,205.7 407.2,194.3" fill="#596fa1" stroke="none"/>
+<text x="390" y="180" font-size="14" fill="#596fa1" text-anchor="middle" font-weight="700">도면 만들기</text>
+<rect x="450" y="40" width="520" height="320" fill="#fff" stroke="#161a22" stroke-width="2"/>
+<rect x="460" y="50" width="500" height="300" fill="none" stroke="#161a22" stroke-width="1.2"/>
+<polygon points="510.0,290.0 624.0,290.0 624.0,261.5 538.5,261.5 538.5,195.0 510.0,195.0" fill="#fff" stroke="#161a22" stroke-width="2.0" stroke-linejoin="round" /><line x1="574.6" y1="290.0" x2="574.6" y2="261.5" stroke="#161a22" stroke-width="1.4" stroke-dasharray="7 4"/><line x1="597.4" y1="290.0" x2="597.4" y2="261.5" stroke="#161a22" stroke-width="1.4" stroke-dasharray="7 4"/><rect x="510.0" y="101.0" width="114.0" height="76.0" fill="#fff" stroke="#161a22" stroke-width="2.0"/><line x1="538.5" y1="101.0" x2="538.5" y2="177.0" stroke="#161a22" stroke-width="2.0" /><circle cx="586.0" cy="139.0" r="11.4" fill="none" stroke="#161a22" stroke-width="2.0" /><polygon points="642.0,290.0 718.0,290.0 718.0,195.0 642.0,195.0" fill="#fff" stroke="#161a22" stroke-width="2.0" stroke-linejoin="round" /><line x1="642.0" y1="261.5" x2="718.0" y2="261.5" stroke="#161a22" stroke-width="2.0" /><line x1="668.6" y1="290.0" x2="668.6" y2="261.5" stroke="#161a22" stroke-width="1.4" stroke-dasharray="7 4"/><line x1="691.4" y1="290.0" x2="691.4" y2="261.5" stroke="#161a22" stroke-width="1.4" stroke-dasharray="7 4"/>
+<text x="567.0" y="312" font-size="13" fill="#596fa1" text-anchor="middle" font-weight="400">60</text>
+<text x="490" y="242.5" font-size="13" fill="#596fa1" text-anchor="end" font-weight="400">50</text>
+<rect x="780" y="290" width="180" height="60" fill="#fff" stroke="#161a22" stroke-width="1.4"/>
+<line x1="780.0" y1="320.0" x2="960.0" y2="320.0" stroke="#161a22" stroke-width="1" />
+<text x="870" y="311" font-size="13" fill="#161a22" text-anchor="middle" font-weight="400">L 받침</text>
+<text x="870" y="341" font-size="13" fill="#6b7684" text-anchor="middle" font-weight="400">표제란</text>
+<text x="500.0" y="392.0" font-size="14" fill="#161a22" text-anchor="middle" font-weight="400">3D 모델에서 세 방향 그림을 뽑아 종이 크기에 맞춰 놓고, 치수와 표제란을 채워 2D 도면을 만듭니다</text>
+</svg><figcaption>직접 그린 그림 · 3D 모델에서 정면도·평면도·우측면도를 뽑아 도면 종이에 놓고, 치수와 표제란(도면 오른쪽 아래에 이름·번호를 적는 칸)을 채운 모습입니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>모델과 도면이 이어져 있습니다</b> — 모델의 치수를 고치면 뽑아 둔 도면의 그림과 치수도 따라 바뀝니다. 2D로 따로 그린 도면보다 그림끼리 어긋날 일이 적습니다.</li>
+<li><b>사람이 채우는 것</b> — 치수를 어디에 넣을지, 공차·표면 거칠기·용접 기호를 어떻게 적을지는 사람이 정해 넣습니다. 앞의 심화 글에서 배운 내용이 여기서 쓰입니다.</li>
+<li><b>조립도도 같습니다</b> — 부품 모델을 여러 개 맞붙여 조립 모델을 만들고, 거기서 조립도와 부품 목록을 뽑습니다. 조립도는 <a href="drawing-basics-6.html">「조립도와 부품도」</a>에서 배웠습니다.</li>
+</ul>
+</div>
+
+<div class="sec" id="sFile">
+<div class="eyebrow">파일 형식</div>
+<div class="h2">원본 파일과 주고받기용 파일을 구별합니다</div>
+<p class="pd-p">설계 프로그램은 저마다 원본 파일 형식이 있어서, 다른 프로그램에서는 열리지 않을 때가 많습니다. 그래서 여러 프로그램이 함께 읽을 수 있는 주고받기용 형식을 따로 사용합니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 412" role="img" aria-label="도면과 모델 파일 형식을 세 무리로 나눈 그림. 2D 도면 파일은 DWG 원본, DXF 주고받기용, PDF 보기용. 3D 모델 파일은 프로그램 고유 파일, STEP 주고받기용, IGES 옛 주고받기용. 만들기용 파일은 3D 프린터용 STL과 CNC 기계용 G코드다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="dc1f5" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="dc1f5b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker><pattern id="dc1f5h1" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f5h2" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f5h3" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f5h4" patternUnits="userSpaceOnUse" width="5.5" height="5.5" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5.5" stroke="#161a22" stroke-width="1.3"/></pattern></defs><rect width="1000" height="412" fill="#fff"/>
+<text x="170" y="40" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">2D 도면 파일</text>
+<rect x="20" y="70" width="300" height="80" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="170" y="104" font-size="20" fill="#596fa1" text-anchor="middle" font-weight="800">DWG</text>
+<text x="170" y="132" font-size="13.5" fill="#161a22" text-anchor="middle" font-weight="400">2D 프로그램의 원본 파일</text>
+<rect x="20" y="166" width="300" height="80" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="170" y="200" font-size="20" fill="#596fa1" text-anchor="middle" font-weight="800">DXF</text>
+<text x="170" y="228" font-size="13.5" fill="#161a22" text-anchor="middle" font-weight="400">다른 프로그램과 주고받기용</text>
+<rect x="20" y="262" width="300" height="80" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="170" y="296" font-size="20" fill="#596fa1" text-anchor="middle" font-weight="800">PDF</text>
+<text x="170" y="324" font-size="13.5" fill="#161a22" text-anchor="middle" font-weight="400">보기·인쇄용(고치기 어려움)</text>
+<text x="500" y="40" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">3D 모델 파일</text>
+<rect x="350" y="70" width="300" height="80" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="500" y="104" font-size="20" fill="#596fa1" text-anchor="middle" font-weight="800">고유 파일</text>
+<text x="500" y="132" font-size="13.5" fill="#161a22" text-anchor="middle" font-weight="400">만든 프로그램의 원본(작업 기록 포함)</text>
+<rect x="350" y="166" width="300" height="80" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="500" y="200" font-size="20" fill="#596fa1" text-anchor="middle" font-weight="800">STEP</text>
+<text x="500" y="228" font-size="13.5" fill="#161a22" text-anchor="middle" font-weight="400">다른 3D 프로그램과 주고받기용</text>
+<rect x="350" y="262" width="300" height="80" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="500" y="296" font-size="20" fill="#596fa1" text-anchor="middle" font-weight="800">IGES</text>
+<text x="500" y="324" font-size="13.5" fill="#161a22" text-anchor="middle" font-weight="400">STEP보다 오래된 주고받기용</text>
+<text x="830" y="40" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">만들기용 파일</text>
+<rect x="680" y="70" width="300" height="80" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="830" y="104" font-size="20" fill="#596fa1" text-anchor="middle" font-weight="800">STL</text>
+<text x="830" y="132" font-size="13.5" fill="#161a22" text-anchor="middle" font-weight="400">3D 프린터용 · 겉면을 삼각형으로</text>
+<rect x="680" y="166" width="300" height="80" rx="8" fill="#fff" stroke="#c9d1dc" stroke-width="1.4"/>
+<text x="830" y="200" font-size="20" fill="#596fa1" text-anchor="middle" font-weight="800">G코드</text>
+<text x="830" y="228" font-size="13.5" fill="#161a22" text-anchor="middle" font-weight="400">CNC 기계가 읽는 가공 명령</text>
+<line x1="335.0" y1="30.0" x2="335.0" y2="370.0" stroke="#c9d1dc" stroke-width="1" />
+<line x1="665.0" y1="30.0" x2="665.0" y2="370.0" stroke="#c9d1dc" stroke-width="1" />
+<text x="500.0" y="392.0" font-size="14" fill="#161a22" text-anchor="middle" font-weight="400">받는 쪽 프로그램을 모를 때는 2D는 DXF, 3D는 STEP으로 보내면 대부분 열 수 있습니다</text>
+</svg><figcaption>직접 그린 그림 · 자주 만나는 파일 형식입니다. 파일 이름 끝의 점 뒤 글자(확장자)로 형식을 알 수 있습니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>DWG와 DXF</b> — DWG는 2D 캐드에서 널리 쓰는 원본 형식입니다. DXF는 다른 프로그램과 도면을 주고받으려고 만든 형식이라, 대부분의 캐드 프로그램이 읽고 쓸 수 있습니다. 다만 글꼴이나 단위가 달라질 수 있으니 받은 쪽에서 열어 확인합니다.</li>
+<li><b>STEP</b> — 국제 표준(ISO)으로 정한 3D 주고받기용 형식이고, 확장자는 .step 또는 .stp입니다. 서로 다른 3D 프로그램 사이에서 입체 모양을 정확하게 옮길 수 있습니다. 다만 작업 기록은 따라가지 않아서, 받은 쪽에서는 숫자로 고치기 어렵습니다.</li>
+<li><b>IGES</b> — STEP보다 먼저 나온 3D 주고받기용 형식입니다. 오래된 프로그램과 주고받을 때 아직 쓰이지만, 요즘은 STEP을 더 많이 사용합니다.</li>
+<li><b>PDF</b> — 캐드 프로그램이 없어도 열어 보고 인쇄할 수 있어 도면을 확인받을 때 편리합니다. 고치는 용도는 아닙니다.</li>
+<li><b>STL과 G코드</b> — STL은 3D 프린터용으로 넘기는 형식이고, G코드는 기계가 읽는 가공 명령입니다. STL을 변환 프로그램에 넣으면 3D 프린터가 읽는 G코드가 나오고, CNC 기계도 G코드로 움직입니다. 도면이 아니라 「만들기」를 위한 파일입니다.</li>
+</ul>
+<figure class="ls-catw"><svg viewBox="0 0 1000 412" role="img" aria-label="왼쪽 STEP은 원을 매끈한 원 그대로 저장해 치수와 면 정보가 남는다. 오른쪽 STL은 겉면을 삼각형으로 나누어 저장하므로 단면이 열여섯 개의 곧은 변으로 이어진 다각형이 되어 숫자 치수가 남지 않는다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="dc1f6" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="dc1f6b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker><pattern id="dc1f6h1" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f6h2" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f6h3" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="dc1f6h4" patternUnits="userSpaceOnUse" width="5.5" height="5.5" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5.5" stroke="#161a22" stroke-width="1.3"/></pattern></defs><rect width="1000" height="412" fill="#fff"/>
+<text x="250" y="34" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">STEP — 매끈한 원 그대로</text>
+<text x="750" y="34" font-size="18" fill="#161a22" text-anchor="middle" font-weight="800">STL — 곧은 조각으로 이어 붙임</text>
+<circle cx="250.0" cy="200.0" r="120.0" fill="#fff" stroke="#161a22" stroke-width="3" />
+<circle cx="250.0" cy="200.0" r="3.0" fill="#161a22" stroke="#161a22" stroke-width="1" />
+<line x1="250.0" y1="200.0" x2="370.0" y2="200.0" stroke="#596fa1" stroke-width="1.4" />
+<text x="300" y="188" font-size="14" fill="#596fa1" text-anchor="middle" font-weight="700">반지름 그대로 저장</text>
+<polygon points="870.0,200.0 860.9,245.9 834.9,284.9 795.9,310.9 750.0,320.0 704.1,310.9 665.1,284.9 639.1,245.9 630.0,200.0 639.1,154.1 665.1,115.1 704.1,89.1 750.0,80.0 795.9,89.1 834.9,115.1 860.9,154.1" fill="#fff" stroke="#161a22" stroke-width="3" stroke-linejoin="round" />
+<text x="750" y="350" font-size="14" fill="#596fa1" text-anchor="middle" font-weight="700">꼭짓점 사이가 곧은 선 — 숫자 치수는 남지 않음</text>
+<text x="250" y="350" font-size="14" fill="#596fa1" text-anchor="middle" font-weight="700">치수·면 정보가 남아 고칠 수 있음</text>
+<line x1="500.0" y1="20.0" x2="500.0" y2="370.0" stroke="#c9d1dc" stroke-width="1" />
+<text x="500.0" y="394.0" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">구멍 하나를 잘라 본 모습 · STL은 겉면을 작은 삼각형으로 나누므로 단면은 곧은 변이 이어진 모양이 됩니다(실제보다 크게 그림)</text>
+</svg><figcaption>직접 그린 그림 · 같은 구멍을 STEP과 STL로 저장했을 때의 차이입니다. STL은 겉면을 작은 삼각형으로 나누어 저장하므로 둥근 면이 곧은 조각의 모음이 됩니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>STL은 고치기 어렵습니다</b> — 「지름 12」라는 숫자 대신 삼각형 꼭짓점 위치만 남기 때문입니다. 설계를 넘길 때는 STEP, 3D 프린터로 바로 뽑을 때는 STL을 보냅니다.</li>
+</ul>
+</div>
+
+<div class="sec" id="sStart">
+<div class="eyebrow">처음 배울 프로그램</div>
+<div class="h2">무엇으로 시작해도 원리는 비슷합니다</div>
+<p class="pd-p">설계 프로그램은 종류가 많고 값도 크게 다릅니다. 처음에는 어느 하나로 위의 순서(스케치 → 입체 → 도면)를 익히는 것이 중요하고, 원리가 비슷해서 한 가지를 익히면 다른 프로그램으로 옮겨 가기 쉬운 편입니다.</p>
+<ul class="pd-note">
+<li><b>2D 프로그램</b> — 널리 알려진 예로 AutoCAD가 있고, DWG 파일을 읽고 쓸 수 있는 비슷한 프로그램도 여럿 있습니다.</li>
+<li><b>3D 프로그램</b> — 예를 들어 SolidWorks, Inventor, Fusion, CATIA, Creo, NX 등이 있고, 적은 순서는 순위와 관계없습니다. 회사마다, 업종마다 쓰는 프로그램이 다르니 들어갈 곳에서 무엇을 쓰는지 알아 두면 좋습니다.</li>
+<li><b>무료로 시작하기</b> — FreeCAD는 무료로 쓸 수 있고 만드는 방법(소스)까지 공개된 3D 프로그램입니다. Fusion에는 개인용 무료판이 있지만, 집에서 하는 돈벌이가 아닌 작업이면서 연 매출 1,000달러 미만일 때만 쓸 수 있습니다. 학생·교사용 교육판을 따로 주는 프로그램도 있습니다.</li>
+<li><b>회사 일에는 정식 사용권</b> — 개인용·교육용 무료판은 돈을 버는 일에 쓸 수 없습니다. 회사 도면을 그리는 프로그램은 정식으로 사용 허가를 사거나, 회사 일에도 무료로 쓰도록 허락된 프로그램을 사용합니다.</li>
+<li><b>값과 조건은 자주 바뀝니다</b> — 무료판의 조건이나 판 번호는 바뀔 수 있으니, 받기 전에 각 프로그램의 공식 홈페이지에서 확인합니다.</li>
+</ul>
+</div>
+
+<div class="sec" id="sTry">
+<div class="eyebrow">생각해 보기</div>
+<div class="h2">이럴 때는 어떻게 할까요</div>
+<p class="pd-p">설계 프로그램을 쓰다 보면 자주 만나는 상황입니다. 답을 생각해 본 뒤, 문제를 눌러 확인해 주세요.</p>
+<details class="pd-p"><summary class="pd-sum">1. 거래처가 어떤 2D 프로그램을 쓰는지 모릅니다. 도면을 어떤 형식으로 보내면 좋을까요?</summary><p class="pd-p">DXF로 보내면 대부분의 캐드 프로그램에서 열 수 있습니다. 글꼴·단위가 달라질 수 있으니 확인용으로 PDF를 함께 보내면 더 좋습니다.</p></details>
+<details class="pd-p"><summary class="pd-sum">2. 다른 회사가 우리 3D 모델을 받아 자기 프로그램에서 쓰려고 합니다. 어떤 형식이 알맞나요?</summary><p class="pd-p">STEP입니다. 서로 다른 3D 프로그램 사이에서 입체 모양을 정확하게 옮길 수 있습니다.</p></details>
+<details class="pd-p"><summary class="pd-sum">3. STL 파일을 받았습니다. 구멍 지름 Φ12를 Φ14로 숫자만 바꿀 수 있나요?</summary><p class="pd-p">어렵습니다. STL에는 지름이라는 숫자가 없고 겉면 삼각형의 꼭짓점만 남아 있기 때문입니다. 고쳐야 한다면 원본이나 STEP 파일을 달라고 합니다.</p></details>
+<details class="pd-p"><summary class="pd-sum">4. 3D 모델에서 뽑은 도면의 치수를 바꾸려면 어디를 고쳐야 하나요?</summary><p class="pd-p">3D 모델의 치수(작업 기록)를 고칩니다. 모델과 도면이 이어져 있어서 도면의 그림과 치수가 따라 바뀝니다.</p></details>
+<details class="pd-p"><summary class="pd-sum">5. 회사 견적용 도면을 개인용 무료판으로 그려도 되나요?</summary><p class="pd-p">안 됩니다. 개인용 무료판은 돈벌이가 아닌 작업에만 쓸 수 있습니다. 회사 일에는 정식 사용권이 있거나 회사 일에도 쓰도록 허락된 프로그램을 사용합니다.</p></details>
+<details class="pd-p"><summary class="pd-sum">6. 밑판 길이를 60에서 80으로 바꿨더니 구멍이 엉뚱한 곳으로 갔습니다. 무엇을 확인해야 하나요?</summary><p class="pd-p">구멍 자리를 어느 면을 기준으로 잡았는지 확인합니다. 구멍이 밑판 끝을 따라가야 한다면, 구멍 위치 치수를 그 끝에서 재도록 고칩니다.</p></details>
+</div>
+
+<div class="sec" id="sSum">
+<div class="eyebrow">정리</div>
+<div class="h2">이번 글에서 배운 것</div>
+<ul class="pd-note">
+<li>캐드(CAD)는 컴퓨터로 도면과 모델을 만드는 프로그램이고, 도면 규칙은 손으로 그릴 때와 같습니다.</li>
+<li>2D 프로그램은 선으로 세 방향 그림을 그리고, 3D 프로그램은 입체를 만든 뒤 도면을 뽑습니다.</li>
+<li>3D 모델은 스케치 → 돌출(회전) → 구멍 → 모서리 다듬기처럼 단계를 쌓아 만들고, 그 순서가 작업 기록으로 남습니다.</li>
+<li>파라메트릭 설계에서는 치수 하나를 고치면 모양이 따라 바뀌므로, 치수 기준을 잘 잡아야 합니다.</li>
+<li>3D 모델에서 뽑은 도면은 모델과 이어져 있고, 공차·표면 거칠기·용접 기호는 사람이 채웁니다.</li>
+<li>2D는 DWG(원본)·DXF(주고받기), 3D는 고유 파일(원본)·STEP(주고받기)를 쓰고, STL은 3D 프린터용이라 고치기 어렵습니다.</li>
+<li>무료판은 조건을 확인하고, 회사 일에는 정식 사용권이 있는 프로그램을 사용합니다.</li>
+</ul>
+<p class="pd-p" style="margin-top:16px"><b>다음에 배울 것</b> — 도면 심화 6 「펼친 그림(전개도)」: 판금을 접어 만드는 부품을 평평하게 펼쳐 그리는 방법을 살펴봅니다.</p>
+</div>
+
+<div class="sec">
+<div class="eyebrow">참고</div>
+<div class="h2">자료와 그림에 대하여</div>
+<ul class="pd-note">
+<li>이 글의 그림 6장은 창호종합기계가 이 글을 위해 직접 그렸습니다. 프로그램 화면을 옮기지 않았고, 특정 프로그램을 권하는 글이 아닙니다.</li>
+<li>STEP 형식의 설명은 국제 표준 ISO 10303을 따랐습니다.</li>
+<li>FreeCAD 판 번호는 FreeCAD 공식 소식(2026년 9월 1.1.4판 발표)에서 확인했습니다. Fusion 개인용 무료판 조건은 Autodesk 공식 안내에서 2026년 11월에 확인했습니다. 둘 다 이후 바뀔 수 있습니다.</li>
+<li>그림 속 L 받침의 모양과 치수는 설명을 위해 꾸민 예시입니다. 프로그램 이름은 각 제작사·단체의 이름(상표)입니다.</li>
+</ul>
+</div>
+
+<div class="sec">
+<div class="eyebrow">Channels</div>
+<div class="h2">채널 안내</div>
+<div class="chs">
+<a class="ch" href="tel:055-327-4112" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#1E3A8A" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="M15.6 21A16.6 16.6 0 0 1 3 8.4 3 3 0 0 1 6 5.4h2.1a1 1 0 0 1 1 .86c.1.9.3 1.77.6 2.6a1 1 0 0 1-.24 1.05L8.2 11.2a14 14 0 0 0 4.6 4.6l1.3-1.3a1 1 0 0 1 1.05-.23c.83.3 1.7.5 2.6.6a1 1 0 0 1 .86 1V18a3 3 0 0 1-2.9 3Z"></path></g></svg>전화<span class="cn">055-327-4112</span></a>
+<a class="ch" href="tel:010-4465-4112" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#334155" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><rect height="19" rx="2.4" width="11" x="6.5" y="2.5"></rect><path d="M11 18.6h2"></path></g></svg>휴대전화<span class="cn">010-4465-4112</span></a>
+<a class="ch" href="http://pf.kakao.com/_xojdTX" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#FEE500" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M12 6.2c-3.2 0-5.8 2-5.8 4.5 0 1.6 1.1 3 2.7 3.8l-.6 2.1c-.08.3.24.53.5.36l2.5-1.6c.23.02.46.03.7.03 3.2 0 5.8-2 5.8-4.7S15.2 6.2 12 6.2Z" fill="#3C1E1E"></path></svg>카카오 채널<span class="cn">상담 연결</span></a>
+<a class="ch" href="https://talk.naver.com/W4UBZ1" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#03C75A" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M12 6.5c-3.15 0-5.7 1.95-5.7 4.45 0 1.55.98 2.92 2.47 3.73l-.52 2.06c-.07.29.24.52.49.36l2.72-1.72c.17.01.35.02.54.02 3.15 0 5.7-1.95 5.7-4.45S15.15 6.5 12 6.5Z" fill="#fff"></path></svg>네이버 톡톡<span class="cn">상담 연결</span></a>
+<a class="ch" href="mailto:geonics@hanmail.net" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#475569" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><rect height="14.4" rx="2.2" width="18.8" x="2.6" y="4.8"></rect><path d="m3.4 6.6 8.6 5.9 8.6-5.9"></path></g></svg>이메일<span class="cn">geonics@hanmail.net</span></a>
+<a class="ch" href="https://www.youtube.com/@machinelab/videos" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>유튜브<span class="cn">가공 영상</span></a>
+<a class="ch" href="https://blog.naver.com/geonics" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#03C75A" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M8.5 7.6h2.6l2.2 3.4V7.6h2.4v8.8h-2.6l-2.2-3.4v3.4H8.5V7.6Z" fill="#fff"></path></svg>블로그<span class="cn">네이버 블로그</span></a>
+<a class="ch" href="https://www.changhoinc.com/#about" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#0284C7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"><path d="M3.6 21h16.8"></path><path d="M5.4 21V4.4a1 1 0 0 1 1-1h6.2a1 1 0 0 1 1 1V21"></path><path d="M13.6 10.2h4.4a1 1 0 0 1 1 1V21"></path><path d="M8.2 7.4h2.6M8.2 11h2.6M8.2 14.6h2.6M15.6 14h1.2M15.6 17.4h1.2"></path></g></svg>회사 소개<span class="cn">changhoinc.com</span></a>
+</div>
+</div>
+
+<div class="sec foot-cta" id="contact"><h3>도면을 읽다가 막히는 곳이 있으신가요?</h3><p>궁금한 점을 남겨 주시면 다음 글을 쓸 때 참고하겠습니다.</p>
+<div class="tels"><div>055-327-4112 <span>대표</span></div><div>010-4465-4112 <span>휴대전화</span></div><div>geonics@hanmail.net <span>이메일</span></div></div></div></div>
+
+<!-- ══ 16 core ｜ footer ══ -->
+<div class="footer">
+<b>창호종합기계</b>
+<span>경남 김해시 상동면 상동로375번길 21</span>
+<span class="web">www.changhoinc.com</span>
+</div>
+
+</div>
+<script>
+document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
+el.addEventListener('click', function(){
+var id = el.getAttribute('data-yt');
+el.innerHTML = '';
+el.style.aspectRatio = '16 / 9';
+var f = document.createElement('iframe');
+f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
+f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+f.setAttribute('allowfullscreen','');
+el.appendChild(f);
+}, {once:true});
+});
+</script>
+<script id="chg-js">
+(function(){"use strict";
+var D=[{"l":"용접테이블 · D28 악세사리","b":"111","u":"/products/111/","s":["용접정반 흑착색","용접정반 질화","D28 악세사리 세트","D28 악세사리 단품"]},{"l":"알루미늄 절단기 · 원형절단기","b":"101 102","u":"/products/101/","s":["CNC 절단기","2헤드 절단기","1헤드 절단기","휴대용 절단기","롤러다이","작업다이 · 디지털 디스플레이"]},{"l":"탭핑기 · 서보탭핑기","b":"104","u":"/products/104/","s":["서보탭핑기 본체","절삭유 분사식 (미스트)","탭핑기 + 주철다이 세트","마그네틱척 · 정밀바이스","탭 콜렛척 · 악세사리"]},{"l":"유압 펀칭기 · 프레스","b":"103","u":"/products/103/","s":["유압 펀칭기","CNC 펀칭기","사각 노칭기","앵글 · 파이프 절단기","다구멍 펀칭기"]},{"l":"R노칭기 · 파이프 노칭기","b":"109","u":"/products/109/","s":["R노칭기","유압 R노칭기","모터식 R노칭기","수동식 R노칭기","홀소 노칭기","파이프 노칭"]},{"l":"파이프 축관기 · 벤딩기","b":"","u":"/products/109/index-b.html","s":["축관기","파이프 압착기","유압 파이프 벤더","파이프 벤딩기"]},{"l":"챔버 · 면취기 · 모따기","b":"107","u":"/products/107/","s":["직각 면취기","원형 챔버"]},{"l":"금속절단기 · 밴드쏘","b":"100","u":"/products/100/","s":["밴드쏘","원형톱기계","휴대용 밴드쏘"]},{"l":"절곡·벤딩기 · 전선탈피기","b":"105 106 108 110 199","u":"/products/line-bend/","s":["절곡 · 벤딩기","레이저 가공기","전선탈피기 · 차핑기","연마기 · 나사포장기 · 기타"]},{"l":"알루미늄 창호기계","b":"200 202 203 204 205 206 207 208","u":"/products/line-al/","s":["코너클램프기","카피루터기","엔드밀링기","AL 펀칭기 · 가공금형","드릴머신 · 피스체결기","단열 프로파일 롤러프레스기 · 널링기","단열 프로파일 CNC 라인","방충망 밀대"]},{"l":"PVC 창호기계 · PVC 용접기","b":"300 301 302 303 304 305 306 307","u":"/products/line-pvc/","s":["PVC 절단기","PVC 용접기","PVC 루터 · 드릴 · 피스체결기","PVC 펀칭기 · 가공금형","PVC 엔드밀링기","PVC 벤딩기","PVC 사상기 · 압착기","PVC 기타 가공기"]},{"l":"랩핑기 · 유리 가공기 · 창호 설비","b":"400 401 410","u":"/products/400/","s":["랩핑기","유리 가공기계","윈치 · 견인 회전장치","창호 시험 설비"]},{"l":"톱날 · 컷트날 · 열판","b":"501 502 503","u":"/products/line-blade/","s":["톱날","컷트날","열판","열판지"]}];
+var q=document.getElementById('chg-q'),sg=document.getElementById('chg-sg'),hb=document.getElementById('chg-hb'),nl=document.getElementById('chg-links'),items=[];
+function n(s){return(s||'').toLowerCase().replace(/[\s·¡¤]/g,'');}
+function esc(s){return s.replace(/[<>&"]/g,function(c){return{'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];});}
+function go(u){window.location.href=u;}
+function suggest(raw){var t=n(raw);items=[];
+ if(!t){sg.hidden=true;q.setAttribute('aria-expanded','false');return;}
+ D.forEach(function(k){if(n(k.l).indexOf(t)!==-1||n(k.b).indexOf(t)!==-1)items.push({k:'라인',x:k.l,u:k.u});});
+ D.forEach(function(k){k.s.forEach(function(s){if(n(s).indexOf(t)!==-1)items.push({k:'중분류',x:s,sub:k.l,u:k.u});});});
+ items=items.slice(0,8);
+ sg.innerHTML=items.length?items.map(function(o,i){return '<li role="option" data-i="'+i+'"><span class="chg-k'+(o.k==='라인'?' chg-k1':'')+'">'+o.k+'</span>'+esc(o.x)+(o.sub?' <span class="chg-sub">— '+esc(o.sub)+'</span>':'')+'</li>';}).join('')
+  :'<li class="chg-none">일치하는 라인이 없습니다 — <a href="/#contact" style="color:#0066cc">문의 주시면 찾아드립니다</a></li>';
+ sg.hidden=false;q.setAttribute('aria-expanded','true');}
+q.addEventListener('input',function(){suggest(q.value);});
+q.addEventListener('keydown',function(e){if(e.key==='Escape')sg.hidden=true;if(e.key==='Enter'&&items.length){e.preventDefault();go(items[0].u);}});
+sg.addEventListener('click',function(e){var li=e.target.closest('li[data-i]');if(li)go(items[+li.dataset.i].u);});
+document.addEventListener('click',function(e){if(!e.target.closest('.chg-s'))sg.hidden=true;});
+function setMenu(o){nl.classList.toggle('open',o);hb.classList.toggle('open',o);hb.setAttribute('aria-expanded',o);
+ hb.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기');document.body.style.overflow=o?'hidden':'';}
+hb.addEventListener('click',function(){setMenu(!nl.classList.contains('open'));});
+nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+})();
+</script>
+<!-- ===== 사진 크게 보기 (zoom) ===== -->
+<style id="zoom-css">
+.hcard img.zm-on,.gallery img.zm-on{cursor:zoom-in}
+.lb-strip a.lb-go{display:block;line-height:0;border-radius:4px}
+.lb-strip a.lb-go:hover img{opacity:.75}
+.zm{position:fixed;inset:0;z-index:10000;background:rgba(10,12,16,.92);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:56px 64px 20px}
+.zm[hidden]{display:none}
+.zm img{max-width:100%;max-height:calc(100vh - 130px);object-fit:contain;background:#fff;border-radius:4px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+.zm .zm-cap{color:#e8eaee;font-size:15px;line-height:1.5;margin-top:12px;text-align:center;max-width:900px}
+.zm .zm-n{color:#9aa3ad;font-size:13px;margin-top:4px}
+.zm button{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:50%;width:48px;height:48px;font-size:26px;line-height:48px;cursor:pointer;padding:0}
+.zm button:hover{background:rgba(255,255,255,.25)}
+.zm .zm-x{top:12px;right:14px}
+.zm .zm-p{left:10px;top:50%;margin-top:-24px}
+.zm .zm-q{right:10px;top:50%;margin-top:-24px}
+@media (max-width:640px){.zm{padding:56px 8px 16px}.zm .zm-p,.zm .zm-q{top:auto;bottom:14px;margin:0}.zm img{max-height:calc(100vh - 170px)}}
+@media print{.zm{display:none!important}}
+</style>
+<div class="zm" id="zm" hidden role="dialog" aria-modal="true" aria-label="사진 크게 보기">
+<button type="button" class="zm-x" aria-label="닫기">&times;</button>
+<button type="button" class="zm-p" aria-label="이전 사진">&#8249;</button>
+<img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=">
+<div class="zm-cap"></div><div class="zm-n"></div>
+<button type="button" class="zm-q" aria-label="다음 사진">&#8250;</button>
+</div>
+<script id="zoom-js">
+(function(){var z=document.getElementById('zm');if(!z)return;
+var L=[].slice.call(document.querySelectorAll('.hcard img,.gallery img')).filter(function(i){return !i.closest('a')&&!i.closest('.vfacade')&&!i.closest('.zm');});
+if(!L.length)return;var im=z.querySelector('img'),cp=z.querySelector('.zm-cap'),nn=z.querySelector('.zm-n'),k=0,ov='';
+function cap(i){var c=i.closest('.gcell');var g=c&&c.querySelector('.gc');return (g&&g.textContent.trim())||i.alt||'';}
+function show(n){k=(n+L.length)%L.length;var i=L[k];im.src=i.currentSrc||i.src;im.alt=i.alt;cp.textContent=cap(i);nn.textContent=L.length>1?(k+1)+' / '+L.length:'';z.querySelector('.zm-p').style.display=z.querySelector('.zm-q').style.display=L.length>1?'':'none';}
+function open(n){show(n);z.hidden=false;ov=document.body.style.overflow;document.body.style.overflow='hidden';}
+function shut(){z.hidden=true;document.body.style.overflow=ov;}
+L.forEach(function(i,n){i.classList.add('zm-on');i.addEventListener('click',function(){open(n);});});
+z.querySelector('.zm-x').onclick=shut;z.querySelector('.zm-p').onclick=function(e){e.stopPropagation();show(k-1);};z.querySelector('.zm-q').onclick=function(e){e.stopPropagation();show(k+1);};
+z.addEventListener('click',function(e){if(e.target===z)shut();});
+document.addEventListener('keydown',function(e){if(z.hidden)return;if(e.key==='Escape')shut();else if(e.key==='ArrowLeft')show(k-1);else if(e.key==='ArrowRight')show(k+1);});
+var sx=null;z.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+z.addEventListener('touchend',function(e){if(sx===null)return;var d=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(d)>50)show(d<0?k+1:k-1);});
+})();
+</script>
+<!-- ===== /사진 크게 보기 ===== -->
+</body></html>
