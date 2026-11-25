@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<!-- 기계 배움터 · 도면 심화 1 · 자사몰 — 셸 = learn/drawing-basics-7.html · 빌더 build_ds1_261125.py · 🚫 가격 0 · 그림 전부 직접 그림 -->
+<html lang="ko"><head><meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>도면 심화 1 — 표면 거칠기 | 창호종합기계</title>
+<meta content="깎은 면을 얼마나 매끈하게 만들지 도면에 적는 표면 거칠기 — Ra 값 읽기, 기호 세 가지, 값·가공 방법·결 방향을 적는 자리, 도면에 기호를 붙이는 법, 옛 도면의 삼각형 표시를 직접 그린 그림과 연습 문제로 쉽게 정리했습니다. 기계 배움터 도면 과목 심화 첫 번째 글입니다." name="description"/>
+<style>
+/* ===== base ===== */
+:root{
+  --ac:#596fa1;            /* 계열 주색 — §B-4 v2 계열4색 SSOT(ch_palette.json)에서만 가져온다 */
+  --ink:#161a22;
+  /* 🔒 틴트 5색은 하드코드하지 않는다. 빌더가 --ac 기준으로 재산출해 주입한다.
+        세션66 정본의 #faf1f0·#f0dcda·#f5e6e5·#eccac7·#e8a0a0 은 100계열 파생이라
+        타 계열에 쓰면 §B-4 계열 불일치가 된다. (2026-08-16 치환맵 확정) */
+  --t-tech-bg:#f4f5f9;      /* tech 밴드 배경   (구 #faf1f0) */
+  --t-tech-bd:#e2e6ef;      /* tech 밴드 테두리 (구 #f0dcda) */
+  --t-cta-bg:#ebeef4;        /* foot-cta 배경   (구 #f5e6e5) */
+  --t-cta-bd:#d6dbe8;        /* foot-cta 테두리 (구 #eccac7) */
+  --t-cur-sub:#bfc7db;      /* .lu.cur 보조문자 (구 #e8a0a0) */
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;color:var(--ink);
+ background:#ffffff;line-height:1.7;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1040px;margin:0 auto;background:#fff;box-shadow:0 2px 40px rgba(0,0,0,.10);}
+.sec{padding:64px 56px;}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+ color:var(--ac);margin-bottom:14px;}
+.h2{font-size:29px;font-weight:900;color:var(--ink);letter-spacing:-.5px;margin-bottom:8px;}
+.h2 em{color:var(--ac);font-style:normal;}
+.sub{font-size:17px;color:#6b7684;margin-bottom:34px;max-width:680px;line-height:1.6;}
+
+/* ===== top bar ===== */
+/* 🔄 2026-08-16 개정 — 바(.top/.footer)는 카탈로그(①④)와 동일하게 계열 주색을 따른다.
+      세션144 「전 계열 고정 #404b63」 조항은 철회됨. [[decision_detail_page_bar_series_color_260816]] */
+.top{background:#fff;display:flex;align-items:center;gap:11px;padding:13px 56px;border-bottom:3px solid #268FCE;}
+.top .lg{width:52.5px;height:36px;background:#fff;border-radius:3px;display:flex;
+ align-items:center;justify-content:center;flex:none;border:1px solid #e2e6ef;}
+.top .lg img{max-width:100%;max-height:100%;object-fit:contain;display:block;}
+.top .co{color:#1c2733;font-size:15px;font-weight:800;letter-spacing:-.3px;}
+.top .co small{display:block;font-size:10.5px;font-weight:600;color:#dfe7f2;letter-spacing:1.2px;}
+.top .rt{margin-left:auto;color:#455166;font-size:13px;font-weight:700;text-align:right;}
+
+/* ===== hero ===== */
+.hero{background:#ffffff;
+ color:var(--ink);padding:56px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;
+ border-top:4px solid #268FCE;}
+.hero .ey{color:var(--ac);font-size:12.5px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;}
+.hero h1{font-size:40px;line-height:1.24;font-weight:900;letter-spacing:-.8px;color:var(--ink);}
+.hero h1 em{color:var(--ac);font-style:normal;}
+.hero .en{font-size:14px;color:#6b7684;margin-top:10px;font-weight:600;letter-spacing:.2px;}
+.hero .ld{font-size:17px;color:#4a5561;margin-top:18px;line-height:1.75;}
+.hero .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px;}
+.pill{font-size:12px;font-weight:700;color:#fff;padding:6px 13px;border-radius:20px;}
+.pill.pd{background:#eef2f7;color:#37414d;} .pill.pr{background:#e8f3fb;color:#0f5f8c;}
+.pill.pb{background:#eef2f7;color:#5c6673;}
+.hero .cta{display:inline-flex;align-items:center;gap:8px;margin-top:28px;background:var(--ac);
+ color:#fff;font-size:15px;font-weight:800;padding:14px 30px;border-radius:6px;text-decoration:none;
+ box-shadow:0 4px 14px rgba(0,0,0,.14);}
+.hcard{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;
+ display:flex;align-items:center;justify-content:center;min-height:300px;border-top:3px solid #EF8943;}
+.hcard img{max-width:100%;max-height:340px;object-fit:contain;display:block;}
+
+/* ===== kpis ===== */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-bottom:1px solid #e6ebf2;}
+.kpi{padding:26px 20px;text-align:center;border-right:1px solid #eef2f7;}
+.kpi:last-child{border-right:none;}
+.kv{font-size:34px;font-weight:900;color:var(--ink);letter-spacing:-1px;}
+.kv span{font-size:14px;font-weight:700;color:var(--ac);margin-left:4px;}
+.kl{font-size:12.5px;color:#7c8698;font-weight:700;margin-top:4px;letter-spacing:.2px;}
+
+/* ===== features ===== */
+.feats{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.feat{background:#f6f8fb;border:1px solid #e6ebf2;border-left:3px solid var(--ac);
+ border-radius:7px;padding:22px 24px;}
+.feat .fh{font-size:15.5px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+.feat .fd{font-size:15px;color:#5c6673;line-height:1.65;}
+
+/* ===== usp ===== */
+.usp-sec{background:#f6f8fb;}
+.usps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.usp{background:#fff;border:1px solid #e6ebf2;border-radius:9px;padding:26px 22px;}
+.usp .un{font-size:15px;font-weight:900;color:#fff;background:var(--ac);width:38px;height:38px;
+ border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:15px;}
+.usp .ut b{display:block;font-size:16px;color:var(--ink);font-weight:800;margin-bottom:7px;}
+.usp .ut span{font-size:16px;color:#5c6673;line-height:1.6;}
+
+/* ===== tech band ===== */
+.tech{background:var(--t-tech-bg);color:var(--ink);display:grid;grid-template-columns:.9fr 1.1fr;
+ gap:40px;align-items:center;border-top:1px solid var(--t-tech-bd);border-bottom:1px solid var(--t-tech-bd);}
+.tech .ey{color:var(--ac);}
+.tech .tl{font-size:26px;font-weight:900;line-height:1.3;letter-spacing:-.5px;color:var(--ink);}
+.tech .tl em{color:var(--ac);font-style:normal;}
+.tech .tb{color:#5c6673;font-size:17px;line-height:1.75;}
+
+/* ===== spec table ===== */
+.spectbl{width:100%;border-collapse:collapse;font-size:16px;border:1px solid #e2e8f0;}
+.spectbl th{background:#f0f3f8;color:var(--ink);font-weight:800;text-align:left;
+ padding:14px 20px;width:215px;border-bottom:1px solid #e2e8f0;vertical-align:top;}
+.spectbl td{padding:14px 20px;color:#37414d;border-bottom:1px solid #eef2f7;}
+.spectbl tr:last-child th,.spectbl tr:last-child td{border-bottom:none;}
+.spectbl tr:nth-child(even) th{background:#eaeef4;}
+.mats{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap;}
+.mat{background:#fff;border:1px solid #d7dfea;color:var(--ink);font-size:12.5px;font-weight:700;
+ padding:6px 14px;border-radius:20px;}
+
+/* ===== gallery (var) ===== */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.gcell{background:#fff;border:1px solid #e6ebf2;border-radius:8px;overflow:hidden;}
+.gcell img{width:100%;height:190px;object-fit:cover;display:block;}
+.gcell .gc{font-size:12.5px;color:#6b7684;padding:9px 12px;line-height:1.5;}
+
+/* ===== video (var) — facade. 클릭 전 외부 요청 0건 ===== */
+.vfacade{position:relative;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;cursor:pointer;
+ background:#0d1117;max-width:720px;}
+.vfacade img{width:100%;display:block;opacity:.86;}
+.vfacade .vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+ width:74px;height:74px;border-radius:50%;background:rgba(0,0,0,.62);display:flex;
+ align-items:center;justify-content:center;}
+.vfacade .vplay::after{content:"";border-style:solid;border-width:13px 0 13px 22px;
+ border-color:transparent transparent transparent #fff;margin-left:5px;}
+.vfacade .vt{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:14px;font-weight:700;
+ padding:26px 18px 14px;background:linear-gradient(transparent,rgba(0,0,0,.78));}
+
+/* ===== lineup (core — ②의 차별점) ===== */
+.lineup-sec{background:#f6f8fb;}
+.lineup{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.lu{background:#fff;border:1px solid #e6ebf2;border-radius:7px;padding:14px 16px;}
+.lu .lm{font-size:14px;font-weight:800;color:var(--ink);}
+.lu .ln{font-size:12px;color:#6b7684;margin-top:3px;}
+.lu.cur{background:var(--ink);border-color:var(--ink);}
+.lu.cur .lm{color:#fff;} .lu.cur .ln{color:var(--t-cur-sub);}
+
+/* ===== order (add) ===== */
+.orders{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.ord{background:#f6f8fb;border:1px solid #e6ebf2;border-radius:8px;padding:20px 22px;}
+.ord .oh{font-size:14px;font-weight:800;color:var(--ac);margin-bottom:7px;}
+.ord .od{font-size:15px;color:#5c6673;line-height:1.65;}
+
+/* ===== channel (add) — 8칸 4열×2행 ===== */
+.chs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.ch{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+ background:#fff;border:1px solid #e6ebf2;border-radius:8px;padding:18px 10px;
+ text-decoration:none;color:var(--ink);font-size:13px;font-weight:700;text-align:center;}
+.ch .cn{font-size:12.5px;color:#6b7684;font-weight:600;}
+.ch.off{opacity:.42;pointer-events:none;}
+
+/* ===== cta / footer ===== */
+.foot-cta{background:var(--t-cta-bg);color:var(--ink);text-align:center;border-top:1px solid var(--t-cta-bd);}
+.foot-cta h3{font-size:26px;font-weight:900;margin-bottom:10px;color:var(--ink);}
+.foot-cta p{font-size:17px;color:#5c6673;margin-bottom:24px;}
+.foot-cta .tels{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;font-size:17px;font-weight:800;color:var(--ac);}
+.foot-cta .tels span{opacity:.6;font-weight:400;color:#7c8698;}
+.footer{background:var(--ac);color:#e8eef7;padding:22px 56px;display:flex;align-items:center;gap:12px;font-size:12px;}
+.footer b{color:#fff;font-size:13px;}
+.footer .web{margin-left:auto;color:#fff;}
+@media print{
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+ body{background:#fff;}
+ .wrap{box-shadow:none;max-width:100%;}
+ .kpi,.feat,.usp,.lu,.spectbl tr,.hcard,.mats,.tels,.gcell,.ord,.ch{break-inside:avoid;page-break-inside:avoid;}
+ .hero,.top,.foot-cta{break-inside:avoid;page-break-inside:avoid;}
+ .h2,.eyebrow{break-after:avoid;page-break-after:avoid;}
+ .sec{padding:32px 40px;}
+ .hero{padding:36px 40px;}
+ .hero .cta{box-shadow:none;}
+ .vfacade{display:none;}
+}
+@media(max-width:760px){
+ .sec{padding:44px 24px;} .top{padding:12px 24px;} .hero{padding:40px 24px;grid-template-columns:1fr;}
+ .hero h1{font-size:29px;} .kpis{grid-template-columns:1fr 1fr;}
+ .feats,.usps,.lineup,.gallery,.orders{grid-template-columns:1fr;} .tech{grid-template-columns:1fr;}
+ .chs{grid-template-columns:repeat(2,1fr);}
+ .footer{padding:18px 24px;flex-wrap:wrap;} .footer .web{margin-left:0;width:100%;}
+}
+
+/* ===== [PATCH 260820] 인쇄 안정성 보강 — 이번 세션 신규 섹션 print break-inside 보호 (신규 블록 추가, 기존 @media print 블록 미수정) ===== */
+@media print{
+ .achcard,.step,.mtx tbody tr,.selg .g,.sizetbl tbody tr,.acgcell{break-inside:avoid;page-break-inside:avoid;}
+}
+
+/* ===== channel 8칸 — 브랜드 컬러 아이콘 + 호버 (2026-08-19 append) ===== */
+.chs .ch{transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;}
+.chs .ch:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(22,26,34,.10);
+ border-color:#d7dfea;}
+.chs .ci{display:block;margin-bottom:2px;}
+@media print{.chs .ch{transition:none;transform:none;box-shadow:none;}}
+
+/* ===== size-list table (그룹형 상세페이지 전용 · append) ===== */
+.sizetbl{width:100%;border-collapse:collapse;font-size:15px;border:1px solid #e2e8f0;}
+.sizetbl thead th{background:var(--ac);color:#fff;font-weight:800;text-align:left;padding:11px 16px;}
+.sizetbl td{padding:9px 16px;color:#37414d;border-bottom:1px solid #eef2f7;}
+.sizetbl tr:nth-child(even) td{background:#f7f8fa;}
+.sizetbl .sn{color:#9aa5b3;width:40px;}
+.sizetbl .sc{font-weight:800;color:var(--ink);font-family:'Consolas','Malgun Gothic',monospace;width:200px;}
+.sizetbl .ss{color:#37414d;}
+.sizetbl .st{color:#5a6672;}
+.sizetbl .sh{font-weight:800;color:var(--ac);}
+
+/* ===== hole-system 이미지 밴드 (원본 통합페이지 .sysrow 계승 · append) ===== */
+.sysrow{padding:0 56px 64px;display:flex;gap:32px;align-items:center;}
+.sysrow .simg{flex:0 0 42%;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.sysrow .simg img{width:100%;display:block;}
+.sysrow .sys{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.sysrow .sysbox{text-align:center;background:var(--ink);color:#fff;border-radius:10px;padding:20px 10px;}
+.sysrow .sysbox .big{font-size:32px;font-weight:900;color:#ff8a80;}
+.sysrow .sysbox .lb{font-size:12.5px;color:#c7cdd4;margin-top:6px;line-height:1.5;}
+@media(max-width:760px){.sysrow{flex-direction:column;padding:0 24px 44px;}.sysrow .simg{flex:none;width:100%;}}
+
+/* ===== 히어로 메인 사진 확대 — 좌우 컬럼비는 유지, 사진 박스 안에서 사진 자체를 70%까지 확대
+        (나나파파 지시 · append, 기존 .hero/.hcard 규칙 무변경) ===== */
+.hcard.photo-fill{padding:10px;min-height:250px;overflow:hidden;}
+.hcard.photo-fill img{max-height:520px;}
+
+/* ===== 히어로 사진 20% 추가 확대 (나나파파 지시 2026-08-20 "사각 박스는 그대로 두고 사진만 20% 크게")
+   박스 크기·테두리는 무변경, 사진만 transform:scale로 확대 후 박스 overflow:hidden으로 클리핑.
+   사진 원본 파일은 무수정(그대로 사용 원칙 유지). ===== */
+.hcard.photo-fill img{transform:translate(3.3%,-7.4%) scale(1.44);}
+
+/* ===== 히어로 스토어 버튼 신설 (나나파파 확정 2026-08-20 — 채널 8칸 고정 유지, 히어로에 별도 신설) ===== */
+/* 스마트스토어는 가격대별로 상품이 2건씩 나뉘어 있어(스토어 그율 규정), 색상 구분 없이
+   카테고리 목록 페이지 1개로 공용 링크한다. 값 출처: 나나파파 2026-08-20 확정. */
+.cta.cta-store{background:#fff;color:var(--ac);border:2px solid var(--ac);box-shadow:none;margin-left:12px;}
+@media(max-width:760px){.cta.cta-store{margin-left:0;margin-top:12px;}}
+
+/* ===== 주문 안내 4번째 카드 대응 (기존 .orders 3열 그리드 재사용 · append 없음, 콘텐츠만 추가) ===== */
+
+/* ===== 품질 검증 — 실측 인증 사진 2건 (Hebei Bocheng 제조사 실측, 나나파파 확인 2026-08-20 · append)
+   2026-08-20 후속1 — 제조사 원본 배너 그래픽(가공 없이 그대로) 사용으로 교체.
+   2026-08-20 후속2 — 나나파파 지시("사각 틀이 같아야되") 반영: 두 배너 비율이 달라(1202px vs 929px)
+   height:auto 자연비율로는 카드 높이가 달라 보였음 → 고정 높이(440px) + object-fit:contain +
+   흰 배경으로 전환. 사진은 자르지 않고(대비 object-fit:cover는 미사용) 프레임 크기만 통일. ===== */
+.qcheck{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start;}
+.qcheck .qc{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.qcheck .qc img{width:100%;height:440px;object-fit:contain;background:#fff;display:block;}
+.qcheck .qcap{padding:14px 18px;background:#fff;font-size:14px;color:#37414d;line-height:1.5;}
+.qcheck .qcap b{color:var(--ink);}
+@media(max-width:760px){.qcheck{grid-template-columns:1fr;}}
+
+/* ===== D28 홀 패턴 참고 도면 2종 (Hebei Bocheng 제조사 원본, 나나파파 지시 2026-08-20 · append)
+   그대로 사용(가공 없음). 대각(DIAGONAL) 패턴은 당사 표준 사양이 아닌 제조사 참고 도면 —
+   캡션으로 "별도 확인 필요" 명시(추측 표기 금지 원칙). ===== */
+.d28grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.d28grid .df{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.d28grid .df img{width:100%;height:320px;object-fit:contain;background:#fff;display:block;}
+.d28grid .dcap{padding:12px 16px;background:#fff;font-size:13.5px;color:#37414d;text-align:center;line-height:1.5;}
+.d28grid .dcap b{color:var(--ink);}
+@media(max-width:760px){.d28grid{grid-template-columns:1fr;}.d28grid .df img{height:260px;}}
+
+/* ===== 정밀 가공 디테일 클로즈업 3장 (Hebei Bocheng 제조사 원본, 나나파파 지시 2026-08-20 · append)
+   그대로 사용(가공 없음). R3 챔퍼는 선택 옵션 배지(.optbadge) 표기. ===== */
+.detailgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.detailgrid .dt{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.detailgrid .dt img{width:100%;height:330px;object-fit:contain;background:#fff;display:block;}
+.detailgrid .dcap2{padding:12px 16px;background:#fff;font-size:13.5px;color:#37414d;line-height:1.5;}
+.detailgrid .dcap2 b{color:var(--ink);}
+.optbadge{display:inline-block;background:var(--ac);color:#fff;font-size:10.5px;font-weight:800;
+  padding:3px 8px;border-radius:20px;margin-left:6px;vertical-align:middle;letter-spacing:.03em;}
+@media(max-width:760px){.detailgrid{grid-template-columns:1fr;}.detailgrid .dt img{height:280px;}}
+
+/* ===== 절단 공정 · 실사용 현장 4장 (CNC 워터젯 1 + Hebei Bocheng 제조사 제공 실사용 현장 3,
+   나나파파 지시 2026-08-20 · append) — 실사용 현장 사진은 제조사 자료이며 당사 개별 판매·설치
+   사례를 나타내지 않음(캡션에 출처 명시, 추측 표기 금지 원칙). ===== */
+.procgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.procgrid .pc{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e6ebf2;}
+.procgrid .pc img{width:100%;height:420px;object-fit:contain;background:#fff;display:block;}
+.procgrid .pcap{padding:12px 18px;background:#fff;font-size:13.5px;color:#37414d;line-height:1.5;}
+.procgrid .pcap b{color:var(--ink);}
+@media(max-width:760px){.procgrid{grid-template-columns:1fr;}.procgrid .pc img{height:320px;}}
+
+/* ===== [PATCH 260820] 악세사리 세트 SET1~5 섹션 — 구 통합페이지 이식, 클래스 3종 리네임(hcard/gcell/gc 충돌 회피) ===== */
+.lead{font-size:28px;color:#455;line-height:1.75;margin-top:16px;max-width:720px;}
+.lead b{color:#00838f;}
+.scards{margin-top:26px;}
+.achcard{display:flex;gap:20px;align-items:center;border:1px solid #e7ecef;border-radius:14px;padding:16px;margin-top:14px;background:#fff;}
+.achcard .hph{flex:0 0 236px;height:196px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.achcard .hph img{max-width:100%;max-height:196px;object-fit:contain;}
+.achcard .hnm{font-size:34px;font-weight:800;color:#00838f;}
+.achcard .hnm .hq{font-size:23px;color:#607d8b;font-weight:700;margin-left:4px;}
+.achcard .huse{font-size:27px;font-weight:700;margin-top:8px;color:#263238;}
+.achcard .hadd{font-size:24px;color:#5a6672;line-height:1.6;margin-top:7px;}
+.subhd{font-size:30px;font-weight:800;color:#263238;margin-top:40px;padding-left:12px;border-left:5px solid #00838f;line-height:1.3;}
+.mtx{width:100%;border-collapse:collapse;margin-top:16px;font-size:20px;table-layout:auto;}
+.mtx thead th{background:#37474f;color:#fff;padding:11px 7px;font-size:19px;text-align:center;white-space:nowrap;}
+.mtx thead th.h-item{text-align:left;}
+.mtx thead th.h-spec{text-align:left;}
+.mtx tbody td{padding:8px 7px;border-bottom:1px solid #eceff1;text-align:center;}
+.mtx tbody tr:nth-child(even){background:#fafbfc;}
+.mtx .m-item{text-align:left;font-weight:700;color:#263238;line-height:1.28;white-space:nowrap;}
+.mtx .m-item .en{display:block;font-size:14px;color:#98a6b0;font-weight:500;white-space:nowrap;}
+.mtx .m-spec{text-align:left;color:#5a6672;white-space:nowrap;font-size:18px;}
+.mtx .q{font-weight:800;color:#00838f;}
+.mtx .z{color:#cfd8dc;}
+.mtx tfoot td{border-top:2px solid #37474f;font-weight:800;padding:10px 7px;text-align:center;background:#eef7f8;font-size:20px;}
+.mtx tfoot td.f-lb{text-align:right;color:#37474f;}
+.mtx tfoot .ft-pt{color:#596fa1;}
+.tnote{font-size:24px;color:#8a94a0;margin-top:14px;line-height:1.6;}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px;}
+.setgal{margin-top:16px;}
+.setgal .acgc b{color:#00695c;}
+.acgcell{border:1px solid #e7ecef;border-radius:10px;overflow:hidden;background:#f7f9fa;}
+.acgcell .gph{aspect-ratio:4/3;overflow:hidden;}
+.acgcell img{width:100%;height:100%;object-fit:cover;}
+.acgcell .acgc{font-size:22px;color:#5a6672;padding:9px 11px;line-height:1.5;}
+.selg{background:#f7f9fa;border:1px solid #e7ecef;border-radius:12px;padding:14px 24px;margin-top:18px;}
+.selg .g{display:flex;justify-content:space-between;gap:16px;align-items:baseline;font-size:26px;padding:11px 0;border-bottom:1px dashed #dfe6e9;line-height:1.5;}
+.selg .g:last-child{border-bottom:none;}
+.selg .gq{color:#37474f;}
+.selg .ga{color:#00838f;font-weight:800;white-space:nowrap;}
+
+/* ===== [PATCH 260820] SUPPLY JOURNEY 섹션 — 구 통합페이지 이식, 강조색 티얼→계열색(var(--ac)) 재배색 ===== */
+.journey{background:#0f151c;border-bottom:1px solid #eceff1;}
+.journey .inr{padding:70px 46px;max-width:860px;margin:0 auto;}
+.journey .eyebrow{color:var(--ac);}
+.journey .h2{color:#fff;}
+.journey .jlead{font-size:27px;color:#aeb6bf;line-height:1.7;margin-top:14px;max-width:680px;}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px;}
+.step{background:#18212b;border:1px solid #263341;border-radius:12px;overflow:hidden;}
+.step .ph{position:relative;aspect-ratio:4/3;overflow:hidden;}
+.step .ph img{width:100%;height:100%;object-fit:cover;}
+.step .bg{position:absolute;top:8px;left:8px;background:var(--ac);color:#fff;font-size:21px;font-weight:800;padding:3px 9px;border-radius:14px;letter-spacing:.5px;}
+.step .tx{padding:14px 14px 18px;}
+.step .tt{font-size:27px;font-weight:800;color:#fff;}
+.step .dd{font-size:22px;color:#9aa6b2;line-height:1.55;margin-top:7px;}
+.jclose{margin-top:26px;font-size:28px;color:#fff;font-weight:700;text-align:center;line-height:1.6;}
+.jclose b{color:var(--ac);}
+
+/* ===== [PATCH 260820] 모바일(680px 이하) — 세트 카드/갤러리/스텝 반응형 (구 통합페이지 동일 규칙 이식) ===== */
+@media(max-width:680px){
+  .steps,.gal{grid-template-columns:1fr 1fr;}
+  .achcard{flex-direction:column;align-items:stretch;}
+  .achcard .hph{flex:none;width:100%;}
+}
+
+/* ===== §6 검사·방청 4장 — 16:9 레터박스 제거 (2026-08-21 append) ===== */
+.qcheck .qc img{height:260px;}
+
+
+/* ===== [APPEND 260823] 폰트 확대 시안 A — 나나파파 「글씨가 너무 작다」
+   🚫 기존 규칙 무수정. 이 블록만 뒤에 붙는다(§B-6.3).
+   계보 기준값(h1 40 / .h2 29 / 본문 16) 미접촉 — 111 계보 유지 ===== */
+.eyebrow{font-size:13.5px;}
+.pill{font-size:13.5px;}
+.kl{font-size:14.5px;}
+.mat{font-size:14px;}
+.gcell .gc{font-size:15px;}
+.sysrow .sysbox .lb{font-size:14.5px;}
+.lu .lm{font-size:16px;}
+.lu .ln{font-size:14px;}
+.ord .oh{font-size:16px;}
+.ord .od{font-size:17px;}
+.feat .fh{font-size:17.5px;}
+.feat .fd{font-size:17px;}
+.sizetbl{font-size:16.5px;}
+.sizetbl thead th{font-size:16.5px;}
+.chs .ch{font-size:14.5px;}
+.chs .ch .cn{font-size:14px;}
+.footer{font-size:13.5px;}
+.footer b{font-size:14.5px;}
+
+/* ===== [APPEND 260823] 갤러리 칸 — 세로 제품컷 클리핑 방지 (나나파파 사진 지정 반영)
+   🚫 기존 .gcell 규칙 무수정. 높이·맞춤만 뒤에서 덮는다. ===== */
+.gallery-sec .gcell img{height:250px;object-fit:contain;background:#fff;}
+
+/* [2026-08-30 나나파파 승격 · 2026-09-05 소급] 비교표 행 썸네일 — 104/index.html 정본 이식 */
+.sizetbl td.tc,.sizetbl th.tc{width:56px;padding:4px 6px 4px 10px;}
+.rowthumb{width:44px;height:33px;object-fit:cover;border-radius:4px;display:block;background:#eef0f5;}
+</style>
+<style>
+/* 2026-09-27 고를 수 있는 기종 썸네일 칸 — 정본 규칙 무수정, 뒤에 붙인다 (나나파파 추가 지시) */
+.pickhd{font-size:16px;font-weight:800;color:var(--ink);margin:28px 0 10px;padding-left:10px;border-left:4px solid var(--ac);}
+.pickhd span{font-size:13.5px;font-weight:700;color:var(--ac);margin-left:4px;}
+.pick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.pick .pk{display:block;background:#fff;border:1px solid #e6ebf2;border-radius:8px;padding:8px 8px 10px;text-decoration:none;color:var(--ink);word-break:keep-all;}
+.pick .pk:hover{border-color:var(--ac);box-shadow:0 6px 16px rgba(22,26,34,.08);}
+.pick .pk img{width:100%;height:104px;object-fit:contain;background:#fff;display:block;}
+.pick .pn{font-size:16px;font-weight:800;margin-top:6px;color:var(--ac);}
+.pick .ps{font-size:16px;color:#5c6673;line-height:1.45;margin-top:2px;}
+@media(max-width:900px){.pick{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:760px){.pick{grid-template-columns:repeat(2,1fr);}}
+</style>
+<style>
+/* 2026-10-03 고객지원 사례 전용 — 셸 규칙 무수정, 뒤에 붙인다 */
+.crumb{padding:11px 56px;font-size:13px;color:#6b7684;background:#f6f8fb;border-bottom:1px solid #e6ebf2;}
+.crumb a{color:#455166;text-decoration:none;font-weight:700;}
+.crumb span{margin:0 7px;color:#aab3c0;}
+.hero.case h1{font-size:36px;word-break:keep-all;}
+.hero .cta.cta-sub{background:#fff;color:var(--ac);border:1px solid var(--ac);box-shadow:none;margin-left:8px;}
+.cphotos{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:4px;}
+.cphotos figure{margin:0;background:#fff;border:1px solid #e6ebf2;border-radius:8px;overflow:hidden;}
+.cphotos img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#eef0f5;}
+.cphotos figcaption{font-size:14.5px;color:#5c6673;padding:10px 14px 12px;line-height:1.55;word-break:keep-all;}
+.cphotos .wide{grid-column:1/-1;}
+.csec .sub{max-width:none;}
+.csec .h2,.hero.case h1{word-break:keep-all;}
+.hero.case.listhero{padding-bottom:12px;}
+.csec .orders{margin-bottom:22px;}
+.ctags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px;}
+.ctag{font-size:12.5px;font-weight:700;color:#455166;background:#eef2f7;border-radius:20px;padding:5px 12px;text-decoration:none;}
+.backlist{display:inline-block;margin-top:18px;font-size:15px;font-weight:800;color:var(--ac);text-decoration:none;}
+/* 목록 */
+.filters{display:flex;flex-direction:column;gap:10px;margin-bottom:26px;}
+.frow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.frow b{font-size:13.5px;color:#455166;width:78px;flex:none;}
+.fbtn{font-size:13.5px;font-weight:700;color:#455166;background:#fff;border:1px solid #d7dfea;border-radius:20px;padding:6px 14px;cursor:pointer;font-family:inherit;}
+.fbtn.on{background:var(--ac);border-color:var(--ac);color:#fff;}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.card{display:block;background:#fff;border:1px solid #e6ebf2;border-radius:10px;overflow:hidden;text-decoration:none;color:var(--ink);}
+a.card:hover{border-color:var(--ac);box-shadow:0 8px 20px rgba(22,26,34,.08);}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#eef0f5;}
+.card .cb{padding:14px 16px 16px;}
+.card .cm{font-size:12.5px;color:#6b7684;font-weight:700;}
+.card .tt{font-size:17px;font-weight:800;line-height:1.45;margin-top:6px;word-break:keep-all;}
+.card .sm{font-size:14.5px;color:#5c6673;line-height:1.55;margin-top:6px;word-break:keep-all;}
+.card.soon{opacity:.55;}
+.card .soonb{display:inline-block;font-size:11.5px;font-weight:800;color:#fff;background:#7c8698;border-radius:4px;padding:2px 7px;margin-left:6px;}
+.frow input.rq{flex:1;min-width:200px;max-width:420px;font:inherit;font-size:15px;padding:8px 14px;border:1px solid #d7dfea;border-radius:20px;color:var(--ink);}
+.frow input.rq:focus{outline:none;border-color:var(--ac);}
+.empty{display:none;font-size:15px;color:#6b7684;padding:20px 0;}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:760px){.crumb{padding:10px 24px;} .hero.case h1{font-size:27px;} .cphotos{grid-template-columns:1fr;} .cards{grid-template-columns:1fr;} .frow b{width:100%;} .hero .cta.cta-sub{margin-left:0;margin-top:10px;} .hero.case .hcard{min-height:0;padding:12px;}}
+
+/* 2026-10-09 자가수리 안내 전용 — 셸·사례 규칙 무수정, 뒤에 붙인다 */
+.safety{background:#fff6ec;border:1px solid #f3c79a;border-left:6px solid #e8730c;border-radius:10px;padding:22px 26px;}
+.safety h3{margin:0 0 12px;font-size:19px;color:#a14a00;}
+.safety ol{margin:0;padding-left:22px;}
+.safety li{font-size:16px;line-height:1.7;color:#3b2a1a;margin-bottom:6px;word-break:keep-all;}
+.safety li b{color:#a14a00;}
+.rule{background:#eef5ff;border:1px solid #c9dcf6;border-radius:10px;padding:18px 24px;margin-top:22px;font-size:17px;line-height:1.7;font-weight:700;color:#1d3e6e;word-break:keep-all;}
+.rule small{display:block;font-weight:500;font-size:14px;color:#47607f;margin-top:4px;}
+.rsteps{counter-reset:s;display:flex;flex-direction:column;gap:22px;margin-top:6px;}
+.rstep{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:center;background:#fff;border:1px solid #e6ebf2;border-radius:10px;padding:18px;}
+.rstep:nth-child(even) .rtx{order:2;}
+.rtx .rn{display:inline-block;font-size:12.5px;font-weight:800;color:#fff;background:var(--ac);border-radius:4px;padding:2px 9px;}
+.rtx .rh{font-size:19px;font-weight:800;margin-top:8px;line-height:1.45;word-break:keep-all;}
+.rtx .rd{font-size:15.5px;color:#4a5361;line-height:1.7;margin-top:6px;word-break:keep-all;}
+.rst img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-radius:6px;background:#eef0f5;}
+.rst .ph{aspect-ratio:16/9;border:2px dashed #c3ccd8;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;color:#7b8695;background:#f6f8fb;padding:10px;}
+.rst figcaption{font-size:13.5px;color:#6b7684;margin-top:6px;}
+.rst{margin:0;}
+.stuck{background:#f6f8fb;border:1px solid #e0e6ee;border-radius:10px;padding:20px 24px;font-size:16px;line-height:1.75;word-break:keep-all;}
+.relgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.rel{display:block;background:#fff;border:1px solid #e6ebf2;border-radius:10px;padding:16px 18px;text-decoration:none;color:var(--ink);}
+.rel .rk{font-size:12.5px;font-weight:800;color:var(--ac);}
+.rel .rt{font-size:16.5px;font-weight:800;margin-top:6px;line-height:1.45;word-break:keep-all;}
+.rel .rs{font-size:14px;color:#6b7684;margin-top:4px;line-height:1.55;}
+.rel.dim{opacity:.6;}
+.mockbar{background:#2b2f38;color:#ffd9a8;font-size:13px;padding:7px 56px;text-align:center;}
+@media(max-width:760px){.rstep{grid-template-columns:1fr;} .rstep:nth-child(even) .rtx{order:0;} .relgrid{grid-template-columns:1fr;} .mockbar{padding:7px 16px;}}
+</style>
+<link href="https://www.changhoinc.com/learn/drawing-surface-1.html" rel="canonical"/>
+<meta content="article" property="og:type"/>
+<meta content="창호종합기계" property="og:site_name"/>
+<meta content="도면 심화 1 — 표면 거칠기 | 창호종합기계" property="og:title"/>
+<meta content="깎은 면을 얼마나 매끈하게 만들지 도면에 적는 표면 거칠기 — Ra 값 읽기, 기호 세 가지, 값·가공 방법·결 방향을 적는 자리, 도면에 기호를 붙이는 법, 옛 도면의 삼각형 표시를 직접 그린 그림과 연습 문제로 쉽게 정리했습니다. 기계 배움터 도면 과목 심화 첫 번째 글입니다." property="og:description"/>
+<meta content="https://www.changhoinc.com/learn/drawing-surface-1.html" property="og:url"/>
+<meta content="https://www.changhoinc.com/learn/img/drawing-surface-1-roughness.png" property="og:image"/>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4SVNEP6MSK"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4SVNEP6MSK');</script><script src="/js/ch-call.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "url": "https://www.changhoinc.com/learn/drawing-surface-1.html", "name": "도면 심화 1 — 표면 거칠기 | 창호종합기계", "description": "깎은 면을 얼마나 매끈하게 만들지 도면에 적는 표면 거칠기 — Ra 값 읽기, 기호 세 가지, 값·가공 방법·결 방향을 적는 자리, 도면에 기호를 붙이는 법, 옛 도면의 삼각형 표시를 직접 그린 그림과 연습 문제로 쉽게 정리했습니다. 기계 배움터 도면 과목 심화 첫 번째 글입니다.", "inLanguage": "ko", "publisher": {"@type": "Organization", "name": "창호종합기계", "url": "https://www.changhoinc.com/"}}</script>
+<style id="chg-css">
+/* 공통 상단 메뉴 줄 — 대문(index.html) 유틸 바·카테고리 바와 같은 모양. 원본 CSS 는 건드리지 않는다 */
+html{scroll-padding-top:112px}
+.chg{position:sticky;top:0;z-index:170;background:#111;color:#fff;
+  font-family:"Nanum Gothic","Noto Sans KR","Apple SD Gothic Neo",system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.5;letter-spacing:-0.3px}
+.chg a{color:inherit;text-decoration:none}
+.chg ul{list-style:none;margin:0;padding:0}
+.chg-in{max-width:1240px;margin:0 auto;padding:9px 20px;display:flex;align-items:center;gap:16px}
+.chg-logo{background:#fff;border-radius:7px;padding:5px 9px;display:block;line-height:0;flex:none}
+.chg-logo img{height:26px;width:auto;display:block}
+.chg-s{flex:1;position:relative;max-width:420px}@media(max-width:1100px){.chg .chg-nav,.chg .chg-nav ul{gap:11px}}
+.chg-s input{width:100%;height:42px;border-radius:8px;border:2px solid transparent;padding:0 44px 0 15px;
+  font-size:15px;background:#fff;color:#1d1d1f;font-family:inherit}
+.chg-s input:focus{outline:0;border-color:#0066cc}
+.chg-s .mag{position:absolute;right:6px;top:5px;width:32px;height:32px;border-radius:6px;background:#0066cc;
+  color:#fff;font-size:15px;display:grid;place-items:center;pointer-events:none}
+.chg-sg{position:absolute;left:0;right:0;top:46px;background:#fff;border:1px solid #d2d2d7;border-radius:10px;
+  box-shadow:0 12px 34px rgba(0,0,0,.18);overflow:hidden;z-index:190}
+.chg-sg[hidden]{display:none}
+.chg-sg li{margin:0;list-style:none;line-height:1.5;padding:9px 14px;font-size:14px;color:#1d1d1f;display:flex;gap:9px;align-items:center;cursor:pointer}
+.chg-sg li:hover,.chg-sg li[aria-selected="true"]{background:#f5f5f7}
+.chg-sg .chg-k{font-size:10.5px;color:#fff;background:#9a9aa0;border-radius:4px;padding:2px 6px;flex:none}
+.chg-sg .chg-k.chg-k1{background:#0066cc}
+.chg-sg .chg-sub{color:#9a9aa0;display:inline}
+.chg-sg .chg-none{color:#6e6e73;cursor:default}
+.chg-nav{display:flex;align-items:center;gap:16px;flex:none}
+.chg-nav ul{display:flex;gap:16px;align-items:center}
+.chg-nav ul a{font-size:13.5px;color:#d7d7db;white-space:nowrap}
+.chg-nav ul a:hover{color:#fff}
+.chg-nav .cta{background:#0066cc;color:#fff;padding:6px 14px;border-radius:9999px;font-size:12px}
+.chg-nav .ln{display:none}
+.chg-hb{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:4px;
+  position:relative;z-index:200}
+.chg-hb span{display:block;width:20px;height:1.5px;background:rgba(255,255,255,.8);transition:transform .2s,opacity .2s}
+.chg-hb.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.chg-hb.open span:nth-child(2){opacity:0}
+.chg-hb.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+.chg-cat{background:#000;border-top:1px solid #26262a;position:relative}
+.chg-cat::after{content:"";position:absolute;right:0;top:0;bottom:0;width:clamp(16px,5vw,44px);
+  background:linear-gradient(270deg,#000,rgba(0,0,0,0));pointer-events:none}
+.chg-cat-in{max-width:none;margin:0;padding:0 7px 0 max(7px,calc((100% - 1240px)/2 + 7px));display:flex;overflow-x:auto;scrollbar-width:none}
+.chg-cat-in::-webkit-scrollbar{display:none}
+.chg-cat a{padding:11px 13px;font-size:13.5px;color:#d7d7db;white-space:nowrap;flex:none}
+.chg-cat a:hover{color:#fff}
+.chg-cat a.all{font-weight:700;color:#fff}
+.chg-cat a[aria-current]{color:#fff;font-weight:700;box-shadow:inset 0 -3px 0 #0066cc}
+.chg-crumb{max-width:1040px;margin:0 auto;padding:12px 20px 0;font-size:13px;color:#6e6e73;
+  font-family:"Nanum Gothic","Noto Sans KR",system-ui,sans-serif}
+.chg-crumb a{color:#0066cc;text-decoration:none}
+.chg-crumb a:hover{text-decoration:underline}
+.chg-crumb span.sep{margin:0 7px;color:#b0b0b5}
+.wrap>.top{display:none}
+@media(max-width:834px){
+  html{scroll-padding-top:70px}
+  .chg-in{padding:8px 12px;gap:10px}
+  .chg-logo{padding:4px 7px}.chg-logo img{height:22px}
+  .chg-s input{height:38px;font-size:14px}
+  .chg-s .mag{top:4px;width:30px;height:30px}
+  .chg-sg{top:42px}
+  .chg-cat{display:none}
+  .chg-hb{display:flex}
+  .chg-nav ul:not(.open){display:none}
+  .chg-nav ul.open{display:flex;flex-direction:column;align-items:flex-start;position:fixed;
+    top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.97);padding:76px 28px 28px;gap:18px;
+    overflow-y:auto;z-index:150}
+  .chg-nav ul.open a{font-size:19px;font-weight:600;color:rgba(255,255,255,.9)}
+  .chg-nav ul.open .cta{font-size:19px;padding:10px 26px}
+  .chg-nav ul.open .ln{display:block}
+  .chg-nav ul.open .lnh{font-size:13px;color:#9a9aa0;margin-top:10px}
+  .chg-nav ul.open .ln a{font-size:16px;font-weight:400;color:#d7d7db}
+  .chg-nav ul.open .ln a[aria-current]{color:#fff;font-weight:700}
+  .chg-crumb{padding:10px 16px 0;font-size:12px}
+}
+@media print{.chg,.chg-crumb{display:none}.wrap>.top{display:flex}}
+</style>
+<style id="pd-css">
+.pd-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;align-items:start}
+.pd-grid img{width:100%;border:1px solid #e3e8f0;border-radius:10px;background:#fff}
+.pd-p{font-size:16px;line-height:1.75;color:#333b48;margin:0 0 12px}
+.pd-t{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 6px}
+.pd-t th,.pd-t td{border-bottom:1px solid #e6ebf2;padding:7px 8px;text-align:center}
+.pd-t th{background:#f3f6fa;font-weight:700}
+.pd-dl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 8px}
+.pd-dl a{display:block;text-decoration:none;color:#fff;background:#1e3a8a;border-radius:9px;padding:13px 15px;font-weight:800;font-size:15.5px}
+.pd-dl a span{display:block;font-weight:500;font-size:13px;opacity:.85;margin-top:2px}
+.pd-dl a.sub{background:#fff;color:#1e3a8a;border:1.5px solid #1e3a8a}
+.pd-dl a:hover{filter:brightness(1.1)}
+.pd-sum{cursor:pointer;color:#1e3a8a;font-weight:700;font-size:15px;margin-top:6px}
+.pd-jump{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 0}
+.pd-jump a{padding:7px 15px;border:1px solid #c9d3e6;border-radius:20px;text-decoration:none;color:#1e3a8a;font-size:14.5px;background:#fff}
+.pd-note{font-size:14.5px;color:#4b5563;line-height:1.75;padding-left:20px;margin:6px 0 0}
+.pd-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.pd-card{display:block;border:1px solid #e3e8f0;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;background:#fff}
+.pd-card img{width:100%;display:block;border-bottom:1px solid #eef1f6}
+.pd-card .b{padding:16px 18px}.pd-card .k{font-size:13px;color:#596fa1;font-weight:800}
+.pd-card .t{font-size:19px;font-weight:900;color:#161a22;margin:4px 0}.pd-card .s{font-size:14.5px;color:#4b5563;line-height:1.6}
+.pd-ask{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0 4px;padding:12px 15px;background:#fff8e6;border:1px solid #f0d58c;border-radius:9px;font-size:15px;color:#3b3b3b}
+.pd-ask .tx{flex:1 1 100%}.pd-ask b{color:#161a22}.pd-ask a{display:inline-block;padding:7px 14px;border-radius:7px;text-decoration:none;font-weight:800;font-size:14.5px}
+.pd-ask a.k{background:#fee500;color:#191919}.pd-ask a.t{background:#fff;color:#1e3a8a;border:1.5px solid #1e3a8a}
+@media(max-width:760px){.pd-grid,.pd-dl,.pd-cards{grid-template-columns:1fr}}
+</style>
+<style id="ls-css">.sd-fig{overflow-x:auto;margin:0 0 14px}.sd-fig img{display:block;width:100%;min-width:640px;border:1px solid #e3e8f0;border-radius:10px;background:#fff}.sd-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}.sd-photos figure{margin:0;border:1px solid #e3e8f0;border-radius:10px;overflow:hidden;background:#fff}.sd-photos img{display:block;width:100%;height:300px;object-fit:contain;background:#fff}.sd-photos figcaption{font-size:14px;color:#4b5563;padding:8px 12px 10px;line-height:1.5}.ls-cat img{height:auto!important;max-height:none}.ls-catw{margin:14px 0;border:1px solid #e3e8f0;border-radius:10px;overflow:hidden;background:#fff}.ls-catw img{display:block;width:100%;height:auto}.ls-catw figcaption{font-size:14px;color:#4b5563;padding:8px 12px 10px;line-height:1.5}.sd-photos3{grid-template-columns:repeat(3,1fr)}.sd-photos3 img{height:240px}.pd-t td:first-child,.pd-t th:first-child{white-space:nowrap}@media(max-width:760px){.sd-photos{grid-template-columns:1fr}.sd-photos3{grid-template-columns:1fr 1fr}.sd-photos3 img{height:170px}.pd-t td:first-child,.pd-t th:first-child{white-space:normal}.sd-fig::after{content:"그림은 옆으로 밀어서 보실 수 있습니다";display:block;font-size:12.5px;color:#6b7280;margin-top:4px}}</style>
+<style id="learn-css">.pd-t td:first-child,.pd-t th:first-child{white-space:nowrap!important}details.pd-p{margin:0 0 10px;padding:12px 16px;border:1px solid #e3e8f0;border-radius:9px;background:#fff}details.pd-p p{margin:10px 0 0}</style>
+</head>
+<body>
+<!-- ===== 공통 상단 메뉴 줄 (chg) ===== -->
+<header class="chg">
+<div class="chg-in">
+<a class="chg-logo" href="/"><img alt="창호종합기계 처음 화면" src="/images/CH_Logo_MD_700700_배경검은색.png"/></a>
+<div class="chg-s"><input aria-controls="chg-sg" aria-expanded="false" aria-label="제품 검색" autocomplete="off" id="chg-q" placeholder="기계 이름으로 찾기 (예: 탭핑기, 노칭)" role="combobox" type="search"/><span aria-hidden="true" class="mag">⌕</span><ul class="chg-sg" hidden="" id="chg-sg" role="listbox"></ul></div>
+<nav aria-label="주 메뉴" class="chg-nav"><ul id="chg-links"><li><a href="/about/">회사소개</a></li><li><a href="/import/">수입대행</a></li><li><a href="/#products">제품소개</a></li><li><a href="/#resources">기술자료</a></li><li><a href="/cases/">고객지원 사례</a></li><li><a href="/repair/">자가수리 안내</a></li><li><a href="/learn/">기계 배움터</a></li><li><a class="cta" href="/#contact">문의하기</a></li><li class="ln lnh">제품 라인</li><li class="ln"><a href="/products/111/">용접테이블 · D28 악세사리</a></li><li class="ln"><a href="/products/101/">알루미늄 절단기 · 원형절단기</a></li><li class="ln"><a href="/products/104/">탭핑기 · 서보탭핑기</a></li><li class="ln"><a href="/products/103/">유압 펀칭기 · 프레스</a></li><li class="ln"><a href="/products/109/">R노칭기 · 파이프 노칭기</a></li><li class="ln"><a href="/products/109/index-b.html">파이프 축관기 · 벤딩기</a></li><li class="ln"><a href="/products/107/">챔버 · 면취기 · 모따기</a></li><li class="ln"><a href="/products/100/">금속절단기 · 밴드쏘</a></li><li class="ln"><a href="/products/line-bend/">절곡·벤딩기 · 전선탈피기</a></li><li class="ln"><a href="/products/line-al/">알루미늄 창호기계</a></li><li class="ln"><a href="/products/line-pvc/">PVC 창호기계 · PVC 용접기</a></li><li class="ln"><a href="/products/400/">랩핑기 · 유리 가공기 · 창호 설비</a></li><li class="ln"><a href="/products/line-blade/">톱날 · 컷트날 · 열판</a></li></ul><button aria-expanded="false" aria-label="메뉴 열기" class="chg-hb" id="chg-hb" type="button"><span></span><span></span><span></span></button></nav>
+</div>
+<nav aria-label="제품 라인" class="chg-cat"><div class="chg-cat-in"><a class="all" href="/#products">☰ 전체 13개 라인</a><a href="/products/111/">용접테이블</a><a href="/products/101/">알루미늄 절단기</a><a href="/products/104/">탭핑기</a><a href="/products/103/">유압 펀칭기</a><a href="/products/109/">R노칭기</a><a href="/products/109/index-b.html">축관기 · 벤딩기</a><a href="/products/107/">챔버</a><a href="/products/100/">금속절단기</a><a href="/products/line-bend/">절곡·벤딩기</a><a href="/products/line-al/">알루미늄 창호기계</a><a href="/products/line-pvc/">PVC 창호기계</a><a href="/products/400/">랩핑기</a><a href="/products/line-blade/">톱날</a></div></nav>
+</header>
+<!-- ===== /공통 상단 메뉴 줄 ===== -->
+
+<div class="wrap">
+<div class="top">
+<a href="/" title="처음 화면으로" style="display:flex;align-items:center;gap:11px;text-decoration:none"><div class="lg"><img alt="창호종합기계" src="../products/102/img/e3b0b7c00681.png"/></div>
+<div class="co">창호종합기계<small>CHANGHO INC</small></div></a>
+<div class="rt">기계 배움터<br/>055-327-4112</div>
+</div>
+
+
+<div class="crumb"><a href="../">홈</a><span>›</span><a href="./">기계 배움터</a><span>›</span><a href="./#drawing">도면</a><span>›</span>심화 1</div>
+<div class="hero case listhero" style="grid-template-columns:1fr;"><div>
+<div class="ey">기계 배움터 · 도면 · 심화 1</div><h1>도면 심화 1 — <em>표면 거칠기</em></h1>
+<div class="ld">같은 치수로 깎은 부품이라도 면이 거친 것과 매끈한 것은 쓰임새가 다릅니다. 도면에는 면을 얼마나 매끈하게 만들지를 작은 기호와 숫자로 적습니다. 이 글에서는 표면 거칠기가 무엇인지, Ra 값을 읽는 법, 기호 세 가지와 그 둘레에 적는 것, 도면에 기호를 붙이는 법, 옛 도면에서 보는 삼각형 표시를 그림과 연습 문제로 살펴봅니다.</div>
+<div class="pd-jump"><a href="#sWhat">표면 거칠기란</a><a href="#sRa">Ra 값 읽기</a><a href="#sSym">기호 세 가지</a><a href="#sPos">기호 둘레에 적는 것</a><a href="#sPlace">도면에 붙이는 법</a><a href="#sAll">한꺼번에 적기</a><a href="#sOld">옛 도면의 표시</a><a href="#sTry">직접 읽어 보기</a><a href="#sSum">정리</a></div>
+</div></div>
+
+<div class="sec" id="sWhat">
+<div class="eyebrow">표면 거칠기란</div>
+<div class="h2">깎은 면을 크게 늘려 보면 산과 골이 있습니다</div>
+<p class="pd-p">선반이나 밀링으로 잘 깎은 면은 맨눈으로 보면 평평하고, 손으로 만져도 매끈하게 느껴집니다. 그런데 이 면을 크게 확대해 보면 공구가 지나간 자국 때문에 아주 작은 산과 골이 이어져 있습니다. 이 오르내림의 정도를 <b>표면 거칠기</b>라고 합니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 430" role="img" aria-label="깎은 블록의 면 한 곳을 돋보기로 크게 늘려 본 그림. 늘린 면은 산과 골이 오르내리고, 가운데 평균선에서 벗어난 높이가 파랗게 칠해져 있다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="ds1f1" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="ds1f1b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker><pattern id="ds1f1h1" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f1h2" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f1h3" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f1h4" patternUnits="userSpaceOnUse" width="5.5" height="5.5" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5.5" stroke="#161a22" stroke-width="1.3"/></pattern></defs><rect width="1000" height="430" fill="#fff"/>
+<rect x="60" y="170" width="230" height="120" fill="#fff" stroke="#161a22" stroke-width="3.2"/>
+<text x="175.0" y="324.0" font-size="15" fill="#6b7684" text-anchor="middle" font-weight="400">깎은 면(맨눈으로는 평평해 보임)</text>
+<circle cx="210" cy="170" r="30" fill="none" stroke="#596fa1" stroke-width="2.4"/>
+<line x1="231.0" y1="149.0" x2="560.0" y2="70.0" stroke="#596fa1" stroke-width="1.6" stroke-dasharray="5 4"/>
+<line x1="231.0" y1="191.0" x2="560.0" y2="330.0" stroke="#596fa1" stroke-width="1.6" stroke-dasharray="5 4"/>
+<polygon points="560.0,200.0 560.0,150.1 560.6,146.1 561.3,145.1 562.0,147.1 562.6,151.7 563.2,158.0 563.9,165.1 564.5,171.9 565.2,177.3 565.9,180.8 566.5,182.0 567.1,181.1 567.8,178.6 568.5,175.2 569.1,171.9 569.8,169.5 570.4,168.6 571.0,169.4 571.7,171.9 572.4,175.6 573.0,179.7 573.6,183.3 574.3,185.6 575.0,186.0 575.6,184.1 576.2,180.1 576.9,174.5 577.5,168.1 578.2,162.1 578.9,157.4 579.5,155.1 580.1,155.6 580.8,159.1 581.5,165.5 582.1,174.0 582.8,183.7 583.4,193.6 584.0,200.0 584.7,200.0 585.4,200.0 586.0,200.0 586.6,200.0 587.3,200.0 588.0,200.0 588.6,200.0 589.2,200.0 589.9,200.0 590.5,200.0 591.2,200.0 591.9,200.0 592.5,200.0 593.1,200.0 593.8,200.0 594.5,200.0 595.1,200.0 595.8,200.0 596.4,200.0 597.0,200.0 597.7,200.0 598.4,200.0 599.0,200.0 599.6,200.0 600.3,200.0 601.0,200.0 601.6,200.0 602.2,200.0 602.9,200.0 603.5,200.0 604.2,200.0 604.9,200.0 605.5,200.0 606.1,200.0 606.8,200.0 607.5,200.0 608.1,200.0 608.8,200.0 609.4,200.0 610.0,200.0 610.7,200.0 611.4,200.0 612.0,200.0 612.6,200.0 613.3,200.0 614.0,200.0 614.6,200.0 615.2,200.0 615.9,200.0 616.5,190.4 617.2,181.5 617.9,174.3 618.5,169.2 619.1,166.2 619.8,165.1 620.5,165.3 621.1,165.9 621.8,166.1 622.4,165.3 623.0,163.0 623.7,159.4 624.4,154.7 625.0,149.7 625.6,145.3 626.3,142.5 627.0,142.1 627.6,144.5 628.2,150.0 628.9,158.1 629.5,168.2 630.2,179.3 630.9,190.3 631.5,200.0 632.1,200.0 632.8,200.0 633.5,200.0 634.1,200.0 634.8,200.0 635.4,200.0 636.0,200.0 636.7,200.0 637.4,200.0 638.0,200.0 638.6,200.0 639.3,200.0 640.0,200.0 640.6,200.0 641.2,200.0 641.9,200.0 642.5,200.0 643.2,200.0 643.9,200.0 644.5,200.0 645.1,200.0 645.8,200.0 646.5,200.0 647.1,200.0 647.8,200.0 648.4,200.0 649.0,200.0 649.7,200.0 650.4,200.0 651.0,200.0 651.6,200.0 652.3,200.0 653.0,200.0 653.6,200.0 654.2,200.0 654.9,200.0 655.5,200.0 656.2,200.0 656.9,200.0 657.5,200.0 658.1,200.0 658.8,200.0 659.5,200.0 660.1,200.0 660.8,200.0 661.4,200.0 662.0,200.0 662.7,200.0 663.4,193.2 664.0,181.1 664.6,170.3 665.3,161.7 666.0,155.8 666.6,152.7 667.2,152.2 667.9,153.7 668.5,156.1 669.2,158.7 669.9,160.6 670.5,161.1 671.1,160.2 671.8,157.9 672.5,154.9 673.1,151.9 673.8,149.7 674.4,149.2 675.0,150.8 675.7,154.7 676.4,160.6 677.0,167.9 677.6,175.6 678.3,182.8 679.0,188.4 679.6,191.6 680.2,192.1 680.9,189.9 681.5,185.4 682.2,179.4 682.9,172.9 683.5,167.0 684.1,162.7 684.8,160.5 685.5,160.7 686.1,163.2 686.8,167.4 687.4,172.5 688.0,177.7 688.7,182.1 689.4,185.2 690.0,186.8 690.6,187.0 691.3,186.3 692.0,185.5 692.6,185.6 693.2,187.3 693.9,191.3 694.5,197.8 695.2,200.0 695.9,200.0 696.5,200.0 697.1,200.0 697.8,200.0 698.5,200.0 699.1,200.0 699.8,200.0 700.4,200.0 701.0,200.0 701.7,200.0 702.4,200.0 703.0,200.0 703.6,200.0 704.3,200.0 705.0,200.0 705.6,200.0 706.2,200.0 706.9,200.0 707.5,200.0 708.2,200.0 708.9,200.0 709.5,200.0 710.1,200.0 710.8,200.0 711.5,200.0 712.1,194.1 712.8,189.5 713.4,187.7 714.0,188.8 714.7,192.3 715.4,197.6 716.0,200.0 716.6,200.0 717.3,200.0 718.0,200.0 718.6,200.0 719.2,200.0 719.9,200.0 720.5,200.0 721.2,199.4 721.9,194.8 722.5,191.6 723.1,190.0 723.8,190.0 724.5,191.2 725.1,192.8 725.8,194.0 726.4,194.0 727.0,192.0 727.7,187.7 728.4,181.3 729.0,173.1 729.6,164.0 730.3,155.1 731.0,147.5 731.6,142.0 732.2,139.5 732.9,140.1 733.5,143.7 734.2,149.7 734.9,157.3 735.5,165.4 736.1,173.0 736.8,179.5 737.5,184.3 738.1,187.5 738.8,189.3 739.4,190.5 740.0,191.8 740.7,194.0 741.4,197.7 742.0,200.0 742.6,200.0 743.3,200.0 744.0,200.0 744.6,200.0 745.2,200.0 745.9,200.0 746.5,200.0 747.2,200.0 747.9,200.0 748.5,200.0 749.1,200.0 749.8,200.0 750.5,200.0 751.1,200.0 751.8,200.0 752.4,200.0 753.0,200.0 753.7,200.0 754.4,200.0 755.0,200.0 755.6,200.0 756.3,200.0 757.0,200.0 757.6,200.0 758.2,200.0 758.9,200.0 759.5,200.0 760.2,200.0 760.9,200.0 761.5,200.0 762.1,200.0 762.8,200.0 763.5,200.0 764.1,200.0 764.8,200.0 765.4,200.0 766.0,200.0 766.7,200.0 767.4,200.0 768.0,200.0 768.6,200.0 769.3,200.0 770.0,200.0 770.6,194.8 771.2,190.1 771.9,187.1 772.5,185.3 773.2,183.8 773.9,181.8 774.5,178.7 775.1,174.0 775.8,167.7 776.5,160.3 777.1,152.3 777.8,144.8 778.4,138.6 779.0,134.8 779.7,133.8 780.3,135.9 781.0,140.8 781.6,147.9 782.3,156.3 783.0,164.8 783.6,172.4 784.2,178.3 784.9,181.9 785.5,183.0 786.2,182.1 786.9,179.7 787.5,176.7 788.1,174.1 788.8,172.6 789.5,172.7 790.1,174.5 790.8,177.9 791.4,182.2 792.0,186.6 792.7,190.3 793.4,192.4 794.0,192.5 794.6,190.4 795.3,186.5 796.0,181.4 796.6,176.0 797.2,171.4 797.9,168.6 798.5,168.4 799.2,171.0 799.9,176.6 800.5,184.6 801.1,194.3 801.8,200.0 802.5,200.0 803.1,200.0 803.8,200.0 804.4,200.0 805.0,200.0 805.7,200.0 806.4,200.0 807.0,200.0 807.6,200.0 808.3,200.0 809.0,200.0 809.6,200.0 810.2,200.0 810.9,200.0 811.5,200.0 812.2,200.0 812.9,200.0 813.5,200.0 814.1,200.0 814.8,200.0 815.5,200.0 816.1,200.0 816.8,200.0 817.4,200.0 818.0,194.9 818.7,191.8 819.4,191.2 820.0,192.3 820.6,194.4 821.3,196.5 822.0,197.7 822.6,197.6 823.2,195.8 823.9,192.5 824.5,188.2 825.2,183.7 825.8,179.8 826.5,177.4 827.2,176.9 827.8,178.6 828.5,182.4 829.1,187.6 829.8,193.3 830.4,198.6 831.0,200.0 831.7,200.0 832.4,200.0 833.0,198.6 833.6,192.1 834.3,184.0 835.0,175.3 835.6,167.0 836.2,160.1 836.9,155.2 837.5,152.8 838.2,152.7 838.8,154.5 839.5,157.4 840.2,160.6 840.8,163.2 841.5,164.6 842.1,164.7 842.8,163.5 843.4,161.5 844.0,159.5 844.7,158.5 845.4,159.2 846.0,162.3 846.6,168.2 847.3,176.8 848.0,187.5 848.6,199.6 849.2,200.0 849.9,200.0 850.5,200.0 851.2,200.0 851.8,200.0 852.5,200.0 853.2,200.0 853.8,200.0 854.5,200.0 855.1,200.0 855.8,200.0 856.4,200.0 857.0,200.0 857.7,200.0 858.4,200.0 859.0,200.0 859.6,200.0 860.3,200.0 861.0,200.0 861.6,200.0 862.2,200.0 862.9,200.0 863.5,200.0 864.2,200.0 864.8,200.0 865.5,200.0 866.2,200.0 866.8,200.0 867.5,200.0 868.1,200.0 868.8,200.0 869.4,200.0 870.0,200.0 870.7,200.0 871.4,200.0 872.0,200.0 872.6,200.0 873.3,200.0 874.0,200.0 874.6,200.0 875.2,200.0 875.9,200.0 876.5,200.0 877.2,200.0 877.8,200.0 878.5,200.0 879.2,200.0 879.8,200.0 880.5,200.0 881.1,194.5 881.8,183.0 882.4,171.2 883.0,160.4 883.7,151.6 884.4,145.5 885.0,142.5 885.6,142.4 886.3,144.8 887.0,148.9 887.6,153.7 888.2,158.3 888.9,161.9 889.5,164.0 890.2,164.5 890.9,163.8 891.5,162.5 892.2,161.4 892.8,161.2 893.5,162.8 894.1,166.4 894.8,172.0 895.4,179.3 896.0,187.4 896.7,195.4 897.4,200.0 898.0,200.0 898.6,200.0 899.3,200.0 900.0,200.0 900.6,200.0 901.2,194.2 901.9,188.1 902.5,183.0 903.2,179.8 903.9,178.9 904.5,180.5 905.1,184.3 905.8,189.5 906.5,195.2 907.1,200.0 907.8,200.0 908.4,200.0 909.0,200.0 909.7,200.0 910.3,200.0 911.0,200.0 911.6,200.0 912.3,200.0 913.0,200.0 913.6,200.0 914.2,200.0 914.9,200.0 915.5,200.0 916.2,200.0 916.9,200.0 917.5,200.0 918.1,200.0 918.8,200.0 919.5,200.0 920.1,200.0 920.8,200.0 921.4,200.0 922.0,200.0 922.7,200.0 923.3,200.0 924.0,200.0 924.7,200.0 925.3,200.0 926.0,200.0 926.6,200.0 927.2,200.0 927.9,200.0 928.5,192.4 929.2,183.7 929.9,175.0 930.5,167.3 931.1,161.7 931.8,158.7 932.5,158.7 933.1,161.5 933.8,166.5 934.4,172.8 935.0,179.4 935.7,185.2 936.3,189.3 937.0,191.1 937.7,190.5 938.3,187.7 939.0,183.4 939.6,178.4 940.2,173.6 940.9,169.9 941.5,167.7 942.2,167.3 942.9,168.5 943.5,170.8 944.1,173.3 944.8,175.2 945.5,175.8 946.1,174.4 946.8,171.0 947.4,165.6 948.0,159.1 948.7,152.3 949.3,146.2 950.0,141.9 950.0,200.0" fill="rgba(89,111,161,0.22)" stroke="none"/>
+<polygon points="560.0,200.0 560.0,200.0 560.6,200.0 561.3,200.0 562.0,200.0 562.6,200.0 563.2,200.0 563.9,200.0 564.5,200.0 565.2,200.0 565.9,200.0 566.5,200.0 567.1,200.0 567.8,200.0 568.5,200.0 569.1,200.0 569.8,200.0 570.4,200.0 571.0,200.0 571.7,200.0 572.4,200.0 573.0,200.0 573.6,200.0 574.3,200.0 575.0,200.0 575.6,200.0 576.2,200.0 576.9,200.0 577.5,200.0 578.2,200.0 578.9,200.0 579.5,200.0 580.1,200.0 580.8,200.0 581.5,200.0 582.1,200.0 582.8,200.0 583.4,200.0 584.0,202.8 584.7,210.4 585.4,216.1 586.0,219.9 586.6,222.3 587.3,223.8 588.0,225.2 588.6,227.4 589.2,231.0 589.9,236.2 590.5,242.9 591.2,250.5 591.9,258.4 592.5,265.4 593.1,270.6 593.8,273.3 594.5,272.9 595.1,269.5 595.8,263.3 596.4,255.2 597.0,246.2 597.7,237.4 598.4,229.7 599.0,224.0 599.6,220.7 600.3,219.6 601.0,220.4 601.6,222.3 602.2,224.4 602.9,226.0 603.5,226.2 604.2,224.7 604.9,221.5 605.5,217.1 606.1,212.1 606.8,207.4 607.5,203.9 608.1,202.2 608.8,202.7 609.4,205.4 610.0,209.9 610.7,215.3 611.4,220.8 612.0,225.1 612.6,227.4 613.3,227.0 614.0,223.7 614.6,217.7 615.2,209.5 615.9,200.0 616.5,200.0 617.2,200.0 617.9,200.0 618.5,200.0 619.1,200.0 619.8,200.0 620.5,200.0 621.1,200.0 621.8,200.0 622.4,200.0 623.0,200.0 623.7,200.0 624.4,200.0 625.0,200.0 625.6,200.0 626.3,200.0 627.0,200.0 627.6,200.0 628.2,200.0 628.9,200.0 629.5,200.0 630.2,200.0 630.9,200.0 631.5,200.0 632.1,207.7 632.8,212.9 633.5,215.5 634.1,215.9 634.8,214.8 635.4,213.1 636.0,211.6 636.7,211.2 637.4,212.3 638.0,214.9 638.6,218.8 639.3,223.4 640.0,227.8 640.6,231.1 641.2,232.7 641.9,232.1 642.5,229.2 643.2,224.3 643.9,218.3 644.5,211.9 645.1,206.4 645.8,202.7 646.5,201.4 647.1,202.9 647.8,207.1 648.4,213.5 649.0,221.2 649.7,229.1 650.4,236.4 651.0,242.0 651.6,245.4 652.3,246.4 653.0,245.3 653.6,242.6 654.2,239.3 654.9,236.0 655.5,233.6 656.2,232.5 656.9,232.9 657.5,234.4 658.1,236.5 658.8,238.3 659.5,238.8 660.1,237.3 660.8,233.2 661.4,226.3 662.0,216.8 662.7,205.5 663.4,200.0 664.0,200.0 664.6,200.0 665.3,200.0 666.0,200.0 666.6,200.0 667.2,200.0 667.9,200.0 668.5,200.0 669.2,200.0 669.9,200.0 670.5,200.0 671.1,200.0 671.8,200.0 672.5,200.0 673.1,200.0 673.8,200.0 674.4,200.0 675.0,200.0 675.7,200.0 676.4,200.0 677.0,200.0 677.6,200.0 678.3,200.0 679.0,200.0 679.6,200.0 680.2,200.0 680.9,200.0 681.5,200.0 682.2,200.0 682.9,200.0 683.5,200.0 684.1,200.0 684.8,200.0 685.5,200.0 686.1,200.0 686.8,200.0 687.4,200.0 688.0,200.0 688.7,200.0 689.4,200.0 690.0,200.0 690.6,200.0 691.3,200.0 692.0,200.0 692.6,200.0 693.2,200.0 693.9,200.0 694.5,200.0 695.2,206.7 695.9,217.4 696.5,228.9 697.1,240.2 697.8,250.2 698.5,258.0 699.1,262.8 699.8,264.6 700.4,263.6 701.0,260.3 701.7,255.7 702.4,250.6 703.0,246.1 703.6,242.8 704.3,241.0 705.0,240.7 705.6,241.3 706.2,242.2 706.9,242.5 707.5,241.5 708.2,238.6 708.9,233.6 709.5,226.7 710.1,218.3 710.8,209.4 711.5,201.0 712.1,200.0 712.8,200.0 713.4,200.0 714.0,200.0 714.7,200.0 715.4,200.0 716.0,203.6 716.6,209.3 717.3,213.7 718.0,216.1 718.6,216.1 719.2,213.9 719.9,209.8 720.5,204.7 721.2,200.0 721.9,200.0 722.5,200.0 723.1,200.0 723.8,200.0 724.5,200.0 725.1,200.0 725.8,200.0 726.4,200.0 727.0,200.0 727.7,200.0 728.4,200.0 729.0,200.0 729.6,200.0 730.3,200.0 731.0,200.0 731.6,200.0 732.2,200.0 732.9,200.0 733.5,200.0 734.2,200.0 734.9,200.0 735.5,200.0 736.1,200.0 736.8,200.0 737.5,200.0 738.1,200.0 738.8,200.0 739.4,200.0 740.0,200.0 740.7,200.0 741.4,200.0 742.0,203.3 742.6,210.7 743.3,219.4 744.0,228.5 744.6,237.3 745.2,244.5 745.9,249.4 746.5,251.5 747.2,250.5 747.9,246.8 748.5,241.2 749.1,234.4 749.8,227.8 750.5,222.1 751.1,218.4 751.8,216.9 752.4,217.7 753.0,220.4 753.7,224.4 754.4,228.6 755.0,232.3 755.6,234.6 756.3,235.3 757.0,234.2 757.6,231.7 758.2,228.5 758.9,225.3 759.5,223.1 760.2,222.6 760.9,224.2 761.5,227.9 762.1,233.4 762.8,239.9 763.5,246.3 764.1,251.7 764.8,255.0 765.4,255.6 766.0,253.1 766.7,247.5 767.4,239.5 768.0,229.9 768.6,219.7 769.3,210.0 770.0,201.5 770.6,200.0 771.2,200.0 771.9,200.0 772.5,200.0 773.2,200.0 773.9,200.0 774.5,200.0 775.1,200.0 775.8,200.0 776.5,200.0 777.1,200.0 777.8,200.0 778.4,200.0 779.0,200.0 779.7,200.0 780.3,200.0 781.0,200.0 781.6,200.0 782.3,200.0 783.0,200.0 783.6,200.0 784.2,200.0 784.9,200.0 785.5,200.0 786.2,200.0 786.9,200.0 787.5,200.0 788.1,200.0 788.8,200.0 789.5,200.0 790.1,200.0 790.8,200.0 791.4,200.0 792.0,200.0 792.7,200.0 793.4,200.0 794.0,200.0 794.6,200.0 795.3,200.0 796.0,200.0 796.6,200.0 797.2,200.0 797.9,200.0 798.5,200.0 799.2,200.0 799.9,200.0 800.5,200.0 801.1,200.0 801.8,204.5 802.5,214.3 803.1,222.7 803.8,229.1 804.4,233.3 805.0,235.4 805.7,236.0 806.4,235.7 807.0,235.6 807.6,236.2 808.3,238.1 809.0,241.5 809.6,246.1 810.2,251.2 810.9,256.1 811.5,259.7 812.2,261.3 812.9,260.1 813.5,256.0 814.1,249.0 814.8,239.8 815.5,229.3 816.1,218.5 816.8,208.6 817.4,200.5 818.0,200.0 818.7,200.0 819.4,200.0 820.0,200.0 820.6,200.0 821.3,200.0 822.0,200.0 822.6,200.0 823.2,200.0 823.9,200.0 824.5,200.0 825.2,200.0 825.8,200.0 826.5,200.0 827.2,200.0 827.8,200.0 828.5,200.0 829.1,200.0 829.8,200.0 830.4,200.0 831.0,202.4 831.7,203.9 832.4,202.7 833.0,200.0 833.6,200.0 834.3,200.0 835.0,200.0 835.6,200.0 836.2,200.0 836.9,200.0 837.5,200.0 838.2,200.0 838.8,200.0 839.5,200.0 840.2,200.0 840.8,200.0 841.5,200.0 842.1,200.0 842.8,200.0 843.4,200.0 844.0,200.0 844.7,200.0 845.4,200.0 846.0,200.0 846.6,200.0 847.3,200.0 848.0,200.0 848.6,200.0 849.2,211.8 849.9,223.1 850.5,232.5 851.2,239.3 851.8,243.3 852.5,244.5 853.2,243.6 853.8,241.3 854.5,238.7 855.1,236.5 855.8,235.5 856.4,236.0 857.0,238.0 857.7,241.1 858.4,244.6 859.0,247.5 859.6,249.2 860.3,249.0 861.0,246.6 861.6,242.1 862.2,236.1 862.9,229.2 863.5,222.5 864.2,217.2 864.8,213.9 865.5,213.2 866.2,215.3 866.8,219.9 867.5,226.2 868.1,233.3 868.8,240.1 869.4,245.6 870.0,249.1 870.7,250.1 871.4,248.7 872.0,245.2 872.6,240.4 873.3,235.1 874.0,230.2 874.6,226.4 875.2,224.1 875.9,223.2 876.5,223.4 877.2,223.9 877.8,223.9 878.5,222.6 879.2,219.1 879.8,213.2 880.5,204.9 881.1,200.0 881.8,200.0 882.4,200.0 883.0,200.0 883.7,200.0 884.4,200.0 885.0,200.0 885.6,200.0 886.3,200.0 887.0,200.0 887.6,200.0 888.2,200.0 888.9,200.0 889.5,200.0 890.2,200.0 890.9,200.0 891.5,200.0 892.2,200.0 892.8,200.0 893.5,200.0 894.1,200.0 894.8,200.0 895.4,200.0 896.0,200.0 896.7,200.0 897.4,202.3 898.0,207.2 898.6,209.4 899.3,208.8 900.0,205.6 900.6,200.5 901.2,200.0 901.9,200.0 902.5,200.0 903.2,200.0 903.9,200.0 904.5,200.0 905.1,200.0 905.8,200.0 906.5,200.0 907.1,200.6 907.8,205.0 908.4,207.8 909.0,209.0 909.7,208.8 910.3,207.8 911.0,207.0 911.6,207.1 912.3,208.9 913.0,212.9 913.6,219.0 914.2,227.1 914.9,236.4 915.5,245.8 916.2,254.3 916.9,260.9 917.5,264.8 918.1,265.5 918.8,263.1 919.5,258.0 920.1,251.0 920.8,243.1 921.4,235.3 922.0,228.5 922.7,223.2 923.3,219.6 924.0,217.6 924.7,216.5 925.3,215.6 926.0,214.1 926.6,211.3 927.2,206.8 927.9,200.4 928.5,200.0 929.2,200.0 929.9,200.0 930.5,200.0 931.1,200.0 931.8,200.0 932.5,200.0 933.1,200.0 933.8,200.0 934.4,200.0 935.0,200.0 935.7,200.0 936.3,200.0 937.0,200.0 937.7,200.0 938.3,200.0 939.0,200.0 939.6,200.0 940.2,200.0 940.9,200.0 941.5,200.0 942.2,200.0 942.9,200.0 943.5,200.0 944.1,200.0 944.8,200.0 945.5,200.0 946.1,200.0 946.8,200.0 947.4,200.0 948.0,200.0 948.7,200.0 949.3,200.0 950.0,200.0 950.0,200.0" fill="rgba(89,111,161,0.22)" stroke="none"/>
+<polygon points="560.0,150.1 560.6,146.1 561.3,145.1 562.0,147.1 562.6,151.7 563.2,158.0 563.9,165.1 564.5,171.9 565.2,177.3 565.9,180.8 566.5,182.0 567.1,181.1 567.8,178.6 568.5,175.2 569.1,171.9 569.8,169.5 570.4,168.6 571.0,169.4 571.7,171.9 572.4,175.6 573.0,179.7 573.6,183.3 574.3,185.6 575.0,186.0 575.6,184.1 576.2,180.1 576.9,174.5 577.5,168.1 578.2,162.1 578.9,157.4 579.5,155.1 580.1,155.6 580.8,159.1 581.5,165.5 582.1,174.0 582.8,183.7 583.4,193.6 584.0,202.8 584.7,210.4 585.4,216.1 586.0,219.9 586.6,222.3 587.3,223.8 588.0,225.2 588.6,227.4 589.2,231.0 589.9,236.2 590.5,242.9 591.2,250.5 591.9,258.4 592.5,265.4 593.1,270.6 593.8,273.3 594.5,272.9 595.1,269.5 595.8,263.3 596.4,255.2 597.0,246.2 597.7,237.4 598.4,229.7 599.0,224.0 599.6,220.7 600.3,219.6 601.0,220.4 601.6,222.3 602.2,224.4 602.9,226.0 603.5,226.2 604.2,224.7 604.9,221.5 605.5,217.1 606.1,212.1 606.8,207.4 607.5,203.9 608.1,202.2 608.8,202.7 609.4,205.4 610.0,209.9 610.7,215.3 611.4,220.8 612.0,225.1 612.6,227.4 613.3,227.0 614.0,223.7 614.6,217.7 615.2,209.5 615.9,200.0 616.5,190.4 617.2,181.5 617.9,174.3 618.5,169.2 619.1,166.2 619.8,165.1 620.5,165.3 621.1,165.9 621.8,166.1 622.4,165.3 623.0,163.0 623.7,159.4 624.4,154.7 625.0,149.7 625.6,145.3 626.3,142.5 627.0,142.1 627.6,144.5 628.2,150.0 628.9,158.1 629.5,168.2 630.2,179.3 630.9,190.3 631.5,200.0 632.1,207.7 632.8,212.9 633.5,215.5 634.1,215.9 634.8,214.8 635.4,213.1 636.0,211.6 636.7,211.2 637.4,212.3 638.0,214.9 638.6,218.8 639.3,223.4 640.0,227.8 640.6,231.1 641.2,232.7 641.9,232.1 642.5,229.2 643.2,224.3 643.9,218.3 644.5,211.9 645.1,206.4 645.8,202.7 646.5,201.4 647.1,202.9 647.8,207.1 648.4,213.5 649.0,221.2 649.7,229.1 650.4,236.4 651.0,242.0 651.6,245.4 652.3,246.4 653.0,245.3 653.6,242.6 654.2,239.3 654.9,236.0 655.5,233.6 656.2,232.5 656.9,232.9 657.5,234.4 658.1,236.5 658.8,238.3 659.5,238.8 660.1,237.3 660.8,233.2 661.4,226.3 662.0,216.8 662.7,205.5 663.4,193.2 664.0,181.1 664.6,170.3 665.3,161.7 666.0,155.8 666.6,152.7 667.2,152.2 667.9,153.7 668.5,156.1 669.2,158.7 669.9,160.6 670.5,161.1 671.1,160.2 671.8,157.9 672.5,154.9 673.1,151.9 673.8,149.7 674.4,149.2 675.0,150.8 675.7,154.7 676.4,160.6 677.0,167.9 677.6,175.6 678.3,182.8 679.0,188.4 679.6,191.6 680.2,192.1 680.9,189.9 681.5,185.4 682.2,179.4 682.9,172.9 683.5,167.0 684.1,162.7 684.8,160.5 685.5,160.7 686.1,163.2 686.8,167.4 687.4,172.5 688.0,177.7 688.7,182.1 689.4,185.2 690.0,186.8 690.6,187.0 691.3,186.3 692.0,185.5 692.6,185.6 693.2,187.3 693.9,191.3 694.5,197.8 695.2,206.7 695.9,217.4 696.5,228.9 697.1,240.2 697.8,250.2 698.5,258.0 699.1,262.8 699.8,264.6 700.4,263.6 701.0,260.3 701.7,255.7 702.4,250.6 703.0,246.1 703.6,242.8 704.3,241.0 705.0,240.7 705.6,241.3 706.2,242.2 706.9,242.5 707.5,241.5 708.2,238.6 708.9,233.6 709.5,226.7 710.1,218.3 710.8,209.4 711.5,201.0 712.1,194.1 712.8,189.5 713.4,187.7 714.0,188.8 714.7,192.3 715.4,197.6 716.0,203.6 716.6,209.3 717.3,213.7 718.0,216.1 718.6,216.1 719.2,213.9 719.9,209.8 720.5,204.7 721.2,199.4 721.9,194.8 722.5,191.6 723.1,190.0 723.8,190.0 724.5,191.2 725.1,192.8 725.8,194.0 726.4,194.0 727.0,192.0 727.7,187.7 728.4,181.3 729.0,173.1 729.6,164.0 730.3,155.1 731.0,147.5 731.6,142.0 732.2,139.5 732.9,140.1 733.5,143.7 734.2,149.7 734.9,157.3 735.5,165.4 736.1,173.0 736.8,179.5 737.5,184.3 738.1,187.5 738.8,189.3 739.4,190.5 740.0,191.8 740.7,194.0 741.4,197.7 742.0,203.3 742.6,210.7 743.3,219.4 744.0,228.5 744.6,237.3 745.2,244.5 745.9,249.4 746.5,251.5 747.2,250.5 747.9,246.8 748.5,241.2 749.1,234.4 749.8,227.8 750.5,222.1 751.1,218.4 751.8,216.9 752.4,217.7 753.0,220.4 753.7,224.4 754.4,228.6 755.0,232.3 755.6,234.6 756.3,235.3 757.0,234.2 757.6,231.7 758.2,228.5 758.9,225.3 759.5,223.1 760.2,222.6 760.9,224.2 761.5,227.9 762.1,233.4 762.8,239.9 763.5,246.3 764.1,251.7 764.8,255.0 765.4,255.6 766.0,253.1 766.7,247.5 767.4,239.5 768.0,229.9 768.6,219.7 769.3,210.0 770.0,201.5 770.6,194.8 771.2,190.1 771.9,187.1 772.5,185.3 773.2,183.8 773.9,181.8 774.5,178.7 775.1,174.0 775.8,167.7 776.5,160.3 777.1,152.3 777.8,144.8 778.4,138.6 779.0,134.8 779.7,133.8 780.3,135.9 781.0,140.8 781.6,147.9 782.3,156.3 783.0,164.8 783.6,172.4 784.2,178.3 784.9,181.9 785.5,183.0 786.2,182.1 786.9,179.7 787.5,176.7 788.1,174.1 788.8,172.6 789.5,172.7 790.1,174.5 790.8,177.9 791.4,182.2 792.0,186.6 792.7,190.3 793.4,192.4 794.0,192.5 794.6,190.4 795.3,186.5 796.0,181.4 796.6,176.0 797.2,171.4 797.9,168.6 798.5,168.4 799.2,171.0 799.9,176.6 800.5,184.6 801.1,194.3 801.8,204.5 802.5,214.3 803.1,222.7 803.8,229.1 804.4,233.3 805.0,235.4 805.7,236.0 806.4,235.7 807.0,235.6 807.6,236.2 808.3,238.1 809.0,241.5 809.6,246.1 810.2,251.2 810.9,256.1 811.5,259.7 812.2,261.3 812.9,260.1 813.5,256.0 814.1,249.0 814.8,239.8 815.5,229.3 816.1,218.5 816.8,208.6 817.4,200.5 818.0,194.9 818.7,191.8 819.4,191.2 820.0,192.3 820.6,194.4 821.3,196.5 822.0,197.7 822.6,197.6 823.2,195.8 823.9,192.5 824.5,188.2 825.2,183.7 825.8,179.8 826.5,177.4 827.2,176.9 827.8,178.6 828.5,182.4 829.1,187.6 829.8,193.3 830.4,198.6 831.0,202.4 831.7,203.9 832.4,202.7 833.0,198.6 833.6,192.1 834.3,184.0 835.0,175.3 835.6,167.0 836.2,160.1 836.9,155.2 837.5,152.8 838.2,152.7 838.8,154.5 839.5,157.4 840.2,160.6 840.8,163.2 841.5,164.6 842.1,164.7 842.8,163.5 843.4,161.5 844.0,159.5 844.7,158.5 845.4,159.2 846.0,162.3 846.6,168.2 847.3,176.8 848.0,187.5 848.6,199.6 849.2,211.8 849.9,223.1 850.5,232.5 851.2,239.3 851.8,243.3 852.5,244.5 853.2,243.6 853.8,241.3 854.5,238.7 855.1,236.5 855.8,235.5 856.4,236.0 857.0,238.0 857.7,241.1 858.4,244.6 859.0,247.5 859.6,249.2 860.3,249.0 861.0,246.6 861.6,242.1 862.2,236.1 862.9,229.2 863.5,222.5 864.2,217.2 864.8,213.9 865.5,213.2 866.2,215.3 866.8,219.9 867.5,226.2 868.1,233.3 868.8,240.1 869.4,245.6 870.0,249.1 870.7,250.1 871.4,248.7 872.0,245.2 872.6,240.4 873.3,235.1 874.0,230.2 874.6,226.4 875.2,224.1 875.9,223.2 876.5,223.4 877.2,223.9 877.8,223.9 878.5,222.6 879.2,219.1 879.8,213.2 880.5,204.9 881.1,194.5 881.8,183.0 882.4,171.2 883.0,160.4 883.7,151.6 884.4,145.5 885.0,142.5 885.6,142.4 886.3,144.8 887.0,148.9 887.6,153.7 888.2,158.3 888.9,161.9 889.5,164.0 890.2,164.5 890.9,163.8 891.5,162.5 892.2,161.4 892.8,161.2 893.5,162.8 894.1,166.4 894.8,172.0 895.4,179.3 896.0,187.4 896.7,195.4 897.4,202.3 898.0,207.2 898.6,209.4 899.3,208.8 900.0,205.6 900.6,200.5 901.2,194.2 901.9,188.1 902.5,183.0 903.2,179.8 903.9,178.9 904.5,180.5 905.1,184.3 905.8,189.5 906.5,195.2 907.1,200.6 907.8,205.0 908.4,207.8 909.0,209.0 909.7,208.8 910.3,207.8 911.0,207.0 911.6,207.1 912.3,208.9 913.0,212.9 913.6,219.0 914.2,227.1 914.9,236.4 915.5,245.8 916.2,254.3 916.9,260.9 917.5,264.8 918.1,265.5 918.8,263.1 919.5,258.0 920.1,251.0 920.8,243.1 921.4,235.3 922.0,228.5 922.7,223.2 923.3,219.6 924.0,217.6 924.7,216.5 925.3,215.6 926.0,214.1 926.6,211.3 927.2,206.8 927.9,200.4 928.5,192.4 929.2,183.7 929.9,175.0 930.5,167.3 931.1,161.7 931.8,158.7 932.5,158.7 933.1,161.5 933.8,166.5 934.4,172.8 935.0,179.4 935.7,185.2 936.3,189.3 937.0,191.1 937.7,190.5 938.3,187.7 939.0,183.4 939.6,178.4 940.2,173.6 940.9,169.9 941.5,167.7 942.2,167.3 942.9,168.5 943.5,170.8 944.1,173.3 944.8,175.2 945.5,175.8 946.1,174.4 946.8,171.0 947.4,165.6 948.0,159.1 948.7,152.3 949.3,146.2 950.0,141.9 950.0,330.0 560.0,330.0" fill="#f3f6fa" stroke="none" opacity="0.55"/>
+<polyline points="560.0,150.1 560.6,146.1 561.3,145.1 562.0,147.1 562.6,151.7 563.2,158.0 563.9,165.1 564.5,171.9 565.2,177.3 565.9,180.8 566.5,182.0 567.1,181.1 567.8,178.6 568.5,175.2 569.1,171.9 569.8,169.5 570.4,168.6 571.0,169.4 571.7,171.9 572.4,175.6 573.0,179.7 573.6,183.3 574.3,185.6 575.0,186.0 575.6,184.1 576.2,180.1 576.9,174.5 577.5,168.1 578.2,162.1 578.9,157.4 579.5,155.1 580.1,155.6 580.8,159.1 581.5,165.5 582.1,174.0 582.8,183.7 583.4,193.6 584.0,202.8 584.7,210.4 585.4,216.1 586.0,219.9 586.6,222.3 587.3,223.8 588.0,225.2 588.6,227.4 589.2,231.0 589.9,236.2 590.5,242.9 591.2,250.5 591.9,258.4 592.5,265.4 593.1,270.6 593.8,273.3 594.5,272.9 595.1,269.5 595.8,263.3 596.4,255.2 597.0,246.2 597.7,237.4 598.4,229.7 599.0,224.0 599.6,220.7 600.3,219.6 601.0,220.4 601.6,222.3 602.2,224.4 602.9,226.0 603.5,226.2 604.2,224.7 604.9,221.5 605.5,217.1 606.1,212.1 606.8,207.4 607.5,203.9 608.1,202.2 608.8,202.7 609.4,205.4 610.0,209.9 610.7,215.3 611.4,220.8 612.0,225.1 612.6,227.4 613.3,227.0 614.0,223.7 614.6,217.7 615.2,209.5 615.9,200.0 616.5,190.4 617.2,181.5 617.9,174.3 618.5,169.2 619.1,166.2 619.8,165.1 620.5,165.3 621.1,165.9 621.8,166.1 622.4,165.3 623.0,163.0 623.7,159.4 624.4,154.7 625.0,149.7 625.6,145.3 626.3,142.5 627.0,142.1 627.6,144.5 628.2,150.0 628.9,158.1 629.5,168.2 630.2,179.3 630.9,190.3 631.5,200.0 632.1,207.7 632.8,212.9 633.5,215.5 634.1,215.9 634.8,214.8 635.4,213.1 636.0,211.6 636.7,211.2 637.4,212.3 638.0,214.9 638.6,218.8 639.3,223.4 640.0,227.8 640.6,231.1 641.2,232.7 641.9,232.1 642.5,229.2 643.2,224.3 643.9,218.3 644.5,211.9 645.1,206.4 645.8,202.7 646.5,201.4 647.1,202.9 647.8,207.1 648.4,213.5 649.0,221.2 649.7,229.1 650.4,236.4 651.0,242.0 651.6,245.4 652.3,246.4 653.0,245.3 653.6,242.6 654.2,239.3 654.9,236.0 655.5,233.6 656.2,232.5 656.9,232.9 657.5,234.4 658.1,236.5 658.8,238.3 659.5,238.8 660.1,237.3 660.8,233.2 661.4,226.3 662.0,216.8 662.7,205.5 663.4,193.2 664.0,181.1 664.6,170.3 665.3,161.7 666.0,155.8 666.6,152.7 667.2,152.2 667.9,153.7 668.5,156.1 669.2,158.7 669.9,160.6 670.5,161.1 671.1,160.2 671.8,157.9 672.5,154.9 673.1,151.9 673.8,149.7 674.4,149.2 675.0,150.8 675.7,154.7 676.4,160.6 677.0,167.9 677.6,175.6 678.3,182.8 679.0,188.4 679.6,191.6 680.2,192.1 680.9,189.9 681.5,185.4 682.2,179.4 682.9,172.9 683.5,167.0 684.1,162.7 684.8,160.5 685.5,160.7 686.1,163.2 686.8,167.4 687.4,172.5 688.0,177.7 688.7,182.1 689.4,185.2 690.0,186.8 690.6,187.0 691.3,186.3 692.0,185.5 692.6,185.6 693.2,187.3 693.9,191.3 694.5,197.8 695.2,206.7 695.9,217.4 696.5,228.9 697.1,240.2 697.8,250.2 698.5,258.0 699.1,262.8 699.8,264.6 700.4,263.6 701.0,260.3 701.7,255.7 702.4,250.6 703.0,246.1 703.6,242.8 704.3,241.0 705.0,240.7 705.6,241.3 706.2,242.2 706.9,242.5 707.5,241.5 708.2,238.6 708.9,233.6 709.5,226.7 710.1,218.3 710.8,209.4 711.5,201.0 712.1,194.1 712.8,189.5 713.4,187.7 714.0,188.8 714.7,192.3 715.4,197.6 716.0,203.6 716.6,209.3 717.3,213.7 718.0,216.1 718.6,216.1 719.2,213.9 719.9,209.8 720.5,204.7 721.2,199.4 721.9,194.8 722.5,191.6 723.1,190.0 723.8,190.0 724.5,191.2 725.1,192.8 725.8,194.0 726.4,194.0 727.0,192.0 727.7,187.7 728.4,181.3 729.0,173.1 729.6,164.0 730.3,155.1 731.0,147.5 731.6,142.0 732.2,139.5 732.9,140.1 733.5,143.7 734.2,149.7 734.9,157.3 735.5,165.4 736.1,173.0 736.8,179.5 737.5,184.3 738.1,187.5 738.8,189.3 739.4,190.5 740.0,191.8 740.7,194.0 741.4,197.7 742.0,203.3 742.6,210.7 743.3,219.4 744.0,228.5 744.6,237.3 745.2,244.5 745.9,249.4 746.5,251.5 747.2,250.5 747.9,246.8 748.5,241.2 749.1,234.4 749.8,227.8 750.5,222.1 751.1,218.4 751.8,216.9 752.4,217.7 753.0,220.4 753.7,224.4 754.4,228.6 755.0,232.3 755.6,234.6 756.3,235.3 757.0,234.2 757.6,231.7 758.2,228.5 758.9,225.3 759.5,223.1 760.2,222.6 760.9,224.2 761.5,227.9 762.1,233.4 762.8,239.9 763.5,246.3 764.1,251.7 764.8,255.0 765.4,255.6 766.0,253.1 766.7,247.5 767.4,239.5 768.0,229.9 768.6,219.7 769.3,210.0 770.0,201.5 770.6,194.8 771.2,190.1 771.9,187.1 772.5,185.3 773.2,183.8 773.9,181.8 774.5,178.7 775.1,174.0 775.8,167.7 776.5,160.3 777.1,152.3 777.8,144.8 778.4,138.6 779.0,134.8 779.7,133.8 780.3,135.9 781.0,140.8 781.6,147.9 782.3,156.3 783.0,164.8 783.6,172.4 784.2,178.3 784.9,181.9 785.5,183.0 786.2,182.1 786.9,179.7 787.5,176.7 788.1,174.1 788.8,172.6 789.5,172.7 790.1,174.5 790.8,177.9 791.4,182.2 792.0,186.6 792.7,190.3 793.4,192.4 794.0,192.5 794.6,190.4 795.3,186.5 796.0,181.4 796.6,176.0 797.2,171.4 797.9,168.6 798.5,168.4 799.2,171.0 799.9,176.6 800.5,184.6 801.1,194.3 801.8,204.5 802.5,214.3 803.1,222.7 803.8,229.1 804.4,233.3 805.0,235.4 805.7,236.0 806.4,235.7 807.0,235.6 807.6,236.2 808.3,238.1 809.0,241.5 809.6,246.1 810.2,251.2 810.9,256.1 811.5,259.7 812.2,261.3 812.9,260.1 813.5,256.0 814.1,249.0 814.8,239.8 815.5,229.3 816.1,218.5 816.8,208.6 817.4,200.5 818.0,194.9 818.7,191.8 819.4,191.2 820.0,192.3 820.6,194.4 821.3,196.5 822.0,197.7 822.6,197.6 823.2,195.8 823.9,192.5 824.5,188.2 825.2,183.7 825.8,179.8 826.5,177.4 827.2,176.9 827.8,178.6 828.5,182.4 829.1,187.6 829.8,193.3 830.4,198.6 831.0,202.4 831.7,203.9 832.4,202.7 833.0,198.6 833.6,192.1 834.3,184.0 835.0,175.3 835.6,167.0 836.2,160.1 836.9,155.2 837.5,152.8 838.2,152.7 838.8,154.5 839.5,157.4 840.2,160.6 840.8,163.2 841.5,164.6 842.1,164.7 842.8,163.5 843.4,161.5 844.0,159.5 844.7,158.5 845.4,159.2 846.0,162.3 846.6,168.2 847.3,176.8 848.0,187.5 848.6,199.6 849.2,211.8 849.9,223.1 850.5,232.5 851.2,239.3 851.8,243.3 852.5,244.5 853.2,243.6 853.8,241.3 854.5,238.7 855.1,236.5 855.8,235.5 856.4,236.0 857.0,238.0 857.7,241.1 858.4,244.6 859.0,247.5 859.6,249.2 860.3,249.0 861.0,246.6 861.6,242.1 862.2,236.1 862.9,229.2 863.5,222.5 864.2,217.2 864.8,213.9 865.5,213.2 866.2,215.3 866.8,219.9 867.5,226.2 868.1,233.3 868.8,240.1 869.4,245.6 870.0,249.1 870.7,250.1 871.4,248.7 872.0,245.2 872.6,240.4 873.3,235.1 874.0,230.2 874.6,226.4 875.2,224.1 875.9,223.2 876.5,223.4 877.2,223.9 877.8,223.9 878.5,222.6 879.2,219.1 879.8,213.2 880.5,204.9 881.1,194.5 881.8,183.0 882.4,171.2 883.0,160.4 883.7,151.6 884.4,145.5 885.0,142.5 885.6,142.4 886.3,144.8 887.0,148.9 887.6,153.7 888.2,158.3 888.9,161.9 889.5,164.0 890.2,164.5 890.9,163.8 891.5,162.5 892.2,161.4 892.8,161.2 893.5,162.8 894.1,166.4 894.8,172.0 895.4,179.3 896.0,187.4 896.7,195.4 897.4,202.3 898.0,207.2 898.6,209.4 899.3,208.8 900.0,205.6 900.6,200.5 901.2,194.2 901.9,188.1 902.5,183.0 903.2,179.8 903.9,178.9 904.5,180.5 905.1,184.3 905.8,189.5 906.5,195.2 907.1,200.6 907.8,205.0 908.4,207.8 909.0,209.0 909.7,208.8 910.3,207.8 911.0,207.0 911.6,207.1 912.3,208.9 913.0,212.9 913.6,219.0 914.2,227.1 914.9,236.4 915.5,245.8 916.2,254.3 916.9,260.9 917.5,264.8 918.1,265.5 918.8,263.1 919.5,258.0 920.1,251.0 920.8,243.1 921.4,235.3 922.0,228.5 922.7,223.2 923.3,219.6 924.0,217.6 924.7,216.5 925.3,215.6 926.0,214.1 926.6,211.3 927.2,206.8 927.9,200.4 928.5,192.4 929.2,183.7 929.9,175.0 930.5,167.3 931.1,161.7 931.8,158.7 932.5,158.7 933.1,161.5 933.8,166.5 934.4,172.8 935.0,179.4 935.7,185.2 936.3,189.3 937.0,191.1 937.7,190.5 938.3,187.7 939.0,183.4 939.6,178.4 940.2,173.6 940.9,169.9 941.5,167.7 942.2,167.3 942.9,168.5 943.5,170.8 944.1,173.3 944.8,175.2 945.5,175.8 946.1,174.4 946.8,171.0 947.4,165.6 948.0,159.1 948.7,152.3 949.3,146.2 950.0,141.9" fill="none" stroke="#161a22" stroke-width="2.6" stroke-linejoin="round" />
+<line x1="550.0" y1="200.0" x2="960.0" y2="200.0" stroke="#596fa1" stroke-width="1.6" stroke-dasharray="18 4 2 4"/>
+<text x="946" y="116" font-size="15" fill="#596fa1" text-anchor="end" font-weight="700">평균선</text>
+<line x1="920.0" y1="122.0" x2="936.0" y2="196.0" stroke="#596fa1" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="739.7" y1="72.0" x2="779.7" y2="130.8" stroke="#596fa1" stroke-width="1.6" marker-end="url(#ds1f1b)"/>
+<line x1="739.7" y1="72.0" x2="699.7" y2="72.0" stroke="#596fa1" stroke-width="1.6" />
+<text x="719.7" y="66.0" font-size="15" fill="#596fa1" text-anchor="middle" font-weight="400">산</text>
+<line x1="633.8" y1="318.0" x2="593.8" y2="276.3" stroke="#596fa1" stroke-width="1.6" marker-end="url(#ds1f1b)"/>
+<line x1="633.8" y1="318.0" x2="673.8" y2="318.0" stroke="#596fa1" stroke-width="1.6" />
+<text x="653.8" y="312.0" font-size="15" fill="#596fa1" text-anchor="middle" font-weight="400">골</text>
+<text x="500.0" y="380.0" font-size="15" fill="#6b7684" text-anchor="middle" font-weight="400">크게 늘려 본 면 — 높이는 가로보다 훨씬 크게 늘려 그렸습니다</text>
+<text x="500.0" y="406.0" font-size="15" fill="#161a22" text-anchor="middle" font-weight="400">파랗게 칠한 높이(평균선에서 벗어난 만큼)를 고르게 평균 낸 값이 Ra입니다</text>
+</svg><figcaption>직접 그린 그림 · 깎은 면 한 곳을 크게 늘려 본 모습입니다. 높이 차이가 아주 작아서 높이는 가로보다 훨씬 크게 늘려 그렸습니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>평균선</b> — 오르내리는 면 모양의 한가운데를 지나는 선입니다. 평균선 위로 튀어나온 부분과 아래로 들어간 부분의 넓이가 같아지는 자리에 긋습니다.</li>
+<li><b>Ra(산술 평균 거칠기)</b> — 평균선에서 위아래로 벗어난 높이를 위아래 구분 없이 크기만 모아, 더해서 개수로 나눈 값입니다. 그림에서 파랗게 칠한 부분의 평균 높이로 생각하면 됩니다. 도면에 가장 많이 쓰는 값입니다.</li>
+<li><b>단위는 μm(마이크로미터)</b> — 1 μm는 1000분의 1 mm입니다. 「Ra 3.2」는 평균 높이가 3.2 μm, 곧 0.0032 mm라는 뜻입니다. 머리카락 굵기(약 0.05~0.1 mm)의 15분의 1에서 30분의 1 정도입니다.</li>
+</ul>
+<p class="pd-p">면이 거칠면 맞닿는 부품이 덜 밀착되고, 미끄러지는 부분은 빨리 닳습니다. 반대로 필요 없이 매끈하게 만들면 가공 시간이 길어집니다. 그래서 설계하는 사람은 면마다 쓰임새에 맞는 거칠기를 정해 도면에 적습니다. 깎는 방법은 <a href="../stories/milling-router-history.html">「밀링과 루터(엔드밀)의 역사」</a>에서, 아주 평평하고 매끈한 면이 필요한 정반 이야기는 <a href="../stories/surface-plate-history.html">「정반의 역사」</a>에서 함께 읽어 보실 수 있습니다.</p>
+</div>
+
+<div class="sec" id="sRa">
+<div class="eyebrow">Ra 값 읽기</div>
+<div class="h2">값이 작을수록 매끈한 면입니다</div>
+<p class="pd-p">도면에 적는 Ra 값은 아무 숫자나 쓰지 않고, 대략 두 배씩 커지는 정해진 값 가운데에서 고릅니다.</p>
+<table class="pd-t">
+<thead><tr><th>Ra 값(μm)</th><th>대략 어떤 면인가</th></tr></thead>
+<tbody>
+<tr><td>25 · 12.5</td><td>톱으로 자른 면이나 거칠게 깎은 면. 맞닿지 않는 면에 사용합니다.</td></tr>
+<tr><td>6.3 · 3.2</td><td>선반·밀링으로 보통 깎은 면. 기계 부품에서 가장 흔히 보는 값입니다.</td></tr>
+<tr><td>1.6 · 0.8 · 0.4</td><td>정밀하게 깎거나 연삭(숫돌로 갈아 내는 가공)한 면. 끼워 맞추는 면, 미끄러지는 면에 사용합니다.</td></tr>
+<tr><td>0.2 · 0.1 · 0.05 · 0.025</td><td>래핑(고운 가루로 문질러 다듬는 가공)이나 연마(아주 곱게 갈아 광을 내는 가공)로 다듬은 아주 매끈한 면</td></tr>
+</tbody></table>
+<ul class="pd-note">
+<li><b>적힌 값은 위쪽 기준입니다</b> — 「Ra 3.2」는 「이 면은 Ra 3.2보다 거칠면 안 된다」는 뜻입니다. 더 매끈하게 나온 것은 괜찮습니다. 검사할 때는 여러 곳을 재는데, 잰 값 가운데 16 %까지는 기준을 넘어도 합격으로 보는 것이 기본 규칙입니다. 한 곳도 넘으면 안 될 때는 「Ra max 3.2」처럼 max를 붙입니다.</li>
+<li><b>오른쪽 칸은 대략 맞는 가공입니다</b> — 같은 밀링이라도 공구·재료·이송 속도(공구가 면을 따라 나아가는 속도)에 따라 거칠기가 크게 달라집니다. 오른쪽 칸은 「이 정도 값이면 보통 이런 가공으로 만든다」는 감을 잡기 위한 것입니다.</li>
+<li><b>Rz 같은 다른 값도 있습니다</b> — 가장 높은 산과 가장 깊은 골의 차이를 보는 Rz 같은 값도 있지만, 처음에는 Ra 하나만 알아도 대부분의 도면을 읽을 수 있습니다.</li>
+</ul>
+</div>
+
+<div class="sec" id="sSym">
+<div class="eyebrow">기호 세 가지</div>
+<div class="h2">기본 기호, 가로막대가 있는 기호, 동그라미가 있는 기호</div>
+<p class="pd-p">표면 거칠기 기호는 길이가 다른 두 선을 V자로 벌린 모양입니다. 뾰족한 끝이 면에 닿고, 두 선은 면에서 약 60도씩 벌어집니다. 여기에 무엇이 더 붙느냐에 따라 뜻이 세 가지로 나뉩니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 380" role="img" aria-label="표면 거칠기 기호 세 가지. 왼쪽은 길이가 다른 두 선으로 된 기본 기호, 가운데는 짧은 선 끝에서 긴 선까지 가로막대로 막은 기호, 오른쪽은 V 안에 동그라미를 넣은 기호다. 기호의 뾰족한 끝이 빗금 친 면에 닿아 있다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="ds1f2" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="ds1f2b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker><pattern id="ds1f2h1" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f2h2" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f2h3" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f2h4" patternUnits="userSpaceOnUse" width="5.5" height="5.5" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5.5" stroke="#161a22" stroke-width="1.3"/></pattern></defs><rect width="1000" height="380" fill="#fff"/>
+<line x1="50.0" y1="210.0" x2="290.0" y2="210.0" stroke="#161a22" stroke-width="3.2" />
+<rect x="50" y="210" width="240" height="22" fill="url(#ds1f2h1)" stroke="none"/>
+<g transform="translate(170.0 210.0) rotate(0)"><polyline points="-27.7,-48.0 0,0 58.9,-102.0" fill="none" stroke="#161a22" stroke-width="3.0" stroke-linejoin="round"/></g>
+<text x="170" y="278" font-size="19" fill="#161a22" text-anchor="middle" font-weight="800">기본 기호</text>
+<text x="170" y="310" font-size="16" fill="#6b7684" text-anchor="middle" font-weight="400">어떤 방법으로 만들든</text>
+<text x="170" y="336" font-size="16" fill="#6b7684" text-anchor="middle" font-weight="400">상관없는 면</text>
+<line x1="380.0" y1="210.0" x2="620.0" y2="210.0" stroke="#161a22" stroke-width="3.2" />
+<rect x="380" y="210" width="240" height="22" fill="url(#ds1f2h1)" stroke="none"/>
+<g transform="translate(500.0 210.0) rotate(0)"><polyline points="-27.7,-48.0 0,0 58.9,-102.0" fill="none" stroke="#161a22" stroke-width="3.0" stroke-linejoin="round"/><line x1="-27.7" y1="-48.0" x2="27.7" y2="-48.0" stroke="#161a22" stroke-width="3.0" /></g>
+<text x="500" y="278" font-size="19" fill="#161a22" text-anchor="middle" font-weight="800">가로막대가 있는 기호</text>
+<text x="500" y="310" font-size="16" fill="#6b7684" text-anchor="middle" font-weight="400">깎아서(제거 가공으로)</text>
+<text x="500" y="336" font-size="16" fill="#6b7684" text-anchor="middle" font-weight="400">만드는 면</text>
+<line x1="710.0" y1="210.0" x2="950.0" y2="210.0" stroke="#161a22" stroke-width="3.2" />
+<rect x="710" y="210" width="240" height="22" fill="url(#ds1f2h1)" stroke="none"/>
+<g transform="translate(830.0 210.0) rotate(0)"><polyline points="-27.7,-48.0 0,0 58.9,-102.0" fill="none" stroke="#161a22" stroke-width="3.0" stroke-linejoin="round"/><circle cx="0" cy="-32.0" r="16.0" fill="none" stroke="#161a22" stroke-width="3.0"/></g>
+<text x="830" y="278" font-size="19" fill="#161a22" text-anchor="middle" font-weight="800">동그라미가 있는 기호</text>
+<text x="830" y="310" font-size="16" fill="#6b7684" text-anchor="middle" font-weight="400">깎지 않고 받은 그대로</text>
+<text x="830" y="336" font-size="16" fill="#6b7684" text-anchor="middle" font-weight="400">두는 면(압출·주조 등)</text>
+<circle cx="438.28718707889794" cy="149" r="15" fill="#596fa1"/><text x="438.28718707889794" y="155" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">1</text>
+<line x1="452.3" y1="150.0" x2="476.3" y2="164.0" stroke="#596fa1" stroke-width="1.4" stroke-dasharray="3 3"/>
+<circle cx="900" cy="149" r="15" fill="#596fa1"/><text x="900" y="155" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">2</text>
+<line x1="886.0" y1="150.0" x2="844.0" y2="178.0" stroke="#596fa1" stroke-width="1.4" stroke-dasharray="3 3"/>
+</svg><figcaption>직접 그린 그림 · 표면 거칠기 기호 세 가지입니다. 빗금은 재료 쪽을 나타냅니다. 파란 번호는 아래 설명의 번호와 같습니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>기본 기호</b> — 두 선만 있는 기호입니다. 값과 함께 사용하면 「만드는 방법은 상관없다」는 뜻입니다. 기본 기호만 홀로 붙이면 뜻이 없어서, 값과 함께 사용하거나 뒤의 「한꺼번에 적기」처럼 괄호 안에 넣어 사용합니다.</li>
+<li><b>1. 가로막대가 있는 기호</b> — 짧은 선 끝에서 긴 선까지 짧은 가로막대를 그어 V 안을 막은 기호입니다. 그 면을 깎거나 갈아서, 곧 재료를 덜어 내는 가공으로 만들라는 뜻입니다. 기계 부품 도면에서 가장 많이 보는 기호입니다.</li>
+<li><b>2. 동그라미가 있는 기호</b> — V 안에 동그라미를 넣은 기호입니다. 그 면은 깎지 말고 받은 그대로 두라는 뜻입니다. 알루미늄 압출재(틀로 밀어 뽑아 만든 재료)의 면이나 주물(녹인 쇠를 틀에 부어 만든 부품)의 면처럼, 처음 만든 상태를 그대로 쓰는 면에 붙입니다.</li>
+</ul>
+<p class="pd-p">창호 프레임 같은 알루미늄 압출재는 밀어 뽑아 만든 면이 비교적 매끈해서, 자르고 구멍을 내는 곳 말고는 깎지 않는 면이 많습니다. 이런 면을 실수로 깎지 않도록 동그라미 기호를 붙여 둡니다.</p>
+</div>
+
+<div class="sec" id="sPos">
+<div class="eyebrow">기호 둘레에 적는 것</div>
+<div class="h2">값은 긴 가로선 아래, 가공 방법은 위, 결 방향은 오른쪽 아래</div>
+<p class="pd-p">값을 적을 때는 긴 선 끝에서 오른쪽으로 긴 가로선을 이어 긋고, 그 둘레의 정해진 자리에 글자를 적습니다. 앞의 짧은 가로막대와는 다른 선입니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 390" role="img" aria-label="완전한 표면 거칠기 기호. 가로막대가 있는 기호의 긴 선 끝에서 오른쪽으로 긴 가로선이 이어지고, 그 아래에 Ra 3.2, 위에 밀링, V 오른쪽 아래에 결 방향 기호 = 가 적혀 있다. 파란 번호 1은 값, 2는 가공 방법, 3은 결 방향이다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="ds1f3" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="ds1f3b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker><pattern id="ds1f3h1" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f3h2" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f3h3" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f3h4" patternUnits="userSpaceOnUse" width="5.5" height="5.5" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5.5" stroke="#161a22" stroke-width="1.3"/></pattern></defs><rect width="1000" height="390" fill="#fff"/>
+<line x1="100.0" y1="300.0" x2="590.0" y2="300.0" stroke="#161a22" stroke-width="3.2" />
+<rect x="100" y="300" width="490" height="26" fill="url(#ds1f3h1)" stroke="none"/>
+<g transform="translate(330.0 300.0) rotate(0)"><polyline points="-37.0,-64.0 0,0 78.5,-136.0" fill="none" stroke="#161a22" stroke-width="3.2" stroke-linejoin="round"/><line x1="-37.0" y1="-64.0" x2="37.0" y2="-64.0" stroke="#161a22" stroke-width="3.2" /><line x1="78.5" y1="-136.0" x2="278.5" y2="-136.0" stroke="#161a22" stroke-width="3.2" /><text x="83.5" y="-99.0" font-size="34" fill="#161a22" text-anchor="start" font-weight="400">Ra 3.2</text><text x="83.5" y="-142.0" font-size="34" fill="#161a22" text-anchor="start" font-weight="400">밀링</text><text x="44.0" y="-15.3" font-size="34" fill="#161a22" text-anchor="start" font-weight="400">=</text></g>
+<circle cx="658.5196366097891" cy="196.0" r="15" fill="#596fa1"/><text x="658.5196366097891" y="202.0" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">1</text>
+<line x1="644.5" y1="196.0" x2="548.5" y2="196.0" stroke="#596fa1" stroke-width="1.4" stroke-dasharray="3 3"/>
+<circle cx="658.5196366097891" cy="136.0" r="15" fill="#596fa1"/><text x="658.5196366097891" y="142.0" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">2</text>
+<line x1="644.5" y1="136.0" x2="498.5" y2="136.0" stroke="#596fa1" stroke-width="1.4" stroke-dasharray="3 3"/>
+<circle cx="456.9504172281361" cy="281" r="15" fill="#596fa1"/><text x="456.9504172281361" y="287" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">3</text>
+<line x1="443.0" y1="282.0" x2="407.0" y2="282.0" stroke="#596fa1" stroke-width="1.4" stroke-dasharray="3 3"/>
+<text x="500.0" y="372.0" font-size="15" fill="#6b7684" text-anchor="middle" font-weight="400">기호는 가는 실선으로 그립니다. 뾰족한 끝이 면에 닿고, 기호는 재료 바깥쪽에 섭니다</text>
+</svg><figcaption>직접 그린 그림 · 「밀링으로 깎아서 Ra 3.2 이하로, 공구 자국은 면의 선과 나란하게」라는 뜻의 기호입니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>1. 값 — 긴 가로선 아래</b> — 「Ra 3.2」처럼 값의 이름과 숫자를 띄워 적습니다. 꼭 적어야 하는 것은 이것 하나입니다.</li>
+<li><b>2. 가공 방법 — 긴 가로선 위</b> — 「밀링」, 「연삭」처럼 그 면을 만드는 방법을 정해야 할 때만 적습니다.</li>
+<li><b>3. 결 방향 — V 오른쪽 아래</b> — 공구가 지나간 자국, 곧 결이 어느 방향으로 나야 하는지 정해야 할 때만 기호로 적습니다.</li>
+</ul>
+<p class="pd-p">결 방향 기호는 일곱 가지입니다. 「면을 나타내는 선」은 기호를 붙인 그림에서 그 면을 그린 선을 말합니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 372" role="img" aria-label="결 방향 기호 일곱 가지와 공구 자국 모양. 등호는 면의 선과 나란한 줄, 직각 기호는 직각인 줄, X는 비스듬히 엇갈린 줄, M은 여러 방향, C는 동심원, R은 가운데에서 퍼지는 줄, P는 점 모양이다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="ds1f4" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="ds1f4b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker><pattern id="ds1f4h1" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f4h2" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f4h3" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f4h4" patternUnits="userSpaceOnUse" width="5.5" height="5.5" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5.5" stroke="#161a22" stroke-width="1.3"/></pattern></defs><rect width="1000" height="372" fill="#fff"/>
+<rect x="30" y="84" width="100" height="100" fill="#fff" stroke="#6b7684" stroke-width="1.4"/>
+<line x1="36.0" y1="96.5" x2="124.0" y2="96.5" stroke="#161a22" stroke-width="1.3" />
+<line x1="36.0" y1="109.0" x2="124.0" y2="109.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="36.0" y1="121.5" x2="124.0" y2="121.5" stroke="#161a22" stroke-width="1.3" />
+<line x1="36.0" y1="134.0" x2="124.0" y2="134.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="36.0" y1="146.5" x2="124.0" y2="146.5" stroke="#161a22" stroke-width="1.3" />
+<line x1="36.0" y1="159.0" x2="124.0" y2="159.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="36.0" y1="171.5" x2="124.0" y2="171.5" stroke="#161a22" stroke-width="1.3" />
+<line x1="30.0" y1="184.0" x2="130.0" y2="184.0" stroke="#161a22" stroke-width="3.2" />
+<text x="80.0" y="60" font-size="28" fill="#161a22" text-anchor="middle" font-weight="800">=</text>
+<line x1="32.0" y1="262.0" x2="136.0" y2="262.0" stroke="#161a22" stroke-width="3.2" />
+<g transform="translate(58.0 262.0) rotate(0)"><polyline points="-11.5,-20.0 0,0 24.5,-42.5" fill="none" stroke="#161a22" stroke-width="1.7" stroke-linejoin="round"/><line x1="-11.5" y1="-20.0" x2="11.5" y2="-20.0" stroke="#161a22" stroke-width="1.7" /><text x="18.5" y="-8.1" font-size="18" fill="#161a22" text-anchor="start" font-weight="400">=</text></g>
+<text x="80.0" y="296" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">면을 나타내는</text>
+<text x="80.0" y="316" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">선과 나란함</text>
+<rect x="168" y="84" width="100" height="100" fill="#fff" stroke="#6b7684" stroke-width="1.4"/>
+<line x1="180.5" y1="90.0" x2="180.5" y2="178.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="193.0" y1="90.0" x2="193.0" y2="178.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="205.5" y1="90.0" x2="205.5" y2="178.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="218.0" y1="90.0" x2="218.0" y2="178.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="230.5" y1="90.0" x2="230.5" y2="178.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="243.0" y1="90.0" x2="243.0" y2="178.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="255.5" y1="90.0" x2="255.5" y2="178.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="168.0" y1="184.0" x2="268.0" y2="184.0" stroke="#161a22" stroke-width="3.2" />
+<text x="218.0" y="60" font-size="28" fill="#161a22" text-anchor="middle" font-weight="800">⊥</text>
+<line x1="170.0" y1="262.0" x2="274.0" y2="262.0" stroke="#161a22" stroke-width="3.2" />
+<g transform="translate(196.0 262.0) rotate(0)"><polyline points="-11.5,-20.0 0,0 24.5,-42.5" fill="none" stroke="#161a22" stroke-width="1.7" stroke-linejoin="round"/><line x1="-11.5" y1="-20.0" x2="11.5" y2="-20.0" stroke="#161a22" stroke-width="1.7" /><text x="18.5" y="-8.1" font-size="18" fill="#161a22" text-anchor="start" font-weight="400">⊥</text></g>
+<text x="218.0" y="296" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">면을 나타내는</text>
+<text x="218.0" y="316" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">선과 직각</text>
+<rect x="306" y="84" width="100" height="100" fill="#fff" stroke="#6b7684" stroke-width="1.4"/>
+<clipPath id="cp306"><rect x="309" y="87" width="94" height="94"/></clipPath>
+<g clip-path="url(#cp306)"><line x1="206.0" y1="84.0" x2="306.0" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="306.0" y1="84.0" x2="206.0" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="220.3" y1="84.0" x2="320.3" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="320.3" y1="84.0" x2="220.3" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="234.6" y1="84.0" x2="334.6" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="334.6" y1="84.0" x2="234.6" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="248.9" y1="84.0" x2="348.9" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="348.9" y1="84.0" x2="248.9" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="263.1" y1="84.0" x2="363.1" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="363.1" y1="84.0" x2="263.1" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="277.4" y1="84.0" x2="377.4" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="377.4" y1="84.0" x2="277.4" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="291.7" y1="84.0" x2="391.7" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="391.7" y1="84.0" x2="291.7" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="306.0" y1="84.0" x2="406.0" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="406.0" y1="84.0" x2="306.0" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="320.3" y1="84.0" x2="420.3" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="420.3" y1="84.0" x2="320.3" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="334.6" y1="84.0" x2="434.6" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="434.6" y1="84.0" x2="334.6" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="348.9" y1="84.0" x2="448.9" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="448.9" y1="84.0" x2="348.9" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="363.1" y1="84.0" x2="463.1" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="463.1" y1="84.0" x2="363.1" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="377.4" y1="84.0" x2="477.4" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="477.4" y1="84.0" x2="377.4" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="391.7" y1="84.0" x2="491.7" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="491.7" y1="84.0" x2="391.7" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="406.0" y1="84.0" x2="506.0" y2="184.0" stroke="#161a22" stroke-width="1.3" /><line x1="506.0" y1="84.0" x2="406.0" y2="184.0" stroke="#161a22" stroke-width="1.3" /></g>
+<line x1="306.0" y1="184.0" x2="406.0" y2="184.0" stroke="#161a22" stroke-width="3.2" />
+<text x="356.0" y="60" font-size="28" fill="#161a22" text-anchor="middle" font-weight="800">X</text>
+<line x1="308.0" y1="262.0" x2="412.0" y2="262.0" stroke="#161a22" stroke-width="3.2" />
+<g transform="translate(334.0 262.0) rotate(0)"><polyline points="-11.5,-20.0 0,0 24.5,-42.5" fill="none" stroke="#161a22" stroke-width="1.7" stroke-linejoin="round"/><line x1="-11.5" y1="-20.0" x2="11.5" y2="-20.0" stroke="#161a22" stroke-width="1.7" /><text x="18.5" y="-8.1" font-size="18" fill="#161a22" text-anchor="start" font-weight="400">X</text></g>
+<text x="356.0" y="296" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">두 방향으로</text>
+<text x="356.0" y="316" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">비스듬히 엇갈림</text>
+<rect x="444" y="84" width="100" height="100" fill="#fff" stroke="#6b7684" stroke-width="1.4"/>
+<line x1="482.9" y1="100.2" x2="476.9" y2="111.9" stroke="#161a22" stroke-width="1.3" />
+<line x1="487.0" y1="121.4" x2="506.8" y2="125.1" stroke="#161a22" stroke-width="1.3" />
+<line x1="450.4" y1="127.2" x2="463.6" y2="130.2" stroke="#161a22" stroke-width="1.3" />
+<line x1="480.8" y1="157.2" x2="495.2" y2="163.1" stroke="#161a22" stroke-width="1.3" />
+<line x1="506.4" y1="160.9" x2="502.0" y2="178.7" stroke="#161a22" stroke-width="1.3" />
+<line x1="539.6" y1="94.1" x2="524.6" y2="101.3" stroke="#161a22" stroke-width="1.3" />
+<line x1="458.4" y1="93.1" x2="472.6" y2="113.8" stroke="#161a22" stroke-width="1.3" />
+<line x1="472.3" y1="132.4" x2="464.7" y2="148.7" stroke="#161a22" stroke-width="1.3" />
+<line x1="490.3" y1="97.6" x2="505.3" y2="100.4" stroke="#161a22" stroke-width="1.3" />
+<line x1="502.5" y1="119.3" x2="514.3" y2="137.1" stroke="#161a22" stroke-width="1.3" />
+<line x1="499.5" y1="111.0" x2="481.0" y2="125.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="474.6" y1="127.0" x2="472.5" y2="152.9" stroke="#161a22" stroke-width="1.3" />
+<line x1="519.3" y1="116.6" x2="505.4" y2="117.5" stroke="#161a22" stroke-width="1.3" />
+<line x1="478.6" y1="150.0" x2="496.3" y2="159.1" stroke="#161a22" stroke-width="1.3" />
+<line x1="465.0" y1="140.3" x2="449.3" y2="154.6" stroke="#161a22" stroke-width="1.3" />
+<line x1="530.2" y1="110.3" x2="517.8" y2="127.9" stroke="#161a22" stroke-width="1.3" />
+<line x1="512.3" y1="124.0" x2="488.5" y2="137.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="480.5" y1="144.9" x2="503.3" y2="149.3" stroke="#161a22" stroke-width="1.3" />
+<line x1="512.8" y1="169.1" x2="498.8" y2="177.8" stroke="#161a22" stroke-width="1.3" />
+<line x1="475.2" y1="146.8" x2="494.5" y2="148.2" stroke="#161a22" stroke-width="1.3" />
+<line x1="455.5" y1="101.1" x2="479.4" y2="105.6" stroke="#161a22" stroke-width="1.3" />
+<line x1="460.0" y1="101.6" x2="468.7" y2="126.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="462.5" y1="117.0" x2="458.4" y2="142.8" stroke="#161a22" stroke-width="1.3" />
+<line x1="513.6" y1="156.0" x2="525.5" y2="170.3" stroke="#161a22" stroke-width="1.3" />
+<line x1="444.0" y1="184.0" x2="544.0" y2="184.0" stroke="#161a22" stroke-width="3.2" />
+<text x="494.0" y="60" font-size="28" fill="#161a22" text-anchor="middle" font-weight="800">M</text>
+<line x1="446.0" y1="262.0" x2="550.0" y2="262.0" stroke="#161a22" stroke-width="3.2" />
+<g transform="translate(472.0 262.0) rotate(0)"><polyline points="-11.5,-20.0 0,0 24.5,-42.5" fill="none" stroke="#161a22" stroke-width="1.7" stroke-linejoin="round"/><line x1="-11.5" y1="-20.0" x2="11.5" y2="-20.0" stroke="#161a22" stroke-width="1.7" /><text x="18.5" y="-8.1" font-size="18" fill="#161a22" text-anchor="start" font-weight="400">M</text></g>
+<text x="494.0" y="296" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">여러 방향으로</text>
+<text x="494.0" y="316" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">섞임</text>
+<rect x="582" y="84" width="100" height="100" fill="#fff" stroke="#6b7684" stroke-width="1.4"/>
+<circle cx="632.0" cy="134.0" r="8.3" fill="none" stroke="#161a22" stroke-width="1.3"/>
+<circle cx="632.0" cy="134.0" r="16.7" fill="none" stroke="#161a22" stroke-width="1.3"/>
+<circle cx="632.0" cy="134.0" r="25.0" fill="none" stroke="#161a22" stroke-width="1.3"/>
+<circle cx="632.0" cy="134.0" r="33.3" fill="none" stroke="#161a22" stroke-width="1.3"/>
+<circle cx="632.0" cy="134.0" r="41.7" fill="none" stroke="#161a22" stroke-width="1.3"/>
+<line x1="582.0" y1="184.0" x2="682.0" y2="184.0" stroke="#161a22" stroke-width="3.2" />
+<text x="632.0" y="60" font-size="28" fill="#161a22" text-anchor="middle" font-weight="800">C</text>
+<line x1="584.0" y1="262.0" x2="688.0" y2="262.0" stroke="#161a22" stroke-width="3.2" />
+<g transform="translate(610.0 262.0) rotate(0)"><polyline points="-11.5,-20.0 0,0 24.5,-42.5" fill="none" stroke="#161a22" stroke-width="1.7" stroke-linejoin="round"/><line x1="-11.5" y1="-20.0" x2="11.5" y2="-20.0" stroke="#161a22" stroke-width="1.7" /><text x="18.5" y="-8.1" font-size="18" fill="#161a22" text-anchor="start" font-weight="400">C</text></g>
+<text x="632.0" y="296" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">가운데를 중심으로</text>
+<text x="632.0" y="316" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">둥근 모양</text>
+<rect x="720" y="84" width="100" height="100" fill="#fff" stroke="#6b7684" stroke-width="1.4"/>
+<line x1="776.0" y1="134.0" x2="813.0" y2="134.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="775.5" y1="136.3" x2="809.7" y2="150.5" stroke="#161a22" stroke-width="1.3" />
+<line x1="774.2" y1="138.2" x2="800.4" y2="164.4" stroke="#161a22" stroke-width="1.3" />
+<line x1="772.3" y1="139.5" x2="786.5" y2="173.7" stroke="#161a22" stroke-width="1.3" />
+<line x1="770.0" y1="140.0" x2="770.0" y2="177.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="767.7" y1="139.5" x2="753.5" y2="173.7" stroke="#161a22" stroke-width="1.3" />
+<line x1="765.8" y1="138.2" x2="739.6" y2="164.4" stroke="#161a22" stroke-width="1.3" />
+<line x1="764.5" y1="136.3" x2="730.3" y2="150.5" stroke="#161a22" stroke-width="1.3" />
+<line x1="764.0" y1="134.0" x2="727.0" y2="134.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="764.5" y1="131.7" x2="730.3" y2="117.5" stroke="#161a22" stroke-width="1.3" />
+<line x1="765.8" y1="129.8" x2="739.6" y2="103.6" stroke="#161a22" stroke-width="1.3" />
+<line x1="767.7" y1="128.5" x2="753.5" y2="94.3" stroke="#161a22" stroke-width="1.3" />
+<line x1="770.0" y1="128.0" x2="770.0" y2="91.0" stroke="#161a22" stroke-width="1.3" />
+<line x1="772.3" y1="128.5" x2="786.5" y2="94.3" stroke="#161a22" stroke-width="1.3" />
+<line x1="774.2" y1="129.8" x2="800.4" y2="103.6" stroke="#161a22" stroke-width="1.3" />
+<line x1="775.5" y1="131.7" x2="809.7" y2="117.5" stroke="#161a22" stroke-width="1.3" />
+<line x1="720.0" y1="184.0" x2="820.0" y2="184.0" stroke="#161a22" stroke-width="3.2" />
+<text x="770.0" y="60" font-size="28" fill="#161a22" text-anchor="middle" font-weight="800">R</text>
+<line x1="722.0" y1="262.0" x2="826.0" y2="262.0" stroke="#161a22" stroke-width="3.2" />
+<g transform="translate(748.0 262.0) rotate(0)"><polyline points="-11.5,-20.0 0,0 24.5,-42.5" fill="none" stroke="#161a22" stroke-width="1.7" stroke-linejoin="round"/><line x1="-11.5" y1="-20.0" x2="11.5" y2="-20.0" stroke="#161a22" stroke-width="1.7" /><text x="18.5" y="-8.1" font-size="18" fill="#161a22" text-anchor="start" font-weight="400">R</text></g>
+<text x="770.0" y="296" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">가운데에서 바깥으로</text>
+<text x="770.0" y="316" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">퍼짐</text>
+<rect x="858" y="84" width="100" height="100" fill="#fff" stroke="#6b7684" stroke-width="1.4"/>
+<circle cx="886.0" cy="137.7" r="1.8" fill="#161a22"/>
+<circle cx="897.1" cy="142.7" r="1.8" fill="#161a22"/>
+<circle cx="918.6" cy="97.5" r="1.8" fill="#161a22"/>
+<circle cx="867.1" cy="162.3" r="1.8" fill="#161a22"/>
+<circle cx="887.8" cy="111.7" r="1.8" fill="#161a22"/>
+<circle cx="949.6" cy="131.5" r="1.8" fill="#161a22"/>
+<circle cx="936.3" cy="132.0" r="1.8" fill="#161a22"/>
+<circle cx="919.7" cy="104.7" r="1.8" fill="#161a22"/>
+<circle cx="919.3" cy="164.9" r="1.8" fill="#161a22"/>
+<circle cx="909.9" cy="154.3" r="1.8" fill="#161a22"/>
+<circle cx="922.4" cy="97.4" r="1.8" fill="#161a22"/>
+<circle cx="929.7" cy="141.7" r="1.8" fill="#161a22"/>
+<circle cx="891.3" cy="94.6" r="1.8" fill="#161a22"/>
+<circle cx="938.7" cy="131.7" r="1.8" fill="#161a22"/>
+<circle cx="926.4" cy="165.8" r="1.8" fill="#161a22"/>
+<circle cx="926.0" cy="169.4" r="1.8" fill="#161a22"/>
+<circle cx="899.2" cy="159.3" r="1.8" fill="#161a22"/>
+<circle cx="903.3" cy="170.6" r="1.8" fill="#161a22"/>
+<circle cx="939.8" cy="100.2" r="1.8" fill="#161a22"/>
+<circle cx="877.4" cy="110.2" r="1.8" fill="#161a22"/>
+<circle cx="947.1" cy="128.6" r="1.8" fill="#161a22"/>
+<circle cx="918.6" cy="117.3" r="1.8" fill="#161a22"/>
+<circle cx="908.6" cy="124.4" r="1.8" fill="#161a22"/>
+<circle cx="895.5" cy="141.1" r="1.8" fill="#161a22"/>
+<circle cx="915.1" cy="168.0" r="1.8" fill="#161a22"/>
+<circle cx="923.3" cy="170.0" r="1.8" fill="#161a22"/>
+<circle cx="937.9" cy="175.2" r="1.8" fill="#161a22"/>
+<circle cx="922.4" cy="105.7" r="1.8" fill="#161a22"/>
+<circle cx="938.3" cy="173.0" r="1.8" fill="#161a22"/>
+<circle cx="942.0" cy="139.8" r="1.8" fill="#161a22"/>
+<circle cx="926.0" cy="109.7" r="1.8" fill="#161a22"/>
+<circle cx="935.9" cy="140.2" r="1.8" fill="#161a22"/>
+<circle cx="889.9" cy="97.3" r="1.8" fill="#161a22"/>
+<circle cx="937.7" cy="175.1" r="1.8" fill="#161a22"/>
+<circle cx="873.4" cy="159.3" r="1.8" fill="#161a22"/>
+<circle cx="900.5" cy="104.7" r="1.8" fill="#161a22"/>
+<circle cx="890.7" cy="156.6" r="1.8" fill="#161a22"/>
+<circle cx="939.3" cy="95.7" r="1.8" fill="#161a22"/>
+<circle cx="917.6" cy="95.8" r="1.8" fill="#161a22"/>
+<circle cx="926.3" cy="119.8" r="1.8" fill="#161a22"/>
+<circle cx="940.0" cy="174.4" r="1.8" fill="#161a22"/>
+<circle cx="908.5" cy="175.9" r="1.8" fill="#161a22"/>
+<circle cx="892.0" cy="98.5" r="1.8" fill="#161a22"/>
+<circle cx="916.4" cy="94.6" r="1.8" fill="#161a22"/>
+<circle cx="882.6" cy="126.3" r="1.8" fill="#161a22"/>
+<circle cx="917.3" cy="105.1" r="1.8" fill="#161a22"/>
+<circle cx="869.6" cy="164.9" r="1.8" fill="#161a22"/>
+<circle cx="892.4" cy="172.5" r="1.8" fill="#161a22"/>
+<circle cx="941.3" cy="123.7" r="1.8" fill="#161a22"/>
+<circle cx="904.7" cy="135.7" r="1.8" fill="#161a22"/>
+<circle cx="920.1" cy="142.0" r="1.8" fill="#161a22"/>
+<circle cx="913.0" cy="144.1" r="1.8" fill="#161a22"/>
+<circle cx="945.0" cy="134.6" r="1.8" fill="#161a22"/>
+<circle cx="902.2" cy="152.5" r="1.8" fill="#161a22"/>
+<circle cx="886.0" cy="117.3" r="1.8" fill="#161a22"/>
+<circle cx="948.1" cy="135.8" r="1.8" fill="#161a22"/>
+<circle cx="912.1" cy="93.0" r="1.8" fill="#161a22"/>
+<circle cx="900.9" cy="140.7" r="1.8" fill="#161a22"/>
+<circle cx="867.7" cy="143.7" r="1.8" fill="#161a22"/>
+<circle cx="919.1" cy="97.0" r="1.8" fill="#161a22"/>
+<line x1="858.0" y1="184.0" x2="958.0" y2="184.0" stroke="#161a22" stroke-width="3.2" />
+<text x="908.0" y="60" font-size="28" fill="#161a22" text-anchor="middle" font-weight="800">P</text>
+<line x1="860.0" y1="262.0" x2="964.0" y2="262.0" stroke="#161a22" stroke-width="3.2" />
+<g transform="translate(886.0 262.0) rotate(0)"><polyline points="-11.5,-20.0 0,0 24.5,-42.5" fill="none" stroke="#161a22" stroke-width="1.7" stroke-linejoin="round"/><line x1="-11.5" y1="-20.0" x2="11.5" y2="-20.0" stroke="#161a22" stroke-width="1.7" /><text x="18.5" y="-8.1" font-size="18" fill="#161a22" text-anchor="start" font-weight="400">P</text></g>
+<text x="908.0" y="296" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">방향 없이</text>
+<text x="908.0" y="316" font-size="14" fill="#6b7684" text-anchor="middle" font-weight="400">점·알갱이 모양</text>
+<text x="500.0" y="352.0" font-size="15" fill="#6b7684" text-anchor="middle" font-weight="400">위 네모는 면을 위에서 본 공구 자국 · 아래는 그 면을 옆에서 본 선에 기호를 붙인 모습</text>
+</svg><figcaption>직접 그린 그림 · 결 방향 기호 일곱 가지입니다. 위 네모는 면을 위에서 내려다본 공구 자국이고, 아래는 같은 면을 옆에서 본 선에 기호를 붙인 모습입니다.</figcaption></figure>
+<p class="pd-p">예를 들어 선반으로 끝면을 깎으면 자국이 동심원으로 남아 「C」에 해당합니다. 결 방향은 미끄러지는 면이나 기름이 새면 안 되는 면처럼 자국의 방향이 쓰임새에 영향을 줄 때 적습니다.</p>
+</div>
+
+<div class="sec" id="sPlace">
+<div class="eyebrow">도면에 붙이는 법</div>
+<div class="h2">기호는 재료 바깥에 세우고, 아래나 오른쪽에서 읽게 합니다</div>
+<p class="pd-p">기호를 그림에 붙일 때도 약속이 있습니다. 치수 숫자와 마찬가지로, 기호의 글자는 도면을 아래쪽이나 오른쪽에서 보았을 때 바로 읽혀야 합니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 470" role="img" aria-label="블록을 잘라서 그린 그림에 표면 거칠기 기호를 붙인 예. 가 윗면과 나 왼쪽 면은 기호를 면에 바로 붙였고, 나는 왼쪽으로 돌려 세웠다. 다 오른쪽 면, 라 구멍 안쪽, 마 아랫면은 화살표 지시선 끝의 가로선 위에 기호를 세웠다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="ds1f5" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="ds1f5b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker><pattern id="ds1f5h1" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f5h2" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f5h3" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f5h4" patternUnits="userSpaceOnUse" width="5.5" height="5.5" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5.5" stroke="#161a22" stroke-width="1.3"/></pattern></defs><rect width="1000" height="470" fill="#fff"/>
+<polygon points="250.0,360.0 670.0,360.0 670.0,180.0 577.0,180.0 577.0,270.0 523.0,270.0 523.0,180.0 250.0,180.0" fill="url(#ds1f5h1)" stroke="none" stroke-linejoin="round"/>
+<polyline points="250.0,360.0 670.0,360.0 670.0,180.0 577.0,180.0 577.0,270.0 523.0,270.0 523.0,180.0 250.0,180.0 250.0,360.0" fill="none" stroke="#161a22" stroke-width="3.2" stroke-linejoin="round" />
+<line x1="550.0" y1="166.0" x2="550.0" y2="284.0" stroke="#161a22" stroke-width="1.2" stroke-dasharray="18 4 2 4"/>
+<g transform="translate(370.0 180.0) rotate(0)"><polyline points="-12.9,-22.4 0,0 27.5,-47.6" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><line x1="-12.9" y1="-22.4" x2="12.9" y2="-22.4" stroke="#161a22" stroke-width="1.8" /><line x1="27.5" y1="-47.6" x2="93.2" y2="-47.6" stroke="#161a22" stroke-width="1.8" /><text x="32.5" y="-28.6" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">Ra 6.3</text></g>
+<circle cx="318.0" cy="148.0" r="15" fill="#596fa1"/><text x="318.0" y="154.0" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">가</text>
+<g transform="translate(250.0 270.0) rotate(-90)"><polyline points="-12.9,-22.4 0,0 27.5,-47.6" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><line x1="-12.9" y1="-22.4" x2="12.9" y2="-22.4" stroke="#161a22" stroke-width="1.8" /><line x1="27.5" y1="-47.6" x2="93.2" y2="-47.6" stroke="#161a22" stroke-width="1.8" /><text x="32.5" y="-28.6" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">Ra 6.3</text></g>
+<circle cx="220.0" cy="332.0" r="15" fill="#596fa1"/><text x="220.0" y="338.0" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">나</text>
+<line x1="740.0" y1="200.0" x2="670.0" y2="270.0" stroke="#161a22" stroke-width="1.5" marker-end="url(#ds1f5)"/>
+<line x1="740.0" y1="200.0" x2="758.0" y2="200.0" stroke="#161a22" stroke-width="1.5" />
+<g transform="translate(758.0 200.0) rotate(0)"><polyline points="-12.9,-22.4 0,0 27.5,-47.6" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><line x1="-12.9" y1="-22.4" x2="12.9" y2="-22.4" stroke="#161a22" stroke-width="1.8" /><line x1="27.5" y1="-47.6" x2="93.2" y2="-47.6" stroke="#161a22" stroke-width="1.8" /><text x="32.5" y="-28.6" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">Ra 3.2</text></g>
+<circle cx="710.0" cy="270.0" r="15" fill="#596fa1"/><text x="710.0" y="276.0" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">다</text>
+<line x1="544.0" y1="122.0" x2="577.0" y2="228.0" stroke="#161a22" stroke-width="1.5" marker-end="url(#ds1f5)"/>
+<line x1="544.0" y1="122.0" x2="562.0" y2="122.0" stroke="#161a22" stroke-width="1.5" />
+<g transform="translate(562.0 122.0) rotate(0)"><polyline points="-12.9,-22.4 0,0 27.5,-47.6" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><line x1="-12.9" y1="-22.4" x2="12.9" y2="-22.4" stroke="#161a22" stroke-width="1.8" /><line x1="27.5" y1="-47.6" x2="93.2" y2="-47.6" stroke="#161a22" stroke-width="1.8" /><text x="32.5" y="-28.6" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">Ra 1.6</text></g>
+<circle cx="510.0" cy="116.0" r="15" fill="#596fa1"/><text x="510.0" y="122.0" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">라</text>
+<line x1="640.0" y1="414.0" x2="580.0" y2="360.0" stroke="#161a22" stroke-width="1.5" marker-end="url(#ds1f5)"/>
+<line x1="640.0" y1="414.0" x2="658.0" y2="414.0" stroke="#161a22" stroke-width="1.5" />
+<g transform="translate(658.0 414.0) rotate(0)"><polyline points="-12.9,-22.4 0,0 27.5,-47.6" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><circle cx="0" cy="-14.9" r="7.5" fill="none" stroke="#161a22" stroke-width="1.8"/></g>
+<circle cx="550.0" cy="394.0" r="15" fill="#596fa1"/><text x="550.0" y="400.0" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">마</text>
+<text x="460.0" y="456.0" font-size="15" fill="#6b7684" text-anchor="middle" font-weight="400">잘라서 그린 블록 — 오른쪽 위에 구멍</text>
+</svg><figcaption>직접 그린 그림 · 블록을 잘라서 그린 그림에 기호를 붙였습니다. 기호를 면에 바로 붙인 곳(가·나)과 지시선으로 붙인 곳(다·라·마)이 있습니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>가. 윗면 — 바로 붙입니다</b> — 기호의 뾰족한 끝이 외형선에 닿고, 기호는 재료 바깥(위)에 섭니다.</li>
+<li><b>나. 왼쪽 면 — 돌려서 바로 붙입니다</b> — 기호를 왼쪽으로 눕혀 세우면 글자가 아래에서 위로 쓰여, 도면을 오른쪽에서 보면 바로 읽힙니다. 세로 치수 숫자를 쓰는 방향과 같습니다.</li>
+<li><b>다. 오른쪽 면 — 지시선으로 붙입니다</b> — 오른쪽 면에 바로 붙이면 글자가 위에서 아래로 쓰여, 아래나 오른쪽에서 읽히지 않습니다. 그래서 화살표 지시선을 면에 대고, 지시선 다른 쪽 끝을 짧게 가로로 꺾은 뒤 그 위에 기호를 바로 세웁니다.</li>
+<li><b>라. 구멍 안쪽 벽 — 지시선으로 붙입니다</b> — 화살표는 재료가 없는 구멍 안쪽 빈 곳에서 벽에 닿게 합니다.</li>
+<li><b>마. 아랫면 — 지시선으로 붙입니다</b> — 아랫면에 바로 붙이면 기호가 뒤집히므로 지시선을 사용합니다. 이 블록의 아랫면은 받은 그대로 두는 면이라 동그라미 기호를 붙였습니다.</li>
+</ul>
+<p class="pd-p">한 면에는 기호를 한 번만 붙이고, 보통 그 면의 치수를 적은 그림에 함께 붙입니다. 지시선과 외형선은 <a href="drawing-basics-2.html">「선의 종류」</a>에서, 세로 치수의 글자 방향은 <a href="drawing-basics-5.html">「치수 넣는 법」</a>에서 배웠습니다.</p>
+</div>
+
+<div class="sec" id="sAll">
+<div class="eyebrow">한꺼번에 적기</div>
+<div class="h2">대부분의 면이 같으면 표제란 가까이에 한 번만 적습니다</div>
+<p class="pd-p">면이 많은 부품에 기호를 하나하나 붙이면 그림이 복잡해집니다. 그래서 가장 많은 면에 해당하는 값은 표제란 가까이에 한 번만 적고, 그와 다른 면에만 그림에 기호를 붙입니다. 표제란은 <a href="drawing-basics-1.html">「도면이 하는 일·종이 크기·표제란」</a>에서 배웠습니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 360" role="img" aria-label="부품 그림에는 한 면에만 Ra 1.6 기호가 있고, 표제란 가까이에 Ra 6.3 기호와 괄호 안 기본 기호가 함께 적혀 있다. 나머지 면은 모두 Ra 6.3이고 그림에 따로 적은 면은 그 값이라는 뜻이다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="ds1f6" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="ds1f6b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker><pattern id="ds1f6h1" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f6h2" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f6h3" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f6h4" patternUnits="userSpaceOnUse" width="5.5" height="5.5" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5.5" stroke="#161a22" stroke-width="1.3"/></pattern></defs><rect width="1000" height="360" fill="#fff"/>
+<polygon points="120.0,300.0 408.0,300.0 408.0,180.0 120.0,180.0" fill="#fff" stroke="#161a22" stroke-width="3.2" stroke-linejoin="round"/>
+<line x1="108.0" y1="240.0" x2="420.0" y2="240.0" stroke="#161a22" stroke-width="1.2" stroke-dasharray="18 4 2 4"/>
+<g transform="translate(192.0 180.0) rotate(0)"><polyline points="-12.9,-22.4 0,0 27.5,-47.6" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><line x1="-12.9" y1="-22.4" x2="12.9" y2="-22.4" stroke="#161a22" stroke-width="1.8" /><line x1="27.5" y1="-47.6" x2="93.2" y2="-47.6" stroke="#161a22" stroke-width="1.8" /><text x="32.5" y="-28.6" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">Ra 1.6</text></g>
+<circle cx="142.0" cy="148.0" r="15" fill="#596fa1"/><text x="142.0" y="154.0" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">가</text>
+<rect x="560" y="140" width="380" height="170" fill="#fff" stroke="#6b7684" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="750" y="128" font-size="15" fill="#6b7684" text-anchor="middle" font-weight="400">표제란 가까이</text>
+<g transform="translate(630.0 250.0) rotate(0)"><polyline points="-14.8,-25.6 0,0 31.4,-54.4" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><line x1="-14.8" y1="-25.6" x2="14.8" y2="-25.6" stroke="#161a22" stroke-width="1.8" /><line x1="31.4" y1="-54.4" x2="97.1" y2="-54.4" stroke="#161a22" stroke-width="1.8" /><text x="36.4" y="-35.4" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">Ra 6.3</text></g>
+<path d="M765.4 188.0 Q749.4 220.0 765.4 252.0" fill="none" stroke="#161a22" stroke-width="1.8"/>
+<g transform="translate(787.4 238.0) rotate(0)"><polyline points="-10.2,-17.6 0,0 21.6,-37.4" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/></g>
+<path d="M823.0 188.0 Q839.0 220.0 823.0 252.0" fill="none" stroke="#161a22" stroke-width="1.8"/>
+<circle cx="590" cy="174" r="15" fill="#596fa1"/><text x="590" y="180" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">나</text>
+<circle cx="853.0007547116077" cy="174" r="15" fill="#596fa1"/><text x="853.0007547116077" y="180" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">다</text>
+<line x1="853.0" y1="192.0" x2="831.0" y2="220.0" stroke="#596fa1" stroke-width="1.4" stroke-dasharray="3 3"/>
+<text x="750.0" y="290.0" font-size="14" fill="#161a22" text-anchor="middle" font-weight="400">나머지 면은 모두 Ra 6.3 · 그림에 따로 적은 면은 그 값</text>
+</svg><figcaption>직접 그린 그림 · 그림에는 다른 값의 면(가)에만 기호를 붙이고, 나머지 면의 값은 표제란 가까이에 한꺼번에 적었습니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>가. 그림에 붙인 기호</b> — 이 면은 Ra 1.6으로 만듭니다.</li>
+<li><b>나. 표제란 가까이 적은 기호</b> — 그림에 따로 기호가 없는 면은 모두 Ra 6.3으로 만든다는 뜻입니다.</li>
+<li><b>다. 괄호 안의 기본 기호</b> — 「그림에 따로 붙인 기호가 있는 면은 그 값을 따른다」는 표시입니다. 괄호 안에 그림에 쓴 값을 적어 두기도 합니다.</li>
+</ul>
+<p class="pd-p">기호 대신 「y」, 「z」 같은 글자를 그림의 면에 붙이고, 표제란 가까이에 「y = Ra 1.6」처럼 그 글자의 뜻을 적어 두는 방법도 있습니다. 같은 값의 면이 여러 곳에 흩어져 있을 때 쓰는 방법입니다.</p>
+</div>
+
+<div class="sec" id="sOld">
+<div class="eyebrow">옛 도면의 표시</div>
+<div class="h2">삼각형 개수로 매끈함을 나타낸 옛 표시</div>
+<p class="pd-p">오래된 도면이나 예전 교재에는 V자 기호 대신 작은 역삼각형(▽)을 한 개에서 네 개까지 붙인 표시가 나옵니다. 삼각형이 많을수록 매끈한 면이라는 뜻입니다. 지금 규격에서는 쓰지 않지만, 옛 도면을 읽거나 옮겨 그릴 때를 위해 알아 두면 좋습니다.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 430" role="img" aria-label="옛 도면에서 보는 삼각형 다듬질 표시와 지금 기호의 대략 대응. 삼각형 1개는 Ra 12.5~25로 지금은 Ra 25, 2개는 Ra 3.2~6.3으로 Ra 6.3, 3개는 Ra 0.4~1.6으로 Ra 1.6, 4개는 Ra 0.025~0.2로 Ra 0.2, 물결 표시는 깎지 않는 면으로 동그라미 기호다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="ds1f7" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="ds1f7b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker><pattern id="ds1f7h1" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f7h2" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f7h3" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f7h4" patternUnits="userSpaceOnUse" width="5.5" height="5.5" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5.5" stroke="#161a22" stroke-width="1.3"/></pattern></defs><rect width="1000" height="430" fill="#fff"/>
+<text x="170" y="50" font-size="17" fill="#6b7684" text-anchor="middle" font-weight="800">옛 도면의 표시</text>
+<text x="470" y="50" font-size="17" fill="#6b7684" text-anchor="middle" font-weight="800">대략의 뜻</text>
+<text x="790" y="50" font-size="17" fill="#6b7684" text-anchor="middle" font-weight="800">지금 기호로 적으면(예)</text>
+<line x1="80.0" y1="112.0" x2="260.0" y2="112.0" stroke="#161a22" stroke-width="3.2" />
+<polygon points="160.0,94.7 180.0,94.7 170.0,112.0" fill="none" stroke="#161a22" stroke-width="2.0" stroke-linejoin="round"/>
+<text x="470" y="104" font-size="17" fill="#161a22" text-anchor="middle" font-weight="400">거친 면 · Ra 12.5~25</text>
+<g transform="translate(740.0 112.0) rotate(0)"><polyline points="-11.1,-19.2 0,0 23.6,-40.8" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><line x1="-11.1" y1="-19.2" x2="11.1" y2="-19.2" stroke="#161a22" stroke-width="1.8" /><line x1="23.6" y1="-40.8" x2="80.0" y2="-40.8" stroke="#161a22" stroke-width="1.8" /><text x="28.6" y="-21.8" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">Ra 25</text></g>
+<line x1="60.0" y1="138.0" x2="940.0" y2="138.0" stroke="#c9d1dc" stroke-width="1" />
+<line x1="80.0" y1="186.0" x2="260.0" y2="186.0" stroke="#161a22" stroke-width="3.2" />
+<polygon points="150.0,168.7 170.0,168.7 160.0,186.0" fill="none" stroke="#161a22" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="170.0,168.7 190.0,168.7 180.0,186.0" fill="none" stroke="#161a22" stroke-width="2.0" stroke-linejoin="round"/>
+<text x="470" y="178" font-size="17" fill="#161a22" text-anchor="middle" font-weight="400">보통으로 깎은 면 · Ra 3.2~6.3</text>
+<g transform="translate(740.0 186.0) rotate(0)"><polyline points="-11.1,-19.2 0,0 23.6,-40.8" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><line x1="-11.1" y1="-19.2" x2="11.1" y2="-19.2" stroke="#161a22" stroke-width="1.8" /><line x1="23.6" y1="-40.8" x2="89.2" y2="-40.8" stroke="#161a22" stroke-width="1.8" /><text x="28.6" y="-21.8" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">Ra 6.3</text></g>
+<line x1="60.0" y1="212.0" x2="940.0" y2="212.0" stroke="#c9d1dc" stroke-width="1" />
+<line x1="80.0" y1="260.0" x2="260.0" y2="260.0" stroke="#161a22" stroke-width="3.2" />
+<polygon points="140.0,242.7 160.0,242.7 150.0,260.0" fill="none" stroke="#161a22" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="160.0,242.7 180.0,242.7 170.0,260.0" fill="none" stroke="#161a22" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="180.0,242.7 200.0,242.7 190.0,260.0" fill="none" stroke="#161a22" stroke-width="2.0" stroke-linejoin="round"/>
+<text x="470" y="252" font-size="17" fill="#161a22" text-anchor="middle" font-weight="400">매끈하게 다듬은 면 · Ra 0.4~1.6</text>
+<g transform="translate(740.0 260.0) rotate(0)"><polyline points="-11.1,-19.2 0,0 23.6,-40.8" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><line x1="-11.1" y1="-19.2" x2="11.1" y2="-19.2" stroke="#161a22" stroke-width="1.8" /><line x1="23.6" y1="-40.8" x2="89.2" y2="-40.8" stroke="#161a22" stroke-width="1.8" /><text x="28.6" y="-21.8" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">Ra 1.6</text></g>
+<line x1="60.0" y1="286.0" x2="940.0" y2="286.0" stroke="#c9d1dc" stroke-width="1" />
+<line x1="80.0" y1="334.0" x2="260.0" y2="334.0" stroke="#161a22" stroke-width="3.2" />
+<polygon points="130.0,316.7 150.0,316.7 140.0,334.0" fill="none" stroke="#161a22" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="150.0,316.7 170.0,316.7 160.0,334.0" fill="none" stroke="#161a22" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="170.0,316.7 190.0,316.7 180.0,334.0" fill="none" stroke="#161a22" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="190.0,316.7 210.0,316.7 200.0,334.0" fill="none" stroke="#161a22" stroke-width="2.0" stroke-linejoin="round"/>
+<text x="470" y="326" font-size="17" fill="#161a22" text-anchor="middle" font-weight="400">아주 매끈한 면 · Ra 0.025~0.2</text>
+<g transform="translate(740.0 334.0) rotate(0)"><polyline points="-11.1,-19.2 0,0 23.6,-40.8" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><line x1="-11.1" y1="-19.2" x2="11.1" y2="-19.2" stroke="#161a22" stroke-width="1.8" /><line x1="23.6" y1="-40.8" x2="89.2" y2="-40.8" stroke="#161a22" stroke-width="1.8" /><text x="28.6" y="-21.8" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">Ra 0.2</text></g>
+<line x1="60.0" y1="360.0" x2="940.0" y2="360.0" stroke="#c9d1dc" stroke-width="1" />
+<line x1="80.0" y1="408.0" x2="260.0" y2="408.0" stroke="#161a22" stroke-width="3.2" />
+<path d="M150 396 q10 -10 20 0 t20 0" fill="none" stroke="#161a22" stroke-width="2.2"/>
+<text x="470" y="400" font-size="17" fill="#161a22" text-anchor="middle" font-weight="400">깎지 않는 면</text>
+<g transform="translate(740.0 408.0) rotate(0)"><polyline points="-11.1,-19.2 0,0 23.6,-40.8" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><circle cx="0" cy="-12.8" r="6.4" fill="none" stroke="#161a22" stroke-width="1.8"/></g>
+</svg><figcaption>직접 그린 그림 · 옛 삼각형 표시와 Ra 값의 대략 대응입니다. 오른쪽 칸은 범위의 위쪽 값을 지금 기호로 적은 한 가지 예입니다.</figcaption></figure>
+<ul class="pd-note">
+<li><b>대략의 대응입니다</b> — 옛 표시는 값의 범위를 묶어 나타낸 것이라 지금의 Ra 값과 정확히 하나씩 맞지는 않습니다. 옛 도면의 부품을 다시 그릴 때는 그 면의 쓰임새를 보고 지금 값을 정합니다.</li>
+<li><b>물결 표시</b> — 옛 도면에서 물결(～)은 다듬지 않는 면을 나타냈습니다. 지금은 동그라미가 있는 기호를 사용합니다.</li>
+<li><b>「N6」 같은 등급 번호</b> — 예전에는 Ra 0.8을 N6처럼 등급 번호로 적기도 했지만, 지금 규격에서는 Ra 값을 그대로 적습니다.</li>
+</ul>
+<p class="pd-p">이 글의 기호는 지금 우리나라에서 쓰는 한국산업표준 KS A ISO 1302(제품의 기술 문서에서 표면의 결에 대한 지시)를 따랐습니다. 국제 표준은 2021년에 ISO 21920-1로 바뀌었고, 기호의 모양과 적는 규칙이 일부 달라졌습니다.</p>
+</div>
+
+<div class="sec" id="sTry">
+<div class="eyebrow">직접 읽어 보기</div>
+<div class="h2">아래 블록의 도면을 읽어 보세요</div>
+<p class="pd-p">알루미늄 압출재로 만든 블록을 앞에서 본 도면입니다. 가운데 위로 솟은 부분을 「턱」, 턱 양쪽의 낮은 윗면을 「어깨」라고 부르겠습니다. 파란 글자 가~마를 보고 답을 생각해 본 뒤, 문제를 눌러 확인해 주세요.</p>
+<figure class="ls-catw"><svg viewBox="0 0 1000 470" role="img" aria-label="연습 문제용 알루미늄 압출 블록 도면. 가 턱 윗면에는 연삭 Ra 1.6 결 방향 등호, 나 오른쪽 어깨 윗면에는 Ra 6.3, 다 아랫면에는 동그라미 기호, 라 왼쪽 면에는 돌려 세운 Ra 3.2 기호, 마 표제란 가까이에는 Ra 12.5 와 괄호 안 기본 기호가 있다" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Noto Sans KR',sans-serif"><defs><marker id="ds1f8" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#161a22"/></marker><marker id="ds1f8b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#596fa1"/></marker><pattern id="ds1f8h1" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f8h2" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f8h3" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#161a22" stroke-width="1.3"/></pattern><pattern id="ds1f8h4" patternUnits="userSpaceOnUse" width="5.5" height="5.5" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5.5" stroke="#161a22" stroke-width="1.3"/></pattern></defs><rect width="1000" height="470" fill="#fff"/>
+<polyline points="210.0,330.0 570.0,330.0 570.0,258.0 465.0,258.0 465.0,180.0 315.0,180.0 315.0,258.0 210.0,258.0 210.0,330.0" fill="none" stroke="#161a22" stroke-width="3.2" stroke-linejoin="round" />
+<line x1="390.0" y1="166.0" x2="390.0" y2="344.0" stroke="#161a22" stroke-width="1.2" stroke-dasharray="18 4 2 4"/>
+<g transform="translate(342.0 180.0) rotate(0)"><polyline points="-12.9,-22.4 0,0 27.5,-47.6" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><line x1="-12.9" y1="-22.4" x2="12.9" y2="-22.4" stroke="#161a22" stroke-width="1.8" /><line x1="27.5" y1="-47.6" x2="101.5" y2="-47.6" stroke="#161a22" stroke-width="1.8" /><text x="32.5" y="-28.6" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">Ra 1.6</text><text x="32.5" y="-53.6" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">연삭</text><text x="19.9" y="-7.2" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">=</text></g>
+<circle cx="298.0" cy="146.0" r="15" fill="#596fa1"/><text x="298.0" y="152.0" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">가</text>
+<g transform="translate(498.0 258.0) rotate(0)"><polyline points="-12.9,-22.4 0,0 27.5,-47.6" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><line x1="-12.9" y1="-22.4" x2="12.9" y2="-22.4" stroke="#161a22" stroke-width="1.8" /><line x1="27.5" y1="-47.6" x2="93.2" y2="-47.6" stroke="#161a22" stroke-width="1.8" /><text x="32.5" y="-28.6" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">Ra 6.3</text></g>
+<circle cx="458.0" cy="224.0" r="15" fill="#596fa1"/><text x="458.0" y="230.0" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">나</text>
+<line x1="560.0" y1="380.0" x2="510.0" y2="330.0" stroke="#161a22" stroke-width="1.5" marker-end="url(#ds1f8)"/>
+<line x1="560.0" y1="380.0" x2="578.0" y2="380.0" stroke="#161a22" stroke-width="1.5" />
+<g transform="translate(578.0 380.0) rotate(0)"><polyline points="-12.9,-22.4 0,0 27.5,-47.6" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><circle cx="0" cy="-14.9" r="7.5" fill="none" stroke="#161a22" stroke-width="1.8"/></g>
+<circle cx="484.0" cy="364.0" r="15" fill="#596fa1"/><text x="484.0" y="370.0" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">다</text>
+<g transform="translate(210.0 294.0) rotate(-90)"><polyline points="-12.9,-22.4 0,0 27.5,-47.6" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><line x1="-12.9" y1="-22.4" x2="12.9" y2="-22.4" stroke="#161a22" stroke-width="1.8" /><line x1="27.5" y1="-47.6" x2="93.2" y2="-47.6" stroke="#161a22" stroke-width="1.8" /><text x="32.5" y="-28.6" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">Ra 3.2</text></g>
+<circle cx="158.0" cy="358.0" r="15" fill="#596fa1"/><text x="158.0" y="364.0" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">라</text>
+<rect x="690" y="170" width="270" height="110" fill="#fff" stroke="#6b7684" stroke-width="1.4" stroke-dasharray="6 4"/>
+<g transform="translate(730.0 250.0) rotate(0)"><polyline points="-12.9,-22.4 0,0 27.5,-47.6" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/><line x1="27.5" y1="-47.6" x2="102.4" y2="-47.6" stroke="#161a22" stroke-width="1.8" /><text x="32.5" y="-28.6" font-size="16" fill="#161a22" text-anchor="start" font-weight="400">Ra 12.5</text></g>
+<path d="M853.5 196.0 Q839.5 224.0 853.5 252.0" fill="none" stroke="#161a22" stroke-width="1.8"/>
+<g transform="translate(873.5 240.0) rotate(0)"><polyline points="-9.2,-16.0 0,0 19.6,-34.0" fill="none" stroke="#161a22" stroke-width="1.8" stroke-linejoin="round"/></g>
+<path d="M905.1 196.0 Q919.1 224.0 905.1 252.0" fill="none" stroke="#161a22" stroke-width="1.8"/>
+<circle cx="940" cy="152" r="15" fill="#596fa1"/><text x="940" y="158" font-size="16" fill="#fff" text-anchor="middle" font-weight="800">마</text>
+<text x="390.0" y="440.0" font-size="15" fill="#6b7684" text-anchor="middle" font-weight="400">알루미늄 압출 블록(앞에서 본 그림)</text>
+</svg><figcaption>직접 그린 그림 · 연습 문제용 도면입니다. 파란 글자는 문제를 위해 붙인 표시이고, 실제 도면에는 없습니다.</figcaption></figure>
+<details class="pd-p"><summary class="pd-sum">1. 가의 기호는 무엇을 하라는 뜻인가요?</summary><p class="pd-p">가로막대가 있으니 깎아서 만드는 면입니다. 긴 가로선 위의 「연삭」은 숫돌로 갈아서 만들라는 뜻이고, 아래의 「Ra 1.6」은 그보다 거칠면 안 된다는 뜻입니다. V 오른쪽 아래의 「=」은 공구 자국을 면의 선과 나란하게 내라는 뜻입니다.</p></details>
+<details class="pd-p"><summary class="pd-sum">2. 가와 나 가운데 어느 면이 더 매끈해야 하나요?</summary><p class="pd-p">가(Ra 1.6)입니다. Ra 값은 작을수록 매끈한 면이라, Ra 6.3인 나보다 가가 훨씬 매끈해야 합니다.</p></details>
+<details class="pd-p"><summary class="pd-sum">3. 다의 아랫면은 깎아서 평평하게 만들어도 되나요?</summary><p class="pd-p">안 됩니다. V 안에 동그라미가 있는 기호는 깎지 말고 받은 그대로 두라는 뜻입니다. 이 블록에서는 압출로 뽑아낸 면을 그대로 사용합니다.</p></details>
+<details class="pd-p"><summary class="pd-sum">4. 라의 기호는 왜 옆으로 누워 있나요?</summary><p class="pd-p">왼쪽 면에 붙인 기호라 왼쪽으로 눕혀 세웠습니다. 이렇게 하면 「Ra 3.2」 글자가 아래에서 위로 쓰여, 도면을 오른쪽에서 보면 바로 읽힙니다.</p></details>
+<details class="pd-p"><summary class="pd-sum">5. 왼쪽 어깨 윗면, 턱의 양쪽 옆면, 블록 오른쪽 옆면에는 기호가 없습니다. 어떻게 만드나요?</summary><p class="pd-p">마에 적힌 대로 만듭니다. 그림에 따로 기호가 없는 면은 모두 Ra 12.5입니다. 마의 기호는 기본 기호라 만드는 방법은 정하지 않았습니다. 괄호 안의 기본 기호는 「그림에 기호를 붙인 면(가~라)은 그 값을 따른다」는 표시입니다.</p></details>
+<details class="pd-p"><summary class="pd-sum">6. 가의 Ra 1.6은 mm로 바꾸면 얼마인가요?</summary><p class="pd-p">1 μm는 0.001 mm이므로 Ra 1.6 μm는 0.0016 mm입니다.</p></details>
+</div>
+
+<div class="sec" id="sSum">
+<div class="eyebrow">정리</div>
+<div class="h2">이번 글에서 배운 것</div>
+<ul class="pd-note">
+<li>깎은 면을 크게 늘려 보면 작은 산과 골이 있고, 그 오르내림이 표면 거칠기입니다.</li>
+<li>Ra는 평균선에서 벗어난 높이를 평균 낸 값이고 단위는 μm입니다. 값이 작을수록 매끈하며, 적힌 값은 이보다 거칠면 안 된다는 위쪽 기준입니다.</li>
+<li>기본 기호는 「어떤 방법이든」, 가로막대가 있는 기호는 「깎아서 만든다」, 동그라미가 있는 기호는 「깎지 않는다」는 뜻입니다.</li>
+<li>값은 긴 가로선 아래, 가공 방법은 그 위, 결 방향은 V 오른쪽 아래에 적습니다.</li>
+<li>기호는 재료 바깥에 세우고 아래나 오른쪽에서 읽게 합니다. 오른쪽 면과 아랫면은 지시선을 사용합니다.</li>
+<li>대부분의 면이 같은 값이면 표제란 가까이에 한 번만 적고, 다른 면에만 그림에 기호를 붙입니다.</li>
+<li>옛 도면의 삼각형 표시는 지금 규격에 없으니, 옮겨 그릴 때는 쓰임새를 보고 Ra 값으로 바꿉니다.</li>
+</ul>
+<p class="pd-p" style="margin-top:16px"><b>다음에 배울 것</b> — 도면 심화 2 「치수 공차와 끼워맞춤」: 치수를 얼마나 벗어나도 되는지 정하는 공차와, 축과 구멍을 맞추는 방법을 살펴봅니다.</p>
+</div>
+
+<div class="sec">
+<div class="eyebrow">참고</div>
+<div class="h2">자료와 그림에 대하여</div>
+<ul class="pd-note">
+<li>이 글의 그림 8장은 창호종합기계가 이 글을 위해 직접 그렸습니다. 교과서·교재의 문장과 그림은 옮기지 않았습니다.</li>
+<li>기호의 모양과 적는 자리, 도면에 붙이는 법은 한국산업표준 KS A ISO 1302(제품의 기술 문서에서 표면의 결에 대한 지시)를 기준으로 정리했습니다. </li>
+<li>Ra 값과 가공 방법, 옛 삼각형 표시의 대응은 대략의 범위입니다. 실제 값은 재료·공구·가공 조건에 따라 달라집니다.</li>
+<li>블록의 모양과 치수, 값은 설명을 위해 꾸민 예시입니다.</li>
+</ul>
+</div>
+
+<div class="sec">
+<div class="eyebrow">Channels</div>
+<div class="h2">채널 안내</div>
+<div class="chs">
+<a class="ch" href="tel:055-327-4112" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#1E3A8A" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="M15.6 21A16.6 16.6 0 0 1 3 8.4 3 3 0 0 1 6 5.4h2.1a1 1 0 0 1 1 .86c.1.9.3 1.77.6 2.6a1 1 0 0 1-.24 1.05L8.2 11.2a14 14 0 0 0 4.6 4.6l1.3-1.3a1 1 0 0 1 1.05-.23c.83.3 1.7.5 2.6.6a1 1 0 0 1 .86 1V18a3 3 0 0 1-2.9 3Z"></path></g></svg>전화<span class="cn">055-327-4112</span></a>
+<a class="ch" href="tel:010-4465-4112" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#334155" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><rect height="19" rx="2.4" width="11" x="6.5" y="2.5"></rect><path d="M11 18.6h2"></path></g></svg>휴대전화<span class="cn">010-4465-4112</span></a>
+<a class="ch" href="http://pf.kakao.com/_xojdTX" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#FEE500" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M12 6.2c-3.2 0-5.8 2-5.8 4.5 0 1.6 1.1 3 2.7 3.8l-.6 2.1c-.08.3.24.53.5.36l2.5-1.6c.23.02.46.03.7.03 3.2 0 5.8-2 5.8-4.7S15.2 6.2 12 6.2Z" fill="#3C1E1E"></path></svg>카카오 채널<span class="cn">상담 연결</span></a>
+<a class="ch" href="https://talk.naver.com/W4UBZ1" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#03C75A" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M12 6.5c-3.15 0-5.7 1.95-5.7 4.45 0 1.55.98 2.92 2.47 3.73l-.52 2.06c-.07.29.24.52.49.36l2.72-1.72c.17.01.35.02.54.02 3.15 0 5.7-1.95 5.7-4.45S15.15 6.5 12 6.5Z" fill="#fff"></path></svg>네이버 톡톡<span class="cn">상담 연결</span></a>
+<a class="ch" href="mailto:geonics@hanmail.net" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#475569" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><rect height="14.4" rx="2.2" width="18.8" x="2.6" y="4.8"></rect><path d="m3.4 6.6 8.6 5.9 8.6-5.9"></path></g></svg>이메일<span class="cn">geonics@hanmail.net</span></a>
+<a class="ch" href="https://www.youtube.com/@machinelab/videos" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#FF0000" height="14.8" rx="5" width="20.8" x="1.6" y="4.6"></rect><path d="M10.3 8.9v6.2l5.2-3.1-5.2-3.1Z" fill="#fff"></path></svg>유튜브<span class="cn">가공 영상</span></a>
+<a class="ch" href="https://blog.naver.com/geonics" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><rect fill="#03C75A" height="20" rx="5.5" width="20" x="2" y="2"></rect><path d="M8.5 7.6h2.6l2.2 3.4V7.6h2.4v8.8h-2.6l-2.2-3.4v3.4H8.5V7.6Z" fill="#fff"></path></svg>블로그<span class="cn">네이버 블로그</span></a>
+<a class="ch" href="https://www.changhoinc.com/#about" rel="noopener" target="_blank"><svg aria-hidden="true" class="ci" focusable="false" height="24" viewbox="0 0 24 24" width="24"><g fill="none" stroke="#0284C7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"><path d="M3.6 21h16.8"></path><path d="M5.4 21V4.4a1 1 0 0 1 1-1h6.2a1 1 0 0 1 1 1V21"></path><path d="M13.6 10.2h4.4a1 1 0 0 1 1 1V21"></path><path d="M8.2 7.4h2.6M8.2 11h2.6M8.2 14.6h2.6M15.6 14h1.2M15.6 17.4h1.2"></path></g></svg>회사 소개<span class="cn">changhoinc.com</span></a>
+</div>
+</div>
+
+<div class="sec foot-cta" id="contact"><h3>도면을 읽다가 막히는 곳이 있으신가요?</h3><p>궁금한 점을 남겨 주시면 다음 글을 쓸 때 참고하겠습니다.</p>
+<div class="tels"><div>055-327-4112 <span>대표</span></div><div>010-4465-4112 <span>휴대전화</span></div><div>geonics@hanmail.net <span>이메일</span></div></div></div></div>
+
+<!-- ══ 16 core ｜ footer ══ -->
+<div class="footer">
+<b>창호종합기계</b>
+<span>경남 김해시 상동면 상동로375번길 21</span>
+<span class="web">www.changhoinc.com</span>
+</div>
+
+</div>
+<script>
+document.querySelectorAll('.vfacade[data-yt]').forEach(function(el){
+el.addEventListener('click', function(){
+var id = el.getAttribute('data-yt');
+el.innerHTML = '';
+el.style.aspectRatio = '16 / 9';
+var f = document.createElement('iframe');
+f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
+f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+f.setAttribute('allowfullscreen','');
+el.appendChild(f);
+}, {once:true});
+});
+</script>
+<script id="chg-js">
+(function(){"use strict";
+var D=[{"l":"용접테이블 · D28 악세사리","b":"111","u":"/products/111/","s":["용접정반 흑착색","용접정반 질화","D28 악세사리 세트","D28 악세사리 단품"]},{"l":"알루미늄 절단기 · 원형절단기","b":"101 102","u":"/products/101/","s":["CNC 절단기","2헤드 절단기","1헤드 절단기","휴대용 절단기","롤러다이","작업다이 · 디지털 디스플레이"]},{"l":"탭핑기 · 서보탭핑기","b":"104","u":"/products/104/","s":["서보탭핑기 본체","절삭유 분사식 (미스트)","탭핑기 + 주철다이 세트","마그네틱척 · 정밀바이스","탭 콜렛척 · 악세사리"]},{"l":"유압 펀칭기 · 프레스","b":"103","u":"/products/103/","s":["유압 펀칭기","CNC 펀칭기","사각 노칭기","앵글 · 파이프 절단기","다구멍 펀칭기"]},{"l":"R노칭기 · 파이프 노칭기","b":"109","u":"/products/109/","s":["R노칭기","유압 R노칭기","모터식 R노칭기","수동식 R노칭기","홀소 노칭기","파이프 노칭"]},{"l":"파이프 축관기 · 벤딩기","b":"","u":"/products/109/index-b.html","s":["축관기","파이프 압착기","유압 파이프 벤더","파이프 벤딩기"]},{"l":"챔버 · 면취기 · 모따기","b":"107","u":"/products/107/","s":["직각 면취기","원형 챔버"]},{"l":"금속절단기 · 밴드쏘","b":"100","u":"/products/100/","s":["밴드쏘","원형톱기계","휴대용 밴드쏘"]},{"l":"절곡·벤딩기 · 전선탈피기","b":"105 106 108 110 199","u":"/products/line-bend/","s":["절곡 · 벤딩기","레이저 가공기","전선탈피기 · 차핑기","연마기 · 나사포장기 · 기타"]},{"l":"알루미늄 창호기계","b":"200 202 203 204 205 206 207 208","u":"/products/line-al/","s":["코너클램프기","카피루터기","엔드밀링기","AL 펀칭기 · 가공금형","드릴머신 · 피스체결기","단열 프로파일 롤러프레스기 · 널링기","단열 프로파일 CNC 라인","방충망 밀대"]},{"l":"PVC 창호기계 · PVC 용접기","b":"300 301 302 303 304 305 306 307","u":"/products/line-pvc/","s":["PVC 절단기","PVC 용접기","PVC 루터 · 드릴 · 피스체결기","PVC 펀칭기 · 가공금형","PVC 엔드밀링기","PVC 벤딩기","PVC 사상기 · 압착기","PVC 기타 가공기"]},{"l":"랩핑기 · 유리 가공기 · 창호 설비","b":"400 401 410","u":"/products/400/","s":["랩핑기","유리 가공기계","윈치 · 견인 회전장치","창호 시험 설비"]},{"l":"톱날 · 컷트날 · 열판","b":"501 502 503","u":"/products/line-blade/","s":["톱날","컷트날","열판","열판지"]}];
+var q=document.getElementById('chg-q'),sg=document.getElementById('chg-sg'),hb=document.getElementById('chg-hb'),nl=document.getElementById('chg-links'),items=[];
+function n(s){return(s||'').toLowerCase().replace(/[\s·¡¤]/g,'');}
+function esc(s){return s.replace(/[<>&"]/g,function(c){return{'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];});}
+function go(u){window.location.href=u;}
+function suggest(raw){var t=n(raw);items=[];
+ if(!t){sg.hidden=true;q.setAttribute('aria-expanded','false');return;}
+ D.forEach(function(k){if(n(k.l).indexOf(t)!==-1||n(k.b).indexOf(t)!==-1)items.push({k:'라인',x:k.l,u:k.u});});
+ D.forEach(function(k){k.s.forEach(function(s){if(n(s).indexOf(t)!==-1)items.push({k:'중분류',x:s,sub:k.l,u:k.u});});});
+ items=items.slice(0,8);
+ sg.innerHTML=items.length?items.map(function(o,i){return '<li role="option" data-i="'+i+'"><span class="chg-k'+(o.k==='라인'?' chg-k1':'')+'">'+o.k+'</span>'+esc(o.x)+(o.sub?' <span class="chg-sub">— '+esc(o.sub)+'</span>':'')+'</li>';}).join('')
+  :'<li class="chg-none">일치하는 라인이 없습니다 — <a href="/#contact" style="color:#0066cc">문의 주시면 찾아드립니다</a></li>';
+ sg.hidden=false;q.setAttribute('aria-expanded','true');}
+q.addEventListener('input',function(){suggest(q.value);});
+q.addEventListener('keydown',function(e){if(e.key==='Escape')sg.hidden=true;if(e.key==='Enter'&&items.length){e.preventDefault();go(items[0].u);}});
+sg.addEventListener('click',function(e){var li=e.target.closest('li[data-i]');if(li)go(items[+li.dataset.i].u);});
+document.addEventListener('click',function(e){if(!e.target.closest('.chg-s'))sg.hidden=true;});
+function setMenu(o){nl.classList.toggle('open',o);hb.classList.toggle('open',o);hb.setAttribute('aria-expanded',o);
+ hb.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기');document.body.style.overflow=o?'hidden':'';}
+hb.addEventListener('click',function(){setMenu(!nl.classList.contains('open'));});
+nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+})();
+</script>
+<!-- ===== 사진 크게 보기 (zoom) ===== -->
+<style id="zoom-css">
+.hcard img.zm-on,.gallery img.zm-on{cursor:zoom-in}
+.lb-strip a.lb-go{display:block;line-height:0;border-radius:4px}
+.lb-strip a.lb-go:hover img{opacity:.75}
+.zm{position:fixed;inset:0;z-index:10000;background:rgba(10,12,16,.92);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:56px 64px 20px}
+.zm[hidden]{display:none}
+.zm img{max-width:100%;max-height:calc(100vh - 130px);object-fit:contain;background:#fff;border-radius:4px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+.zm .zm-cap{color:#e8eaee;font-size:15px;line-height:1.5;margin-top:12px;text-align:center;max-width:900px}
+.zm .zm-n{color:#9aa3ad;font-size:13px;margin-top:4px}
+.zm button{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:50%;width:48px;height:48px;font-size:26px;line-height:48px;cursor:pointer;padding:0}
+.zm button:hover{background:rgba(255,255,255,.25)}
+.zm .zm-x{top:12px;right:14px}
+.zm .zm-p{left:10px;top:50%;margin-top:-24px}
+.zm .zm-q{right:10px;top:50%;margin-top:-24px}
+@media (max-width:640px){.zm{padding:56px 8px 16px}.zm .zm-p,.zm .zm-q{top:auto;bottom:14px;margin:0}.zm img{max-height:calc(100vh - 170px)}}
+@media print{.zm{display:none!important}}
+</style>
+<div class="zm" id="zm" hidden role="dialog" aria-modal="true" aria-label="사진 크게 보기">
+<button type="button" class="zm-x" aria-label="닫기">&times;</button>
+<button type="button" class="zm-p" aria-label="이전 사진">&#8249;</button>
+<img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=">
+<div class="zm-cap"></div><div class="zm-n"></div>
+<button type="button" class="zm-q" aria-label="다음 사진">&#8250;</button>
+</div>
+<script id="zoom-js">
+(function(){var z=document.getElementById('zm');if(!z)return;
+var L=[].slice.call(document.querySelectorAll('.hcard img,.gallery img')).filter(function(i){return !i.closest('a')&&!i.closest('.vfacade')&&!i.closest('.zm');});
+if(!L.length)return;var im=z.querySelector('img'),cp=z.querySelector('.zm-cap'),nn=z.querySelector('.zm-n'),k=0,ov='';
+function cap(i){var c=i.closest('.gcell');var g=c&&c.querySelector('.gc');return (g&&g.textContent.trim())||i.alt||'';}
+function show(n){k=(n+L.length)%L.length;var i=L[k];im.src=i.currentSrc||i.src;im.alt=i.alt;cp.textContent=cap(i);nn.textContent=L.length>1?(k+1)+' / '+L.length:'';z.querySelector('.zm-p').style.display=z.querySelector('.zm-q').style.display=L.length>1?'':'none';}
+function open(n){show(n);z.hidden=false;ov=document.body.style.overflow;document.body.style.overflow='hidden';}
+function shut(){z.hidden=true;document.body.style.overflow=ov;}
+L.forEach(function(i,n){i.classList.add('zm-on');i.addEventListener('click',function(){open(n);});});
+z.querySelector('.zm-x').onclick=shut;z.querySelector('.zm-p').onclick=function(e){e.stopPropagation();show(k-1);};z.querySelector('.zm-q').onclick=function(e){e.stopPropagation();show(k+1);};
+z.addEventListener('click',function(e){if(e.target===z)shut();});
+document.addEventListener('keydown',function(e){if(z.hidden)return;if(e.key==='Escape')shut();else if(e.key==='ArrowLeft')show(k-1);else if(e.key==='ArrowRight')show(k+1);});
+var sx=null;z.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+z.addEventListener('touchend',function(e){if(sx===null)return;var d=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(d)>50)show(d<0?k+1:k-1);});
+})();
+</script>
+<!-- ===== /사진 크게 보기 ===== -->
+</body></html>
